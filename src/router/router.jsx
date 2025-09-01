@@ -2,6 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Home from "../pages/Home/Home";
 import Auth from "../pages/Auth/Auth";
+import Casino from "../pages/Casino/Casino";
+import Originals from "../pages/Casino/Originals";
+import FastGames from "../pages/Casino/FastGames";
 
 export const router = createBrowserRouter(
   [
@@ -17,6 +20,18 @@ export const router = createBrowserRouter(
         {
           path: "/:token",
           element: <Auth />,
+        },
+        {
+          path: "/casino",
+          element: <Casino />,
+        },
+        {
+          path: "/originals",
+          element: <Originals />,
+        },
+        {
+          path: "/fast-games",
+          element: <FastGames />,
         },
       ],
     },
