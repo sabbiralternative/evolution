@@ -1,0 +1,22 @@
+{
+  "status": {
+    "statusCode": 200,
+    "statusDesc": "Success"
+  },
+  "result": {
+    "settings": {
+      "siteTitle": "Evolution",
+      "disabledDevtool": false,
+      "baseUrl": "",
+      "lobby": "https://aura365.io"
+    },
+
+    "endpoint": {
+      "eventDetails": "https://dream11.dev/api/exchange/encrypted/odds/event",
+      "casino": "https://dream11.dev/api/funbar/casino.php",
+      "auth": "https://api7.live/api/funbar/auth.php",
+      "order": "https://dream11.dev/api/funbar/order.php"
+    }
+  },
+  "success": true
+}
