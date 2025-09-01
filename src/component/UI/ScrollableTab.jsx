@@ -1,6 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ScrollableTab = () => {
+  const { pathname } = useLocation();
   const navigate = useNavigate();
   const handleNavigate = (link) => {
     navigate(link);
@@ -16,14 +17,13 @@ const ScrollableTab = () => {
           <span />
         </div>
         <li
-          onClick={() => handleNavigate("/")}
           className="ScrollableListItem--0b815 CategoryContainer--62d87"
           id="category-navigator-all_games"
         >
-          <div className="Category--17479 active--14e88">
+          <div className="Category--17479">
             <div className="CategoryIcon--d2629">
               <svg
-                className="AnimatedCategoryIcon--87bac AllGamesIcon--41603 active--10bb1"
+                className="AnimatedCategoryIcon--87bac AllGamesIcon--41603"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 110 110"
                 fill="none"
@@ -32,20 +32,20 @@ const ScrollableTab = () => {
                   className="AnimatedCategoryElement--c589b AllGamesLeftStar--2876f"
                   d="M44.6515 37.4608L44.7638 37.6485L44.9778 37.6935L67.914 42.5178L67.9972 42.1224L67.914 42.5178C68.5188 42.6449 68.975 43.2049 68.975 43.8797C68.975 44.5544 68.5188 45.1144 67.9139 45.2417L44.9778 50.0661L44.7638 50.1111L44.6515 50.2988C43.7015 51.8879 42.4237 53.2138 40.8963 54.1983L40.7172 54.3137L40.6764 54.5228L36.0297 78.3359L36.0297 78.336C35.9013 78.9945 35.3511 79.4454 34.7374 79.4454C34.1239 79.4454 33.5737 78.9946 33.4452 78.3359L28.7986 54.5227L28.7578 54.3136L28.5787 54.1982C27.0511 53.2137 25.7734 51.8879 24.8233 50.2988L24.7111 50.1111L24.4971 50.0661L1.56094 45.2417C0.956222 45.1145 0.5 44.5546 0.5 43.8798C0.5 43.205 0.956222 42.645 1.56092 42.5179L24.4971 37.6935L24.7111 37.6485L24.8233 37.4608C25.7734 35.8717 27.0512 34.5457 28.5787 33.5614L28.7578 33.4459L28.7986 33.2368L33.4452 9.42364C33.5737 8.765 34.1239 8.31411 34.7374 8.31411C35.3511 8.31411 35.9013 8.76503 36.0297 9.42357L36.0297 9.42364L40.6764 33.2367L40.7172 33.4458L40.8963 33.5612C42.4236 34.5457 43.7015 35.8716 44.6515 37.4608Z"
                   stroke="currentColor"
-                  strokeWidth={2}
-                />
+                  strokeWidth="2"
+                ></path>
                 <path
                   className="AnimatedCategoryElement--c589b AllGamesRightBottomStar--d207e"
                   d="M94.1415 84.816L94.1415 84.816C94.6446 84.9218 95.0277 85.389 95.0277 85.9562C95.0277 86.5234 94.6446 86.9906 94.1415 87.0964L94.1415 87.0964L79.2923 90.2197L79.0843 90.2634L78.9714 90.4436C78.3703 91.4032 77.5891 92.2138 76.6674 92.8364L76.496 92.9521L76.4565 93.155L73.4482 108.572L73.9389 108.668L73.4482 108.572C73.3402 109.125 72.8793 109.5 72.3694 109.5C71.8595 109.5 71.3986 109.125 71.2907 108.572L68.2825 93.1549L68.2429 92.952L68.0715 92.8363C67.1497 92.2138 66.3685 91.4033 65.7672 90.4435L65.6544 90.2634L65.4464 90.2197L50.5973 87.0964L50.4944 87.5857L50.5973 87.0964C50.0943 86.9906 49.7111 86.5234 49.7111 85.9562C49.7111 85.389 50.0943 84.9218 50.5973 84.816L50.4967 84.338L50.5973 84.816L65.4465 81.6927L65.6545 81.6489L65.7673 81.4688C66.3685 80.509 67.1497 79.6986 68.0715 79.076L68.2429 78.9603L68.2824 78.7574L71.2907 63.3407C71.3986 62.7875 71.8595 62.4125 72.3694 62.4125C72.8793 62.4125 73.3402 62.7876 73.4482 63.3406L73.9389 63.2448L73.4482 63.3406L76.4565 78.7574L76.496 78.9603L76.6674 79.076C77.5891 79.6985 78.3703 80.5091 78.9714 81.4688L79.0843 81.6489L79.2923 81.6927L94.1415 84.816Z"
                   stroke="currentColor"
-                  strokeWidth={2}
-                />
+                  strokeWidth="2"
+                ></path>
                 <path
                   className="AnimatedCategoryElement--c589b AllGamesRightTopStar--add64"
                   d="M93.5095 19.4099L93.6225 19.5864L93.8276 19.6295L108.459 22.707C109.052 22.8317 109.5 23.3812 109.5 24.0438C109.5 24.7064 109.052 25.2558 108.459 25.3806L108.562 25.8699L108.459 25.3806L93.8276 28.4581L93.6225 28.5012L93.5095 28.6777C92.9197 29.5986 92.1654 30.3814 91.2807 30.9922L91.113 31.1079L91.074 31.3079L88.1098 46.4986L88.6005 46.5944L88.1098 46.4986C87.9836 47.1452 87.4435 47.5875 86.8417 47.5875C86.2399 47.5875 85.6997 47.1452 85.5736 46.4986L82.6095 31.3079L82.5705 31.1079L82.4029 30.9922C81.5182 30.3814 80.7636 29.5987 80.174 28.6778L80.061 28.5013L79.8558 28.4581L65.2245 25.3806L65.1238 25.8593L65.2244 25.3806C64.6313 25.2558 64.1834 24.7064 64.1834 24.0438C64.1834 23.3812 64.6313 22.8317 65.2245 22.707L79.8558 19.6295L80.061 19.5864L80.174 19.4099C80.7637 18.4889 81.5181 17.7062 82.4029 17.0954L82.5705 16.9796L82.6095 16.7797L85.5736 1.58901C85.6997 0.942323 86.2399 0.5 86.8417 0.5C87.4435 0.5 87.9836 0.942338 88.1098 1.58891L88.6005 1.49316L88.1098 1.58892L91.074 16.7797L91.113 16.9796L91.2807 17.0954C92.1654 17.7062 92.9197 18.4888 93.5095 19.4099Z"
                   stroke="currentColor"
-                  strokeWidth={2}
-                />
+                  strokeWidth="2"
+                ></path>
               </svg>
             </div>
             <span
@@ -61,10 +61,16 @@ const ScrollableTab = () => {
           className="ScrollableListItem--0b815 CategoryContainer--62d87"
           id="category-navigator-casinos_choice"
         >
-          <div className="Category--17479">
+          <div
+            className={`Category--17479  ${
+              pathname === "/casino" ? "active--14e88" : ""
+            }`}
+          >
             <div className="CategoryIcon--d2629">
               <svg
-                className="AnimatedCategoryIcon--87bac"
+                className={`AnimatedCategoryIcon--87bac ${
+                  pathname === "/casino" ? "active--10bb1" : ""
+                } `}
                 fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 110 110"
@@ -92,9 +98,17 @@ const ScrollableTab = () => {
           className="ScrollableListItem--0b815 CategoryContainer--62d87"
           id="category-navigator-top_games"
         >
-          <div className="Category--17479">
+          <div
+            className={`Category--17479 ${
+              pathname === "/originals" ? "active--14e88" : ""
+            }`}
+          >
             <div className="CategoryIcon--d2629">
-              <div className="AnimatedCategoryIcon--87bac TopGamesIcon--7dc9c">
+              <div
+                className={`AnimatedCategoryIcon--87bac TopGamesIcon--7dc9c ${
+                  pathname === "/originals" ? "active--10bb1" : ""
+                }`}
+              >
                 <svg
                   className="AnimatedCategoryElement--c589b IconWrappedElement--ee8b6 TopGamesIconElement1Number--177e2"
                   xmlns="http://www.w3.org/2000/svg"
@@ -168,10 +182,16 @@ const ScrollableTab = () => {
           className="ScrollableListItem--0b815 CategoryContainer--62d87"
           id="category-navigator-hindi"
         >
-          <div className="Category--17479">
-            <div className="CategoryIcon--d2629">
+          <div
+            className={`Category--17479 Category--17479 ${
+              pathname === "/fast-games" ? "active--14e88" : ""
+            }`}
+          >
+            <div className={`CategoryIcon--d2629 `}>
               <svg
-                className="AnimatedCategoryIcon--87bac"
+                className={`AnimatedCategoryIcon--87bac ${
+                  pathname === "/fast-games" ? "active--10bb1" : ""
+                }`}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 110 110"
                 fill="currentColor"

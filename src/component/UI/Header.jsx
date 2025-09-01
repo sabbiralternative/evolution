@@ -1,9 +1,13 @@
+import { useNavigate } from "react-router-dom";
+
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <div className="RootHeader--2f4b7" style={{ top: "0px" }}>
       <div className="RootHeaderContent--aa74c">
         <nav className="RootHeaderNavigation--1e61c">
           <button
+            onClick={() => navigate("/")}
             aria-label="Go to home page"
             className="Button--3be20 colorPrimary--5595c sizeMedium--7851e variantFlat--1131a RootHeaderNavigationLogo--e3878"
             data-role="casino-logo-button"
