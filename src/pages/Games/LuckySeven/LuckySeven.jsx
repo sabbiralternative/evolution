@@ -1,13 +1,4 @@
-import { useParams } from "react-router-dom";
-import { useGetEventDetailsQuery } from "../../../redux/features/events/events";
-
 const LuckySeven = () => {
-  const { eventTypeId, eventId } = useParams();
-  const { data } = useGetEventDetailsQuery(
-    { eventTypeId, eventId },
-    { pollingInterval: 1000 }
-  );
-
   return (
     <div id="root" className="rootContainer--308ad">
       <div className="container--efd24">
@@ -260,7 +251,7 @@ const LuckySeven = () => {
                 <div
                   className="gameControlsWrapper--9fbf7"
                   data-role="gameControlsWrapper"
-                  style={{ top: "100px", bottom: "auto" }}
+                  style={{ top: "314px", bottom: "auto" }}
                 >
                   <div
                     className="gameControls--ab9e4 goldenWealth--60b45"
