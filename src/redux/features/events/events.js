@@ -3,6 +3,18 @@ import { baseApi } from "../../api/baseApi";
 
 export const eventsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
+    getEventDetails: builder.query({
+      query: ({ eventTypeId, eventId }) => {
+        return {
+          url: `${API.eventDetails}/${eventTypeId}/${eventId}`,
+          method: "GET",
+          headers: {
+            "Cache-Control": "public",
+            "max-age": 1,
+          },
+        };
+      },
+    }),
     order: builder.mutation({
       query: (payload) => {
         return {
@@ -15,4 +27,4 @@ export const eventsApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useOrderMutation } = eventsApi;
+export const { useGetEventDetailsQuery, useOrderMutation } = eventsApi;
