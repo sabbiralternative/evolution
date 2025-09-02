@@ -3,7 +3,7 @@ import ActionButtons from "./ActionButtons";
 import BetSlip from "./BetSlip";
 import Footer from "./Footer";
 import RoadPrediction from "./RoadPrediction";
-import Menu from "./Menu";
+import Menu from "./Menu/Menu";
 
 const LuckySeven = () => {
   const [showMenu, setShowMenu] = useState(false);
