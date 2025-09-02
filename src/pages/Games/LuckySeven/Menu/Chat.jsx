@@ -1,6 +1,12 @@
+import { motion } from "motion/react";
+
 const Chat = ({ setTab, closeModal }) => {
   return (
-    <div
+    <motion.div
+      initial={{ x: "100%" }}
+      animate={{ x: "0%" }}
+      transition={{ duration: 0.2 }}
+      exit={{ x: "100%" }}
       className="root--594e2 root--ac0ae withBorder--a433d"
       data-role="drawer-container"
     >
@@ -412,7 +418,7 @@ const Chat = ({ setTab, closeModal }) => {
         className="contentMask--32bde"
         style={{ transform: "scaleY(0) translate3d(0px, 0px, 1px)" }}
       />
-    </div>
+    </motion.div>
   );
 };
 

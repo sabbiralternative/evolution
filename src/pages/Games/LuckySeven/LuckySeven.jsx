@@ -4,12 +4,16 @@ import BetSlip from "./BetSlip";
 import Footer from "./Footer";
 import RoadPrediction from "./RoadPrediction";
 import Menu from "./Menu/Menu";
+import { AnimatePresence } from "framer-motion";
 
 const LuckySeven = () => {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <>
-      {showMenu && <Menu setShowMenu={setShowMenu} />}
+      <AnimatePresence>
+        {showMenu && <Menu setShowMenu={setShowMenu} />}
+      </AnimatePresence>
+
       <div id="root" className="rootContainer--308ad">
         <div className="container--efd24">
           <div
