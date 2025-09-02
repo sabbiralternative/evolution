@@ -2,12 +2,23 @@ import { useState } from "react";
 import ActionButtons from "./ActionButtons";
 import BetSlip from "./BetSlip";
 import Footer from "./Footer";
-import RoadPrediction from "./RoadPrediction";
+// import RoadPrediction from "./RoadPrediction";
 import Menu from "./Menu/Menu";
 import { AnimatePresence } from "framer-motion";
+import { useParams } from "react-router-dom";
+import { useGetEventDetailsQuery } from "../../../redux/features/events/events";
+import { Status } from "../../../const";
 
 const LuckySeven = () => {
+  const { eventTypeId, eventId } = useParams();
   const [showMenu, setShowMenu] = useState(false);
+  const { data } = useGetEventDetailsQuery(
+    { eventTypeId, eventId },
+    { pollingInterval: 1000 }
+  );
+
+  const firstEvent = data?.result?.[0];
+
   return (
     <>
       <AnimatePresence>
@@ -285,7 +296,7 @@ const LuckySeven = () => {
                       <div>
                         <div>
                           <BetSlip />
-                          <RoadPrediction />
+                          {/* <RoadPrediction /> */}
                           <div className="dealNow--971b0 portrait--55ead hidden--c5c76">
                             <div className="buttonWrapper--86a37 mobile--2fe7c">
                               <button
@@ -526,8 +537,9 @@ const LuckySeven = () => {
               </div>
             </div>
           </div>
-          <ActionButtons />
-          <Footer />
+          {<ActionButtons />}
+
+          <Footer firstEvent={firstEvent} />
           <div className="tooltipsContainer--515fb increasedZIndex--60d95" />
           <div className="container--75075">
             <div className="chipContainer--7219d">

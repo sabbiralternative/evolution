@@ -1,4 +1,7 @@
-const Footer = () => {
+import { useSelector } from "react-redux";
+
+const Footer = ({ firstEvent }) => {
+  const { balance } = useSelector((state) => state.auth);
   return (
     <div
       className="tableInfoContainer--b6c41 commonUiElement sm--89dd5 tall--a21d4 iphone10--fa60a hasRoundedCorners--1e1b3 hasNotch--267d0 withGradient--c01fc hasExtraRoundedCorners--6ed2f isFullscreen--d501d"
@@ -37,7 +40,7 @@ const Footer = () => {
             className="gameTime--9d037 gameTime--4b53f"
             data-role="game-time"
           >
-            11:34:10
+            {firstEvent?.roundId}
           </div>
         </div>
       </div>
@@ -62,7 +65,7 @@ const Footer = () => {
                         "data-currency-symbol": "string",
                     }'
               >
-                ₹8.24
+                ₹{balance}
               </span>
             </span>
           </div>

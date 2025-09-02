@@ -10,7 +10,7 @@ const initialState = {
   showLanguageModal: false,
   showNotification: false,
   showChip: false,
-  stake: 50,
+  stake: 100,
 };
 
 const stateSlice = createSlice({
