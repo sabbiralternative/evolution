@@ -61,16 +61,13 @@ const ScrollableTab = () => {
           className="ScrollableListItem--0b815 CategoryContainer--62d87"
           id="category-navigator-casinos_choice"
         >
-          <div
-            className={`Category--17479  ${
-              pathname === "/casino" ? "active--14e88" : ""
-            }`}
-          >
+          {/* ${pathname === "/casino" ? "active--14e88" : ""} */}
+          <div className={`Category--17479  `}>
             <div className="CategoryIcon--d2629">
+              {/* ${pathname === "/casino" ? "active--10bb1" : ""} */}
               <svg
-                className={`AnimatedCategoryIcon--87bac ${
-                  pathname === "/casino" ? "active--10bb1" : ""
-                } `}
+                style={{ opacity: pathname === "/casino" ? "1" : "0.6" }}
+                className={`AnimatedCategoryIcon--87bac  `}
                 fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 110 110"
@@ -88,6 +85,7 @@ const ScrollableTab = () => {
             <span
               className="Typography--d2c9a CategoryName--b3bef Typography_xs_subtitle1--6fd5e Typography_xl_h6--d162d bold--d200f colorPrimary--f2f02 ellipsisModeTwoLines--ab28e hyphens--b1b61"
               data-role="typography"
+              style={{ opacity: pathname === "/casino" ? "1" : "0.6" }}
             >
               Casino
             </span>
@@ -98,16 +96,13 @@ const ScrollableTab = () => {
           className="ScrollableListItem--0b815 CategoryContainer--62d87"
           id="category-navigator-top_games"
         >
-          <div
-            className={`Category--17479 ${
-              pathname === "/originals" ? "active--14e88" : ""
-            }`}
-          >
+          {/* ${pathname === "/originals" ? "active--14e88" : ""} */}
+          <div className={`Category--17479 `}>
             <div className="CategoryIcon--d2629">
+              {/* ${pathname === "/originals" ? "active--10bb1" : ""} */}
               <div
-                className={`AnimatedCategoryIcon--87bac TopGamesIcon--7dc9c ${
-                  pathname === "/originals" ? "active--10bb1" : ""
-                }`}
+                style={{ opacity: pathname === "/originals" ? "1" : "0.6" }}
+                className={`AnimatedCategoryIcon--87bac TopGamesIcon--7dc9c `}
               >
                 <svg
                   className="AnimatedCategoryElement--c589b IconWrappedElement--ee8b6 TopGamesIconElement1Number--177e2"
@@ -170,6 +165,7 @@ const ScrollableTab = () => {
               </div>
             </div>
             <span
+              style={{ opacity: pathname === "/originals" ? "1" : "0.6" }}
               className="Typography--d2c9a CategoryName--b3bef Typography_xs_subtitle1--6fd5e Typography_xl_h6--d162d bold--d200f colorPrimary--f2f02 ellipsisModeTwoLines--ab28e hyphens--b1b61"
               data-role="typography"
             >
@@ -182,16 +178,13 @@ const ScrollableTab = () => {
           className="ScrollableListItem--0b815 CategoryContainer--62d87"
           id="category-navigator-hindi"
         >
-          <div
-            className={`Category--17479 Category--17479 ${
-              pathname === "/fast-games" ? "active--14e88" : ""
-            }`}
-          >
+          {/* ${pathname === "/fast-games" ? "active--14e88" : ""} */}
+          <div className={`Category--17479 Category--17479 `}>
             <div className={`CategoryIcon--d2629 `}>
+              {/* ${pathname === "/fast-games" ? "active--10bb1" : ""} */}
               <svg
-                className={`AnimatedCategoryIcon--87bac ${
-                  pathname === "/fast-games" ? "active--10bb1" : ""
-                }`}
+                style={{ opacity: pathname === "/fast-games" ? "1" : "0.6" }}
+                className={`AnimatedCategoryIcon--87bac `}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 110 110"
                 fill="currentColor"
@@ -200,6 +193,7 @@ const ScrollableTab = () => {
               </svg>
             </div>
             <span
+              style={{ opacity: pathname === "/fast-games" ? "1" : "0.6" }}
               className="Typography--d2c9a CategoryName--b3bef Typography_xs_subtitle1--6fd5e Typography_xl_h6--d162d bold--d200f colorPrimary--f2f02 ellipsisModeTwoLines--ab28e hyphens--b1b61"
               data-role="typography"
             >
