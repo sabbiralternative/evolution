@@ -1,11 +1,26 @@
+import { useEffect, useState } from "react";
+
 const BetSlip = () => {
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setInnerWidth(window.innerWidth);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className="bettingGrid--a60ca">
-      <div style={{ width: "420px", height: "227px" }}>
+      <div style={{ width: `${innerWidth - 10}px`, height: "227px" }}>
         <div
           className="bettingGrid--0835e bettingTime--7f9cd isVertical--28984 onlyPairs--f14f6"
           data-role="betting-grid-container"
-          style={{ transform: "scale(1.15)" }}
+          style={{ transform: `scale(${innerWidth / 375})` }}
         >
           <div className="bubble--2b7a1" />
           <div className="mainContainer--2572f">
