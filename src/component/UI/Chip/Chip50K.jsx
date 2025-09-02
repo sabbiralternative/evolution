@@ -1,4 +1,4 @@
-const Chip50K = () => {
+const Chip50K = ({ value = "50k" }) => {
   return (
     <svg
       viewBox="0 0 78 78"
@@ -31,7 +31,7 @@ const Chip50K = () => {
         dy={8}
         data-role="chip-value"
       >
-        50k
+        {value === 50000 ? "50k" : value}
       </text>
     </svg>
   );

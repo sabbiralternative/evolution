@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import Chip100 from "./Chip100";
 import Chip200 from "./Chip200";
 import Chip500 from "./Chip500";
@@ -7,27 +6,26 @@ import Chip50K from "./Chip50K";
 import Chip10K from "./Chip10K";
 import Chip100K from "./Chip100K";
 
-const Stake = () => {
-  const { stake } = useSelector((state) => state.global);
+const Stake = ({ stake }) => {
   if (stake < 200) {
-    return <Chip100 />;
+    return <Chip100 value={stake} />;
   }
   if (stake < 500) {
-    return <Chip200 />;
+    return <Chip200 value={stake} />;
   }
   if (stake < 2500) {
-    return <Chip500 />;
+    return <Chip500 value={stake} />;
   }
   if (stake < 10000) {
-    return <Chip2K500 />;
+    return <Chip2K500 value={stake} />;
   }
   if (stake < 50000) {
-    return <Chip10K />;
+    return <Chip10K value={stake} />;
   }
   if (stake < 100000) {
-    return <Chip50K />;
+    return <Chip50K value={stake} />;
   } else {
-    return <Chip100K />;
+    return <Chip100K value={stake} />;
   }
 };
 

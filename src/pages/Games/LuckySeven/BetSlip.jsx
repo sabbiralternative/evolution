@@ -1,7 +1,187 @@
 import { useEffect, useState } from "react";
+import { Status } from "../../../const";
+import { useDispatch, useSelector } from "react-redux";
+import { useOrderMutation } from "../../../redux/features/events/events";
+import { setBalance } from "../../../redux/features/auth/authSlice";
+import Stake from "../../../component/UI/Chip/Stake";
+import { isRunnerWinner } from "../../../utils/betSlip";
 
-const BetSlip = () => {
+const BetSlip = ({
+  double,
+  data,
+  status,
+  setToast,
+  setStakeState,
+  stakeState,
+  setTotalWinAmount,
+  setShowWinLossResult,
+  animation,
+  setAnimation,
+  initialState,
+}) => {
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+  const [showSuspendedWarning, setShowSuspendedWarning] = useState(false);
+  const dispatch = useDispatch();
+  const [addOrder] = useOrderMutation();
+  const { stake } = useSelector((state) => state.global);
+  const { balance } = useSelector((state) => state.auth);
+
+  // Generic function to update stake state
+  const handleStakeChange = (payload) => {
+    console.log(payload);
+    const isRepeatTheBet = Object.values(stakeState).find(
+      (item) => item?.selection_id && item?.show === false
+    );
+    if (isRepeatTheBet) {
+      setStakeState(initialState);
+    }
+    // new Audio("/bet.mp3").play();
+    const { key, data, dataIndex, runnerIndex, type } = payload;
+    setAnimation([key]);
+    const formatData = {
+      marketId: data?.[dataIndex]?.id,
+      roundId: data?.[dataIndex]?.roundId,
+      name: data?.[dataIndex]?.name,
+      eventId: data?.[dataIndex]?.eventId,
+      eventName: data?.[dataIndex]?.eventName,
+      selection_id: data?.[dataIndex]?.runners?.[runnerIndex]?.id,
+      runner_name: data?.[dataIndex]?.runners?.[runnerIndex]?.name,
+      isback: type === "back" ? 0 : 1,
+      event_id: data?.[dataIndex]?.eventId,
+      event_type_id: data?.[dataIndex]?.event_type_id,
+      price: data?.[dataIndex]?.runners?.[runnerIndex]?.[type]?.[0]?.price,
+    };
+    const timeout = setTimeout(() => {
+      setAnimation([]);
+      setStakeState((prev) => {
+        const maxSerial = Math.max(
+          0,
+          ...Object.values(prev)
+            .map((item) => item.serial)
+            .filter((serial) => serial !== undefined)
+        );
+
+        return {
+          ...prev,
+          [key]: {
+            roundId: formatData?.roundId,
+            name: formatData?.name,
+            eventId: formatData?.eventId,
+            eventName: formatData?.eventName,
+            show: true,
+            animation: false,
+            stake: prev[key].show
+              ? prev[key].stake + prev[key].actionBy
+              : prev[key].stake,
+            marketId: formatData?.marketId,
+            selection_id: formatData?.selection_id,
+            price: formatData?.price,
+            runner_name: formatData?.runner_name,
+            isback: formatData?.isback,
+            serial: prev[key]?.serial ? prev[key]?.serial : maxSerial + 1,
+            actionBy: stake,
+            undo: [...(prev[key]?.undo || []), stake],
+          },
+        };
+      });
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  };
+
+  // Reset state when status is OPEN
+  useEffect(() => {
+    if (status === Status.OPEN) {
+      setStakeState((prev) => {
+        const updatedState = { ...prev };
+        Object.keys(updatedState).forEach((key) => {
+          if (updatedState[key].show) {
+            updatedState[key] = {
+              ...updatedState[key],
+              show: false,
+            };
+          }
+        });
+        return updatedState;
+      });
+    }
+    if (showSuspendedWarning) {
+      setTimeout(() => {
+        setShowSuspendedWarning(false);
+      }, 1000);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [status, showSuspendedWarning]);
+
+  useEffect(() => {
+    setStakeState((prev) => {
+      const updatedState = {};
+      for (const key in prev) {
+        updatedState[key] = {
+          ...prev[key],
+          stake: prev[key].show ? prev[key].stake : stake,
+          actionBy: stake,
+        };
+      }
+      return updatedState;
+    });
+  }, [stake]); // Runs when stake value changes
+
+  useEffect(() => {
+    const filterPlacedBet = Object.values(stakeState).filter((bet) => bet.show);
+    let payload = filterPlacedBet.map((bet) => ({
+      roundId: bet?.roundId,
+      name: bet?.name,
+      eventId: bet?.eventId,
+      eventName: bet?.eventName,
+      marketId: bet?.marketId,
+      selection_id: bet?.selection_id,
+      runner_name: bet?.runner_name,
+      stake: bet?.stake,
+      isback: bet?.isback,
+      price: bet?.price,
+    }));
+
+    if (status === Status.SUSPENDED && payload?.length > 0) {
+      const handleOrder = async () => {
+        const res = await addOrder(payload).unwrap();
+
+        payload = [];
+        if (res?.success) {
+          setShowWinLossResult(false);
+          setTotalWinAmount(null);
+
+          let totalBets = [];
+          let totalAmountPlaced = 0;
+
+          for (let bet of filterPlacedBet) {
+            totalAmountPlaced = totalAmountPlaced + bet?.stake;
+            totalBets.push({
+              selection_id: bet.selection_id,
+              price: bet?.price,
+              eventId: bet?.eventId,
+              marketId: bet?.marketId,
+              name: bet?.name,
+              stake: bet?.stake,
+            });
+          }
+
+          localStorage.setItem("totalBetPlace", JSON.stringify(totalBets));
+
+          dispatch(setBalance(balance - parseFloat(totalAmountPlaced)));
+          setToast(res?.Message);
+        }
+      };
+      handleOrder();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [addOrder, status]);
+
+  const handleShowSuspendedStatus = () => {
+    if (status === Status.SUSPENDED) {
+      setShowSuspendedWarning(true);
+    }
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -15,7 +195,7 @@ const BetSlip = () => {
   }, []);
 
   return (
-    <div className="bettingGrid--a60ca">
+    <div onClick={handleShowSuspendedStatus} className="bettingGrid--a60ca">
       <div style={{ width: `${innerWidth - 10}px`, height: "227px" }}>
         <div
           className="bettingGrid--0835e bettingTime--7f9cd isVertical--28984 onlyPairs--f14f6"
@@ -25,12 +205,23 @@ const BetSlip = () => {
           <div className="bubble--2b7a1" />
           <div className="mainContainer--2572f">
             <div
+              onClick={() =>
+                handleStakeChange({
+                  key: "down",
+                  data,
+                  dataIndex: 0,
+                  runnerIndex: 0,
+                  type: "back",
+                })
+              }
               data-betspot-destination="Player"
               className="player--b46f0"
               data-role="bet-spot-Player"
             >
               <svg
-                className="svg--7e996 mainShape--f586c svgBetspot--43e31"
+                className={`svg--7e996 mainShape--f586c svgBetspot--43e31 ${
+                  isRunnerWinner(data, 0, 0) ? "animate--6c17d  win--e65a1" : ""
+                }`}
                 preserveAspectRatio="none"
                 width={180}
                 height={149}
@@ -83,8 +274,25 @@ const BetSlip = () => {
                   />
                 </g>
               </svg>
+
               <div className="score--393b3" data-role="score" />
               <div className="symbol--a11ac">
+                <div className="z-50">
+                  <div className="relative w-10 h-10">
+                    <div
+                      className={`${
+                        animation.includes("down")
+                          ? "absolute top-0 visible transition-all duration-500 "
+                          : "absolute -top-16 invisible opacity-0"
+                      }  z-50 w-full h-full`}
+                    >
+                      <Stake stake={double ? stakeState?.down?.stake : stake} />
+                    </div>
+                    {stakeState?.down?.show && (
+                      <Stake stake={stakeState?.down?.stake} />
+                    )}
+                  </div>
+                </div>
                 <img src="frontend/evo/mini/images/playersymb.ec2d1e8e.svg" />
               </div>
               <div className="cardsHand--538f4 enhanced--181e0 isPortrait--28ada">
@@ -93,7 +301,7 @@ const BetSlip = () => {
               <div className="title--967a1">
                 <div className="titleContainer--98fa0">7 Down</div>
               </div>
-              <div className="liveStatisticsContainer--fc00f">
+              {/* <div className="liveStatisticsContainer--fc00f">
                 <div
                   className="liveStatistics--951fa LeftSpot--cfe31 isPortrait--b2a22"
                   data-role="betting-stats"
@@ -123,8 +331,8 @@ const BetSlip = () => {
                     <span>42</span>
                   </div>
                 </div>
-              </div>
-              <div className="bettingStatistics--1bd62">
+              </div> */}
+              {/* <div className="bettingStatistics--1bd62">
                 <svg
                   data-total-percent={20}
                   width={108}
@@ -179,7 +387,7 @@ const BetSlip = () => {
                 >
                   20%
                 </span>
-              </div>
+              </div> */}
               <div className="chipContainer--9cdca">
                 <div className="isPortrait--96aa8 mediumChip--83319 chipSize--1811f">
                   <div
@@ -238,12 +446,23 @@ const BetSlip = () => {
               </div>
             </div>
             <div
+              onClick={() =>
+                handleStakeChange({
+                  key: "up",
+                  data,
+                  dataIndex: 0,
+                  runnerIndex: 1,
+                  type: "back",
+                })
+              }
               data-betspot-destination="Banker"
               className="banker--abb19"
               data-role="bet-spot-Banker"
             >
               <svg
-                className="svg--7e996 mainShape--f586c svgBetspot--43e31 isMirrored--d9896"
+                className={`svg--7e996 mainShape--f586c svgBetspot--43e31 isMirrored--d9896 ${
+                  isRunnerWinner(data, 0, 1) ? "animate--6c17d  win--e65a1" : ""
+                }`}
                 preserveAspectRatio="none"
                 width={180}
                 height={149}
@@ -297,7 +516,24 @@ const BetSlip = () => {
                 </g>
               </svg>
               <div className="score--393b3" data-role="score" />
+
               <div className="symbol--a11ac">
+                <div className="z-50">
+                  <div className="relative w-10 h-10">
+                    <div
+                      className={`${
+                        animation.includes("up")
+                          ? "absolute top-0 visible transition-all duration-500 "
+                          : "absolute -top-16 invisible opacity-0"
+                      }  z-50 w-full h-full`}
+                    >
+                      <Stake stake={double ? stakeState?.up?.stake : stake} />
+                    </div>
+                    {stakeState?.up?.show && (
+                      <Stake stake={stakeState?.up?.stake} />
+                    )}
+                  </div>
+                </div>
                 <img src="frontend/evo/mini/images/bankersymb.78bc4fda.svg" />
               </div>
               <div className="cardsHand--538f4 toRight--d458d enhanced--181e0 isPortrait--28ada">
@@ -306,7 +542,7 @@ const BetSlip = () => {
               <div className="title--967a1">
                 <div className="titleContainer--98fa0">7 Up</div>
               </div>
-              <div className="liveStatisticsContainer--fc00f">
+              {/* <div className="liveStatisticsContainer--fc00f">
                 <div
                   className="liveStatistics--951fa RightSpot--29540 isPortrait--b2a22 medium--0dfff"
                   data-role="betting-stats"
@@ -448,16 +684,27 @@ const BetSlip = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div
+              onClick={() =>
+                handleStakeChange({
+                  key: "seven",
+                  data,
+                  dataIndex: 0,
+                  runnerIndex: 2,
+                  type: "back",
+                })
+              }
               data-betspot-destination="Tie"
               className="tie--01ff7"
               data-role="bet-spot-Tie"
             >
               <svg
                 preserveAspectRatio="none"
-                className="svg--7e996 svgBetspot--43e31 tieShape--d6bfd"
+                className={`svg--7e996 svgBetspot--43e31 tieShape--d6bfd ${
+                  isRunnerWinner(data, 0, 2) ? "animate--6c17d  win--e65a1" : ""
+                }`}
                 width={123}
                 height={130}
                 viewBox="0 0 123 130"
@@ -507,13 +754,41 @@ const BetSlip = () => {
                   className="shape--84077"
                 />
               </svg>
-              <div className="title--967a1" data-role="payout">
+
+              <div
+                className="title--967a1"
+                data-role="payout"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <div className="z-50 mb-3">
+                  <div className="relative w-10 h-10">
+                    <div
+                      className={`${
+                        animation.includes("seven")
+                          ? "absolute top-0 visible transition-all duration-500 "
+                          : "absolute -top-16 invisible opacity-0"
+                      }  z-50 w-full h-full`}
+                    >
+                      <Stake
+                        stake={double ? stakeState?.seven?.stake : stake}
+                      />
+                    </div>
+                    {stakeState?.seven?.show && (
+                      <Stake stake={stakeState?.seven?.stake} />
+                    )}
+                  </div>
+                </div>
                 <div className="titleContainer--98fa0 single--27bc5">
                   <span className>7</span>
                 </div>
-                <div className="payoutContainer--a32db" />
+                <div className="payoutContainer--a32db"> </div>
               </div>
-              <div className="liveStatisticsContainer--fc00f">
+              {/* <div className="liveStatisticsContainer--fc00f">
                 <div
                   className="liveStatistics--951fa Tie--9449f horizontal--dc92b isPortrait--b2a22"
                   data-role="betting-stats"
@@ -655,7 +930,7 @@ const BetSlip = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>  */}
             </div>
           </div>
           <div className="betspot--53c9f left--fcc6a">

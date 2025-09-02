@@ -4,14 +4,25 @@ import BetSlip from "./BetSlip";
 import Footer from "./Footer";
 // import RoadPrediction from "./RoadPrediction";
 import Menu from "./Menu/Menu";
-import { AnimatePresence } from "framer-motion";
 import { useParams } from "react-router-dom";
 import { useGetEventDetailsQuery } from "../../../redux/features/events/events";
 import { Status } from "../../../const";
+import { useSelector } from "react-redux";
+import { AnimatePresence } from "framer-motion";
+import { handleDoubleStake } from "../../../utils/handleDoubleStake";
+import { handleUndoStake } from "../../../utils/handleUndoStake";
 
 const LuckySeven = () => {
-  const { eventTypeId, eventId } = useParams();
   const [showMenu, setShowMenu] = useState(false);
+  const [double, setDouble] = useState(false);
+  const [animation, setAnimation] = useState([]);
+  const [showWinLossResult, setShowWinLossResult] = useState(false);
+  const [totalWinAmount, setTotalWinAmount] = useState(null);
+  const { stake } = useSelector((state) => state.global);
+  const [toast, setToast] = useState(null);
+  const [showFullScreen, setShowFullScreen] = useState(false);
+  const [showSetting, setShowSetting] = useState(false);
+  const { eventTypeId, eventId } = useParams();
   const { data } = useGetEventDetailsQuery(
     { eventTypeId, eventId },
     { pollingInterval: 1000 }
@@ -19,8 +30,42 @@ const LuckySeven = () => {
 
   const firstEvent = data?.result?.[0];
 
+  const initialState = {
+    even: { show: false, stake },
+    up: { show: false, stake },
+    odd: { show: false, stake },
+    red: { show: false, stake },
+    down: { show: false, stake },
+    black: { show: false, stake },
+    seven: { show: false, stake },
+    diamond: { show: false, stake },
+    heart: { show: false, stake },
+    spade: { show: false, stake },
+    club: { show: false, stake },
+  };
+
+  const [stakeState, setStakeState] = useState(initialState);
+
+  const isRepeatTheBet = Object.values(stakeState).find(
+    (item) => item?.selection_id && item?.show === false
+  );
+
+  const isPlaceStake = Object.values(stakeState).find((item) => item?.show);
+
   return (
     <>
+      {showMenu && (
+        <div
+          className="backgroundScrim--f8ae8 backgroundScrim--3380d"
+          data-role="drawer-scrim"
+          style={{
+            opacity: "0.4",
+            transitionDuration: "initial",
+            transitionTimingFunction: "initial",
+            // background: "green",
+          }}
+        />
+      )}
       <AnimatePresence>
         {showMenu && <Menu setShowMenu={setShowMenu} />}
       </AnimatePresence>
@@ -295,7 +340,19 @@ const LuckySeven = () => {
                     >
                       <div>
                         <div>
-                          <BetSlip />
+                          <BetSlip
+                            initialState={initialState}
+                            double={double}
+                            animation={animation}
+                            setAnimation={setAnimation}
+                            setShowWinLossResult={setShowWinLossResult}
+                            setTotalWinAmount={setTotalWinAmount}
+                            stakeState={stakeState}
+                            setStakeState={setStakeState}
+                            setToast={setToast}
+                            data={data?.result}
+                            status={firstEvent?.status}
+                          />
                           {/* <RoadPrediction /> */}
                           <div className="dealNow--971b0 portrait--55ead hidden--c5c76">
                             <div className="buttonWrapper--86a37 mobile--2fe7c">
@@ -537,7 +594,22 @@ const LuckySeven = () => {
               </div>
             </div>
           </div>
-          {<ActionButtons />}
+          {
+            <ActionButtons
+              isRepeatTheBet={isRepeatTheBet}
+              handleDoubleStake={() =>
+                handleDoubleStake(
+                  isRepeatTheBet,
+                  setDouble,
+                  setStakeState,
+                  setAnimation,
+                  firstEvent
+                )
+              }
+              handleUndoStake={() => handleUndoStake(setStakeState, stakeState)}
+              isPlaceStake={isPlaceStake}
+            />
+          }
 
           <Footer firstEvent={firstEvent} />
           <div className="tooltipsContainer--515fb increasedZIndex--60d95" />
