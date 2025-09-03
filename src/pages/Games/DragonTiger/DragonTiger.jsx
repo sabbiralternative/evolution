@@ -140,7 +140,6 @@ const DragonTiger = () => {
                             height: "53.98px",
                           }}
                         />
-                        sasas
                       </div>
                     </div>
                   </div>
