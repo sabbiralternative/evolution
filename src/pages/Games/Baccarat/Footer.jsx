@@ -75,7 +75,7 @@ const Footer = ({ firstEvent }) => {
             className="tableName--ed38c tableName--aad8c md--faf59"
             data-role="table-name"
           >
-            Dragon Tiger
+            Baccarat
           </span>
           <div
             className="tableLimits--97b4b tableLimits--f2c2b"
