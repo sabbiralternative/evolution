@@ -1,9 +1,12 @@
 import { useSelector } from "react-redux";
 
-const Footer = () => {
+const Footer = ({ removeMargin }) => {
   const { balance } = useSelector((state) => state.auth);
   return (
-    <footer className="RootFooter--703a2" style={{ marginTop: "16px" }}>
+    <footer
+      className="RootFooter--703a2"
+      style={{ marginTop: removeMargin ? "0px" : "16px" }}
+    >
       <div className="RootFooterPanel--bccf1" data-role="footer-panel">
         <div className="RootFooterPanelLeftBlock--edbdc">
           <span

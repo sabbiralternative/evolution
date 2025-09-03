@@ -6,6 +6,7 @@ import Casino from "../pages/Casino/Casino";
 import Originals from "../pages/Casino/Originals";
 import FastGames from "../pages/Casino/FastGames";
 import LuckySeven from "../pages/Games/LuckySeven/LuckySeven";
+import DragonTiger from "../pages/Games/DragonTiger/DragonTiger";
 
 export const router = createBrowserRouter(
   [
@@ -37,6 +38,10 @@ export const router = createBrowserRouter(
         {
           path: "/game/lucky7/:eventTypeId/:eventId",
           element: <LuckySeven />,
+        },
+        {
+          path: "/game/dt20/:eventTypeId/:eventId",
+          element: <DragonTiger />,
         },
       ],
     },

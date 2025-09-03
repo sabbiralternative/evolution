@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ setShowSearch }) => {
   const navigate = useNavigate();
   return (
     <div className="RootHeader--2f4b7" style={{ top: "0px" }}>
@@ -24,6 +24,7 @@ const Header = () => {
         <div className="RootHeaderControls--2cdc1">
           <div className="MobileControls--82a5e">
             <button
+              onClick={() => setShowSearch(true)}
               aria-label="button"
               className="Button--3be20 colorPrimary--5595c rounded--3f2de sizeMini--96400 variantText--5b2ec"
               data-role="search-mobile-button"

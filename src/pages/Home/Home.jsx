@@ -1,10 +1,13 @@
+import { useState } from "react";
 import Footer from "../../component/UI/Footer";
 import Header from "../../component/UI/Header";
 import NotUsing from "../../component/UI/NotUsing";
 import ScrollableTab from "../../component/UI/ScrollableTab";
+import Search from "../../component/UI/Search/Search";
 
 const Home = () => {
-  return (
+  const [showSearch, setShowSearch] = useState(false);
+  return !showSearch ? (
     <div
       id="root"
       className="rootContainer--308ad"
@@ -16,7 +19,7 @@ const Home = () => {
           <div className="DrawerBackground--13365">
             <div className="Root--ee70b" id="lobby-root">
               <div className="Content--2ceeb">
-                <Header />
+                <Header setShowSearch={setShowSearch} />
                 <ScrollableTab />
                 <main className="InnerContent--56377">
                   <section
@@ -1412,6 +1415,8 @@ const Home = () => {
         </div>
       </div>
     </div>
+  ) : (
+    <Search setShowSearch={setShowSearch} />
   );
 };
 
