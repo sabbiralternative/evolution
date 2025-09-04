@@ -951,7 +951,7 @@ const BetSlip = ({
               })
             }
             className="betspot--53c9f left--fcc6a"
-            style={{ width: "85px" }}
+            style={{ width: "89px" }}
           >
             <div
               data-betspot-destination="PlayerPair"
@@ -1025,13 +1025,13 @@ const BetSlip = ({
               </svg>
               <div className="payoutContainer--a32db">
                 <div>
-                  <div className="payout--c827b" data-role="payout">
-                    {getBackPrice(data, 1, 0)}
+                  <div className="payout--c827b !text-white" data-role="payout">
+                    Even
                   </div>
                 </div>
               </div>
               <div className="betspotTitle--d0907">
-                <span className>Even</span>
+                <span className> x{getBackPrice(data, 1, 0)}</span>
               </div>
               <div className="chipContainer--9cdca">
                 <div className="isPortrait--96aa8 mediumChip--83319 chipSize--1811f">
@@ -1102,7 +1102,7 @@ const BetSlip = ({
               })
             }
             className="betspot--53c9f right--d8912"
-            style={{ left: "92px", width: "85px" }}
+            style={{ left: "92.2px", width: "89px" }}
           >
             <div
               data-betspot-destination="BankerPair"
@@ -1176,13 +1176,13 @@ const BetSlip = ({
               </svg>
               <div className="payoutContainer--a32db">
                 <div>
-                  <div className="payout--c827b" data-role="payout">
-                    {getBackPrice(data, 1, 1)}
+                  <div className="payout--c827b !text-white" data-role="payout">
+                    ODD
                   </div>
                 </div>
               </div>
               <div className="betspotTitle--d0907">
-                <span className>ODD</span>
+                <span className> x{getBackPrice(data, 1, 1)}</span>
               </div>
               <div className="chipContainer--9cdca">
                 <div className="isPortrait--96aa8 mediumChip--83319 chipSize--1811f">
@@ -1253,7 +1253,7 @@ const BetSlip = ({
               })
             }
             className="betspot--53c9f left--fcc6a"
-            style={{ left: "184px", width: "85px" }}
+            style={{ left: "183.8px", width: "89px" }}
           >
             <div
               data-betspot-destination="PlayerPair"
@@ -1327,13 +1327,13 @@ const BetSlip = ({
               </svg>
               <div className="payoutContainer--a32db">
                 <div>
-                  <div className="payout--c827b" data-role="payout">
-                    {getBackPrice(data, 2, 0)}
+                  <div className="payout--c827b !text-white" data-role="payout">
+                    RED
                   </div>
                 </div>
               </div>
               <div className="betspotTitle--d0907">
-                <span className>RED</span>
+                <span className>x{getBackPrice(data, 2, 0)}</span>
               </div>
               <div className="chipContainer--9cdca">
                 <div className="isPortrait--96aa8 mediumChip--83319 chipSize--1811f">
@@ -1404,7 +1404,7 @@ const BetSlip = ({
               })
             }
             className="betspot--53c9f right--d8912"
-            style={{ width: "85px", left: "278px" }}
+            style={{ width: "89px", left: "276px" }}
           >
             <div
               data-betspot-destination="BankerPair"
@@ -1478,13 +1478,13 @@ const BetSlip = ({
               </svg>
               <div className="payoutContainer--a32db">
                 <div>
-                  <div className="payout--c827b" data-role="payout">
-                    {getBackPrice(data, 2, 1)}
+                  <div className="payout--c827b !text-white" data-role="payout">
+                    BLACK
                   </div>
                 </div>
               </div>
               <div className="betspotTitle--d0907">
-                <span className>BLACK</span>
+                <span className>{getBackPrice(data, 2, 1)}</span>
               </div>
               <div className="chipContainer--9cdca">
                 <div className="isPortrait--96aa8 mediumChip--83319 chipSize--1811f">

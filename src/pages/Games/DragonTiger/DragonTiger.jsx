@@ -639,7 +639,7 @@ const DragonTiger = () => {
                   <div className="menuButtonSpacer--222f9" />
                   <div className="menuButtonSpacer--222f9" />
                 </div>
-                <div className="buttonContainer--8c7a9 isLeft--03674">
+                {/* <div className="buttonContainer--8c7a9 isLeft--03674">
                   <button
                     className="button--673ce xxs--2f9fb roundingBoth--6d5e6 buttonRoot--3bd4d"
                     data-type="secondary"
@@ -691,7 +691,7 @@ const DragonTiger = () => {
                       <div className="badge--81159" />
                     </span>
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
             <div
