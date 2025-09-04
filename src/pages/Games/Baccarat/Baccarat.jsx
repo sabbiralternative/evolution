@@ -434,9 +434,13 @@ const Baccarat = () => {
               <div className="relativeChildren--99d54">
                 <div className="overlay--e3c59">
                   <div
-                    className="gameControlsWrapper--9fbf7"
+                    className="gameControlsWrapper--9fbf7 "
                     data-role="gameControlsWrapper"
-                    style={{ top: "314px", bottom: "auto" }}
+                    style={{
+                      top: "314px",
+                      bottom: "auto",
+                      transform: "translateY(37px)",
+                    }}
                   >
                     <div
                       className="gameControls--ab9e4 goldenWealth--60b45"
@@ -699,7 +703,7 @@ const Baccarat = () => {
               </div>
             </div>
           </div>
-          {
+          {firstEvent?.status === Status.OPEN && (
             <ActionButtons
               isRepeatTheBet={isRepeatTheBet}
               handleDoubleStake={() =>
@@ -714,7 +718,7 @@ const Baccarat = () => {
               handleUndoStake={() => handleUndoStake(setStakeState, stakeState)}
               isPlaceStake={isPlaceStake}
             />
-          }
+          )}
           <Footer firstEvent={firstEvent} />
           <div className="tooltipsContainer--515fb increasedZIndex--60d95" />
           <div className="container--75075">

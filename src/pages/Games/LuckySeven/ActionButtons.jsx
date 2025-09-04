@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setStake } from "../../../redux/features/global/globalSlice";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
 import Chip50K from "../../../component/UI/Chip/Chip50K";
+import { playChipChange } from "../../../utils/sound";
 
 const ActionButtons = ({
   isPlaceStake,
@@ -35,6 +36,7 @@ const ActionButtons = ({
   const handleChangeChip = (chip) => {
     dispatch(setStake(chip));
     closeModal();
+    playChipChange();
   };
 
   useCloseModalClickOutside(modalRef, () => {
