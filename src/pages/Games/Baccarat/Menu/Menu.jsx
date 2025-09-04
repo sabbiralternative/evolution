@@ -7,7 +7,7 @@ import GameHistoryDetails from "./GameHistoryDetails";
 import HowToPlay from "./HowToPlay";
 import PayoutLimit from "./PayoutLimit";
 
-const Menu = ({ setShowMenu }) => {
+const Menu = ({ setShowMenu,showFullScreen,setShowFullScreen }) => {
   const [tab, setTab] = useState("menu");
   const navigate = useNavigate();
   const closeModal = () => {
@@ -17,6 +17,18 @@ const Menu = ({ setShowMenu }) => {
   const handleNavigate = () => {
     navigate("/");
     closeModal();
+  };
+
+    const handleToggleFullScreen = () => {
+    if (showFullScreen) {
+      setShowFullScreen(false);
+      document.exitFullscreen();
+      setShowMenu(false);
+    } else {
+      setShowFullScreen(true);
+      document.body.requestFullscreen();
+      setShowMenu(false);
+    }
   };
   return (
     <motion.div
@@ -410,6 +422,7 @@ const Menu = ({ setShowMenu }) => {
                               <div className="menuList--226cd">
                                 <div className="menuListItems--374da">
                                   <div
+                                  onClick={handleToggleFullScreen}
                                     className="wrapper--6c1a2"
                                     data-role="menu-item-wrapper"
                                   >

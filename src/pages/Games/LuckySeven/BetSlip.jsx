@@ -11,7 +11,6 @@ const BetSlip = ({
   double,
   data,
   status,
-  setToast,
   setStakeState,
   stakeState,
   setTotalWinAmount,
@@ -171,7 +170,7 @@ const BetSlip = ({
           localStorage.setItem("totalBetPlace", JSON.stringify(totalBets));
 
           dispatch(setBalance(balance - parseFloat(totalAmountPlaced)));
-          setToast(res?.Message);
+          // setToast(res?.Message);
         }
       };
       handleOrder();
@@ -195,7 +194,10 @@ const BetSlip = ({
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  console.log(status);
+
+  const indexCard = data?.indexCard?.[0];
+  const cardNumber = indexCard && parseFloat(indexCard.substring(1));
+
   return (
     <div
       onClick={handleShowSuspendedStatus}
@@ -217,7 +219,7 @@ const BetSlip = ({
                   key: "down",
                   data,
                   dataIndex: 0,
-                  runnerIndex: 0,
+                  runnerIndex: 2,
                   type: "back",
                 })
               }
@@ -227,7 +229,7 @@ const BetSlip = ({
             >
               <svg
                 className={`svg--7e996 mainShape--f586c svgBetspot--43e31 ${
-                  isRunnerWinner(data, 0, 0) ? "animate--6c17d  win--e65a1" : ""
+                  isRunnerWinner(data, 0, 2) ? "animate--6c17d  win--e65a1" : ""
                 }`}
                 preserveAspectRatio="none"
                 width={180}
@@ -300,7 +302,9 @@ const BetSlip = ({
                     )}
                   </div>
                 </div>
-                <img src="frontend/evo/mini/images/playersymb.ec2d1e8e.svg" />
+                {cardNumber < 7 && (
+                  <img src={`/cards/${indexCard}.jpg`} alt="" />
+                )}
               </div>
               <div className="cardsHand--538f4 enhanced--181e0 isPortrait--28ada">
                 <div className="cards--d48f8 enhanced--181e0" />
@@ -458,7 +462,7 @@ const BetSlip = ({
                   key: "up",
                   data,
                   dataIndex: 0,
-                  runnerIndex: 1,
+                  runnerIndex: 0,
                   type: "back",
                 })
               }
@@ -468,7 +472,7 @@ const BetSlip = ({
             >
               <svg
                 className={`svg--7e996 mainShape--f586c svgBetspot--43e31 isMirrored--d9896 ${
-                  isRunnerWinner(data, 0, 1) ? "animate--6c17d  win--e65a1" : ""
+                  isRunnerWinner(data, 0, 0) ? "animate--6c17d  win--e65a1" : ""
                 }`}
                 preserveAspectRatio="none"
                 width={180}
@@ -541,7 +545,9 @@ const BetSlip = ({
                     )}
                   </div>
                 </div>
-                <img src="frontend/evo/mini/images/bankersymb.78bc4fda.svg" />
+                {cardNumber > 7 && (
+                  <img src={`/cards/${indexCard}.jpg`} alt="" />
+                )}
               </div>
               <div className="cardsHand--538f4 toRight--d458d enhanced--181e0 isPortrait--28ada">
                 <div className="cards--d48f8 enhanced--181e0" />
@@ -699,7 +705,7 @@ const BetSlip = ({
                   key: "seven",
                   data,
                   dataIndex: 0,
-                  runnerIndex: 2,
+                  runnerIndex: 1,
                   type: "back",
                 })
               }
@@ -710,7 +716,7 @@ const BetSlip = ({
               <svg
                 preserveAspectRatio="none"
                 className={`svg--7e996 svgBetspot--43e31 tieShape--d6bfd ${
-                  isRunnerWinner(data, 0, 2) ? "animate--6c17d  win--e65a1" : ""
+                  isRunnerWinner(data, 0, 1) ? "animate--6c17d  win--e65a1" : ""
                 }`}
                 width={123}
                 height={130}
@@ -790,6 +796,9 @@ const BetSlip = ({
                     )}
                   </div>
                 </div>
+                {cardNumber === 7 && (
+                  <img src={`/cards/${indexCard}.jpg`} alt="" />
+                )}
                 <div className="titleContainer--98fa0 single--27bc5">
                   <span className>7</span>
                 </div>
@@ -968,7 +977,9 @@ const BetSlip = ({
                 />
               </div>
               <svg
-                className="svg--7e996 svgBetspot--43e31 rectShape--a9f3a"
+                className={`svg--7e996 svgBetspot--43e31 rectShape--a9f3a ${
+                  isRunnerWinner(data, 1, 0) ? "animate--6c17d  win--e65a1" : ""
+                }`}
                 preserveAspectRatio="none"
                 width={122}
                 height={38}
@@ -1119,7 +1130,9 @@ const BetSlip = ({
                 />
               </div>
               <svg
-                className="svg--7e996 svgBetspot--43e31 isMirrored--d9896 rectShape--a9f3a"
+                className={`svg--7e996 svgBetspot--43e31 isMirrored--d9896 rectShape--a9f3a ${
+                  isRunnerWinner(data, 1, 1) ? "animate--6c17d  win--e65a1" : ""
+                }`}
                 preserveAspectRatio="none"
                 width={122}
                 height={38}
@@ -1270,7 +1283,9 @@ const BetSlip = ({
                 />
               </div>
               <svg
-                className="svg--7e996 svgBetspot--43e31 rectShape--a9f3a"
+                className={`svg--7e996 svgBetspot--43e31 rectShape--a9f3a ${
+                  isRunnerWinner(data, 2, 0) ? "animate--6c17d  win--e65a1" : ""
+                }`}
                 preserveAspectRatio="none"
                 width={122}
                 height={38}
@@ -1421,7 +1436,9 @@ const BetSlip = ({
                 />
               </div>
               <svg
-                className="svg--7e996 svgBetspot--43e31 isMirrored--d9896 rectShape--a9f3a"
+                className={`svg--7e996 svgBetspot--43e31 isMirrored--d9896 rectShape--a9f3a ${
+                  isRunnerWinner(data, 2, 1) ? "animate--6c17d  win--e65a1" : ""
+                }`}
                 preserveAspectRatio="none"
                 width={122}
                 height={38}

@@ -1,7 +1,105 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { setBalance } from "../../redux/features/auth/authSlice";
 
-const Footer = ({ firstEvent }) => {
+const Footer = ({
+  firstEvent,
+  data,
+  totalWinAmount,
+  setTotalWinAmount,
+  setShowWinLossResult,
+  showWinLossResult,
+  title,
+}) => {
+  const dispatch = useDispatch();
+  const totalBetPlace = localStorage.getItem("totalBetPlace");
+  const { eventId } = useParams();
   const { balance } = useSelector((state) => state.auth);
+
+  let totalBetAmount = 0;
+  if (totalBetPlace) {
+    const parseTotalBet = JSON.parse(totalBetPlace);
+    // console.log(parseTotalBet);
+    if (parseTotalBet?.length > 0) {
+      const filterOrderByEventId = parseTotalBet?.filter(
+        (order) => order?.eventId == eventId
+      );
+      for (const order of filterOrderByEventId) {
+        totalBetAmount = parseFloat((totalBetAmount + order?.stake).toFixed(2));
+      }
+    }
+  }
+
+  useEffect(() => {
+    let totalWin = 0;
+
+    if (totalBetPlace) {
+      const parseTotalBet = JSON.parse(totalBetPlace);
+
+      if (parseTotalBet && parseTotalBet.length > 0) {
+        data?.forEach((games) => {
+          games?.runners?.forEach((runner) => {
+            if (runner?.status === "WINNER") {
+              const winnerFilter = parseTotalBet?.filter(
+                (order) =>
+                  order?.selection_id === runner?.id &&
+                  runner?.status === "WINNER"
+              );
+
+              const looserFilter = parseTotalBet?.filter(
+                (order) =>
+                  order?.selection_id === runner?.id &&
+                  runner?.status === "ACTIVE"
+              );
+
+              let WinnerSum = 0;
+              let looserSum = 0;
+              if (looserFilter) {
+                for (const looser of looserFilter) {
+                  looserSum = looserSum + -looser?.stake;
+                }
+              }
+
+              if (winnerFilter) {
+                for (const winner of winnerFilter) {
+                  WinnerSum += winner?.price * winner?.stake;
+                }
+              }
+
+              totalWin += looserSum + WinnerSum;
+
+              setTotalWinAmount(totalWin);
+              setShowWinLossResult(true);
+            }
+          });
+        });
+      }
+    }
+  }, [data, totalBetPlace]);
+
+  useEffect(() => {
+    if (totalBetPlace && (totalWinAmount != null || showWinLossResult)) {
+      const parseTotalBet = JSON.parse(totalBetPlace);
+      const filterOrderByEventId = parseTotalBet?.filter(
+        (order) => order?.eventId == eventId
+      );
+      if (totalWinAmount > 0 && filterOrderByEventId?.length > 0) {
+        dispatch(setBalance(balance + parseFloat(totalWinAmount)));
+        new Audio("/win.mp3").play();
+      }
+
+      const filterCurrentEventBet = parseTotalBet?.filter(
+        (bet) => bet?.eventId != eventId
+      );
+
+      localStorage.setItem(
+        "totalBetPlace",
+        JSON.stringify(filterCurrentEventBet)
+      );
+    }
+  }, [eventId, totalWinAmount, showWinLossResult]);
+
   return (
     <div
       className="tableInfoContainer--b6c41 commonUiElement sm--89dd5 tall--a21d4 iphone10--fa60a hasRoundedCorners--1e1b3 hasNotch--267d0 withGradient--c01fc hasExtraRoundedCorners--6ed2f isFullscreen--d501d"
@@ -26,11 +124,13 @@ const Footer = ({ firstEvent }) => {
         <div className="totalBetContainer--d8028">
           <div className="totalBet--ab8a8 container--cf1f7 md--8e6c2">
             <span className="title--2a257" data-role="total-bet-title">
-              Total Bet
+              {showWinLossResult ? "Last Win" : " Total Bet"}
             </span>
             <span className="amount--58e65">
               <span className="value--58a54" data-role="total-bet-value">
-                ₹ 0
+                {showWinLossResult
+                  ? `₹ ${totalWinAmount}`
+                  : `₹ ${totalBetAmount}`}
               </span>
             </span>
           </div>
@@ -75,7 +175,7 @@ const Footer = ({ firstEvent }) => {
             className="tableName--ed38c tableName--aad8c md--faf59"
             data-role="table-name"
           >
-            Lucky 7
+            {title}
           </span>
           <div
             className="tableLimits--97b4b tableLimits--f2c2b"

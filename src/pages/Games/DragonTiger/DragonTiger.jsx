@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ActionButtons from "./ActionButtons";
 import BetSlip from "./BetSlip";
-import Footer from "./Footer";
+
 // import RoadPrediction from "./RoadPrediction";
 import Menu from "./Menu/Menu";
 import { useParams } from "react-router-dom";
@@ -12,6 +12,7 @@ import { AnimatePresence } from "framer-motion";
 import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
+import Footer from "../../../component/shared/Footer";
 
 const DragonTiger = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -20,9 +21,7 @@ const DragonTiger = () => {
   const [showWinLossResult, setShowWinLossResult] = useState(false);
   const [totalWinAmount, setTotalWinAmount] = useState(null);
   const { stake } = useSelector((state) => state.global);
-  const [toast, setToast] = useState(null);
   const [showFullScreen, setShowFullScreen] = useState(false);
-  const [showSetting, setShowSetting] = useState(false);
   const { eventTypeId, eventId } = useParams();
   const { data } = useGetEventDetailsQuery(
     { eventTypeId, eventId },
@@ -82,7 +81,13 @@ const DragonTiger = () => {
         />
       )}
       <AnimatePresence>
-        {showMenu && <Menu setShowMenu={setShowMenu} />}
+        {showMenu && (
+          <Menu
+            setShowMenu={setShowMenu}
+            setShowFullScreen={setShowFullScreen}
+            showFullScreen={showFullScreen}
+          />
+        )}
       </AnimatePresence>
 
       <div id="root" className="rootContainer--308ad">
@@ -477,7 +482,6 @@ const DragonTiger = () => {
                             setTotalWinAmount={setTotalWinAmount}
                             stakeState={stakeState}
                             setStakeState={setStakeState}
-                            setToast={setToast}
                             data={data?.result}
                             status={firstEvent?.status}
                           />
@@ -738,7 +742,15 @@ const DragonTiger = () => {
               isPlaceStake={isPlaceStake}
             />
           }
-          <Footer firstEvent={firstEvent} />
+          <Footer
+            showWinLossResult={showWinLossResult}
+            setShowWinLossResult={setShowWinLossResult}
+            setTotalWinAmount={setTotalWinAmount}
+            totalWinAmount={totalWinAmount}
+            data={data?.result}
+            firstEvent={firstEvent}
+            title="Dragon Tiger"
+          />
           <div className="tooltipsContainer--515fb increasedZIndex--60d95" />
           <div className="container--75075">
             <div className="chipContainer--7219d">

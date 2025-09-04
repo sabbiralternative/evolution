@@ -12,7 +12,6 @@ const BetSlip = ({
   double,
   data,
   status,
-  setToast,
   setStakeState,
   stakeState,
   setTotalWinAmount,
@@ -176,7 +175,6 @@ const BetSlip = ({
           localStorage.setItem("totalBetPlace", JSON.stringify(totalBets));
 
           dispatch(setBalance(balance - parseFloat(totalAmountPlaced)));
-          setToast(res?.Message);
         }
       };
       handleOrder();

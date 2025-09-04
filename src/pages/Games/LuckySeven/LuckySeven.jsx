@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ActionButtons from "./ActionButtons";
 import BetSlip from "./BetSlip";
-import Footer from "./Footer";
+import Footer from "../../../component/shared/Footer";
 // import RoadPrediction from "./RoadPrediction";
 import Menu from "./Menu/Menu";
 import { useParams } from "react-router-dom";
@@ -12,6 +12,7 @@ import { AnimatePresence } from "framer-motion";
 import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
+import Winner from "./Winner";
 
 const LuckySeven = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -20,9 +21,8 @@ const LuckySeven = () => {
   const [showWinLossResult, setShowWinLossResult] = useState(false);
   const [totalWinAmount, setTotalWinAmount] = useState(null);
   const { stake } = useSelector((state) => state.global);
-  const [toast, setToast] = useState(null);
+  // const [toast, setToast] = useState(null);
   const [showFullScreen, setShowFullScreen] = useState(false);
-  const [showSetting, setShowSetting] = useState(false);
   const { eventTypeId, eventId } = useParams();
   const { data } = useGetEventDetailsQuery(
     { eventTypeId, eventId },
@@ -68,7 +68,13 @@ const LuckySeven = () => {
         />
       )}
       <AnimatePresence>
-        {showMenu && <Menu setShowMenu={setShowMenu} />}
+        {showMenu && (
+          <Menu
+            setShowMenu={setShowMenu}
+            setShowFullScreen={setShowFullScreen}
+            showFullScreen={showFullScreen}
+          />
+        )}
       </AnimatePresence>
 
       <div id="root" className="rootContainer--308ad">
@@ -392,9 +398,13 @@ const LuckySeven = () => {
                 }}
               />
             </div>
-            <div className="overlays--4cd0a">
-              <div className="mobileGameOverlay--a7837" />
-            </div>
+            {/* Winner */}
+            <Winner
+              data={data}
+              showWinLossResult={showWinLossResult}
+              totalWinAmount={totalWinAmount}
+            />
+
             <div
               className="winnersListPortraitPhone--57744 winnersListGradient--6fa71"
               data-role="video-winners-list"
@@ -463,7 +473,6 @@ const LuckySeven = () => {
                             setTotalWinAmount={setTotalWinAmount}
                             stakeState={stakeState}
                             setStakeState={setStakeState}
-                            setToast={setToast}
                             data={data?.result}
                             status={firstEvent?.status}
                           />
@@ -724,7 +733,15 @@ const LuckySeven = () => {
               isPlaceStake={isPlaceStake}
             />
           )}
-          <Footer firstEvent={firstEvent} />
+          <Footer
+            showWinLossResult={showWinLossResult}
+            setShowWinLossResult={setShowWinLossResult}
+            setTotalWinAmount={setTotalWinAmount}
+            totalWinAmount={totalWinAmount}
+            data={data?.result}
+            firstEvent={firstEvent}
+            title="Lucky 7"
+          />
           <div className="tooltipsContainer--515fb increasedZIndex--60d95" />
           <div className="container--75075">
             <div className="chipContainer--7219d">

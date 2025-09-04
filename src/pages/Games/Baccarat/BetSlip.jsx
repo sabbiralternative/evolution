@@ -3,7 +3,6 @@ import { Status } from "../../../const";
 import { useDispatch, useSelector } from "react-redux";
 import { useOrderMutation } from "../../../redux/features/events/events";
 import { setBalance } from "../../../redux/features/auth/authSlice";
-import Stake from "../../../component/UI/Chip/Stake";
 import { getBackPrice, isRunnerWinner } from "../../../utils/betSlip";
 import StakeAnimation from "../../../component/UI/Chip/StakeAnimation";
 
@@ -11,7 +10,6 @@ const BetSlip = ({
   double,
   data,
   status,
-  setToast,
   setStakeState,
   stakeState,
   setTotalWinAmount,
@@ -171,7 +169,6 @@ const BetSlip = ({
           localStorage.setItem("totalBetPlace", JSON.stringify(totalBets));
 
           dispatch(setBalance(balance - parseFloat(totalAmountPlaced)));
-          setToast(res?.Message);
         }
       };
       handleOrder();

@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 const GameHistory = ({ setTab, closeModal }) => {
   return (
     <motion.div
-      initial={{ x: "100%", y: "10%" }}
+      initial={{ x: "100%" }}
       animate={{ x: "0%" }}
       transition={{ duration: 0.2 }}
       exit={{ x: "100%" }}
@@ -11,9 +11,9 @@ const GameHistory = ({ setTab, closeModal }) => {
       data-test-size="65%"
       style={{
         pointerEvents: "initial",
-        transform: "translate3d(0px, calc(100% - 542px), 1px)",
         transitionDuration: "initial",
         transitionTimingFunction: "initial",
+        height: "605px",
       }}
     >
       <div
