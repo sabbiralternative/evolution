@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useOrderMutation } from "../../../redux/features/events/events";
 import { setBalance } from "../../../redux/features/auth/authSlice";
 import Stake from "../../../component/UI/Chip/Stake";
-import { isRunnerWinner } from "../../../utils/betSlip";
+import { getBackPrice, isRunnerWinner } from "../../../utils/betSlip";
+import StakeAnimation from "../../../component/UI/Chip/StakeAnimation";
 
 const BetSlip = ({
   double,
@@ -28,65 +29,66 @@ const BetSlip = ({
 
   // Generic function to update stake state
   const handleStakeChange = (payload) => {
-    console.log(payload);
-    const isRepeatTheBet = Object.values(stakeState).find(
-      (item) => item?.selection_id && item?.show === false
-    );
-    if (isRepeatTheBet) {
-      setStakeState(initialState);
+    if (status === Status.OPEN) {
+      const isRepeatTheBet = Object.values(stakeState).find(
+        (item) => item?.selection_id && item?.show === false
+      );
+      if (isRepeatTheBet) {
+        setStakeState(initialState);
+      }
+      // new Audio("/bet.mp3").play();
+      const { key, data, dataIndex, runnerIndex, type } = payload;
+      setAnimation([key]);
+      const formatData = {
+        marketId: data?.[dataIndex]?.id,
+        roundId: data?.[dataIndex]?.roundId,
+        name: data?.[dataIndex]?.name,
+        eventId: data?.[dataIndex]?.eventId,
+        eventName: data?.[dataIndex]?.eventName,
+        selection_id: data?.[dataIndex]?.runners?.[runnerIndex]?.id,
+        runner_name: data?.[dataIndex]?.runners?.[runnerIndex]?.name,
+        isback: type === "back" ? 0 : 1,
+        event_id: data?.[dataIndex]?.eventId,
+        event_type_id: data?.[dataIndex]?.event_type_id,
+        price: data?.[dataIndex]?.runners?.[runnerIndex]?.[type]?.[0]?.price,
+      };
+      const timeout = setTimeout(() => {
+        setAnimation([]);
+        setStakeState((prev) => {
+          const maxSerial = Math.max(
+            0,
+            ...Object.values(prev)
+              .map((item) => item.serial)
+              .filter((serial) => serial !== undefined)
+          );
+
+          return {
+            ...prev,
+            [key]: {
+              roundId: formatData?.roundId,
+              name: formatData?.name,
+              eventId: formatData?.eventId,
+              eventName: formatData?.eventName,
+              show: true,
+              animation: false,
+              stake: prev[key].show
+                ? prev[key].stake + prev[key].actionBy
+                : prev[key].stake,
+              marketId: formatData?.marketId,
+              selection_id: formatData?.selection_id,
+              price: formatData?.price,
+              runner_name: formatData?.runner_name,
+              isback: formatData?.isback,
+              serial: prev[key]?.serial ? prev[key]?.serial : maxSerial + 1,
+              actionBy: stake,
+              undo: [...(prev[key]?.undo || []), stake],
+            },
+          };
+        });
+      }, 500);
+
+      return () => clearTimeout(timeout);
     }
-    // new Audio("/bet.mp3").play();
-    const { key, data, dataIndex, runnerIndex, type } = payload;
-    setAnimation([key]);
-    const formatData = {
-      marketId: data?.[dataIndex]?.id,
-      roundId: data?.[dataIndex]?.roundId,
-      name: data?.[dataIndex]?.name,
-      eventId: data?.[dataIndex]?.eventId,
-      eventName: data?.[dataIndex]?.eventName,
-      selection_id: data?.[dataIndex]?.runners?.[runnerIndex]?.id,
-      runner_name: data?.[dataIndex]?.runners?.[runnerIndex]?.name,
-      isback: type === "back" ? 0 : 1,
-      event_id: data?.[dataIndex]?.eventId,
-      event_type_id: data?.[dataIndex]?.event_type_id,
-      price: data?.[dataIndex]?.runners?.[runnerIndex]?.[type]?.[0]?.price,
-    };
-    const timeout = setTimeout(() => {
-      setAnimation([]);
-      setStakeState((prev) => {
-        const maxSerial = Math.max(
-          0,
-          ...Object.values(prev)
-            .map((item) => item.serial)
-            .filter((serial) => serial !== undefined)
-        );
-
-        return {
-          ...prev,
-          [key]: {
-            roundId: formatData?.roundId,
-            name: formatData?.name,
-            eventId: formatData?.eventId,
-            eventName: formatData?.eventName,
-            show: true,
-            animation: false,
-            stake: prev[key].show
-              ? prev[key].stake + prev[key].actionBy
-              : prev[key].stake,
-            marketId: formatData?.marketId,
-            selection_id: formatData?.selection_id,
-            price: formatData?.price,
-            runner_name: formatData?.runner_name,
-            isback: formatData?.isback,
-            serial: prev[key]?.serial ? prev[key]?.serial : maxSerial + 1,
-            actionBy: stake,
-            undo: [...(prev[key]?.undo || []), stake],
-          },
-        };
-      });
-    }, 500);
-
-    return () => clearTimeout(timeout);
   };
 
   // Reset state when status is OPEN
@@ -193,9 +195,14 @@ const BetSlip = ({
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
+  console.log(status);
   return (
-    <div onClick={handleShowSuspendedStatus} className="bettingGrid--a60ca">
+    <div
+      onClick={handleShowSuspendedStatus}
+      className={`bettingGrid--a60ca ${
+        status === Status.SUSPENDED ? "pointer-events-none" : ""
+      }`}
+    >
       <div style={{ width: `${innerWidth - 10}px`, height: "227px" }}>
         <div
           className="bettingGrid--0835e bettingTime--7f9cd isVertical--28984 onlyPairs--f14f6"
@@ -933,12 +940,33 @@ const BetSlip = ({
               </div>  */}
             </div>
           </div>
-          <div className="betspot--53c9f left--fcc6a">
+          <div
+            onClick={() =>
+              handleStakeChange({
+                key: "even",
+                data,
+                dataIndex: 1,
+                runnerIndex: 0,
+                type: "back",
+              })
+            }
+            className="betspot--53c9f left--fcc6a"
+            style={{ width: "85px" }}
+          >
             <div
               data-betspot-destination="PlayerPair"
               className="item--8e08a vertical--98be1"
               data-role="bet-spot-PlayerPair"
             >
+              <div className="absolute z-50">
+                <StakeAnimation
+                  animation={animation}
+                  double={double}
+                  runner="even"
+                  stake={stake}
+                  stakeState={stakeState}
+                />
+              </div>
               <svg
                 className="svg--7e996 svgBetspot--43e31 rectShape--a9f3a"
                 preserveAspectRatio="none"
@@ -998,12 +1026,12 @@ const BetSlip = ({
               <div className="payoutContainer--a32db">
                 <div>
                   <div className="payout--c827b" data-role="payout">
-                    9:1
+                    {getBackPrice(data, 1, 0)}
                   </div>
                 </div>
               </div>
               <div className="betspotTitle--d0907">
-                <span className>P PAIR</span>
+                <span className>Even</span>
               </div>
               <div className="chipContainer--9cdca">
                 <div className="isPortrait--96aa8 mediumChip--83319 chipSize--1811f">
@@ -1063,12 +1091,33 @@ const BetSlip = ({
               </div>
             </div>
           </div>
-          <div className="betspot--53c9f right--d8912">
+          <div
+            onClick={() =>
+              handleStakeChange({
+                key: "odd",
+                data,
+                dataIndex: 1,
+                runnerIndex: 1,
+                type: "back",
+              })
+            }
+            className="betspot--53c9f right--d8912"
+            style={{ left: "92px", width: "85px" }}
+          >
             <div
               data-betspot-destination="BankerPair"
               className="item--8e08a vertical--98be1"
               data-role="bet-spot-BankerPair"
             >
+              <div className="absolute z-50">
+                <StakeAnimation
+                  animation={animation}
+                  double={double}
+                  runner="odd"
+                  stake={stake}
+                  stakeState={stakeState}
+                />
+              </div>
               <svg
                 className="svg--7e996 svgBetspot--43e31 isMirrored--d9896 rectShape--a9f3a"
                 preserveAspectRatio="none"
@@ -1128,12 +1177,314 @@ const BetSlip = ({
               <div className="payoutContainer--a32db">
                 <div>
                   <div className="payout--c827b" data-role="payout">
-                    9:1
+                    {getBackPrice(data, 1, 1)}
                   </div>
                 </div>
               </div>
               <div className="betspotTitle--d0907">
-                <span className>B PAIR</span>
+                <span className>ODD</span>
+              </div>
+              <div className="chipContainer--9cdca">
+                <div className="isPortrait--96aa8 mediumChip--83319 chipSize--1811f">
+                  <div
+                    data-is-chip-visible="false"
+                    className="hidden--f4c2b interactable--180c0 chip--618c4"
+                  >
+                    <div
+                      className="chip--29b81 shadow--24a83 cover--6df8f"
+                      data-role="chip"
+                      data-value={0}
+                    >
+                      <svg
+                        viewBox="0 0 78 78"
+                        className="graphics--22cbe"
+                        data-role="default-svg"
+                        style={{
+                          color: "rgb(146, 146, 146)",
+                        }}
+                      >
+                        <g>
+                          <circle
+                            className="paint--13ff6"
+                            cx="39.019"
+                            cy="38.999"
+                            r="38.5"
+                          />
+                          <path
+                            className="body--369ee"
+                            d="M38.94 12.5A26.5 26.5 0 1 0 65.44 39a26.529 26.529 0 0 0-26.5-26.5zm0 52A25.5 25.5 0 1 1 64.439 39 25.53 25.53 0 0 1 38.94 64.5z"
+                          />
+                          <circle
+                            className="textBackground--84c26"
+                            cx={39}
+                            cy="38.997"
+                            r="25.5"
+                          />
+                          <path
+                            className="body--369ee"
+                            d="M38.941 0a39 39 0 1 0 39 39 39.046 39.046 0 0 0-39-39zm-2.088 76.439l.483-8.471a28.99 28.99 0 0 1-4.668-.639l-1.783 8.291a37.277 37.277 0 0 1-12.144-5.051l4.6-7.124a29.143 29.143 0 0 1-8.85-8.851l-7.124 4.6a37.28 37.28 0 0 1-5.045-12.13l8.3-1.784a28.99 28.99 0 0 1-.639-4.668l-8.483.482C1.463 40.4 1.44 39.7 1.44 39s.023-1.391.061-2.08l8.478.483a28.99 28.99 0 0 1 .639-4.668l-8.3-1.785a37.275 37.275 0 0 1 5.047-12.142l7.126 4.6a29.143 29.143 0 0 1 8.85-8.851l-4.6-7.125a37.28 37.28 0 0 1 12.142-5.05l1.786 8.3a28.99 28.99 0 0 1 4.668-.639l-.483-8.484c.692-.038 1.388-.061 2.089-.061s1.4.023 2.087.061l-.483 8.484a28.99 28.99 0 0 1 4.668.639L47 2.381a37.276 37.276 0 0 1 12.14 5.05l-4.6 7.126a29.14 29.14 0 0 1 8.849 8.85l7.127-4.6a37.276 37.276 0 0 1 5.044 12.142l-8.3 1.785a28.99 28.99 0 0 1 .64 4.666l8.478-.483c.038.689.061 1.382.061 2.08s-.023 1.4-.062 2.1l-8.477-.486a28.99 28.99 0 0 1-.639 4.668l8.3 1.784a37.282 37.282 0 0 1-5.046 12.132l-7.125-4.6a29.14 29.14 0 0 1-8.849 8.85l4.6 7.125A37.275 37.275 0 0 1 47 75.619l-1.783-8.291a28.99 28.99 0 0 1-4.668.639l.483 8.471c-.691.038-1.386.061-2.087.061s-1.401-.022-2.092-.06z"
+                          />
+                        </g>
+                        <text
+                          className="value--ebf30"
+                          x="50%"
+                          y="50%"
+                          fontSize={30}
+                          dy={10}
+                          data-role="chip-value"
+                        >
+                          0
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            onClick={() =>
+              handleStakeChange({
+                key: "red",
+                data,
+                dataIndex: 2,
+                runnerIndex: 0,
+                type: "back",
+              })
+            }
+            className="betspot--53c9f left--fcc6a"
+            style={{ left: "184px", width: "85px" }}
+          >
+            <div
+              data-betspot-destination="PlayerPair"
+              className="item--8e08a vertical--98be1"
+              data-role="bet-spot-PlayerPair"
+            >
+              <div className="absolute z-50">
+                <StakeAnimation
+                  animation={animation}
+                  double={double}
+                  runner="red"
+                  stake={stake}
+                  stakeState={stakeState}
+                />
+              </div>
+              <svg
+                className="svg--7e996 svgBetspot--43e31 rectShape--a9f3a"
+                preserveAspectRatio="none"
+                width={122}
+                height={38}
+              >
+                <defs>
+                  <linearGradient
+                    x1="50%"
+                    y1="0%"
+                    x2="50%"
+                    y2="100%"
+                    id="PlayerPair0.03899799357536238_id_rect_fill"
+                  >
+                    <stop
+                      stopOpacity="0.8"
+                      className="gradientLight--ba468 blue--5d4e7"
+                    />
+                    <stop
+                      offset={1}
+                      stopOpacity="0.8"
+                      className="gradientDark--2ae9f blue--5d4e7"
+                    />
+                  </linearGradient>
+                  <linearGradient
+                    x1="50%"
+                    y1="0%"
+                    x2="50%"
+                    y2="100%"
+                    id="PlayerPair0.03899799357536238_id_rect_stroke"
+                  >
+                    <stop
+                      stopOpacity="0.8"
+                      className="strokeLight--26bed blue--5d4e7"
+                    />
+                    <stop
+                      offset={1}
+                      stopOpacity="0.8"
+                      className="strokeDark--60bd1 blue--5d4e7"
+                    />
+                  </linearGradient>
+                </defs>
+                <rect
+                  width="100%"
+                  height="100%"
+                  data-width={122}
+                  data-height={38}
+                  rx={4}
+                  ry={4}
+                  fill="url(#PlayerPair0.03899799357536238_id_rect_fill)"
+                  stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke)"
+                  strokeWidth={4}
+                  fillRule="evenodd"
+                  className="shape--84077"
+                />
+              </svg>
+              <div className="payoutContainer--a32db">
+                <div>
+                  <div className="payout--c827b" data-role="payout">
+                    {getBackPrice(data, 2, 0)}
+                  </div>
+                </div>
+              </div>
+              <div className="betspotTitle--d0907">
+                <span className>RED</span>
+              </div>
+              <div className="chipContainer--9cdca">
+                <div className="isPortrait--96aa8 mediumChip--83319 chipSize--1811f">
+                  <div
+                    data-is-chip-visible="false"
+                    className="hidden--f4c2b interactable--180c0 chip--618c4"
+                  >
+                    <div
+                      className="chip--29b81 shadow--24a83 cover--6df8f"
+                      data-role="chip"
+                      data-value={0}
+                    >
+                      <svg
+                        viewBox="0 0 78 78"
+                        className="graphics--22cbe"
+                        data-role="default-svg"
+                        style={{
+                          color: "rgb(146, 146, 146)",
+                        }}
+                      >
+                        <g>
+                          <circle
+                            className="paint--13ff6"
+                            cx="39.019"
+                            cy="38.999"
+                            r="38.5"
+                          />
+                          <path
+                            className="body--369ee"
+                            d="M38.94 12.5A26.5 26.5 0 1 0 65.44 39a26.529 26.529 0 0 0-26.5-26.5zm0 52A25.5 25.5 0 1 1 64.439 39 25.53 25.53 0 0 1 38.94 64.5z"
+                          />
+                          <circle
+                            className="textBackground--84c26"
+                            cx={39}
+                            cy="38.997"
+                            r="25.5"
+                          />
+                          <path
+                            className="body--369ee"
+                            d="M38.941 0a39 39 0 1 0 39 39 39.046 39.046 0 0 0-39-39zm-2.088 76.439l.483-8.471a28.99 28.99 0 0 1-4.668-.639l-1.783 8.291a37.277 37.277 0 0 1-12.144-5.051l4.6-7.124a29.143 29.143 0 0 1-8.85-8.851l-7.124 4.6a37.28 37.28 0 0 1-5.045-12.13l8.3-1.784a28.99 28.99 0 0 1-.639-4.668l-8.483.482C1.463 40.4 1.44 39.7 1.44 39s.023-1.391.061-2.08l8.478.483a28.99 28.99 0 0 1 .639-4.668l-8.3-1.785a37.275 37.275 0 0 1 5.047-12.142l7.126 4.6a29.143 29.143 0 0 1 8.85-8.851l-4.6-7.125a37.28 37.28 0 0 1 12.142-5.05l1.786 8.3a28.99 28.99 0 0 1 4.668-.639l-.483-8.484c.692-.038 1.388-.061 2.089-.061s1.4.023 2.087.061l-.483 8.484a28.99 28.99 0 0 1 4.668.639L47 2.381a37.276 37.276 0 0 1 12.14 5.05l-4.6 7.126a29.14 29.14 0 0 1 8.849 8.85l7.127-4.6a37.276 37.276 0 0 1 5.044 12.142l-8.3 1.785a28.99 28.99 0 0 1 .64 4.666l8.478-.483c.038.689.061 1.382.061 2.08s-.023 1.4-.062 2.1l-8.477-.486a28.99 28.99 0 0 1-.639 4.668l8.3 1.784a37.282 37.282 0 0 1-5.046 12.132l-7.125-4.6a29.14 29.14 0 0 1-8.849 8.85l4.6 7.125A37.275 37.275 0 0 1 47 75.619l-1.783-8.291a28.99 28.99 0 0 1-4.668.639l.483 8.471c-.691.038-1.386.061-2.087.061s-1.401-.022-2.092-.06z"
+                          />
+                        </g>
+                        <text
+                          className="value--ebf30"
+                          x="50%"
+                          y="50%"
+                          fontSize={30}
+                          dy={10}
+                          data-role="chip-value"
+                        >
+                          0
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            onClick={() =>
+              handleStakeChange({
+                key: "black",
+                data,
+                dataIndex: 2,
+                runnerIndex: 1,
+                type: "back",
+              })
+            }
+            className="betspot--53c9f right--d8912"
+            style={{ width: "85px", left: "278px" }}
+          >
+            <div
+              data-betspot-destination="BankerPair"
+              className="item--8e08a vertical--98be1"
+              data-role="bet-spot-BankerPair"
+            >
+              <div className="absolute z-50">
+                <StakeAnimation
+                  animation={animation}
+                  double={double}
+                  runner="black"
+                  stake={stake}
+                  stakeState={stakeState}
+                />
+              </div>
+              <svg
+                className="svg--7e996 svgBetspot--43e31 isMirrored--d9896 rectShape--a9f3a"
+                preserveAspectRatio="none"
+                width={122}
+                height={38}
+              >
+                <defs>
+                  <linearGradient
+                    x1="50%"
+                    y1="0%"
+                    x2="50%"
+                    y2="100%"
+                    id="BankerPair0.6604065570309232_id_rect_fill"
+                  >
+                    <stop
+                      stopOpacity="0.8"
+                      className="gradientLight--ba468 red--7fb61"
+                    />
+                    <stop
+                      offset={1}
+                      stopOpacity="0.8"
+                      className="gradientDark--2ae9f red--7fb61"
+                    />
+                  </linearGradient>
+                  <linearGradient
+                    x1="50%"
+                    y1="0%"
+                    x2="50%"
+                    y2="100%"
+                    id="BankerPair0.6604065570309232_id_rect_stroke"
+                  >
+                    <stop
+                      stopOpacity="0.8"
+                      className="strokeLight--26bed red--7fb61"
+                    />
+                    <stop
+                      offset={1}
+                      stopOpacity="0.8"
+                      className="strokeDark--60bd1 red--7fb61"
+                    />
+                  </linearGradient>
+                </defs>
+                <rect
+                  width="100%"
+                  height="100%"
+                  data-width={122}
+                  data-height={38}
+                  rx={4}
+                  ry={4}
+                  fill="url(#BankerPair0.6604065570309232_id_rect_fill)"
+                  stroke="url(#BankerPair0.6604065570309232_id_rect_stroke)"
+                  strokeWidth={4}
+                  fillRule="evenodd"
+                  className="shape--84077"
+                />
+              </svg>
+              <div className="payoutContainer--a32db">
+                <div>
+                  <div className="payout--c827b" data-role="payout">
+                    {getBackPrice(data, 2, 1)}
+                  </div>
+                </div>
+              </div>
+              <div className="betspotTitle--d0907">
+                <span className>BLACK</span>
               </div>
               <div className="chipContainer--9cdca">
                 <div className="isPortrait--96aa8 mediumChip--83319 chipSize--1811f">
