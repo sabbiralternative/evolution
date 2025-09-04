@@ -439,7 +439,10 @@ const Baccarat = () => {
                     style={{
                       top: "314px",
                       bottom: "auto",
-                      transform: "translateY(37px)",
+                      transform:
+                        firstEvent?.status === Status.SUSPENDED
+                          ? "translateY(37px)"
+                          : "translateY(0px)",
                     }}
                   >
                     <div

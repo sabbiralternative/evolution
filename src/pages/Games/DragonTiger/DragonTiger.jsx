@@ -452,7 +452,14 @@ const DragonTiger = () => {
                   <div
                     className="gameControlsWrapper--9fbf7"
                     data-role="gameControlsWrapper"
-                    style={{ top: "314px", bottom: "auto" }}
+                    style={{
+                      top: "314px",
+                      bottom: "auto",
+                      transform:
+                        firstEvent?.status === Status.SUSPENDED
+                          ? "translateY(37px)"
+                          : "translateY(0px)",
+                    }}
                   >
                     <div
                       className="gameControls--ab9e4 goldenWealth--60b45"
