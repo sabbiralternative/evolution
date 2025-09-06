@@ -100,40 +100,6 @@ const LuckySeven = () => {
                     {firstEvent?.status === Status.OPEN && (
                       <Counter firstEvent={firstEvent} />
                     )}
-                    <div
-                      data-role="circle-timer"
-                      data-timer-version={1}
-                      className="container--6cb86 sm--dc4cb commonUiElement scaleUp--c2188"
-                    >
-                      <div
-                        className="timerCircleContainer--4935d"
-                        data-role="timer-circle"
-                      >
-                        <canvas
-                          width={65}
-                          height={65}
-                          style={{
-                            display: "block",
-                            width: "53.98px",
-                            height: "53.98px",
-                          }}
-                        />
-                      </div>
-                      <div
-                        className="contentWrapper--db941 pulseValue--939db"
-                        data-role="timer-content"
-                      >
-                        <canvas
-                          width={65}
-                          height={65}
-                          style={{
-                            display: "block",
-                            width: "53.98px",
-                            height: "53.98px",
-                          }}
-                        />
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -189,7 +155,7 @@ const LuckySeven = () => {
               </div>
             </div>
           </div>
-          ;
+
           <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
             <div className="relativeChildren--99d54">
               <div
@@ -201,42 +167,7 @@ const LuckySeven = () => {
                   data-role="status-text"
                   data-status="PLACE YOUR BETS"
                 >
-                  <div className="wrapper--8b249">
-                    <div
-                      data-role="circle-timer"
-                      data-timer-version={1}
-                      className="container--6cb86 md--5cf06 commonUiElement"
-                    >
-                      <div
-                        className="timerCircleContainer--4935d"
-                        data-role="timer-circle"
-                      >
-                        <canvas
-                          style={{
-                            display: "block",
-                            width: "76px",
-                            height: "76px",
-                          }}
-                          width={228}
-                          height={228}
-                        />
-                      </div>
-                      <div
-                        className="contentWrapper--db941"
-                        data-role="timer-content"
-                      >
-                        <canvas
-                          style={{
-                            display: "block",
-                            width: "76px",
-                            height: "76px",
-                          }}
-                          width={228}
-                          height={228}
-                        />
-                      </div>
-                    </div>
-                  </div>
+                  <div className="wrapper--8b249"></div>
                 </div>
               </div>
               <div
