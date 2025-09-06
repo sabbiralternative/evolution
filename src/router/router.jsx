@@ -9,6 +9,7 @@ import LuckySeven from "../pages/Games/LuckySeven/LuckySeven";
 import DragonTiger from "../pages/Games/DragonTiger/DragonTiger";
 import Baccarat from "../pages/Games/Baccarat/Baccarat";
 import PrivateRoute from "./PrivateRoute";
+import AmarAkbarAnthony from "../pages/Games/AmarAkbarAnthony/AmarAkbarAnthony";
 
 export const router = createBrowserRouter(
   [
@@ -49,6 +50,10 @@ export const router = createBrowserRouter(
         {
           path: "/game/baccarat/:eventTypeId/:eventId",
           element: <Baccarat />,
+        },
+        {
+          path: "/game/aaa/:eventTypeId/:eventId",
+          element: <AmarAkbarAnthony />,
         },
       ],
     },

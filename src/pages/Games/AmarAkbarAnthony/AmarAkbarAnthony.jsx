@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ActionButtons from "./ActionButtons";
 import BetSlip from "./BetSlip";
-
+import Footer from "../../../component/shared/Footer";
 // import RoadPrediction from "./RoadPrediction";
 import Menu from "./Menu/Menu";
 import { useParams } from "react-router-dom";
@@ -12,9 +12,9 @@ import { AnimatePresence } from "framer-motion";
 import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
-import Footer from "../../../component/shared/Footer";
+import Winner from "./Winner";
 
-const Baccarat = () => {
+const AmarAkbarAnthony = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [double, setDouble] = useState(false);
   const [animation, setAnimation] = useState([]);
@@ -22,6 +22,7 @@ const Baccarat = () => {
   const [totalWinAmount, setTotalWinAmount] = useState(null);
   const { stake } = useSelector((state) => state.global);
   const [showFullScreen, setShowFullScreen] = useState(false);
+
   const { eventTypeId, eventId } = useParams();
   const { data } = useGetEventDetailsQuery(
     { eventTypeId, eventId },
@@ -31,24 +32,27 @@ const Baccarat = () => {
   const firstEvent = data?.result?.[0];
 
   const initialState = {
-    perfectPair: { show: false, stake },
-    big: { show: false, stake },
-    small: { show: false, stake },
-    eitherPair: { show: false, stake },
-    player: { show: false, stake },
-    tie: { show: false, stake },
-    banker: { show: false, stake },
-    playerPair: { show: false, stake },
-    bankerPair: { show: false, stake },
+    amarBack: { show: false, stake },
+    amarLay: { show: false, stake },
+    akbarBack: { show: false, stake },
+    akbarLay: { show: false, stake },
+    anthonyBack: { show: false, stake },
+    anthonyLay: { show: false, stake },
+    odd: { show: false, stake },
+    even: { show: false, stake },
+    black: { show: false, stake },
+    red: { show: false, stake },
+    under7: { show: false, stake },
+    over7: { show: false, stake },
   };
 
   const [stakeState, setStakeState] = useState(initialState);
 
-  const isPlaceStake = Object.values(stakeState).find((item) => item?.show);
-
   const isRepeatTheBet = Object.values(stakeState).find(
     (item) => item?.selection_id && item?.show === false
   );
+
+  const isPlaceStake = Object.values(stakeState).find((item) => item?.show);
 
   return (
     <>
@@ -152,7 +156,7 @@ const Baccarat = () => {
               </div>
             </div>
           </div>
-          ;
+
           <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
             <div className="relativeChildren--99d54">
               <div
@@ -326,9 +330,13 @@ const Baccarat = () => {
                 }}
               />
             </div>
-            <div className="overlays--4cd0a">
-              <div className="mobileGameOverlay--a7837" />
-            </div>
+            {/* Winner */}
+            <Winner
+              data={data}
+              showWinLossResult={showWinLossResult}
+              totalWinAmount={totalWinAmount}
+            />
+
             <div
               className="winnersListPortraitPhone--57744 winnersListGradient--6fa71"
               data-role="video-winners-list"
@@ -370,7 +378,7 @@ const Baccarat = () => {
               <div className="relativeChildren--99d54">
                 <div className="overlay--e3c59">
                   <div
-                    className="gameControlsWrapper--9fbf7 "
+                    className="gameControlsWrapper--9fbf7"
                     data-role="gameControlsWrapper"
                     style={{
                       top: "314px",
@@ -664,7 +672,7 @@ const Baccarat = () => {
             totalWinAmount={totalWinAmount}
             data={data?.result}
             firstEvent={firstEvent}
-            title="Baccarat"
+            title="Amar Akbar Anthony"
           />
           <div className="tooltipsContainer--515fb increasedZIndex--60d95" />
           <div className="container--75075">
@@ -820,4 +828,4 @@ const Baccarat = () => {
   );
 };
 
-export default Baccarat;
+export default AmarAkbarAnthony;
