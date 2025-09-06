@@ -23,6 +23,7 @@ const Auth = () => {
             },
           }
         );
+
         if (data?.success) {
           sessionStorage.removeItem("errorMessage");
           const result = {

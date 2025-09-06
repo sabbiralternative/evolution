@@ -8,22 +8,24 @@ import FastGames from "../pages/Casino/FastGames";
 import LuckySeven from "../pages/Games/LuckySeven/LuckySeven";
 import DragonTiger from "../pages/Games/DragonTiger/DragonTiger";
 import Baccarat from "../pages/Games/Baccarat/Baccarat";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter(
   [
     {
       path: "/",
 
-      element: <App />,
+      element: (
+        <PrivateRoute>
+          <App />
+        </PrivateRoute>
+      ),
       children: [
         {
           index: true,
           element: <Home />,
         },
-        {
-          path: "/:token",
-          element: <Auth />,
-        },
+
         {
           path: "/casino",
           element: <Casino />,
@@ -49,6 +51,10 @@ export const router = createBrowserRouter(
           element: <Baccarat />,
         },
       ],
+    },
+    {
+      path: "/:token",
+      element: <Auth />,
     },
   ],
   {
