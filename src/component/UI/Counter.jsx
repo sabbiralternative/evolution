@@ -28,14 +28,14 @@ const Counter = ({ firstEvent }) => {
               viewBox="0 0 250 250"
               className="circular-progress"
             >
-              <circle
+              {/* <circle
                 className="bg"
                 stroke={timer > 3 ? "#32d74b" : "#cc980e"}
-              ></circle>
+              ></circle> */}
               <circle
                 className="fg"
-                stroke="#000000"
-                // stroke={timer > 3 ? "black" : "#cc980e"}
+                // stroke="#000000"
+                stroke={timer > 3 ? "#32d74b" : "#cc980e"}
               ></circle>
             </svg>
 

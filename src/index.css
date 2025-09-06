@@ -37,26 +37,26 @@
 }
 
 .circular-progress circle.fg {
-  transform: rotate(90deg) scale(-1, 1);
+  transform: rotate(-90deg);
   transform-origin: var(--half-size) var(--half-size);
   stroke-dasharray: var(--dash) calc(var(--circumference) - var(--dash));
   transition: stroke-dasharray 0.3s linear 0s;
-  stroke-width: 35px;
+  /* stroke-width: 35px; */
   /* stroke: black; */
 }
 
 @property --progress {
   syntax: "<number>";
   inherits: false;
-  initial-value: 0;
+  initial-value: 100;
 }
 
 @keyframes progress-animation {
   from {
-    --progress: 0;
+    --progress: 100;
   }
   to {
-    --progress: 100;
+    --progress: 0;
   }
 }
 
