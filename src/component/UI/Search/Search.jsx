@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Footer from "../Footer";
 import { useGetLiveCasinoThumbnailQuery } from "../../../redux/features/casino/casino.api";
 import { useNavigate } from "react-router-dom";
+import images from "../../../assets/images";
 
 const Search = ({ setShowSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -700,18 +701,40 @@ const Search = ({ setShowSearch }) => {
 
                           {searchTerm?.length > 2 &&
                             casinoData?.length === 0 && (
-                              <div className="DropdownMenuRecentSearches--2cbf8">
-                                <span
-                                  className="Typography--d2c9a DropdownMenuRecentSearchesTitle--db8d7 Typography_xs_h6--849a9 Typography_xl_h5--ded48 bold--d200f colorPrimary--f2f02 ellipsisModeOneLine--825c0"
-                                  data-role="typography"
-                                  style={{
-                                    fontWeight: "400",
-                                    marginTop: "10px",
-                                    fontSize: "12px",
-                                  }}
-                                >
-                                  Casino not found with this search query.
-                                </span>
+                              <div className="SearchResults--ad88c MobileResults--2326f">
+                                <div className="NoSearchResults--ae409 loaded--f3e9b">
+                                  <div className="Image--1d473">
+                                    <img
+                                      alt="No search results found"
+                                      src={images.search}
+                                    />
+                                  </div>
+                                  <span
+                                    className="Typography--d2c9a Typography_xs_h5--2ca2d Typography_md_h3--49299 bold--d200f colorPrimary--f2f02"
+                                    data-role="search-no-results"
+                                  >
+                                    No results found
+                                  </span>
+                                  <div className="InfoMessage--f11f1">
+                                    <span
+                                      className="Typography--d2c9a Typography_xs_subtitle1--6fd5e Typography_md_h5--e3ed7 colorPrimary--f2f02"
+                                      data-role="search-info"
+                                    >
+                                      Try adjusting your search to find what
+                                      you’re looking for.
+                                    </span>
+                                  </div>
+                                  <div className="BrowseAll--09141">
+                                    <button
+                                      aria-label="button"
+                                      className="Button--3be20 colorPrimary--5595c sizeMediumLarge--782fe variantContained--c1d90 BrowseAllButton--feac6"
+                                      data-role="browse-all-button"
+                                      type="button"
+                                    >
+                                      Browse all
+                                    </button>
+                                  </div>
+                                </div>
                               </div>
                             )}
                         </div>

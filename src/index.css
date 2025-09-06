@@ -17,6 +17,12 @@
   /* animation: progress-animation 10s linear 0s 1 forwards; */
 }
 
+*,
+::before,
+::after {
+  border-style: none;
+}
+
 .circular-progress circle {
   cx: var(--half-size);
   cy: var(--half-size);
@@ -27,7 +33,7 @@
 }
 
 .circular-progress circle.bg {
-  stroke: none;
+  /* stroke: #32d74b; */
 }
 
 .circular-progress circle.fg {
@@ -35,7 +41,8 @@
   transform-origin: var(--half-size) var(--half-size);
   stroke-dasharray: var(--dash) calc(var(--circumference) - var(--dash));
   transition: stroke-dasharray 0.3s linear 0s;
-  /* stroke: #32d74b; */
+  stroke-width: 35px;
+  /* stroke: black; */
 }
 
 @property --progress {
