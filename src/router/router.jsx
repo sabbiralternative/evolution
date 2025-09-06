@@ -10,6 +10,7 @@ import DragonTiger from "../pages/Games/DragonTiger/DragonTiger";
 import Baccarat from "../pages/Games/Baccarat/Baccarat";
 import PrivateRoute from "./PrivateRoute";
 import AmarAkbarAnthony from "../pages/Games/AmarAkbarAnthony/AmarAkbarAnthony";
+import Bollywood from "../pages/Games/Bollywood/Bollywood";
 
 export const router = createBrowserRouter(
   [
@@ -54,6 +55,10 @@ export const router = createBrowserRouter(
         {
           path: "/game/aaa/:eventTypeId/:eventId",
           element: <AmarAkbarAnthony />,
+        },
+        {
+          path: "/game/btable/:eventTypeId/:eventId",
+          element: <Bollywood />,
         },
       ],
     },
