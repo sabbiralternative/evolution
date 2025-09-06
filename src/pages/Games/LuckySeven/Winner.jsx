@@ -49,7 +49,7 @@ const Winner = ({ data, totalWinAmount, showWinLossResult }) => {
                 </span>
               </div>
             )}
-            {showWinLossResult && totalWinAmount && totalBetAmount > 0 && (
+            {showWinLossResult && totalWinAmount > 0 && totalBetAmount > 0 && (
               <div className="message--f7a3d" data-role="winning-message">
                 <div data-role="winning-message-text">YOU WIN</div>
                 <div

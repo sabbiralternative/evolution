@@ -27,7 +27,7 @@
 }
 
 .circular-progress circle.bg {
-  stroke: #ddd;
+  stroke: none;
 }
 
 .circular-progress circle.fg {

@@ -196,7 +196,7 @@ const BetSlip = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const indexCard = data?.indexCard?.[0];
+  const indexCard = data?.[0]?.indexCard?.[0];
   const cardNumber = indexCard && parseFloat(indexCard.substring(1));
 
   return (
@@ -291,7 +291,7 @@ const BetSlip = ({
               </svg>
 
               <div className="score--393b3" data-role="score" />
-              <div className="symbol--a11ac">
+              <div className="symbol--a11ac" style={{ top: "30px" }}>
                 <div className="z-50">
                   <div className="relative w-10 h-10">
                     <div
@@ -309,7 +309,11 @@ const BetSlip = ({
                   </div>
                 </div>
                 {cardNumber < 7 && (
-                  <img src={`/cards/${indexCard}.jpg`} alt="" />
+                  <img
+                    src={`/cards/D4.jpg`}
+                    alt=""
+                    style={{ height: "60px", width: "50px" }}
+                  />
                 )}
               </div>
               <div className="cardsHand--538f4 enhanced--181e0 isPortrait--28ada">
@@ -536,7 +540,10 @@ const BetSlip = ({
               </svg>
               <div className="score--393b3" data-role="score" />
 
-              <div className="symbol--a11ac">
+              <div
+                className="symbol--a11ac"
+                style={{ top: "30px", right: "2%" }}
+              >
                 <div className="z-50">
                   <div className="relative w-10 h-10">
                     <div
@@ -554,7 +561,11 @@ const BetSlip = ({
                   </div>
                 </div>
                 {cardNumber > 7 && (
-                  <img src={`/cards/${indexCard}.jpg`} alt="" />
+                  <img
+                    style={{ height: "60px", width: "50px" }}
+                    src={`/cards/D6.jpg`}
+                    alt=""
+                  />
                 )}
               </div>
               <div className="cardsHand--538f4 toRight--d458d enhanced--181e0 isPortrait--28ada">
@@ -807,7 +818,11 @@ const BetSlip = ({
                   </div>
                 </div>
                 {cardNumber === 7 && (
-                  <img src={`/cards/${indexCard}.jpg`} alt="" />
+                  <img
+                    style={{ height: "60px" }}
+                    src={`/cards/D5.jpg`}
+                    alt=""
+                  />
                 )}
                 <div className="titleContainer--98fa0 single--27bc5">
                   <span className>7</span>
