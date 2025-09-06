@@ -726,7 +726,7 @@ const DragonTiger = () => {
               </div>
             </div>
           </div>
-          {
+          {firstEvent?.status === Status.OPEN && (
             <ActionButtons
               isRepeatTheBet={isRepeatTheBet}
               handleDoubleStake={() =>
@@ -741,7 +741,7 @@ const DragonTiger = () => {
               handleUndoStake={() => handleUndoStake(setStakeState, stakeState)}
               isPlaceStake={isPlaceStake}
             />
-          }
+          )}
           <Footer
             showWinLossResult={showWinLossResult}
             setShowWinLossResult={setShowWinLossResult}

@@ -1,11 +1,14 @@
+import { useState } from "react";
 import CasinoThumbnail from "../../component/UI/CasinoThumbnails";
 import Footer from "../../component/UI/Footer";
 import Header from "../../component/UI/Header";
 import NotUsing from "../../component/UI/NotUsing";
 import ScrollableTab from "../../component/UI/ScrollableTab";
+import Search from "../../component/UI/Search/Search";
 
 const FastGames = () => {
-  return (
+  const [showSearch, setShowSearch] = useState(false);
+  return !showSearch ? (
     <div
       id="root"
       className="rootContainer--308ad"
@@ -17,7 +20,7 @@ const FastGames = () => {
           <div className="DrawerBackground--13365">
             <div className="Root--ee70b" id="lobby-root">
               <div className="Content--2ceeb">
-                <Header />
+                <Header setShowSearch={setShowSearch} />
                 <ScrollableTab />
                 <CasinoThumbnail title="Fast Games" id="fast" />
                 <Footer />
@@ -27,6 +30,8 @@ const FastGames = () => {
         </div>
       </div>
     </div>
+  ) : (
+    <Search setShowSearch={setShowSearch} />
   );
 };
 

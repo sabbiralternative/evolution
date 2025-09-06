@@ -1,8 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Footer from "../Footer";
+import { useGetLiveCasinoThumbnailQuery } from "../../../redux/features/casino/casino.api";
+import { useNavigate } from "react-router-dom";
 
 const Search = ({ setShowSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [casinoData, setCasinoData] = useState([]);
+  const { data } = useGetLiveCasinoThumbnailQuery({ id: searchTerm });
+  const navigate = useNavigate();
+
+  const handleNavigate = (casino) => {
+    const formatLink = `/game/${casino?.slug}/${casino?.eventTypeId}/${casino?.eventId}`;
+    new Audio("/click.mp3").play();
+    navigate(formatLink);
+  };
+
+  useEffect(() => {
+    if (data?.length > 0) {
+      setCasinoData(data);
+    } else {
+      setCasinoData([]);
+    }
+  }, [data, searchTerm]);
+
+  const handleCloseItem = (casino) => {
+    const data = casinoData?.filter(
+      (item) => item?.eventId !== casino?.eventId
+    );
+    setCasinoData(data);
+  };
   return (
     <div
       id="root"
@@ -589,7 +615,7 @@ const Search = ({ setShowSearch }) => {
                           className="DropdownMenu--cee0a"
                           data-role="table-search-dropdown"
                         >
-                          <div className="DropdownMenuRecentSearches--2cbf8">
+                          {/* <div className="DropdownMenuRecentSearches--2cbf8">
                             <span
                               className="Typography--d2c9a DropdownMenuRecentSearchesTitle--db8d7 Typography_xs_h6--849a9 Typography_xl_h5--ded48 bold--d200f colorPrimary--f2f02 ellipsisModeOneLine--825c0"
                               data-role="typography"
@@ -604,62 +630,90 @@ const Search = ({ setShowSearch }) => {
                                 Clear all
                               </span>
                             </div>
-                          </div>
-                          <div
-                            className="SearchResult--28235"
-                            data-role="search-result"
-                          >
-                            <div
-                              className="SearchResultImage--e6c1a"
-                              data-role="search-thumbnail"
-                            >
-                              <div
-                                className="ThumbnailImage--e120f rounded--acc2d"
-                                data-role="thumbnail"
-                                style={{
-                                  backgroundImage:
-                                    'url("blob:https://babylonbetst.evo-games.com/9d3b0e91-ffb2-4047-9993-7569d116b7b0")',
-                                }}
-                              />
-                            </div>
-                            <div className="SearchResultInfo--ea439">
-                              <div
-                                className="Info--2c65e searchResult--af90b"
-                                data-role="table-tile-info"
-                              >
-                                <div className="InfoRow--e30fc InfoRowMain--17f9c">
-                                  <p
-                                    className="Typography--d2c9a Typography_xs_subtitle1--6fd5e Typography_xl_h6--d162d colorPrimary--f2f02 ellipsisModeOneLine--825c0"
-                                    data-role="tile-name"
-                                  >
-                                    Golden Wealth Baccarat
-                                  </p>
-                                </div>
-                                <div className="InfoRow--e30fc InfoRowSub--d7d19">
-                                  <span
-                                    className="Typography--d2c9a Limits--300ef Typography_xs_subtitle1--6fd5e colorAccent--465da"
-                                    data-role="typography"
-                                  >
-                                    ⁦⁦₹⁩100⁩
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                            <div
-                              className="SearchResultCancel--e26b8"
-                              data-close="recent-tile-close"
-                            >
-                              <div className="LobbyIcon--67f66 LobbyIcon_xl_tiny--ad0cd LobbyIcon_xs_micro--9529e">
-                                <svg
-                                  data-role="close"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 16 16"
+                          </div> */}
+                          {casinoData &&
+                            casinoData?.length > 0 &&
+                            casinoData?.map((item) => {
+                              return (
+                                <div
+                                  key={item}
+                                  className="SearchResult--28235"
+                                  data-role="search-result"
                                 >
-                                  <use xlinkHref="#close" />
-                                </svg>
+                                  <div
+                                    onClick={() => handleNavigate(item)}
+                                    className="SearchResultImage--e6c1a"
+                                    data-role="search-thumbnail"
+                                  >
+                                    <div
+                                      className="ThumbnailImage--e120f rounded--acc2d"
+                                      data-role="thumbnail"
+                                      style={{
+                                        backgroundImage: `url(${item?.image})`,
+                                      }}
+                                    />
+                                  </div>
+                                  <div
+                                    onClick={() => handleNavigate(item)}
+                                    className="SearchResultInfo--ea439"
+                                  >
+                                    <div
+                                      className="Info--2c65e searchResult--af90b"
+                                      data-role="table-tile-info"
+                                    >
+                                      <div className="InfoRow--e30fc InfoRowMain--17f9c">
+                                        <p
+                                          className="Typography--d2c9a Typography_xs_subtitle1--6fd5e Typography_xl_h6--d162d colorPrimary--f2f02 ellipsisModeOneLine--825c0"
+                                          data-role="tile-name"
+                                        >
+                                          {item.name}
+                                        </p>
+                                      </div>
+                                      <div className="InfoRow--e30fc InfoRowSub--d7d19">
+                                        <span
+                                          className="Typography--d2c9a Limits--300ef Typography_xs_subtitle1--6fd5e colorAccent--465da"
+                                          data-role="typography"
+                                        >
+                                          ⁦⁦₹⁩100⁩
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    onClick={() => handleCloseItem(item)}
+                                    className="SearchResultCancel--e26b8"
+                                    data-close="recent-tile-close"
+                                  >
+                                    <div className="LobbyIcon--67f66 LobbyIcon_xl_tiny--ad0cd LobbyIcon_xs_micro--9529e">
+                                      <svg
+                                        data-role="close"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 16 16"
+                                      >
+                                        <use xlinkHref="#close" />
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </div>
+                              );
+                            })}
+
+                          {searchTerm?.length > 2 &&
+                            casinoData?.length === 0 && (
+                              <div className="DropdownMenuRecentSearches--2cbf8">
+                                <span
+                                  className="Typography--d2c9a DropdownMenuRecentSearchesTitle--db8d7 Typography_xs_h6--849a9 Typography_xl_h5--ded48 bold--d200f colorPrimary--f2f02 ellipsisModeOneLine--825c0"
+                                  data-role="typography"
+                                  style={{
+                                    fontWeight: "400",
+                                    marginTop: "10px",
+                                    fontSize: "12px",
+                                  }}
+                                >
+                                  Casino not found with this search query.
+                                </span>
                               </div>
-                            </div>
-                          </div>
+                            )}
                         </div>
                       </div>
                     </div>

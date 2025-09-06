@@ -205,7 +205,10 @@ const BetSlip = ({
         <div
           className="container--924d1 isPortrait--1de25 isVeryNarrowLikeOrHigher--d74cb withStats--a0c3b phone--48206"
           data-role="betting-grid-container"
-          style={{ transform: `scale(${innerWidth / 375})` }}
+          style={{
+            transform: `scale(${innerWidth / 375})`,
+            opacity: status === Status.SUSPENDED ? 0.7 : 1,
+          }}
         >
           <div className="mainBetsContainer--73e00 isPortrait--1de25 isVeryNarrowLikeOrHigher--d74cb withStats--a0c3b phone--48206">
             {/* Tie suited tie start */}
