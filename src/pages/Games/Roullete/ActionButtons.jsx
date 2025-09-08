@@ -4,7 +4,6 @@ import Chip200 from "../../../component/UI/Chip/Chip200";
 import Chip500 from "../../../component/UI/Chip/Chip500";
 import Chip2K500 from "../../../component/UI/Chip/Chip2K500";
 import Chip10K from "../../../component/UI/Chip/Chip10K";
-import Chip100K from "../../../component/UI/Chip/Chip100K";
 import Stake from "../../../component/UI/Chip/Stake";
 import { useDispatch, useSelector } from "react-redux";
 import { setStake } from "../../../redux/features/global/globalSlice";
@@ -52,12 +51,15 @@ const ActionButtons = ({
   }, [showChip]);
 
   return (
-    <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
+    <div
+      className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d"
+      // style={{ display: "none" }}
+    >
       <div className="relativeChildren--99d54">
         {!showChip ? (
           <div
             data-role="chipstack-container"
-            className="chipstack--3f519 positionBottomCentered--447ab visible--27fab phone--e75c2"
+            className="chipstack--3f519 positionRightCentered--2839a visible--27fab phone--e75c2"
           >
             <div className="container--4e775">
               <div className="before--33fc6 commonUiElement hideable--4b209">
@@ -68,7 +70,7 @@ const ActionButtons = ({
                     pointerEvents: isPlaceStake ? "auto" : "none",
                   }}
                   onClick={handleUndoStake}
-                  className="actionButton--e4d79 buttonPositionLeft--2073e"
+                  className="actionButton--e4d79 buttonPositionTop--af961"
                   data-role="chipstack-undo-button"
                 >
                   <div style={{ position: "relative" }}>
@@ -558,7 +560,7 @@ const ActionButtons = ({
                       isPlaceStake || isRepeatTheBet ? "auto" : "none",
                   }}
                   onClick={handleDoubleStake}
-                  className="actionButton--e4d79 buttonPositionRight--f7cb3"
+                  className="actionButton--e4d79 buttonPositionBottom--85010 labelPositionUnder--e7436"
                   data-role="chipstack-double-repeat-button"
                 >
                   <button
@@ -609,10 +611,7 @@ const ActionButtons = ({
                   </button>
                   <button className="clickableLabel--8fd8e">
                     <div className="label--e8213">
-                      <div
-                        className="label--365af disabledButtonLabel--a77ae buttonLocationChipStackHorizontal--4058e"
-                        data-role="chip-stack-label"
-                      >
+                      <div className="label--365af buttonLabelPositionUnder--20d87 hideLandscapeLabelsOnSmallScreens--1e510 disabledButtonLabel--a77ae buttonLocationChipStackVertical--bd6f8">
                         DOUBLE
                       </div>
                     </div>
@@ -623,13 +622,13 @@ const ActionButtons = ({
           </div>
         ) : (
           <div
-            className="chipstack--3f519 positionBottomCentered--447ab  visible--27fab phone--e75c2"
+            className="chipstack--3f519 positionRightCentered--2839a visible--27fab phone--e75c2"
             data-role="chipstack-container"
           >
             <div className="container--4e775">
               <div className="before--33fc6 commonUiElement hideable--4b209">
                 <div
-                  className="actionButton--e4d79 buttonPositionLeft--2073e"
+                  className="actionButton--e4d79 buttonPositionTop--af961 hiddenLabels--f0a99"
                   data-role="chipstack-undo-button"
                 >
                   <div style={{ position: "relative" }}>
@@ -679,22 +678,12 @@ const ActionButtons = ({
                       </span>
                     </button>
                   </div>
-                  <button className="clickableLabel--ffc68">
-                    <div className="label--e8213">
-                      <div
-                        className="label--365af disabledButtonLabel--a77ae buttonLocationChipStackHorizontal--4058e"
-                        data-role="chip-stack-label"
-                      >
-                        UNDO
-                      </div>
-                    </div>
-                  </button>
                 </div>
               </div>
               <div className="wrapper--08238 hideable--4b209">
                 <div
                   data-role="chip-stack"
-                  className="revolver--30d24 commonUiElement open--35bc8 up--a4695"
+                  className="revolver--30d24 commonUiElement open--35bc8 left--9c156"
                 >
                   <div
                     className="overlay--ba584"
@@ -706,10 +695,10 @@ const ActionButtons = ({
                     className="items--4189d"
                     data-role="revolver-item-list"
                     style={{
-                      top: "calc(var(--size, 10px) * -7.35)",
-                      left: "calc(var(--size, 10px) * -5.8)",
-                      width: "calc(var(--size, 10px) * 16)",
-                      height: "calc(var(--size, 10px) * 16)",
+                      top: "calc(var(--size, 10px) * -5.3)",
+                      left: "calc(var(--size, 10px) * -6.85)",
+                      width: "calc(var(--size, 10px) * 15)",
+                      height: "calc(var(--size, 10px) * 15)",
                     }}
                   >
                     <li
@@ -717,18 +706,18 @@ const ActionButtons = ({
                       className="item--9e3ac chip--5e586"
                       data-role="revolver-chip-item"
                       style={{
-                        top: "calc(var(--size, 10px) * 6.2)",
-                        left: "calc(var(--size, 10px) * 6.2)",
+                        top: "calc(var(--size, 10px) * 5.7)",
+                        left: "calc(var(--size, 10px) * 5.7)",
                         width: "calc(var(--size, 10px) * 3.6)",
                         height: "calc(var(--size, 10px) * 3.6)",
                         transform:
-                          "translate3d(calc(var(--size, 10px) * -7.8400), calc(var(--size, 10px) * 1.5922), 0)",
+                          "translate3d(calc(var(--size, 10px) * 1.4927), calc(var(--size, 10px) * -7.3500), 0)",
                       }}
                     >
                       <div
                         className="chip--29b81 cover--6df8f"
                         data-role="chip"
-                        data-value={100}
+                        data-value={50}
                       >
                         <Chip100 value={100} />
                       </div>
@@ -738,18 +727,18 @@ const ActionButtons = ({
                       className="item--9e3ac chip--5e586"
                       data-role="revolver-chip-item"
                       style={{
-                        top: "calc(var(--size, 10px) * 6.2)",
-                        left: "calc(var(--size, 10px) * 6.2)",
+                        top: "calc(var(--size, 10px) * 5.7)",
+                        left: "calc(var(--size, 10px) * 5.7)",
                         width: "calc(var(--size, 10px) * 3.6)",
                         height: "calc(var(--size, 10px) * 3.6)",
                         transform:
-                          "translate3d(calc(var(--size, 10px) * -7.3992), calc(var(--size, 10px) * -3.0417), 0)",
+                          "translate3d(calc(var(--size, 10px) * -3.6489), calc(var(--size, 10px) * -6.5525), 0)",
                       }}
                     >
                       <div
                         className="chip--29b81 cover--6df8f"
                         data-role="chip"
-                        data-value={200}
+                        data-value={100}
                       >
                         <Chip200 value={200} />
                       </div>
@@ -759,18 +748,18 @@ const ActionButtons = ({
                       className="item--9e3ac chip--5e586"
                       data-role="revolver-chip-item"
                       style={{
-                        top: "calc(var(--size, 10px) * 6.2)",
-                        left: "calc(var(--size, 10px) * 6.2)",
+                        top: "calc(var(--size, 10px) * 5.7)",
+                        left: "calc(var(--size, 10px) * 5.7)",
                         width: "calc(var(--size, 10px) * 3.6)",
                         height: "calc(var(--size, 10px) * 3.6)",
                         transform:
-                          "translate3d(calc(var(--size, 10px) * -4.4535), calc(var(--size, 10px) * -6.6458), 0)",
+                          "translate3d(calc(var(--size, 10px) * -7.0343), calc(var(--size, 10px) * -2.6015), 0)",
                       }}
                     >
                       <div
                         className="chip--29b81 cover--6df8f"
                         data-role="chip"
-                        data-value={500}
+                        data-value={200}
                       >
                         <Chip500 value={500} />
                       </div>
@@ -780,18 +769,18 @@ const ActionButtons = ({
                       className="item--9e3ac chip--5e586"
                       data-role="revolver-chip-item"
                       style={{
-                        top: "calc(var(--size, 10px) * 6.2)",
-                        left: "calc(var(--size, 10px) * 6.2)",
+                        top: "calc(var(--size, 10px) * 5.7)",
+                        left: "calc(var(--size, 10px) * 5.7)",
                         width: "calc(var(--size, 10px) * 3.6)",
                         height: "calc(var(--size, 10px) * 3.6)",
                         transform:
-                          "translate3d(calc(var(--size, 10px) * -0.0000), calc(var(--size, 10px) * -8.0000), 0)",
+                          "translate3d(calc(var(--size, 10px) * -7.0343), calc(var(--size, 10px) * 2.6015), 0)",
                       }}
                     >
                       <div
                         className="chip--29b81 cover--6df8f"
                         data-role="chip"
-                        data-value={2500}
+                        data-value={500}
                       >
                         <Chip2K500 value={2500} />
                       </div>
@@ -801,18 +790,18 @@ const ActionButtons = ({
                       className="item--9e3ac chip--5e586"
                       data-role="revolver-chip-item"
                       style={{
-                        top: "calc(var(--size, 10px) * 6.2)",
-                        left: "calc(var(--size, 10px) * 6.2)",
+                        top: "calc(var(--size, 10px) * 5.7)",
+                        left: "calc(var(--size, 10px) * 5.7)",
                         width: "calc(var(--size, 10px) * 3.6)",
                         height: "calc(var(--size, 10px) * 3.6)",
                         transform:
-                          "translate3d(calc(var(--size, 10px) * 4.4535), calc(var(--size, 10px) * -6.6458), 0)",
+                          "translate3d(calc(var(--size, 10px) * -3.6489), calc(var(--size, 10px) * 6.5525), 0)",
                       }}
                     >
                       <div
                         className="chip--29b81 cover--6df8f"
                         data-role="chip"
-                        data-value={10000}
+                        data-value={2500}
                       >
                         <Chip10K value="10k" />
                       </div>
@@ -822,47 +811,26 @@ const ActionButtons = ({
                       className="item--9e3ac chip--5e586"
                       data-role="revolver-chip-item"
                       style={{
-                        top: "calc(var(--size, 10px) * 6.2)",
-                        left: "calc(var(--size, 10px) * 6.2)",
+                        top: "calc(var(--size, 10px) * 5.7)",
+                        left: "calc(var(--size, 10px) * 5.7)",
                         width: "calc(var(--size, 10px) * 3.6)",
                         height: "calc(var(--size, 10px) * 3.6)",
                         transform:
-                          "translate3d(calc(var(--size, 10px) * 7.3992), calc(var(--size, 10px) * -3.0417), 0)",
+                          "translate3d(calc(var(--size, 10px) * 1.4927), calc(var(--size, 10px) * 7.3500), 0)",
                       }}
                     >
                       <div
-                        className="chip--29b81 cover--6df8f"
+                        className="chip--29b81 disabled--5146f cover--6df8f"
                         data-role="chip"
-                        data-value={50000}
+                        data-value={10000}
                       >
                         <Chip50K value="50k" />
-                      </div>
-                    </li>
-                    <li
-                      onClick={() => handleChangeChip(100000)}
-                      className="item--9e3ac chip--5e586"
-                      data-role="revolver-chip-item"
-                      style={{
-                        top: "calc(var(--size, 10px) * 6.2)",
-                        left: "calc(var(--size, 10px) * 6.2)",
-                        width: "calc(var(--size, 10px) * 3.6)",
-                        height: "calc(var(--size, 10px) * 3.6)",
-                        transform:
-                          "translate3d(calc(var(--size, 10px) * 7.8400), calc(var(--size, 10px) * 1.5922), 0)",
-                      }}
-                    >
-                      <div
-                        className="chip--29b81 cover--6df8f"
-                        data-role="chip"
-                        data-value={100000}
-                      >
-                        <Chip100K value="100k" />
                       </div>
                     </li>
                   </ul>
                   <div
                     data-role="chip-stack-toggle-container"
-                    className="toggleContainer--3bdf3 up--4547e open--c66f5"
+                    className="toggleContainer--3bdf3 left--6e560 open--c66f5"
                   >
                     <div
                       data-role="chip-stack-toggle"
@@ -879,7 +847,7 @@ const ActionButtons = ({
                         >
                           <defs>
                             <linearGradient
-                              id="aria"
+                              id="ar0a"
                               x1={0}
                               y1={52}
                               x2={52}
@@ -895,7 +863,7 @@ const ActionButtons = ({
                             cx={26}
                             cy={26}
                             r={25}
-                            stroke="url(#aria)"
+                            stroke="url(#ar0a)"
                             strokeWidth={2}
                           />
                         </svg>
@@ -909,7 +877,45 @@ const ActionButtons = ({
                           data-role="chip"
                           data-value={100}
                         >
-                          <Stake stake={stake} />
+                          <svg
+                            viewBox="0 0 78 78"
+                            className="graphics--22cbe"
+                            data-role="default-svg"
+                            style={{ color: "rgb(89, 89, 89)" }}
+                          >
+                            <g>
+                              <circle
+                                className="paint--13ff6"
+                                cx="39.019"
+                                cy="38.999"
+                                r="38.5"
+                              />
+                              <path
+                                className="body--369ee"
+                                d="M38.94 12.5A26.5 26.5 0 1 0 65.44 39a26.529 26.529 0 0 0-26.5-26.5zm0 52A25.5 25.5 0 1 1 64.439 39 25.53 25.53 0 0 1 38.94 64.5z"
+                              />
+                              <circle
+                                className="textBackground--84c26"
+                                cx={39}
+                                cy="38.997"
+                                r="25.5"
+                              />
+                              <path
+                                className="body--369ee"
+                                d="M38.941 0a39 39 0 1 0 39 39 39.046 39.046 0 0 0-39-39zm-2.088 76.439l.483-8.471a28.99 28.99 0 0 1-4.668-.639l-1.783 8.291a37.277 37.277 0 0 1-12.144-5.051l4.6-7.124a29.143 29.143 0 0 1-8.85-8.851l-7.124 4.6a37.28 37.28 0 0 1-5.045-12.13l8.3-1.784a28.99 28.99 0 0 1-.639-4.668l-8.483.482C1.463 40.4 1.44 39.7 1.44 39s.023-1.391.061-2.08l8.478.483a28.99 28.99 0 0 1 .639-4.668l-8.3-1.785a37.275 37.275 0 0 1 5.047-12.142l7.126 4.6a29.143 29.143 0 0 1 8.85-8.851l-4.6-7.125a37.28 37.28 0 0 1 12.142-5.05l1.786 8.3a28.99 28.99 0 0 1 4.668-.639l-.483-8.484c.692-.038 1.388-.061 2.089-.061s1.4.023 2.087.061l-.483 8.484a28.99 28.99 0 0 1 4.668.639L47 2.381a37.276 37.276 0 0 1 12.14 5.05l-4.6 7.126a29.14 29.14 0 0 1 8.849 8.85l7.127-4.6a37.276 37.276 0 0 1 5.044 12.142l-8.3 1.785a28.99 28.99 0 0 1 .64 4.666l8.478-.483c.038.689.061 1.382.061 2.08s-.023 1.4-.062 2.1l-8.477-.486a28.99 28.99 0 0 1-.639 4.668l8.3 1.784a37.282 37.282 0 0 1-5.046 12.132l-7.125-4.6a29.14 29.14 0 0 1-8.849 8.85l4.6 7.125A37.275 37.275 0 0 1 47 75.619l-1.783-8.291a28.99 28.99 0 0 1-4.668.639l.483 8.471c-.691.038-1.386.061-2.087.061s-1.401-.022-2.092-.06z"
+                              />
+                            </g>
+                            <text
+                              className="value--ebf30"
+                              x="50%"
+                              y="50%"
+                              fontSize={24}
+                              dy={8}
+                              data-role="chip-value"
+                            >
+                              100
+                            </text>
+                          </svg>
                         </div>
                       </div>
                     </div>
@@ -918,7 +924,7 @@ const ActionButtons = ({
               </div>
               <div className="after--31b84 commonUiElement hideable--4b209">
                 <div
-                  className="actionButton--e4d79 buttonPositionRight--f7cb3"
+                  className="actionButton--e4d79 buttonPositionBottom--85010 labelPositionUnder--e7436 hiddenLabels--f0a99"
                   data-role="chipstack-double-repeat-button"
                 >
                   <button
@@ -966,16 +972,6 @@ const ActionButtons = ({
                       </div>
                       <div className="badge--81159" />
                     </span>
-                  </button>
-                  <button className="clickableLabel--8fd8e">
-                    <div className="label--e8213">
-                      <div
-                        className="label--365af disabledButtonLabel--a77ae buttonLocationChipStackHorizontal--4058e"
-                        data-role="chip-stack-label"
-                      >
-                        DOUBLE
-                      </div>
-                    </div>
                   </button>
                 </div>
               </div>

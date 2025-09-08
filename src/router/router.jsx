@@ -11,6 +11,7 @@ import Baccarat from "../pages/Games/Baccarat/Baccarat";
 import PrivateRoute from "./PrivateRoute";
 import AmarAkbarAnthony from "../pages/Games/AmarAkbarAnthony/AmarAkbarAnthony";
 import Bollywood from "../pages/Games/Bollywood/Bollywood";
+import Roullete from "../pages/Games/Roullete/Roullete";
 
 export const router = createBrowserRouter(
   [
@@ -59,6 +60,10 @@ export const router = createBrowserRouter(
         {
           path: "/game/btable/:eventTypeId/:eventId",
           element: <Bollywood />,
+        },
+        {
+          path: "/game/roulette/:eventTypeId/:eventId",
+          element: <Roullete />,
         },
       ],
     },

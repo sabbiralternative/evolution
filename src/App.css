@@ -1,0 +1,106 @@
+.red--e421d {
+  color: #ff412e;
+}
+.red--e421d:before {
+  bottom: 0;
+  content: "";
+  display: block;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.black--6d68f {
+  color: #fff;
+}
+.black--6d68f:before {
+  bottom: 0;
+  content: "";
+  display: block;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.black--6d68f.first--1cb2f {
+  color: #fff;
+}
+.black--6d68f.first--1cb2f:before {
+  background: #777;
+}
+.black--6d68f.first--1cb2f {
+  font-size: 1.167em;
+}
+.black--6d68f.first--1cb2f:before {
+  border-style: solid;
+  border-width: 1px;
+}
+.single-number--4bb7d {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  min-height: calc(var(--rem-migration-size) * 1.75);
+  position: relative;
+}
+.single-number--4bb7d .value--dd5c7 {
+  margin: 0.3em;
+  position: relative;
+}
+.align-middle--4c85a {
+  align-items: center;
+}
+.mobile-theme--54ef7.single-number--4bb7d:not(.first--1cb2f) {
+  margin-left: calc(var(--rem-migration-size) * 0.1);
+}
+.number-container--8752e {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  width: calc(var(--rem-migration-size) * 2.7);
+}
+.number-container--8752e:not(
+    .statistics--b39ce,
+    .vertical--c8c79,
+    .doubleBall--89b20
+  ):first-child {
+  width: calc(var(--rem-migration-size) * 4.42);
+}
+.recent-number--7cf3a {
+  height: calc(var(--rem-migration-size) * 2.7);
+}
+.mobile-theme--231d0 {
+  box-sizing: border-box;
+  flex-grow: 1;
+}
+.mobile-theme--231d0:not(.tablet--782dd) {
+  height: inherit;
+}
+.numbers--ca008 {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  flex-grow: 1;
+  font-size: calc(var(--rem-migration-size) * 1.5);
+  justify-content: space-between;
+}
+.numbers--ca008.with-background--5b87d {
+  background: #00000080;
+}
+.numbers--ca008.mobile-theme--e9e56 {
+  font-size: 1em;
+  font-weight: 500;
+  height: 100%;
+}
+.numbers--ca008.mobile-theme--e9e56.with-background--5b87d {
+  background: #0009;
+}
+.recentNumbersContainer--dae11 {
+  font-size: calc(var(--rem-migration-size) * 1.4);
+  height: var(--recentNumbersHeight);
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}

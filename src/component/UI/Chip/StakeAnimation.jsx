@@ -2,7 +2,7 @@ import Stake from "./Stake";
 
 const StakeAnimation = ({ animation, double, stakeState, runner, stake }) => {
   return (
-    <div className="z-50">
+    <div className="z-50 fixed">
       <div className="relative w-10 h-10 ">
         <div
           className={`${
