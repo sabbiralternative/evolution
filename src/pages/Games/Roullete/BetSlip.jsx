@@ -194,7 +194,7 @@ const BetSlip = ({
   return (
     <div
       onClick={handleShowSuspendedStatus}
-      className={`absolute h-[70%]  origin-bottom  flex flex-col justify-end items-center px-2 w-full mx-auto gap-1 perspective transition-all ease-in-out duration-1000 bottom-12 right-4  lg:bottom-32 scale-[100%] `}
+      className={`absolute h-[70%]  origin-bottom  flex flex-col justify-end items-center px-2 w-full mx-auto gap-1 perspective transition-all ease-in-out duration-1000 bottom-12 right-4  lg:bottom-32 scale-[100%] text-[12px]`}
     >
       {/* {showSuspendedWarning && <NextGame />} */}
       <span className>
@@ -320,9 +320,7 @@ const BetSlip = ({
                   text-[10px]
                   rotate-90 
                   "
-              >
-                red
-              </span>
+              ></span>
               <div className="absolute bottom-1/2 lg:rotate-90 scale-[60%] origin-center z-50 left-1/2 -translate-x-1/2 translate-y-1/2">
                 <StakeAnimation
                   animation={animation}
@@ -393,9 +391,7 @@ const BetSlip = ({
                   text-[10px]
                   rotate-90 
                   "
-              >
-                black
-              </span>
+              ></span>
               <div className="absolute bottom-1/2 lg:rotate-90 scale-[60%] origin-center z-50 left-1/2 -translate-x-1/2 translate-y-1/2">
                 <StakeAnimation
                   animation={animation}
@@ -1581,7 +1577,9 @@ const BetSlip = ({
                 id="1-34"
               >
                 <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
-                  1-34
+                  <span>
+                    2<sup className="uppercase ml-1">To </sup>1
+                  </span>
                 </span>
                 <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
                   <StakeAnimation
@@ -1609,7 +1607,9 @@ const BetSlip = ({
                 id="2-35"
               >
                 <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
-                  2-35
+                  <span>
+                    2<sup className="uppercase ml-1">To </sup>1
+                  </span>
                 </span>
                 <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
                   <StakeAnimation
@@ -1638,7 +1638,9 @@ const BetSlip = ({
                 id="3-36"
               >
                 <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
-                  3-36
+                  <span>
+                    2<sup className="uppercase ml-1">To </sup>1
+                  </span>
                 </span>
                 <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
                   <StakeAnimation

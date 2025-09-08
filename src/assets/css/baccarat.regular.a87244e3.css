@@ -440,7 +440,7 @@ tr:not(:first-child) .topPadding--64914 {
   font-weight: 500;
   line-height: 1.2;
   text-align: center;
-  text-shadow: 0 calc(var(--size) * 0.2/2.5) calc(var(--size) * 0.2/2.5)
+  text-shadow: 0 calc(var(--size) * 0.2 / 2.5) calc(var(--size) * 0.2 / 2.5)
     #000000b3;
 }
 .privateTable--e8190 .descriptionTop--36774 {
@@ -5664,7 +5664,7 @@ tr:not(:first-child) .topPadding--64914 {
 .pattern--0cbdc {
   --transparent-offset: 10px;
   --transition-size: 40px;
-  background-image: url(/frontend/evo/mini/images/rainbowpat.3838bf25.webp);
+  background-image: url(/src/assets/images/rainbowpat.3838bf25.webp);
   bottom: 0;
   height: 100%;
   left: 0;
