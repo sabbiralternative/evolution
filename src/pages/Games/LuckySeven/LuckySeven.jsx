@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ActionButtons from "./ActionButtons";
 import BetSlip from "./BetSlip";
 import Footer from "../../../component/shared/Footer";
@@ -20,8 +20,8 @@ const LuckySeven = () => {
   const [animation, setAnimation] = useState([]);
   const [showWinLossResult, setShowWinLossResult] = useState(false);
   const [totalWinAmount, setTotalWinAmount] = useState(null);
+  const [currentRoundWinAmount, setCurrentRoundWinAmount] = useState(null);
   const { stake } = useSelector((state) => state.global);
-  // const [toast, setToast] = useState(null);
   const [showFullScreen, setShowFullScreen] = useState(false);
   const { eventTypeId, eventId } = useParams();
   const { data } = useGetEventDetailsQuery(
@@ -52,6 +52,12 @@ const LuckySeven = () => {
   );
 
   const isPlaceStake = Object.values(stakeState).find((item) => item?.show);
+
+  useEffect(() => {
+    if (firstEvent?.status === Status.OPEN) {
+      setCurrentRoundWinAmount(null);
+    }
+  }, [firstEvent.status]);
 
   return (
     <>
@@ -332,8 +338,8 @@ const LuckySeven = () => {
             {/* Winner */}
             <Winner
               data={data}
-              showWinLossResult={showWinLossResult}
-              totalWinAmount={totalWinAmount}
+              firstEvent={firstEvent}
+              currentRoundWinAmount={currentRoundWinAmount}
             />
 
             <div
@@ -672,6 +678,7 @@ const LuckySeven = () => {
             data={data?.result}
             firstEvent={firstEvent}
             title="Lucky 7"
+            setCurrentRoundWinAmount={setCurrentRoundWinAmount}
           />
           <div className="tooltipsContainer--515fb increasedZIndex--60d95" />
           <div className="container--75075">

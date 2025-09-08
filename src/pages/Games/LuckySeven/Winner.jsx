@@ -1,26 +1,10 @@
-import { useParams } from "react-router-dom";
+import { Status } from "../../../const";
 
-const Winner = ({ data, totalWinAmount, showWinLossResult }) => {
-  const totalBetPlace = localStorage.getItem("totalBetPlace");
-  const { eventId } = useParams();
+const Winner = ({ data, firstEvent, currentRoundWinAmount }) => {
   let card = undefined;
   const indexCard = data?.result?.[0]?.indexCard;
   if (indexCard?.length > 0) {
     card = Number(indexCard[0].slice(1));
-  }
-
-  let totalBetAmount = 0;
-  if (totalBetPlace) {
-    const parseTotalBet = JSON.parse(totalBetPlace);
-    // console.log(parseTotalBet);
-    if (parseTotalBet?.length > 0) {
-      const filterOrderByEventId = parseTotalBet?.filter(
-        (order) => order?.eventId == eventId
-      );
-      for (const order of filterOrderByEventId) {
-        totalBetAmount = parseFloat((totalBetAmount + order?.stake).toFixed(2));
-      }
-    }
   }
 
   return (
@@ -49,17 +33,18 @@ const Winner = ({ data, totalWinAmount, showWinLossResult }) => {
                 </span>
               </div>
             )}
-            {showWinLossResult && totalWinAmount > 0 && totalBetAmount > 0 && (
-              <div className="message--f7a3d" data-role="winning-message">
-                <div data-role="winning-message-text">YOU WIN</div>
-                <div
-                  className="amount--47c0e"
-                  data-role="winning-message-amount"
-                >
-                  ⁦⁦₹⁩{totalWinAmount}⁩
+            {currentRoundWinAmount > 0 &&
+              firstEvent?.status === Status.SUSPENDED && (
+                <div className="message--f7a3d" data-role="winning-message">
+                  <div data-role="winning-message-text">YOU WIN</div>
+                  <div
+                    className="amount--47c0e"
+                    data-role="winning-message-amount"
+                  >
+                    ⁦⁦₹⁩{currentRoundWinAmount}⁩
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
           </div>
         </div>
         <div className="winAnimationWrapper--313ed isMobile--d2fa5 isPortrait--01bd0 isLargeDevice--710cc" />

@@ -11,6 +11,7 @@ const Footer = ({
   setShowWinLossResult,
   showWinLossResult,
   title,
+  setCurrentRoundWinAmount,
 }) => {
   const dispatch = useDispatch();
   const totalBetPlace = localStorage.getItem("totalBetPlace");
@@ -70,6 +71,7 @@ const Footer = ({
               totalWin += looserSum + WinnerSum;
 
               setTotalWinAmount(totalWin);
+              setCurrentRoundWinAmount(totalWin);
               setShowWinLossResult(true);
             }
           });

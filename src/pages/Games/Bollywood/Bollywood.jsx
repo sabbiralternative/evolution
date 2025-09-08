@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ActionButtons from "./ActionButtons";
 import BetSlip from "./BetSlip";
 import Footer from "../../../component/shared/Footer";
@@ -15,6 +15,7 @@ import Counter from "../../../component/UI/Counter";
 import Winner from "./Winner";
 
 const Bollywood = () => {
+  const [currentRoundWinAmount, setCurrentRoundWinAmount] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
   const [double, setDouble] = useState(false);
   const [animation, setAnimation] = useState([]);
@@ -61,7 +62,11 @@ const Bollywood = () => {
   );
 
   const isPlaceStake = Object.values(stakeState).find((item) => item?.show);
-
+  useEffect(() => {
+    if (firstEvent?.status === Status.OPEN) {
+      setCurrentRoundWinAmount(null);
+    }
+  }, [firstEvent.status]);
   return (
     <>
       {showMenu && (

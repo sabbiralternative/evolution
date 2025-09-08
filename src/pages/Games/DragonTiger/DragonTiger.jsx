@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ActionButtons from "./ActionButtons";
 import BetSlip from "./BetSlip";
 
@@ -17,6 +17,7 @@ import Footer from "../../../component/shared/Footer";
 const DragonTiger = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [double, setDouble] = useState(false);
+  const [currentRoundWinAmount, setCurrentRoundWinAmount] = useState(null);
   const [animation, setAnimation] = useState([]);
   const [showWinLossResult, setShowWinLossResult] = useState(false);
   const [totalWinAmount, setTotalWinAmount] = useState(null);
@@ -65,7 +66,11 @@ const DragonTiger = () => {
   );
 
   const isPlaceStake = Object.values(stakeState).find((item) => item?.show);
-
+  useEffect(() => {
+    if (firstEvent?.status === Status.OPEN) {
+      setCurrentRoundWinAmount(null);
+    }
+  }, [firstEvent.status]);
   return (
     <>
       {showMenu && (
@@ -681,6 +686,7 @@ const DragonTiger = () => {
             data={data?.result}
             firstEvent={firstEvent}
             title="Dragon Tiger"
+            setCurrentRoundWinAmount={setCurrentRoundWinAmount}
           />
           <div className="tooltipsContainer--515fb increasedZIndex--60d95" />
           <div className="container--75075">
