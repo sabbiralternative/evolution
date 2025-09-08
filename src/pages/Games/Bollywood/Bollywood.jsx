@@ -66,7 +66,7 @@ const Bollywood = () => {
     if (firstEvent?.status === Status.OPEN) {
       setCurrentRoundWinAmount(null);
     }
-  }, [firstEvent.status]);
+  }, [firstEvent?.status]);
   return (
     <>
       {showMenu && (
