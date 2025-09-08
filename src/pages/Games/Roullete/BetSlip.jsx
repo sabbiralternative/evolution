@@ -3,12 +3,8 @@ import { Status } from "../../../const";
 import { useDispatch, useSelector } from "react-redux";
 import { useOrderMutation } from "../../../redux/features/events/events";
 import { setBalance } from "../../../redux/features/auth/authSlice";
-import Stake from "../../../component/UI/Chip/Stake";
-import { getBackPrice, isRunnerWinner } from "../../../utils/betSlip";
 import StakeAnimation from "../../../component/UI/Chip/StakeAnimation";
-import { cn } from "../../../utils/cn";
 import { keyNames } from "./const";
-
 const BetSlip = ({
   double,
   data,
@@ -21,7 +17,7 @@ const BetSlip = ({
   setAnimation,
   initialState,
 }) => {
-  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+  const [, setInnerWidth] = useState(window.innerWidth);
   const [showSuspendedWarning, setShowSuspendedWarning] = useState(false);
   const dispatch = useDispatch();
   const [addOrder] = useOrderMutation();
@@ -30,67 +26,64 @@ const BetSlip = ({
 
   // Generic function to update stake state
   const handleStakeChange = (payload) => {
-    console.log(payload);
-    if (status === Status.OPEN) {
-      const isRepeatTheBet = Object.values(stakeState).find(
-        (item) => item?.selection_id && item?.show === false
-      );
-      if (isRepeatTheBet) {
-        setStakeState(initialState);
-      }
-      // new Audio("/bet.mp3").play();
-      const { key, data, dataIndex, runnerIndex, type } = payload;
-      setAnimation([key]);
-      const formatData = {
-        marketId: data?.[dataIndex]?.id,
-        roundId: data?.[dataIndex]?.roundId,
-        name: data?.[dataIndex]?.name,
-        eventId: data?.[dataIndex]?.eventId,
-        eventName: data?.[dataIndex]?.eventName,
-        selection_id: data?.[dataIndex]?.runners?.[runnerIndex]?.id,
-        runner_name: data?.[dataIndex]?.runners?.[runnerIndex]?.name,
-        isback: type === "back" ? 0 : 1,
-        event_id: data?.[dataIndex]?.eventId,
-        event_type_id: data?.[dataIndex]?.event_type_id,
-        price: data?.[dataIndex]?.runners?.[runnerIndex]?.[type]?.[0]?.price,
-      };
-      const timeout = setTimeout(() => {
-        setAnimation([]);
-        setStakeState((prev) => {
-          const maxSerial = Math.max(
-            0,
-            ...Object.values(prev)
-              .map((item) => item.serial)
-              .filter((serial) => serial !== undefined)
-          );
-
-          return {
-            ...prev,
-            [key]: {
-              roundId: formatData?.roundId,
-              name: formatData?.name,
-              eventId: formatData?.eventId,
-              eventName: formatData?.eventName,
-              show: true,
-              animation: false,
-              stake: prev[key].show
-                ? prev[key].stake + prev[key].actionBy
-                : prev[key].stake,
-              marketId: formatData?.marketId,
-              selection_id: formatData?.selection_id,
-              price: formatData?.price,
-              runner_name: formatData?.runner_name,
-              isback: formatData?.isback,
-              serial: prev[key]?.serial ? prev[key]?.serial : maxSerial + 1,
-              actionBy: stake,
-              undo: [...(prev[key]?.undo || []), stake],
-            },
-          };
-        });
-      }, 500);
-
-      return () => clearTimeout(timeout);
+    const isRepeatTheBet = Object.values(stakeState).find(
+      (item) => item?.selection_id && item?.show === false
+    );
+    if (isRepeatTheBet) {
+      setStakeState(initialState);
     }
+    // new Audio("/bet.mp3").play();
+    const { key, data, dataIndex, runnerIndex, type } = payload;
+    setAnimation([key]);
+    const formatData = {
+      marketId: data?.[dataIndex]?.id,
+      roundId: data?.[dataIndex]?.roundId,
+      name: data?.[dataIndex]?.name,
+      eventId: data?.[dataIndex]?.eventId,
+      eventName: data?.[dataIndex]?.eventName,
+      selection_id: data?.[dataIndex]?.runners?.[runnerIndex]?.id,
+      runner_name: data?.[dataIndex]?.runners?.[runnerIndex]?.name,
+      isback: type === "back" ? 0 : 1,
+      event_id: data?.[dataIndex]?.eventId,
+      event_type_id: data?.[dataIndex]?.event_type_id,
+      price: data?.[dataIndex]?.runners?.[runnerIndex]?.[type]?.[0]?.price,
+    };
+    const timeout = setTimeout(() => {
+      setAnimation([]);
+      setStakeState((prev) => {
+        const maxSerial = Math.max(
+          0,
+          ...Object.values(prev)
+            .map((item) => item.serial)
+            .filter((serial) => serial !== undefined)
+        );
+
+        return {
+          ...prev,
+          [key]: {
+            roundId: formatData?.roundId,
+            name: formatData?.name,
+            eventId: formatData?.eventId,
+            eventName: formatData?.eventName,
+            show: true,
+            animation: false,
+            stake: prev[key].show
+              ? prev[key].stake + prev[key].actionBy
+              : prev[key].stake,
+            marketId: formatData?.marketId,
+            selection_id: formatData?.selection_id,
+            price: formatData?.price,
+            runner_name: formatData?.runner_name,
+            isback: formatData?.isback,
+            serial: prev[key]?.serial ? prev[key]?.serial : maxSerial + 1,
+            actionBy: stake,
+            undo: [...(prev[key]?.undo || []), stake],
+          },
+        };
+      });
+    }, 500);
+
+    return () => clearTimeout(timeout);
   };
 
   // Reset state when status is OPEN
@@ -199,1510 +192,1468 @@ const BetSlip = ({
   }, []);
 
   return (
-    <div className="bettingGridContainer--c27ae">
-      <div className="bettingGrid--69ff4">
-        <div className="ContainerWithHelperChip--0207f">
-          <div className="canvas-center-position--84807">
-            <div className="canvas-betting-grid-wrapper--532ae classicStandard-wrapper--00b49 standard">
-              <div className="scalingWrapper--a07a4">
-                <div className="baseGrid--f84d0">
-                  <div
-                    className="gridImmersiveAnimation--39bff phone--61524 expanded--6c3fc"
-                    data-role="immersive-animation"
-                    data-value="up"
-                  >
-                    <div className="gridImmersivePortraitTranslateWrapper--b4627">
-                      <div
-                        className="gridImmersivePortraitScaleWrapper--fb89e"
-                        style={{}}
-                      >
-                        <div
-                          className="canvasGridContainer--5a6d8"
-                          style={{
-                            height: "814px",
-                            width: "370px",
-                            fontSize: "1.4em",
-                            top: "0px",
-                            left: "0px",
-                          }}
-                        >
-                          <div
-                            className="fadingContainer--ec4d6"
-                            data-test-id="main-grid"
-                          >
-                            <svg viewBox="0 0 370 814">
-                              <defs>
-                                <style
-                                  dangerouslySetInnerHTML={{
-                                    __html:
-                                      "\n                                                  .classicStandard-wrapper {\n                                                    opacity: 1 !important;\n                                                    transition: opacity 0.1s\n                                                      ease-in;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .color-none {\n                                                    fill: white;\n                                                    opacity: 0;\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .black_num_shape {\n                                                    fill: rgba(0, 0, 0, 0.8);\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .black_num_shape.transition {\n                                                    fill: rgba(0, 0, 0, 0.8);\n                                                    transition: 800ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .black_num_shape.highlighted {\n                                                    fill: rgba(\n                                                      119,\n                                                      119,\n                                                      119,\n                                                      0.8\n                                                    );\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .red_num_shape {\n                                                    fill: rgba(\n                                                      181,\n                                                      28,\n                                                      18,\n                                                      0.8\n                                                    );\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .red_num_shape.transition {\n                                                    fill: rgba(\n                                                      181,\n                                                      28,\n                                                      18,\n                                                      0.8\n                                                    );\n                                                    transition: 800ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .red_num_shape.highlighted {\n                                                    fill: rgba(\n                                                      216,\n                                                      134,\n                                                      129,\n                                                      0.8\n                                                    );\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .green_shape {\n                                                    fill: rgba(\n                                                      22,\n                                                      105,\n                                                      88,\n                                                      0.8\n                                                    );\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .green_shape.transition {\n                                                    fill: rgba(\n                                                      22,\n                                                      105,\n                                                      88,\n                                                      0.8\n                                                    );\n                                                    transition: 800ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .green_shape.highlighted {\n                                                    fill: rgba(\n                                                      131,\n                                                      175,\n                                                      166,\n                                                      0.8\n                                                    );\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .even_shape {\n                                                    fill: rgba(0, 0, 0, 0.3);\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .even_shape.transition {\n                                                    fill: rgba(0, 0, 0, 0.3);\n                                                    transition: 800ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .even_shape.highlighted {\n                                                    fill: rgba(\n                                                      119,\n                                                      119,\n                                                      119,\n                                                      0.47\n                                                    );\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .third_shape {\n                                                    fill: rgba(0, 0, 0, 0.3);\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .third_shape.transition {\n                                                    fill: rgba(0, 0, 0, 0.3);\n                                                    transition: 800ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .third_shape.highlighted {\n                                                    fill: rgba(\n                                                      119,\n                                                      119,\n                                                      119,\n                                                      0.47\n                                                    );\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .low_high_shape {\n                                                    fill: rgba(0, 0, 0, 0.3);\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .low_high_shape.transition {\n                                                    fill: rgba(0, 0, 0, 0.3);\n                                                    transition: 800ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .low_high_shape.highlighted {\n                                                    fill: rgba(\n                                                      119,\n                                                      119,\n                                                      119,\n                                                      0.47\n                                                    );\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .row_shape {\n                                                    fill: rgba(0, 0, 0, 0.3);\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .row_shape.transition {\n                                                    fill: rgba(0, 0, 0, 0.3);\n                                                    transition: 800ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .row_shape.highlighted {\n                                                    fill: rgba(\n                                                      119,\n                                                      119,\n                                                      119,\n                                                      0.47\n                                                    );\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .odd_shape {\n                                                    fill: rgba(0, 0, 0, 0.3);\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .odd_shape.transition {\n                                                    fill: rgba(0, 0, 0, 0.3);\n                                                    transition: 800ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .odd_shape.highlighted {\n                                                    fill: rgba(\n                                                      119,\n                                                      119,\n                                                      119,\n                                                      0.47\n                                                    );\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .black_shape {\n                                                    fill: rgba(0, 0, 0, 0.3);\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .black_shape.transition {\n                                                    fill: rgba(0, 0, 0, 0.3);\n                                                    transition: 800ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .black_shape.highlighted {\n                                                    fill: rgba(\n                                                      119,\n                                                      119,\n                                                      119,\n                                                      0.47\n                                                    );\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .red_shape {\n                                                    fill: rgba(0, 0, 0, 0.3);\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .red_shape.transition {\n                                                    fill: rgba(0, 0, 0, 0.3);\n                                                    transition: 800ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .red_shape.highlighted {\n                                                    fill: rgba(\n                                                      119,\n                                                      119,\n                                                      119,\n                                                      0.47\n                                                    );\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .red_color_label,\n                                                  .classicStandard-wrapper\n                                                    .black_color_label {\n                                                    pointer-events: none;\n                                                    stroke: #f9e1cc;\n                                                    stroke-width: 1;\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .red_color_label {\n                                                    fill: #b51c12;\n                                                    transition: 0ms fill,\n                                                      0ms stroke;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .black_color_label {\n                                                    fill: #1a1a1a;\n                                                    transition: 0ms fill,\n                                                      0ms stroke;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .black_num_shape_label,\n                                                  .classicStandard-wrapper\n                                                    .red_num_shape_label,\n                                                  .classicStandard-wrapper\n                                                    .green_shape_label,\n                                                  .classicStandard-wrapper\n                                                    .even_shape_label,\n                                                  .classicStandard-wrapper\n                                                    .even_shape_label,\n                                                  .classicStandard-wrapper\n                                                    .low_high_shape_label,\n                                                  .classicStandard-wrapper\n                                                    .row_shape_label,\n                                                  .classicStandard-wrapper\n                                                    .third_shape_label {\n                                                    pointer-events: none;\n                                                    font-weight: 400;\n                                                    font-family: Inter, Arial;\n                                                    text-anchor: middle;\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .black_num_shape_label.transition {\n                                                    transition: 800ms fill,\n                                                      800ms stroke;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .red_num_shape_label.transition {\n                                                    transition: 800ms fill,\n                                                      800ms stroke;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .green_shape_label.transition {\n                                                    transition: 800ms fill,\n                                                      800ms stroke;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .even_shape_label.transition {\n                                                    transition: 800ms fill,\n                                                      800ms stroke;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .even_shape_label.transition {\n                                                    transition: 800ms fill,\n                                                      800ms stroke;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .low_high_shape_label.transition {\n                                                    transition: 800ms fill,\n                                                      800ms stroke;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .row_shape_label.transition {\n                                                    transition: 800ms fill,\n                                                      800ms stroke;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .third_shape_label.transition {\n                                                    transition: 800ms fill,\n                                                      800ms stroke;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .outside_small_color_label.transition {\n                                                    transition: 800ms fill,\n                                                      800ms stroke;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .red_color_label.transition {\n                                                    transition: 800ms fill,\n                                                      800ms stroke;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .black_color_label.transition {\n                                                    transition: 800ms fill,\n                                                      800ms stroke;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .vertical_center {\n                                                    dominant-baseline: central;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .red_num_shape_label {\n                                                    fill: #f9e1cc;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .black_num_shape_label {\n                                                    fill: #f9e1cc;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .green_shape_label {\n                                                    fill: #f9e1cc;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .low_high_shape_label,\n                                                  .classicStandard-wrapper\n                                                    .third_shape_label,\n                                                  .classicStandard-wrapper\n                                                    .even_shape_label,\n                                                  .classicStandard-wrapper\n                                                    .even_shape_label,\n                                                  .classicStandard-wrapper\n                                                    .row_shape_label {\n                                                    fill: #f9e1cc;\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .outside_small_color_label,\n                                                  .classicStandard-wrapper\n                                                    .outside_color_label\n                                                    .small {\n                                                    fill: #f9e1cc;\n                                                    transition: 0ms fill;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .green_shape_label,\n                                                  .classicStandard-wrapper\n                                                    .red_num_shape_label,\n                                                  .classicStandard-wrapper\n                                                    .black_num_shape_label {\n                                                    font-size: 32.9px;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .even_shape_label,\n                                                  .classicStandard-wrapper\n                                                    .even_shape_label,\n                                                  .classicStandard-wrapper\n                                                    .low_high_shape_label {\n                                                    font-size: 32.7px;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .row_shape_label {\n                                                    font-size: 27.9px;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .third_shape_label {\n                                                    font-size: 32.7px;\n                                                  }\n\n                                                  .classicStandard-wrapper\n                                                    .border {\n                                                    pointer-events: none;\n                                                    stroke-width: 1.5;\n                                                    transition: 800ms fill,\n                                                      800ms stroke;\n                                                    fill: transparent;\n                                                    stroke: rgba(\n                                                      249,\n                                                      225,\n                                                      204,\n                                                      0.53\n                                                    );\n                                                  }\n                                                ",
-                                  }}
-                                />
-                              </defs>
-                              <g
-                                className="classicStandard-wrapper "
-                                style={{ opacity: 1 }}
-                              >
-                                <polygon
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.zero,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="green_shape"
-                                  data-bet-spot-id={0}
-                                  points="243,0.75 369.25,27.585 369.25,60.87 116.75,60.87 116.75,27.585"
-                                >
-                                  <foreignObject>
-                                    <StakeAnimation
-                                      animation={animation}
-                                      double={double}
-                                      runner={keyNames.zero}
-                                      stake={stake}
-                                      stakeState={stakeState}
-                                    />
-                                  </foreignObject>
-                                </polygon>
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.one,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="red_num_shape"
-                                  data-bet-spot-id={1}
-                                  x="116.8"
-                                  y="60.9"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.two,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="black_num_shape"
-                                  data-bet-spot-id={2}
-                                  x="200.9"
-                                  y="60.9"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.three,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="red_num_shape"
-                                  data-bet-spot-id={3}
-                                  x="285.1"
-                                  y="60.9"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.four,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="black_num_shape"
-                                  data-bet-spot-id={4}
-                                  x="116.8"
-                                  y="119.2"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.five,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="red_num_shape"
-                                  data-bet-spot-id={5}
-                                  x="200.9"
-                                  y="119.2"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.six,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="black_num_shape"
-                                  data-bet-spot-id={6}
-                                  x="285.1"
-                                  y="119.2"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.seven,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="red_num_shape"
-                                  data-bet-spot-id={7}
-                                  x="116.8"
-                                  y="177.6"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.eight,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="black_num_shape"
-                                  data-bet-spot-id={8}
-                                  x="200.9"
-                                  y="177.6"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.nine,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="red_num_shape"
-                                  data-bet-spot-id={9}
-                                  x="285.1"
-                                  y="177.6"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.ten,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="black_num_shape"
-                                  data-bet-spot-id={10}
-                                  x="116.8"
-                                  y={236}
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.eleven,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="black_num_shape"
-                                  data-bet-spot-id={11}
-                                  x="200.9"
-                                  y={236}
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.twelve,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="red_num_shape"
-                                  data-bet-spot-id={12}
-                                  x="285.1"
-                                  y={236}
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.thirteen,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="black_num_shape"
-                                  data-bet-spot-id={13}
-                                  x="116.8"
-                                  y="294.3"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.fourteen,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="red_num_shape"
-                                  data-bet-spot-id={14}
-                                  x="200.9"
-                                  y="294.3"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.fifteen,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="black_num_shape"
-                                  data-bet-spot-id={15}
-                                  x="285.1"
-                                  y="294.3"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.sixteen,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="red_num_shape"
-                                  data-bet-spot-id={16}
-                                  x="116.8"
-                                  y="352.7"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.seventeen,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="black_num_shape"
-                                  data-bet-spot-id={17}
-                                  x="200.9"
-                                  y="352.7"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.eighteen,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="red_num_shape"
-                                  data-bet-spot-id={18}
-                                  x="285.1"
-                                  y="352.7"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.nineteen,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="red_num_shape"
-                                  data-bet-spot-id={19}
-                                  x="116.8"
-                                  y="411.1"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.twenty,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="black_num_shape"
-                                  data-bet-spot-id={20}
-                                  x="200.9"
-                                  y="411.1"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.twentyOne,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="red_num_shape"
-                                  data-bet-spot-id={21}
-                                  x="285.1"
-                                  y="411.1"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.twentyTwo,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="black_num_shape"
-                                  data-bet-spot-id={22}
-                                  x="116.8"
-                                  y="469.5"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.twentyThree,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="red_num_shape"
-                                  data-bet-spot-id={23}
-                                  x="200.9"
-                                  y="469.5"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.twentyFour,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="black_num_shape"
-                                  data-bet-spot-id={24}
-                                  x="285.1"
-                                  y="469.5"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.twentyFive,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="red_num_shape"
-                                  data-bet-spot-id={25}
-                                  x="116.8"
-                                  y="527.8"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.twentySix,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="black_num_shape"
-                                  data-bet-spot-id={26}
-                                  x="200.9"
-                                  y="527.8"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.twentySeven,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="red_num_shape"
-                                  data-bet-spot-id={27}
-                                  x="285.1"
-                                  y="527.8"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.twentyEight,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="black_num_shape"
-                                  data-bet-spot-id={28}
-                                  x="116.8"
-                                  y="586.2"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.twentyNine,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="black_num_shape"
-                                  data-bet-spot-id={29}
-                                  x="200.9"
-                                  y="586.2"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.thirty,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="red_num_shape"
-                                  data-bet-spot-id={30}
-                                  x="285.1"
-                                  y="586.2"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.thirtyOne,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="black_num_shape"
-                                  data-bet-spot-id={31}
-                                  x="116.8"
-                                  y="644.6"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.thirtyTwo,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="red_num_shape"
-                                  data-bet-spot-id={32}
-                                  x="200.9"
-                                  y="644.6"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.thirtyThree,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="black_num_shape"
-                                  data-bet-spot-id={33}
-                                  x="285.1"
-                                  y="644.6"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.thirtyFour,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="red_num_shape"
-                                  data-bet-spot-id={34}
-                                  x="116.8"
-                                  y="702.9"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.thirtyFive,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="black_num_shape"
-                                  data-bet-spot-id={35}
-                                  x="200.9"
-                                  y="702.9"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.thirtySix,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="red_num_shape"
-                                  data-bet-spot-id={36}
-                                  x="285.1"
-                                  y="702.9"
-                                  width="84.167"
-                                  height="58.369"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.threeToThirtySix,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="row_shape"
-                                  data-bet-spot-id="top2to1"
-                                  x="285.084"
-                                  y="761.298"
-                                  width="84.167"
-                                  height="51.949"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.twoToThirtyFive,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="row_shape"
-                                  data-bet-spot-id="middle2to1"
-                                  x="200.917"
-                                  y="761.298"
-                                  width="84.167"
-                                  height="51.949"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.oneToThirtyFour,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="row_shape"
-                                  data-bet-spot-id="bottom2to1"
-                                  x="116.75"
-                                  y="761.298"
-                                  width="84.167"
-                                  height="51.949"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.firstTwelve,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="third_shape"
-                                  data-bet-spot-id="1st12"
-                                  x="58.75"
-                                  y="60.87"
-                                  width={58}
-                                  height="233.476"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.secondTwelve,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="third_shape"
-                                  data-bet-spot-id="2nd12"
-                                  x="58.75"
-                                  y="294.346"
-                                  width={58}
-                                  height="233.476"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.thirdTwelve,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="third_shape"
-                                  data-bet-spot-id="3rd12"
-                                  x="58.75"
-                                  y="527.822"
-                                  width={58}
-                                  height="233.476"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.oneToEighteen,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="low_high_shape"
-                                  data-bet-spot-id="from1to18"
-                                  x="0.75"
-                                  y="60.87"
-                                  width={58}
-                                  height="116.738"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.even,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="even_shape"
-                                  data-bet-spot-id="even"
-                                  x="0.75"
-                                  y="177.608"
-                                  width={58}
-                                  height="116.738"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.red,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="red_shape"
-                                  data-bet-spot-id="red"
-                                  x="0.75"
-                                  y="294.346"
-                                  width={58}
-                                  height="116.738"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.black,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="black_shape"
-                                  data-bet-spot-id="black"
-                                  x="0.75"
-                                  y="411.084"
-                                  width={58}
-                                  height="116.738"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.odd,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="odd_shape"
-                                  data-bet-spot-id="odd"
-                                  x="0.75"
-                                  y="527.822"
-                                  width={58}
-                                  height="116.738"
-                                />
-                                <rect
-                                  onClick={() =>
-                                    handleStakeChange({
-                                      key: keyNames.nineteenToThirtySix,
-                                      data,
-                                      dataIndex: 0,
-                                      runnerIndex: 0,
-                                      type: "back",
-                                    })
-                                  }
-                                  className="low_high_shape"
-                                  data-bet-spot-id="from19to36"
-                                  x="0.75"
-                                  y="644.56"
-                                  width={58}
-                                  height="116.738"
-                                />
-                                <path
-                                  shapeRendering="geometricPrecision"
-                                  className="border"
-                                  d="M243 0.75 L369.25 27.585 L369.25 60.87 L116.75 60.87 L116.75 27.585z M116.75 60.87 h252.501 v700.428 h-252.501z M369.251 60.87 h-252.501 M369.251 119.239 h-252.501 M369.251 177.608 h-252.501 M369.251 235.977 h-252.501 M369.251 294.346 h-252.501 M369.251 352.715 h-252.501 M369.251 411.084 h-252.501 M369.251 469.453 h-252.501 M369.251 527.822 h-252.501 M369.251 586.191 h-252.501 M369.251 644.56 h-252.501 M369.251 702.929 h-252.501 M285.08399999999995 60.87 v700.428 M200.917 60.87 v700.428M369.251 761.298 v51.949 h-252.501 v-51.949z M285.084 761.298 v51.949 M200.917 761.298 v51.949 M116.75 60.87 v700.428 h-116 v-700.428z M58.75 60.87 v700.428 M58.75 294.346 h58 M58.75 527.822 h58 M0.75 177.608 h58 M0.75 294.346 h58 M0.75 411.084 h58 M0.75 527.822 h58 M0.75 644.56 h58"
-                                />
-                                <text
-                                  className="green_shape_label vertical_center"
-                                  x="65.700%"
-                                  y="3.800%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  0
-                                </text>
-                                <text
-                                  className="red_num_shape_label vertical_center"
-                                  x="42.900%"
-                                  y="11.100%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  1
-                                </text>
-                                <text
-                                  className="black_num_shape_label vertical_center"
-                                  x="65.700%"
-                                  y="11.100%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  2
-                                </text>
-                                <text
-                                  className="red_num_shape_label vertical_center"
-                                  x="88.400%"
-                                  y="11.100%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  3
-                                </text>
-                                <text
-                                  className="black_num_shape_label vertical_center"
-                                  x="42.900%"
-                                  y="18.200%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  4
-                                </text>
-                                <text
-                                  className="red_num_shape_label vertical_center"
-                                  x="65.700%"
-                                  y="18.200%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  5
-                                </text>
-                                <text
-                                  className="black_num_shape_label vertical_center"
-                                  x="88.400%"
-                                  y="18.200%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  6
-                                </text>
-                                <text
-                                  className="red_num_shape_label vertical_center"
-                                  x="42.900%"
-                                  y="25.400%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  7
-                                </text>
-                                <text
-                                  className="black_num_shape_label vertical_center"
-                                  x="65.700%"
-                                  y="25.400%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  8
-                                </text>
-                                <text
-                                  className="red_num_shape_label vertical_center"
-                                  x="88.400%"
-                                  y="25.400%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  9
-                                </text>
-                                <text
-                                  className="black_num_shape_label vertical_center"
-                                  x="42.900%"
-                                  y="32.600%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  10
-                                </text>
-                                <text
-                                  className="black_num_shape_label vertical_center"
-                                  x="65.700%"
-                                  y="32.600%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  1 1
-                                </text>
-                                <text
-                                  className="red_num_shape_label vertical_center"
-                                  x="88.400%"
-                                  y="32.600%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  12
-                                </text>
-                                <text
-                                  className="black_num_shape_label vertical_center"
-                                  x="42.900%"
-                                  y="39.700%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  13
-                                </text>
-                                <text
-                                  className="red_num_shape_label vertical_center"
-                                  x="65.700%"
-                                  y="39.700%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  14
-                                </text>
-                                <text
-                                  className="black_num_shape_label vertical_center"
-                                  x="88.400%"
-                                  y="39.700%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  15
-                                </text>
-                                <text
-                                  className="red_num_shape_label vertical_center"
-                                  x="42.900%"
-                                  y="46.900%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  16
-                                </text>
-                                <text
-                                  className="black_num_shape_label vertical_center"
-                                  x="65.700%"
-                                  y="46.900%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  17
-                                </text>
-                                <text
-                                  className="red_num_shape_label vertical_center"
-                                  x="88.400%"
-                                  y="46.900%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  18
-                                </text>
-                                <text
-                                  className="red_num_shape_label vertical_center"
-                                  x="42.900%"
-                                  y="54.100%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  19
-                                </text>
-                                <text
-                                  className="black_num_shape_label vertical_center"
-                                  x="65.700%"
-                                  y="54.100%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  20
-                                </text>
-                                <text
-                                  className="red_num_shape_label vertical_center"
-                                  x="88.400%"
-                                  y="54.100%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  21
-                                </text>
-                                <text
-                                  className="black_num_shape_label vertical_center"
-                                  x="42.900%"
-                                  y="61.300%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  22
-                                </text>
-                                <text
-                                  className="red_num_shape_label vertical_center"
-                                  x="65.700%"
-                                  y="61.300%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  23
-                                </text>
-                                <text
-                                  className="black_num_shape_label vertical_center"
-                                  x="88.400%"
-                                  y="61.300%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  24
-                                </text>
-                                <text
-                                  className="red_num_shape_label vertical_center"
-                                  x="42.900%"
-                                  y="68.400%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  25
-                                </text>
-                                <text
-                                  className="black_num_shape_label vertical_center"
-                                  x="65.700%"
-                                  y="68.400%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  26
-                                </text>
-                                <text
-                                  className="red_num_shape_label vertical_center"
-                                  x="88.400%"
-                                  y="68.400%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  27
-                                </text>
-                                <text
-                                  className="black_num_shape_label vertical_center"
-                                  x="42.900%"
-                                  y="75.600%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  28
-                                </text>
-                                <text
-                                  className="black_num_shape_label vertical_center"
-                                  x="65.700%"
-                                  y="75.600%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  29
-                                </text>
-                                <text
-                                  className="red_num_shape_label vertical_center"
-                                  x="88.400%"
-                                  y="75.600%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  30
-                                </text>
-                                <text
-                                  className="black_num_shape_label vertical_center"
-                                  x="42.900%"
-                                  y="82.800%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  31
-                                </text>
-                                <text
-                                  className="red_num_shape_label vertical_center"
-                                  x="65.700%"
-                                  y="82.800%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  32
-                                </text>
-                                <text
-                                  className="black_num_shape_label vertical_center"
-                                  x="88.400%"
-                                  y="82.800%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  33
-                                </text>
-                                <text
-                                  className="red_num_shape_label vertical_center"
-                                  x="42.900%"
-                                  y="89.900%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  34
-                                </text>
-                                <text
-                                  className="black_num_shape_label vertical_center"
-                                  x="65.700%"
-                                  y="89.900%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  35
-                                </text>
-                                <text
-                                  className="red_num_shape_label vertical_center"
-                                  x="88.400%"
-                                  y="89.900%"
-                                  dx="0em"
-                                  dy="0em"
-                                >
-                                  36
-                                </text>
-                                <g className="row_shape_label">
-                                  <text
-                                    x="88.400%"
-                                    y="96.700%"
-                                    dx="-0.65em"
-                                    dy="0.36em"
-                                  >
-                                    2
-                                  </text>
-                                  <text
-                                    className="small"
-                                    fontSize="50%"
-                                    x="88.400%"
-                                    y="96.700%"
-                                    dx="0.14em"
-                                  >
-                                    TO
-                                  </text>
-                                  <text
-                                    x="88.400%"
-                                    y="96.700%"
-                                    dx="0.75em"
-                                    dy="0.36em"
-                                  >
-                                    1
-                                  </text>
-                                </g>
-                                <g className="row_shape_label">
-                                  <text
-                                    x="65.700%"
-                                    y="96.700%"
-                                    dx="-0.65em"
-                                    dy="0.36em"
-                                  >
-                                    2
-                                  </text>
-                                  <text
-                                    className="small"
-                                    fontSize="50%"
-                                    x="65.700%"
-                                    y="96.700%"
-                                    dx="0.14em"
-                                  >
-                                    TO
-                                  </text>
-                                  <text
-                                    x="65.700%"
-                                    y="96.700%"
-                                    dx="0.75em"
-                                    dy="0.36em"
-                                  >
-                                    1
-                                  </text>
-                                </g>
-                                <g className="row_shape_label">
-                                  <text
-                                    x="42.900%"
-                                    y="96.700%"
-                                    dx="-0.65em"
-                                    dy="0.36em"
-                                  >
-                                    2
-                                  </text>
-                                  <text
-                                    className="small"
-                                    fontSize="50%"
-                                    x="42.900%"
-                                    y="96.700%"
-                                    dx="0.14em"
-                                  >
-                                    TO
-                                  </text>
-                                  <text
-                                    x="42.900%"
-                                    y="96.700%"
-                                    dx="0.75em"
-                                    dy="0.36em"
-                                  >
-                                    1
-                                  </text>
-                                </g>
-                                <g
-                                  className="third_shape_label"
-                                  transform="rotate(90,87.69,177.452)"
-                                >
-                                  <text
-                                    x="23.700%"
-                                    y="21.800%"
-                                    dx="-1em"
-                                    dy="0.36em"
-                                  >
-                                    1
-                                  </text>
-                                  <text
-                                    className="small"
-                                    fontSize="50%"
-                                    x="23.700%"
-                                    y="21.800%"
-                                    dx="-0.8em"
-                                  >
-                                    ST
-                                  </text>
-                                  <text
-                                    x="23.700%"
-                                    y="21.800%"
-                                    dx="0.7em"
-                                    dy="0.36em"
-                                  >
-                                    12
-                                  </text>
-                                </g>
-                                <g
-                                  className="third_shape_label"
-                                  transform="rotate(90,87.69,411.07)"
-                                >
-                                  <text
-                                    x="23.700%"
-                                    y="50.500%"
-                                    dx="-1.2em"
-                                    dy="0.36em"
-                                  >
-                                    2
-                                  </text>
-                                  <text
-                                    className="small"
-                                    fontSize="50%"
-                                    x="23.700%"
-                                    y="50.500%"
-                                    dx="-0.8em"
-                                  >
-                                    ND
-                                  </text>
-                                  <text
-                                    x="23.700%"
-                                    y="50.500%"
-                                    dx="0.7em"
-                                    dy="0.36em"
-                                  >
-                                    12
-                                  </text>
-                                </g>
-                                <g
-                                  className="third_shape_label"
-                                  transform="rotate(90,87.69,644.688)"
-                                >
-                                  <text
-                                    x="23.700%"
-                                    y="79.200%"
-                                    dx="-1.2em"
-                                    dy="0.36em"
-                                  >
-                                    3
-                                  </text>
-                                  <text
-                                    className="small"
-                                    fontSize="50%"
-                                    x="23.700%"
-                                    y="79.200%"
-                                    dx="-0.8em"
-                                  >
-                                    RD
-                                  </text>
-                                  <text
-                                    x="23.700%"
-                                    y="79.200%"
-                                    dx="0.7em"
-                                    dy="0.36em"
-                                  >
-                                    12
-                                  </text>
-                                </g>
-                                <text
-                                  className="low_high_shape_label vertical_center"
-                                  x="8.000%"
-                                  y="14.600%"
-                                  dx="0em"
-                                  dy="0em"
-                                  transform="rotate(90,29.6,118.844)"
-                                >
-                                  1-18
-                                </text>
-                                <text
-                                  className="even_shape_label vertical_center"
-                                  x="8.000%"
-                                  y="29.000%"
-                                  dx="0em"
-                                  dy="0em"
-                                  transform="rotate(90,29.6,236.05999999999997)"
-                                >
-                                  EVEN
-                                </text>
-                                <polygon
-                                  className="red_color_label"
-                                  points="12.181 352.715 29.75 311.857 47.319 352.715 29.75 393.573"
-                                />
-                                <polygon
-                                  className="black_color_label"
-                                  points="12.181 469.453 29.75 428.595 47.319 469.453 29.75 510.311"
-                                />
-                                <text
-                                  className="even_shape_label vertical_center"
-                                  x="8.000%"
-                                  y="72.000%"
-                                  dx="0em"
-                                  dy="0em"
-                                  transform="rotate(90,29.6,586.0799999999999)"
-                                >
-                                  ODD
-                                </text>
-                                <text
-                                  className="low_high_shape_label vertical_center"
-                                  x="8.000%"
-                                  y="86.400%"
-                                  dx="0em"
-                                  dy="0em"
-                                  transform="rotate(90,29.6,703.2959999999999)"
-                                >
-                                  19-36
-                                </text>
-                              </g>
-                            </svg>
-                          </div>
-                          <div className="winningAnimationContainer--dec5e">
-                            <div
-                              className="container--14a03"
-                              data-role="winning-animation"
-                              style={{
-                                top: "68.4%",
-                                left: "88.4%",
-                              }}
-                            >
-                              <div className="innerCircle--ca163" />
-                              <div className="outerCircle--28f19" />
-                              <div className="dolly--4e59b" />
-                            </div>
-                          </div>
-                          <div />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+    <div
+      onClick={handleShowSuspendedStatus}
+      className={`absolute h-[70%]  origin-bottom  flex flex-col justify-end items-center px-2 w-full mx-auto gap-1 perspective transition-all ease-in-out duration-1000 bottom-12 right-4  lg:bottom-32 scale-[100%] `}
+    >
+      {/* {showSuspendedWarning && <NextGame />} */}
+      <span className>
+        <div className="flex justify-center items-start  w-full h-full mx-auto transition-all ease-in-out  duration-1000 ">
+          <div className="grid grid-cols-2 mt-[15px] min-h-[416px] lg:min-h-[601px]  grid-rows-13 w-[70px] ">
+            <div
+              onClick={() =>
+                handleStakeChange({
+                  key: keyNames.oneToEighteen,
+                  data,
+                  dataIndex: 0,
+                  runnerIndex: 0,
+                  type: "back",
+                })
+              }
+              className="relative flex flex-col items-center justify-center border-l-[1px]  border-b-[1px] border-gold bg-[#1b0c1e]   
+               border-t-[1px]
+               col-span-1 row-span-2
+               "
+              id="1to18"
+            >
+              <span
+                className="absolute whitespace-nowrap uppercase   top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white
+                  rotate-90 
+                  "
+              >
+                <span>1-18</span>
+              </span>
+              <div className="absolute bottom-1/2 lg:rotate-90 scale-[60%] origin-center z-50 left-1/2 -translate-x-1/2 translate-y-1/2">
+                <StakeAnimation
+                  animation={animation}
+                  double={double}
+                  runner={keyNames.oneToEighteen}
+                  stake={stake}
+                  stakeState={stakeState}
+                />
+              </div>
+            </div>
+            <div
+              onClick={() =>
+                handleStakeChange({
+                  key: keyNames.firstTwelve,
+                  data,
+                  dataIndex: 0,
+                  runnerIndex: 0,
+                  type: "back",
+                })
+              }
+              className="relative flex flex-col items-center justify-center border-l-[1px]  border-b-[1px] border-gold bg-[#1b0c1e]   
+               border-t-[1px]
+               col-span-1 row-span-4  
+               "
+              id="1st12"
+            >
+              <span
+                className="absolute whitespace-nowrap uppercase  rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white
+                 
+                  "
+              >
+                <span>
+                  1<sup className="lowercase">st </sup>12
+                </span>
+              </span>
+              <div className="absolute bottom-1/2 lg:rotate-90 scale-[60%] origin-center z-50 left-1/2 -translate-x-1/2 translate-y-1/2">
+                <StakeAnimation
+                  animation={animation}
+                  double={double}
+                  runner={keyNames.firstTwelve}
+                  stake={stake}
+                  stakeState={stakeState}
+                />
+              </div>
+            </div>
+            <div
+              onClick={() =>
+                handleStakeChange({
+                  key: keyNames.even,
+                  data,
+                  dataIndex: 0,
+                  runnerIndex: 0,
+                  type: "back",
+                })
+              }
+              className="relative flex flex-col items-center justify-center border-l-[1px]  border-b-[1px] border-gold bg-[#1b0c1e]   
+               col-span-1 row-span-2
+               "
+              id="even"
+            >
+              <span
+                className="absolute whitespace-nowrap uppercase  rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white
+                  rotate-90 
+                  "
+              >
+                even
+              </span>
+              <div className="absolute bottom-1/2 lg:rotate-90 scale-[60%] origin-center z-50 left-1/2 -translate-x-1/2 translate-y-1/2">
+                <StakeAnimation
+                  animation={animation}
+                  double={double}
+                  runner={keyNames.even}
+                  stake={stake}
+                  stakeState={stakeState}
+                />
+              </div>
+            </div>
+            <div
+              onClick={() =>
+                handleStakeChange({
+                  key: keyNames.red,
+                  data,
+                  dataIndex: 0,
+                  runnerIndex: 0,
+                  type: "back",
+                })
+              }
+              className="relative flex flex-col items-center justify-center border-l-[1px]  border-b-[1px] border-gold bg-[#1b0c1e]   
+               col-span-1 row-span-2
+               "
+              id="red"
+            >
+              <span
+                className="absolute whitespace-nowrap uppercase  rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white
+                  text-[10px]
+                  rotate-90 
+                  "
+              >
+                red
+              </span>
+              <div className="absolute bottom-1/2 lg:rotate-90 scale-[60%] origin-center z-50 left-1/2 -translate-x-1/2 translate-y-1/2">
+                <StakeAnimation
+                  animation={animation}
+                  double={double}
+                  runner={keyNames.red}
+                  stake={stake}
+                  stakeState={stakeState}
+                />
+              </div>
+              <span className="rotate-90 absolute">
+                <div
+                  className="w-[40px] border-2 border-white/70 aspect-square  bg-[#981715]"
+                  style={{ transform: "rotateX(60deg) rotateZ(45deg)" }}
+                />
+              </span>
+            </div>
+            <div
+              onClick={() =>
+                handleStakeChange({
+                  key: keyNames.secondTwelve,
+                  data,
+                  dataIndex: 0,
+                  runnerIndex: 0,
+                  type: "back",
+                })
+              }
+              className="relative flex flex-col items-center justify-center border-l-[1px]  border-b-[1px] border-gold bg-[#1b0c1e]   
+               col-span-1 row-span-4 
+               "
+              id="2nd12"
+            >
+              <span
+                className="absolute whitespace-nowrap uppercase  rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white
+                  rotate-90 
+                  "
+              >
+                <span>
+                  2<sup className="lowercase">nd </sup>12
+                </span>
+              </span>
+              <div className="absolute bottom-1/2 lg:rotate-90 scale-[60%] origin-center z-50 left-1/2 -translate-x-1/2 translate-y-1/2">
+                <StakeAnimation
+                  animation={animation}
+                  double={double}
+                  runner={keyNames.secondTwelve}
+                  stake={stake}
+                  stakeState={stakeState}
+                />
+              </div>
+            </div>
+            <div
+              onClick={() =>
+                handleStakeChange({
+                  key: keyNames.black,
+                  data,
+                  dataIndex: 0,
+                  runnerIndex: 0,
+                  type: "back",
+                })
+              }
+              className="relative flex flex-col items-center justify-center border-l-[1px]  border-b-[1px] border-gold bg-[#1b0c1e]   
+               col-span-1 row-span-2
+               "
+              id="black"
+            >
+              <span
+                className="absolute whitespace-nowrap uppercase  rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white
+                  text-[10px]
+                  rotate-90 
+                  "
+              >
+                black
+              </span>
+              <div className="absolute bottom-1/2 lg:rotate-90 scale-[60%] origin-center z-50 left-1/2 -translate-x-1/2 translate-y-1/2">
+                <StakeAnimation
+                  animation={animation}
+                  double={double}
+                  runner={keyNames.black}
+                  stake={stake}
+                  stakeState={stakeState}
+                />
+              </div>
+              <span className="rotate-90 absolute">
+                <div
+                  className="w-[40px] border-2 border-white/70 aspect-square  bg-black"
+                  style={{ transform: "rotateX(60deg) rotateZ(45deg)" }}
+                />
+              </span>
+            </div>
+            <div
+              onClick={() =>
+                handleStakeChange({
+                  key: keyNames.odd,
+                  data,
+                  dataIndex: 0,
+                  runnerIndex: 0,
+                  type: "back",
+                })
+              }
+              className="relative flex flex-col items-center justify-center border-l-[1px]  border-b-[1px] border-gold bg-[#1b0c1e]   
+               col-span-1 row-span-2
+               "
+              id="odd"
+            >
+              <span
+                className="absolute whitespace-nowrap uppercase  rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white
+                  rotate-90 
+                  "
+              >
+                odd
+              </span>
+              <div className="absolute bottom-1/2 lg:rotate-90 scale-[60%] origin-center z-50 left-1/2 -translate-x-1/2 translate-y-1/2">
+                <StakeAnimation
+                  animation={animation}
+                  double={double}
+                  runner={keyNames.odd}
+                  stake={stake}
+                  stakeState={stakeState}
+                />
+              </div>
+            </div>
+            <div
+              onClick={() =>
+                handleStakeChange({
+                  key: keyNames.thirdTwelve,
+                  data,
+                  dataIndex: 0,
+                  runnerIndex: 0,
+                  type: "back",
+                })
+              }
+              className="relative flex flex-col items-center justify-center border-l-[1px]  border-b-[1px] border-gold bg-[#1b0c1e]   
+               col-span-1 row-span-4 
+               "
+              id="3rd12"
+            >
+              <span
+                className="absolute whitespace-nowrap uppercase  rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white
+                  rotate-90 
+                  "
+              >
+                <span>
+                  3<sup className="lowercase">rd </sup>12
+                </span>
+              </span>
+              <div className="absolute bottom-1/2 lg:rotate-90 scale-[60%] origin-center z-50 left-1/2 -translate-x-1/2 translate-y-1/2">
+                <StakeAnimation
+                  animation={animation}
+                  double={double}
+                  runner={keyNames.thirdTwelve}
+                  stake={stake}
+                  stakeState={stakeState}
+                />
+              </div>
+            </div>
+            <div
+              onClick={() =>
+                handleStakeChange({
+                  key: keyNames.nineteenToThirtySix,
+                  data,
+                  dataIndex: 0,
+                  runnerIndex: 0,
+                  type: "back",
+                })
+              }
+              className="relative flex flex-col items-center justify-center border-l-[1px]  border-b-[1px] border-gold bg-[#1b0c1e]   
+               col-span-1 row-span-2
+               "
+              id="19to36"
+            >
+              <span
+                className="absolute whitespace-nowrap uppercase  rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white
+                  rotate-90 
+                  "
+              >
+                <span>19-36</span>
+              </span>
+              <div className="absolute bottom-1/2 lg:rotate-90 scale-[60%] origin-center z-50 left-1/2 -translate-x-1/2 translate-y-1/2">
+                <StakeAnimation
+                  animation={animation}
+                  double={double}
+                  runner={keyNames.nineteenToThirtySix}
+                  stake={stake}
+                  stakeState={stakeState}
+                />
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div className="layoutTimerCentered--ca6b7">
-        <div className="wrapper--8b249">
-          <div
-            data-role="circle-timer"
-            data-timer-version={1}
-            className="container--6cb86 commonUiElement fadeIn--a5208"
-          >
+          <span className="relative flex flex-col ">
+            <span
+              className="absolute aspect-square w-[148px] -top-[74px]   -z-10 left-[31px] border-[4px] border-gold bg-[#18554d] "
+              style={{ transform: "rotateX(82deg) rotateZ(46deg)" }}
+            />
             <div
-              className="timerCircleContainer--4935d spin--ff972"
-              data-role="timer-circle"
+              onClick={() =>
+                handleStakeChange({
+                  key: keyNames.zero,
+                  data,
+                  dataIndex: 0,
+                  runnerIndex: 0,
+                  type: "back",
+                })
+              }
             >
-              <canvas
-                style={{
-                  display: "block",
-                  width: "55px",
-                  height: "55px",
-                }}
-                width={165}
-                height={165}
-              />
+              <div
+                id={0}
+                className="flex relative  bg-[#18554d]  h-4 justify-center items-end text-white border-x-[1px] border-b-[1px] border-gold
+                  "
+              >
+                0
+                <div className="absolute bottom-[90%] lg:rotate-90   scale-[60%] origin-center z-50 left-1/2 -translate-x-1/2 translate-y-1/2">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.zero}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
             </div>
-            <div className="contentWrapper--db941" data-role="timer-content">
-              <canvas
-                style={{
-                  display: "block",
-                  width: "55px",
-                  height: "55px",
-                }}
-                width={165}
-                height={165}
-              />
+            <div className="grid grid-cols-3 grid-rows-13   w-[210px] min-h-[450px]   lg:min-h-[600px]  ">
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.one,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#981715]
+                  "
+                id={1}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  1
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.one}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.two,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#060606]
+                  "
+                id={2}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  2
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.two}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.three,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  border-r-[1px]
+                  bg-[#981715]
+                  "
+                id={3}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  3
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.three}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.four,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#060606]
+                  "
+                id={4}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  4
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.four}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.five,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#981715]
+                  "
+                id={5}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  5
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.five}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.six,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  border-r-[1px]
+                  bg-[#060606]
+                  "
+                id={6}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  6
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.six}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.seven,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#981715]
+                  "
+                id={7}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  7
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.seven}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.eight,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#060606]
+                  "
+                id={8}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  8
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.eight}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.nine,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  border-r-[1px]
+                  bg-[#981715]
+                  "
+                id={9}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  9
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.nine}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.ten,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#060606]
+                  "
+                id={10}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  10
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.ten}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.eleven,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#060606]
+                  "
+                id={11}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  11
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.eleven}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.twelve,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  border-r-[1px]
+                  bg-[#981715]
+                  "
+                id={12}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  12
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.twelve}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.thirteen,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#060606]
+                  "
+                id={13}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  13
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.thirteen}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.fourteen,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#981715]
+                  "
+                id={14}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  14
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.fourteen}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.fifteen,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  border-r-[1px]
+                  bg-[#060606]
+                  "
+                id={15}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  15
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.fifteen}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.sixteen,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#981715]
+                  "
+                id={16}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  16
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.sixteen}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.seventeen,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#060606]
+                  "
+                id={17}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  17
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.seventeen}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.eighteen,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  border-r-[1px]
+                  bg-[#981715]
+                  "
+                id={18}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  18
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.eighteen}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.nineteen,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#981715]
+                  "
+                id={19}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  19
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.nineteen}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.twenty,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#060606]
+                  "
+                id={20}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  20
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.twenty}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.twentyOne,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  border-r-[1px]
+                  bg-[#981715]
+                  "
+                id={21}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  21
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.twentyOne}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.twentyTwo,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#060606]
+                  "
+                id={22}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  22
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.twentyTwo}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.twentyThree,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#981715]
+                  "
+                id={23}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  23
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.twentyThree}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.twentyFour,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  border-r-[1px]
+                  bg-[#060606]
+                  "
+                id={24}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  24
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.twentyFour}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.twentyFive,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#981715]
+                  "
+                id={25}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  25
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.twentyFive}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.twentySix,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#060606]
+                  "
+                id={26}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  26
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.twentySix}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.twentySeven,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  border-r-[1px]
+                  bg-[#981715]
+                  "
+                id={27}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  27
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.twentySeven}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.twentyEight,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#060606]
+                  "
+                id={28}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  28
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.twentyEight}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.twentyNine,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#060606]
+                  "
+                id={29}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  29
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.twentyNine}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.thirty,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  border-r-[1px]
+                  bg-[#981715]
+                  "
+                id={30}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  30
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.thirty}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.thirtyOne,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#060606]
+                  "
+                id={31}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  31
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.thirtyOne}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.thirtyTwo,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#981715]
+                  "
+                id={32}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  32
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.thirtyTwo}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.thirtyThree,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  border-r-[1px]
+                  bg-[#060606]
+                  "
+                id={33}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  33
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.thirtyThree}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.thirtyFour,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#981715]
+                  "
+                id={34}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  34
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.thirtyFour}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.thirtyFive,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#060606]
+                  "
+                id={35}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  35
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.thirtyFive}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.thirtySix,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  border-r-[1px]
+                  bg-[#981715]
+                  "
+                id={36}
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  36
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.thirtySix}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.oneToThirtyFour,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#1b0c1e]
+                  "
+                id="1-34"
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  1-34
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.oneToThirtyFour}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.twoToThirtyFive,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  bg-[#1b0c1e]
+                  "
+                id="2-35"
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  2-35
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.twoToThirtyFive}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() =>
+                  handleStakeChange({
+                    key: keyNames.threeToThirtySix,
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
+                className="relative  flex flex-col items-center justify-center  border-l-[1px]  border-b-[1px] border-gold   
+                  border-r-[1px]
+                  bg-[#1b0c1e]
+                  "
+                id="3-36"
+              >
+                <span className="absolute lg:rotate-90 top-0 z-20 left-0 flex items-center justify-center w-full h-full  text-white">
+                  3-36
+                </span>
+                <div className=" lg:rotate-90  origin-center z-50 scale-[60%]">
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={keyNames.threeToThirtySix}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </div>
             </div>
-          </div>
+          </span>
         </div>
-      </div>
+      </span>
     </div>
   );
 };

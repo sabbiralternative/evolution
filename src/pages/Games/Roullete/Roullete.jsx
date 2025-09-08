@@ -22,7 +22,7 @@ const Roullete = () => {
   const [animation, setAnimation] = useState([]);
   const [showWinLossResult, setShowWinLossResult] = useState(false);
   const [totalWinAmount, setTotalWinAmount] = useState(null);
-  const [currentRoundWinAmount, setCurrentRoundWinAmount] = useState(null);
+  const [, setCurrentRoundWinAmount] = useState(null);
   const { stake } = useSelector((state) => state.global);
   const [showFullScreen, setShowFullScreen] = useState(false);
   const { eventTypeId, eventId } = useParams();
@@ -355,7 +355,10 @@ const Roullete = () => {
                         data={data?.result}
                         status={firstEvent?.status}
                       />
-                      <div className="footerContainer--2115a">
+                      <div
+                        className="footerContainer--2115a"
+                        style={{ display: "none" }}
+                      >
                         <div
                           className="footerWrap--1452a"
                           data-role="footer-wrap"

@@ -10,6 +10,11 @@ body {
   font-family: "Inter", sans-serif !important;
 }
 
+.border-gold {
+  border-color: #b28881;
+  border-style: solid;
+}
+
 .helpChapter--73696 {
   padding: 5px 0px;
 }
