@@ -24,7 +24,7 @@ const Muflis = () => {
   const [showFullScreen, setShowFullScreen] = useState(false);
   const { eventTypeId, eventId } = useParams();
   const { data } = useGetEventDetailsQuery(
-    { eventTypeId, eventId },
+    { eventTypeId, eventId: 10001 },
     { pollingInterval: 1000 }
   );
 
