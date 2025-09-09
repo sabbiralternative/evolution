@@ -195,21 +195,24 @@ const BetSlip = ({
     <div
       onClick={handleShowSuspendedStatus}
       className="bettingGridContainer--f9317"
-      style={{ transform: "translateY(50vh)" }}
+      style={{
+        transform: `${
+          status === Status.OPEN ? "translateY(50vh)" : "translateY(55vh)"
+        }`,
+      }}
     >
       <div
         className="scaleToFit--d2b31 bettingGrid--4ddd2"
-        style={{ transform: `scale(${innerWidth / 375})` }}
+        style={{ transform: `scale(${innerWidth / 375})`, }}
       >
         <div
           className="grid--6cb5e vertical--cf832"
-          style={{ "-gridTieSize": 104 }}
+          style={{ "-gridTieSize": 104 ,opacity:status === Status.OPEN ? '1':'0.6'}}
         >
-          {status === Status.SUSPENDED && (
-            <div className="shadowOverlay--3de32"></div>
-          )}
-
-          <div className="mainSpots--b6d48" style={{ overflow: "visible" }}>
+          <div className="mainSpots--b6d48" style={{ overflow: "visible", }}>
+            {status === Status.SUSPENDED && (
+              <div className="shadowOverlay--3de32"></div>
+            )}
             <div
               onClick={() =>
                 handleStakeChange({
@@ -563,21 +566,17 @@ const BetSlip = ({
                   />
                 </clipPath>
               </svg>
-              {status === Status.OPEN && (
-                <div
-                  className="background--55c8d"
-                  style={{
-                    right: "54px",
-                    height: "calc(100% + 0px)",
-                    width: "calc(100% - 54px)",
-                  }}
-                >
-                  <div
-                    className="pattern--0cbdc"
-                    style={{ "-opacity": "0.2" }}
-                  />
-                </div>
-              )}
+
+              <div
+                className="background--55c8d"
+                style={{
+                  right: "54px",
+                  height: "calc(100% + 0px)",
+                  width: "calc(100% - 54px)",
+                }}
+              >
+                <div className="pattern--0cbdc" style={{ "-opacity": "0.2" }} />
+              </div>
             </div>
             <div
               onClick={() =>
@@ -926,21 +925,17 @@ const BetSlip = ({
                   />
                 </clipPath>
               </svg>
-              {status === Status.OPEN && (
-                <div
-                  className="background--55c8d"
-                  style={{
-                    left: "54px",
-                    height: "calc(100% + 0px)",
-                    width: "calc(100% - 54px)",
-                  }}
-                >
-                  <div
-                    className="pattern--0cbdc"
-                    style={{ "-opacity": "0.3" }}
-                  />
-                </div>
-              )}
+
+              <div
+                className="background--55c8d"
+                style={{
+                  left: "54px",
+                  height: "calc(100% + 0px)",
+                  width: "calc(100% - 54px)",
+                }}
+              >
+                <div className="pattern--0cbdc" style={{ "-opacity": "0.3" }} />
+              </div>
             </div>
             <div
               onClick={() =>
@@ -1296,17 +1291,16 @@ const BetSlip = ({
                     />
                   </clipPath>
                 </svg>
-                {status === Status.OPEN && (
+
+                <div
+                  className="background--55c8d"
+                  style={{ height: "calc(100% + 0px)" }}
+                >
                   <div
-                    className="background--55c8d"
-                    style={{ height: "calc(100% + 0px)" }}
-                  >
-                    <div
-                      className="pattern--0cbdc"
-                      style={{ "-opacity": "0.13" }}
-                    />
-                  </div>
-                )}
+                    className="pattern--0cbdc"
+                    style={{ "-opacity": "0.13" }}
+                  />
+                </div>
               </div>
             </div>
           </div>

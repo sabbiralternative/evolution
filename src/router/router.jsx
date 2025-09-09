@@ -13,6 +13,8 @@ import AmarAkbarAnthony from "../pages/Games/AmarAkbarAnthony/AmarAkbarAnthony";
 import Bollywood from "../pages/Games/Bollywood/Bollywood";
 import Roullete from "../pages/Games/Roullete/Roullete";
 import Muflis from "../pages/Games/Muflis/Muflis";
+import LightningDice from "../pages/Games/LightningDice/LightningDice";
+import DreamCatcher from "../pages/Games/DreamCatcher/DreamCatcher";
 
 export const router = createBrowserRouter(
   [
@@ -69,6 +71,14 @@ export const router = createBrowserRouter(
         {
           path: "/game/teenmuf/:eventTypeId/:eventId",
           element: <Muflis />,
+        },
+        {
+          path: "/game/teen20/:eventTypeId/:eventId",
+          element: <DreamCatcher />,
+        },
+        {
+          path: "/game/teen/:eventTypeId/:eventId",
+          element: <LightningDice />,
         },
       ],
     },
