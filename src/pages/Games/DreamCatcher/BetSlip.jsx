@@ -230,7 +230,11 @@ const BetSlip = ({
                 style={{
                   height: "306.605px",
                   width: "351px",
-                  transform: "scale(1.1631)",
+                  transform:
+                    status === Status.OPEN
+                      ? "scale(1.1631)"
+                      : "translateY(25px) scale(1.1631)",
+                  transition: "transform 0.5s ease-in-out",
                 }}
               >
                 <div

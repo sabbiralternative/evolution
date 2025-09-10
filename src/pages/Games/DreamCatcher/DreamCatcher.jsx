@@ -424,7 +424,7 @@ const DreamCatcher = () => {
               totalWinAmount={totalWinAmount}
               data={data?.result}
               firstEvent={firstEvent}
-              title="20-20 Teenpatti"
+              title="Dream Catcher"
               setCurrentRoundWinAmount={setCurrentRoundWinAmount}
             />
             <div className="tooltipsContainer--515fb increasedZIndex--60d95" />
