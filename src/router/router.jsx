@@ -17,6 +17,7 @@ import LightningDice from "../pages/Games/LightningDice/LightningDice";
 import DreamCatcher from "../pages/Games/DreamCatcher/DreamCatcher";
 import FootballDice from "../pages/Games/FoolballDice/FootballDice";
 import FootballStudio from "../pages/Games/FoolballStudio/FootballStudio";
+import SuperColor from "../pages/Games/SuperColor/SuperColor";
 
 export const router = createBrowserRouter(
   [
@@ -89,6 +90,10 @@ export const router = createBrowserRouter(
         {
           path: "/game/football-studio/:eventTypeId/:eventId",
           element: <FootballStudio />,
+        },
+        {
+          path: "/game/super-color/:eventTypeId/:eventId",
+          element: <SuperColor />,
         },
       ],
     },

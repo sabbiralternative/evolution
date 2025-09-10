@@ -1,0 +1,432 @@
+import { useEffect, useState } from "react";
+import ActionButtons from "./ActionButtons";
+import BetSlip from "./BetSlip";
+import Footer from "../../../component/shared/Footer";
+import Menu from "./Menu/Menu";
+import { useParams } from "react-router-dom";
+import { useGetEventDetailsQuery } from "../../../redux/features/events/events";
+import { Status } from "../../../const";
+import { useSelector } from "react-redux";
+import { AnimatePresence } from "framer-motion";
+import { handleDoubleStake } from "../../../utils/handleDoubleStake";
+import { handleUndoStake } from "../../../utils/handleUndoStake";
+import Counter from "../../../component/UI/Counter";
+import History from "./History";
+
+const SuperColor = () => {
+  const [showMenu, setShowMenu] = useState(false);
+  const [double, setDouble] = useState(false);
+  const [animation, setAnimation] = useState([]);
+  const [showWinLossResult, setShowWinLossResult] = useState(false);
+  const [totalWinAmount, setTotalWinAmount] = useState(null);
+  const [, setCurrentRoundWinAmount] = useState(null);
+  const { stake } = useSelector((state) => state.global);
+  const [showFullScreen, setShowFullScreen] = useState(false);
+  const { eventTypeId, eventId } = useParams();
+  const { data } = useGetEventDetailsQuery(
+    { eventTypeId, eventId: eventId },
+    { pollingInterval: 1000 }
+  );
+
+  const firstEvent = data?.result?.[0];
+
+  const initialState = {
+    even: { show: false, stake },
+    up: { show: false, stake },
+    odd: { show: false, stake },
+    red: { show: false, stake },
+    down: { show: false, stake },
+    black: { show: false, stake },
+    seven: { show: false, stake },
+    diamond: { show: false, stake },
+    heart: { show: false, stake },
+    spade: { show: false, stake },
+    club: { show: false, stake },
+  };
+
+  const [stakeState, setStakeState] = useState(initialState);
+
+  const isRepeatTheBet = Object.values(stakeState).find(
+    (item) => item?.selection_id && item?.show === false
+  );
+
+  const isPlaceStake = Object.values(stakeState).find((item) => item?.show);
+
+  useEffect(() => {
+    if (firstEvent?.status === Status.OPEN) {
+      setCurrentRoundWinAmount(null);
+    }
+  }, [firstEvent?.status]);
+
+  return (
+    <>
+      {showMenu && (
+        <div
+          className="backgroundScrim--f8ae8 backgroundScrim--3380d"
+          data-role="drawer-scrim"
+          style={{
+            opacity: "0.4",
+            transitionDuration: "initial",
+            transitionTimingFunction: "initial",
+          }}
+        />
+      )}
+      <AnimatePresence>
+        {showMenu && (
+          <Menu
+            setShowMenu={setShowMenu}
+            setShowFullScreen={setShowFullScreen}
+            showFullScreen={showFullScreen}
+          />
+        )}
+      </AnimatePresence>
+
+      <div id="root" className="rootContainer--308ad">
+        <div className="container--efd24">
+          <div
+            data-role="branded-gradient"
+            className="gradient--5a4aa onlyPortrait--08467"
+            style={{
+              background: `linear-gradient(
+                45deg,
+                rgba(0, 41, 33, 0) 0%,
+                rgba(0, 41, 33, 0.8) 50%,
+                rgba(0, 41, 33, 0) 100%
+              ),
+              linear-gradient(
+                45deg,
+                rgb(31, 130, 97) -5%,
+                rgb(0, 41, 33) 50%,
+                rgb(31, 130, 97) 105%
+              )`,
+            }}
+          />
+          <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
+            <div className="relativeChildren--99d54">
+              <div
+                onClick={() => setShowMenu(true)}
+                className="container--ea4e5 commonUiElement"
+                data-role="menu-button-layout"
+              >
+                <button
+                  className="button--673ce xxs--2f9fb roundingBoth--6d5e6 buttonRoot--3bd4d"
+                  data-type="secondary"
+                  data-role="menu-button"
+                  data-state="Default"
+                >
+                  <span
+                    className="roundingBoth--2a8e7 buttonContent--2a2d4 xxs--c4d69"
+                    data-role="button-content"
+                  >
+                    <div
+                      className="buttonBase--73d7d"
+                      data-role="base-border"
+                      style={{
+                        padding: "calc(var(--rem-migration-size, 10px) * 0.1)",
+                      }}
+                    />
+                    <div className="iconLabelWrapper--8e144 left--60884">
+                      <span className="icon--54b42">
+                        <span
+                          className="iconWrapper--9127d"
+                          data-role="icon-wrapper"
+                        >
+                          <svg
+                            viewBox="0 0 100 100"
+                            className="iconWrapper--b4e49"
+                            style={{ height: "100%" }}
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              className="icon--8dcd0"
+                              data-role="menu-icon"
+                              height="100%"
+                              y="0%"
+                            >
+                              <path d="M20 6H4v2h16V6Zm0 5H4v2h16v-2ZM4 16h16v2H4v-2Z" />
+                            </svg>
+                          </svg>
+                        </span>
+                      </span>
+                    </div>
+                    <div className="badge--81159" />
+                  </span>
+                </button>
+              </div>
+              <div className="autoplay--349e5">
+                <div className="button--15026 commonUiElement">
+                  <button
+                    className="button--673ce xxs--2f9fb roundingBoth--6d5e6 buttonStateDisabled--77839 buttonRoot--3bd4d disabled--c81e1"
+                    data-type="secondary"
+                    data-role="autoplay-button"
+                    data-state="Disabled"
+                  >
+                    <span
+                      className="roundingBoth--2a8e7 buttonContent--2a2d4 xxs--c4d69"
+                      data-role="button-content"
+                    >
+                      <div
+                        className="buttonBase--73d7d"
+                        data-role="base-border"
+                        style={{
+                          padding:
+                            "calc(var(--rem-migration-size, 10px) * 0.1)",
+                        }}
+                      />
+                      <div className="iconLabelWrapper--8e144 left--60884">
+                        <span className="icon--54b42">
+                          <span
+                            className="iconWrapper--9127d"
+                            data-role="icon-wrapper"
+                          >
+                            <svg
+                              viewBox="0 0 100 100"
+                              className="iconWrapper--b4e49"
+                              style={{ height: "100%" }}
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                className="icon--8dcd0"
+                                height="100%"
+                                y="0%"
+                              >
+                                <path d="M5.434 7.964A5 5 0 0 0 3.97 11.5a5 5 0 0 0 1.4 3.42L3.64 16A7 7 0 0 1 9 4.5h6V3l4 2.5-.2.13-2 1.23L14.97 8V6.5h-6a5 5 0 0 0-3.536 1.464ZM20.34 8.01l-1.73 1.08a5 5 0 0 1 1.36 3.41 5 5 0 0 1-5 5h-6V16l-1.82 1.15-2 1.23-.2.12 4 2.5v-1.5h6a7 7 0 0 0 7-7 7 7 0 0 0-1.61-4.49Z" />
+                                <path d="m15 12-5-3v6l5-3Z" />
+                              </svg>
+                            </svg>
+                          </span>
+                        </span>
+                      </div>
+                      <div className="badge--81159" />
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="toasts--02433" data-role="toasts-container">
+            <div className="container--fb02b sm--4450c">
+              <div
+                className="center--9b96d sm--4450c useMediumScreenMediaQuery--574a5"
+                data-role="toast-drawer-wrapper"
+              >
+                <div
+                  className="drawer--e8e4c hidden--d3be2"
+                  data-role="toast-drawer"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="video--53b3c"
+            data-role="video-with-overlay-container"
+          >
+            <div data-role="mobile-video-wrapper">
+              <History />
+              <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
+                <div className="relativeChildren--99d54" />
+              </div>
+              <div
+                style={{ width: "430px", height: "326.2px", margin: "auto" }}
+              >
+                <div
+                  data-role="scaled-video-container"
+                  className="videoWrapper--0aab6"
+                  style={{
+                    width: "430px",
+                    height: "241.875px",
+                    transformOrigin: "center top",
+                    transform: "scale(1.34863, 1.34863) translate(0px, 0px)",
+                  }}
+                >
+                  <div
+                    className="video-wrapper--914e4 inline--a3f70 static-wrapper--ef8dc"
+                    data-role="video-wrapper"
+                  >
+                    <div
+                      className="videoInnerWrapper--f6789"
+                      id="video-inner"
+                      data-role="gesture-target"
+                    >
+                      <div id="video-wrapper" className="videoWrapper--514d0">
+                        <div
+                          className="transformWrapper--37164"
+                          style={{ visibility: "visible" }}
+                        >
+                          <div style={{ height: "100%" }}>
+                            <div style={{ width: "100%", height: "100%" }}>
+                              <video
+                                muted="true"
+                                preload="none"
+                                data-current-player="true"
+                                playsInline
+                                style={{
+                                  height: "100%",
+                                  width: "100%",
+                                  pointerEvents: "none",
+                                  display: "block",
+                                  objectFit: "contain",
+                                }}
+                                src="blob:https://babylonbetst.evo-games.com/335c9553-60fd-477d-be79-89e0dfe264ac"
+                              />
+                              <canvas
+                                width={0}
+                                height={0}
+                                style={{
+                                  display: "none",
+                                  objectFit: "contain",
+                                }}
+                              />
+                            </div>
+                          </div>
+                          <div className="backdropBlurContainer--3eb32" />
+                        </div>
+                        <div className="preventPinchingOverlay--0ddab" />
+                        <div className="customContent--d8507">
+                          <div
+                            className="videoLoadingOverlay--bb9e3 hidden--797ae"
+                            data-role="video-loading-picture"
+                            style={{
+                              animationDuration: "500ms",
+                              animationDelay: "0ms",
+                            }}
+                          >
+                            <div
+                              className="image--6dbc6"
+                              style={{
+                                backgroundImage:
+                                  'url("blob:https://babylonbetst.evo-games.com/354a6366-66fd-40d5-900b-55242a635cec")',
+                              }}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                data-role="video-gradient"
+                className="videoGradient--eeafb"
+                style={{
+                  "-videoHeight": "266px",
+                  "-gradientScale": "2.18796992481203",
+                  "-fadeoutHeight": "50px",
+                }}
+              />
+            </div>
+          </div>
+          <div
+            className="gameOverlay--aabc7"
+            data-role="game-overlay-container"
+          >
+            <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
+              <div className="relativeChildren--99d54">
+                <div className="flyingChips--b464d" />
+                <div
+                  className="draggablePoint--7c956 hidden--ef455"
+                  style={{
+                    "-chipSize": "0px",
+                    transform: "translate3d(0px, 0px, 0px)",
+                  }}
+                >
+                  <div className="chipContainer--e8802" />
+                </div>
+                <div className="container--aa34e">
+                  <div className="mobileTimer--a28ae">
+                    <div className="statusMessage--d2eaf">
+                      <div
+                        className="overlayStatus--ad1a9"
+                        data-role="status-container"
+                        data-size="sm"
+                        style={{ "-scale": "1.6" }}
+                      >
+                        <div
+                          className="gradient--957d4"
+                          data-role="status-gradient"
+                          style={{ top: "-45.5938px", left: "-96.4141px" }}
+                        />
+                        <div data-role="status-text">PLACE YOUR BETS</div>
+                      </div>
+                    </div>
+                    <div
+                      className="linearTimer--1abb0 sm--de46e"
+                      data-role="linear-timer"
+                      style={{ zIndex: 99 }}
+                    >
+                      <div className="rail--14b30">
+                        <div
+                          className="bar--32675"
+                          style={{ maskPosition: "33.3298% 0px" }}
+                        >
+                          <div className="barFill--71be5 green--521ab" />
+                          <div className="barFill--71be5 yellow--021f4 hidden--3b295" />
+                        </div>
+                      </div>
+                      <div className="shadow--95274" />
+                      <div className="numberWrapper--3d1dc">
+                        <div className="number--4d612">11</div>
+                      </div>
+                    </div>
+                  </div>
+                  <BetSlip
+                    initialState={initialState}
+                    double={double}
+                    animation={animation}
+                    setAnimation={setAnimation}
+                    setShowWinLossResult={setShowWinLossResult}
+                    setTotalWinAmount={setTotalWinAmount}
+                    stakeState={stakeState}
+                    setStakeState={setStakeState}
+                    data={data?.result}
+                    status={firstEvent?.status}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="gameResultPosition--e7f83" />
+          </div>
+          {firstEvent?.status === Status.OPEN && (
+            <ActionButtons
+              isRepeatTheBet={isRepeatTheBet}
+              handleDoubleStake={() =>
+                handleDoubleStake(
+                  isRepeatTheBet,
+                  setDouble,
+                  setStakeState,
+                  setAnimation,
+                  firstEvent
+                )
+              }
+              handleUndoStake={() => handleUndoStake(setStakeState, stakeState)}
+              isPlaceStake={isPlaceStake}
+            />
+          )}
+          <Footer
+            showWinLossResult={showWinLossResult}
+            setShowWinLossResult={setShowWinLossResult}
+            setTotalWinAmount={setTotalWinAmount}
+            totalWinAmount={totalWinAmount}
+            data={data?.result}
+            firstEvent={firstEvent}
+            title="Super Color"
+            setCurrentRoundWinAmount={setCurrentRoundWinAmount}
+          />
+          <div className="tooltipsContainer--515fb increasedZIndex--60d95" />
+          <div
+            data-role="overlay-container"
+            className="chatOverlayPortal--fd539"
+          />
+          <div
+            className="onboardingBubbleContainer--d208c"
+            data-role="onboarding-bubble-container"
+          />
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default SuperColor;
