@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useGetLiveCasinoThumbnailQuery } from "../../redux/features/casino/casino.api";
+import StaticThumbnail from "../shared/StaticThumbnail";
 
 const CasinoThumbnail = ({ title, id }) => {
   const navigate = useNavigate();
@@ -142,6 +143,7 @@ const CasinoThumbnail = ({ title, id }) => {
                 </li>
               );
             })}
+            <StaticThumbnail slug="football-dice" name="Football Dice" />
           </ul>
         </div>
       </section>
