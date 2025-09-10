@@ -144,6 +144,7 @@ const CasinoThumbnail = ({ title, id }) => {
               );
             })}
             <StaticThumbnail slug="football-dice" name="Football Dice" />
+            <StaticThumbnail slug="football-studio" name="Football Studio" />
           </ul>
         </div>
       </section>

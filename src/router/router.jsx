@@ -16,6 +16,7 @@ import Muflis from "../pages/Games/Muflis/Muflis";
 import LightningDice from "../pages/Games/LightningDice/LightningDice";
 import DreamCatcher from "../pages/Games/DreamCatcher/DreamCatcher";
 import FootballDice from "../pages/Games/FoolballDice/FootballDice";
+import FootballStudio from "../pages/Games/FoolballStudio/FootballStudio";
 
 export const router = createBrowserRouter(
   [
@@ -84,6 +85,10 @@ export const router = createBrowserRouter(
         {
           path: "/game/football-dice/:eventTypeId/:eventId",
           element: <FootballDice />,
+        },
+        {
+          path: "/game/football-studio/:eventTypeId/:eventId",
+          element: <FootballStudio />,
         },
       ],
     },
