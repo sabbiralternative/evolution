@@ -13,6 +13,7 @@ import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
 import Winner from "./Winner";
+import AntMedia from "../../../component/shared/Antmedia";
 
 const LuckySeven = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -276,7 +277,8 @@ const LuckySeven = () => {
                       >
                         <div style={{ height: "100%" }}>
                           <div style={{ width: "100%", height: "100%" }}>
-                            <video
+                            <AntMedia />
+                            {/* <video
                               muted="true"
                               preload="none"
                               data-current-player="true"
@@ -289,12 +291,12 @@ const LuckySeven = () => {
                                 objectFit: "contain",
                               }}
                               src="blob:https://babylonbetst.evo-games.com/1bfbee58-82d4-4911-8af7-cdcb2732567a"
-                            />
-                            <canvas
+                            /> */}
+                            {/* <canvas
                               width={0}
                               height={0}
                               style={{ display: "none", objectFit: "contain" }}
-                            />
+                            /> */}
                           </div>
                         </div>
                         <div className="backdropBlurContainer--3eb32" />
