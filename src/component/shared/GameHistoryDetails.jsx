@@ -1,6 +1,18 @@
 import { motion } from "motion/react";
+import { useGetBets } from "../../hooks/bets";
 
-const GameHistoryDetails = ({ setTab, closeModal }) => {
+const GameHistoryDetails = ({ setTab, closeModal, roundId }) => {
+  const { data, isLoading } = useGetBets({ round_id: roundId });
+  const totalWin = data?.result?.bet_details?.reduce(
+    (sum, item) => sum + (Number(item?.win) || 0),
+    0
+  );
+
+  const totalBet = data?.result?.bet_details?.reduce(
+    (sum, item) => sum + (Number(item?.bet) || 0),
+    0
+  );
+
   return (
     <motion.div
       initial={{ x: "100%", y: "10%" }}
@@ -71,7 +83,7 @@ const GameHistoryDetails = ({ setTab, closeModal }) => {
                   <div className="titleContainer--ae994">
                     <div className="title--b94ad">
                       <div data-role="title-text" className="titleText--44453">
-                        GOLDEN WEALTH BACCARAT
+                        {data?.result?.game_details?.table}
                       </div>
                     </div>
                   </div>
@@ -115,7 +127,9 @@ const GameHistoryDetails = ({ setTab, closeModal }) => {
                   >
                     <div className="loadingIndicator--39463">
                       <div
-                        className="container--c48cc hidden--85eb1"
+                        className={`container--c48cc ${
+                          isLoading && !data ? "" : "hidden--85eb1"
+                        }`}
                         data-role="loading-indicator-container"
                         dir
                       >
@@ -236,7 +250,7 @@ const GameHistoryDetails = ({ setTab, closeModal }) => {
                                     className="roundInfoBlockValue--b1263"
                                     data-role="history-table-name"
                                   >
-                                    Immersive Roulette
+                                    {data?.result?.game_details?.table}
                                   </span>
                                 </div>
                                 <div
@@ -251,7 +265,7 @@ const GameHistoryDetails = ({ setTab, closeModal }) => {
                                     className="roundInfoBlockValue--b1263"
                                     data-role="history-game-start"
                                   >
-                                    09/09/2025 17:53:59
+                                    {data?.result?.game_details?.game_resolved}
                                   </span>
                                 </div>
                                 <div
@@ -266,7 +280,7 @@ const GameHistoryDetails = ({ setTab, closeModal }) => {
                                     className="roundInfoBlockValue--b1263"
                                     data-role="history-game-number"
                                   >
-                                    #12:23:12
+                                    {data?.result?.game_details?.game_number}
                                   </span>
                                 </div>
                               </div>
@@ -289,7 +303,17 @@ const GameHistoryDetails = ({ setTab, closeModal }) => {
                                         <div className="numbers--b042d">
                                           <div className="number--c9dd1">
                                             <div className="result--7da1e black--c427b">
-                                              6
+                                              {data?.result?.game_details
+                                                ?.card && (
+                                                <img
+                                                  style={{
+                                                    width: "25px",
+                                                    height: "30px",
+                                                  }}
+                                                  src={`/cards/${data?.result?.game_details?.card}.jpg`}
+                                                  alt=""
+                                                />
+                                              )}
                                             </div>
                                           </div>
                                         </div>
@@ -330,29 +354,38 @@ const GameHistoryDetails = ({ setTab, closeModal }) => {
                                       </tr>
                                     </thead>
                                     <tbody data-role="betContainer">
-                                      <tr
-                                        className="sm--036b9"
-                                        data-role="betRow"
-                                      >
-                                        <td
-                                          className="cellBetName--b42bc"
-                                          data-role="betName"
-                                        >
-                                          <span>Red</span>
-                                        </td>
-                                        <td
-                                          className="cellBet--30d9c"
-                                          data-role="bet"
-                                        >
-                                          ⁦⁦₹⁩100⁩
-                                        </td>
-                                        <td
-                                          className="cellBet--30d9c zeroWinValue--1927b"
-                                          data-role="won"
-                                        >
-                                          ⁦⁦₹⁩0⁩
-                                        </td>
-                                      </tr>
+                                      {data?.result?.bet_details?.map(
+                                        (item, i) => {
+                                          return (
+                                            <tr
+                                              key={i}
+                                              className="sm--036b9"
+                                              data-role="betRow"
+                                            >
+                                              <td
+                                                className="cellBetName--b42bc"
+                                                data-role="betName"
+                                              >
+                                                <span>{item?.place_name}</span>
+                                              </td>
+                                              <td
+                                                className="cellBet--30d9c"
+                                                data-role="bet"
+                                              >
+                                                {Number(item?.bet) < 0 && "-"} ₹
+                                                {Number(Math.abs(item?.bet))}
+                                              </td>
+                                              <td
+                                                className="cellBet--30d9c zeroWinValue--1927b"
+                                                data-role="won"
+                                              >
+                                                {Number(item?.win) < 0 && "-"} ₹
+                                                {Math.abs(Number(item?.win))}
+                                              </td>
+                                            </tr>
+                                          );
+                                        }
+                                      )}
                                     </tbody>
                                     <tfoot>
                                       <tr
@@ -370,13 +403,15 @@ const GameHistoryDetails = ({ setTab, closeModal }) => {
                                           className="footerCellBet--965c2"
                                           data-role="amount"
                                         >
-                                          ⁦⁦₹⁩100⁩
+                                          {totalBet < 0 && "-"} ₹
+                                          {Math.abs(totalBet)}
                                         </td>
                                         <td
                                           className="footerCellBet--965c2 zeroWinValue--f30c9"
                                           data-role="win"
                                         >
-                                          ⁦⁦₹⁩0⁩
+                                          {totalWin < 0 && "-"} ₹
+                                          {Math.abs(totalWin)}
                                         </td>
                                       </tr>
                                     </tfoot>

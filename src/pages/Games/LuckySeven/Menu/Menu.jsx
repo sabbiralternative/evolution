@@ -2,12 +2,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Chat from "./Chat";
 import { AnimatePresence, motion } from "motion/react";
-import GameHistory from "./GameHistory";
-import GameHistoryDetails from "./GameHistoryDetails";
+
 import HowToPlay from "./HowToPlay";
 import PayoutLimit from "./PayoutLimit";
+import GameHistory from "../../../../component/shared/GameHistory";
+import GameHistoryDetails from "../../../../component/shared/GameHistoryDetails";
 
 const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
+  const [roundId, setRoundId] = useState(null);
   const [tab, setTab] = useState("menu");
   const navigate = useNavigate();
   const closeModal = () => {
@@ -46,12 +48,20 @@ const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
       </AnimatePresence>
       <AnimatePresence>
         {tab === "game-history" && (
-          <GameHistory closeModal={closeModal} setTab={setTab} />
+          <GameHistory
+            setRoundId={setRoundId}
+            closeModal={closeModal}
+            setTab={setTab}
+          />
         )}
       </AnimatePresence>
       <AnimatePresence>
         {tab === "game-history-details" && (
-          <GameHistoryDetails closeModal={closeModal} setTab={setTab} />
+          <GameHistoryDetails
+            roundId={roundId}
+            closeModal={closeModal}
+            setTab={setTab}
+          />
         )}
       </AnimatePresence>
       <AnimatePresence>

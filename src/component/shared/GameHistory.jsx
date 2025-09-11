@@ -1,8 +1,8 @@
 import { motion } from "motion/react";
-import { useGetHistory } from "../../../../hooks/history";
+import { useGetHistory } from "../../hooks/history";
 import React, { useEffect, useState, useCallback, useRef } from "react";
 
-const GameHistory = ({ setTab, closeModal }) => {
+const GameHistory = ({ setTab, closeModal, setRoundId }) => {
   const [dateCategory, setDateCategory] = useState([]);
   const [page, setPage] = useState(1);
   const [allHistoryData, setAllHistoryData] = useState([]); // Store all accumulated data
@@ -356,9 +356,12 @@ const GameHistory = ({ setTab, closeModal }) => {
                                         .map((singleItem, i) => {
                                           return (
                                             <tr
-                                              onClick={() =>
-                                                setTab("game-history-details")
-                                              }
+                                              onClick={() => {
+                                                setTab("game-history-details");
+                                                setRoundId(
+                                                  singleItem?.round_id
+                                                );
+                                              }}
                                               key={`${date}-${i}`}
                                               className="row--a868c sm--179b8"
                                               data-game-id="185d68e6864f2b895f0eb79a"
