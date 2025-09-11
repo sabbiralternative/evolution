@@ -547,77 +547,154 @@ const ActionButtons = ({
                 </div>
               </div>
               <div className="after--31b84 commonUiElement hideable--4b209">
-                <div
-                  style={{
-                    opacity: isPlaceStake || isRepeatTheBet ? "1" : "0.5",
-                    cursor:
-                      isPlaceStake || isRepeatTheBet
-                        ? "pointer"
-                        : "not-allowed",
-                    pointerEvents:
-                      isPlaceStake || isRepeatTheBet ? "auto" : "none",
-                  }}
-                  onClick={handleDoubleStake}
-                  className="actionButton--e4d79 buttonPositionRight--f7cb3"
-                  data-role="chipstack-double-repeat-button"
-                >
-                  <button
-                    className="button--673ce xxs--2f9fb roundingBoth--6d5e6 buttonStateDisabled--77839 buttonRoot--715a7 disabled--308db"
-                    data-type="secondaryCallToAction"
-                    data-role="double-button"
-                    data-state="Disabled"
+                {isRepeatTheBet ? (
+                  <div
+                    style={{
+                      opacity: isPlaceStake || isRepeatTheBet ? "1" : "0.5",
+                      cursor:
+                        isPlaceStake || isRepeatTheBet
+                          ? "pointer"
+                          : "not-allowed",
+                      pointerEvents:
+                        isPlaceStake || isRepeatTheBet ? "auto" : "none",
+                    }}
+                    onClick={handleDoubleStake}
+                    className="actionButton--e4d79 buttonPositionRight--f7cb3"
+                    data-role="chipstack-double-repeat-button"
                   >
-                    <span
-                      className="roundingBoth--2a8e7 buttonContent--2a2d4 xxs--c4d69"
-                      data-role="button-content"
+                    <button
+                      className="button--673ce xxs--2f9fb roundingBoth--6d5e6 buttonRoot--715a7"
+                      data-type="secondaryCallToAction"
+                      data-role="repeat-button"
+                      data-state="Default"
                     >
-                      <div
-                        className="buttonBase--bf354"
-                        data-role="base-border"
-                        style={{
-                          padding:
-                            "calc(var(--rem-migration-size, 10px) * 0.1)",
-                        }}
-                      />
-                      <div className="iconLabelWrapper--8e144 left--60884">
-                        <span className="icon--54b42">
-                          <span
-                            className="iconWrapper--9127d"
-                            data-role="icon-wrapper"
-                          >
-                            <svg
-                              viewBox="0 0 100 100"
-                              className="iconWrapper--b4e49"
-                              style={{ height: "100%" }}
+                      <span
+                        className="roundingBoth--2a8e7 buttonContent--2a2d4 xxs--c4d69"
+                        data-role="button-content"
+                      >
+                        <div
+                          className="buttonBase--bf354"
+                          data-role="base-border"
+                          style={{
+                            padding:
+                              "calc(var(--rem-migration-size, 10px) * 0.1)",
+                          }}
+                        />
+                        <div className="iconLabelWrapper--8e144 left--60884">
+                          <span className="icon--54b42">
+                            <span
+                              className="iconWrapper--9127d"
+                              data-role="icon-wrapper"
                             >
                               <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                className="icon--8dcd0"
-                                data-role="double-svg"
-                                height="100%"
-                                y="0%"
+                                viewBox="0 0 100 100"
+                                className="iconWrapper--b4e49"
+                                style={{ height: "100%" }}
                               >
-                                <path d="M12.017 18.881v-1.49l4.63-4.81c.458-.477.841-.92 1.148-1.275l.082-.095c.287-.344.529-.724.72-1.13a2.57 2.57 0 0 0 .25-1.14 2.12 2.12 0 0 0-.33-1.18 2.17 2.17 0 0 0-.87-.77 2.83 2.83 0 0 0-1.25-.27 2.67 2.67 0 0 0-1.29.3 2.21 2.21 0 0 0-.84.85 2.67 2.67 0 0 0-.29 1.29h-2a4.14 4.14 0 0 1 .58-2.19 3.88 3.88 0 0 1 1.58-1.45 4.85 4.85 0 0 1 2.28-.52 4.84 4.84 0 0 1 2.27.51 3.87 3.87 0 0 1 1.55 1.39c.373.6.564 1.294.55 2a4.107 4.107 0 0 1-.28 1.5 6.777 6.777 0 0 1-1 1.62c-.473.593-1.14 1.313-2 2.16l-2.72 2.85v.1h6.16v1.77l-8.93-.02Zm-4.654-8.02L5.061 8.557 4 9.618l2.303 2.303-2.3 2.3 1.06 1.06 2.3-2.3 2.294 2.294 1.06-1.06-2.293-2.294 2.296-2.296-1.06-1.06-2.297 2.295Z" />
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 24 24"
+                                  className="icon--8dcd0"
+                                  height="100%"
+                                  y="0%"
+                                >
+                                  <path d="M21.5 11.5H20a8.5 8.5 0 1 0-8.5 8.5 8.25 8.25 0 0 0 2.55-.4l-.6-1.9A6.499 6.499 0 1 1 18 11.5h-2l3 5 3-5h-.5Z" />
+                                </svg>
                               </svg>
-                            </svg>
+                            </span>
                           </span>
-                        </span>
+                        </div>
+                        <div className="badge--81159" />
+                      </span>
+                    </button>
+                    <button className="clickableLabel--8fd8e active--bbaa2">
+                      <div className="label--e8213">
+                        <div
+                          className="label--365af buttonLocationChipStackHorizontal--4058e"
+                          data-role="chip-stack-label"
+                        >
+                          REPEAT
+                        </div>
                       </div>
-                      <div className="badge--81159" />
-                    </span>
-                  </button>
-                  <button className="clickableLabel--8fd8e">
-                    <div className="label--e8213">
-                      <div
-                        className="label--365af disabledButtonLabel--a77ae buttonLocationChipStackHorizontal--4058e"
-                        data-role="chip-stack-label"
+                    </button>
+                  </div>
+                ) : (
+                  <div
+                    style={{
+                      opacity: isPlaceStake || isRepeatTheBet ? "1" : "0.5",
+                      cursor:
+                        isPlaceStake || isRepeatTheBet
+                          ? "pointer"
+                          : "not-allowed",
+                      pointerEvents:
+                        isPlaceStake || isRepeatTheBet ? "auto" : "none",
+                    }}
+                    onClick={handleDoubleStake}
+                    className="actionButton--e4d79 buttonPositionRight--f7cb3"
+                    data-role="chipstack-double-repeat-button"
+                  >
+                    <button
+                      className={`button--673ce xxs--2f9fb roundingBoth--6d5e6  buttonRoot--715a7 ${
+                        isPlaceStake || isRepeatTheBet
+                          ? ""
+                          : "buttonStateDisabled--77839 disabled--308db"
+                      }`}
+                      data-type="secondaryCallToAction"
+                      data-role="double-button"
+                      data-state="Disabled"
+                    >
+                      <span
+                        className="roundingBoth--2a8e7 buttonContent--2a2d4 xxs--c4d69"
+                        data-role="button-content"
                       >
-                        DOUBLE
+                        <div
+                          className="buttonBase--bf354"
+                          data-role="base-border"
+                          style={{
+                            padding:
+                              "calc(var(--rem-migration-size, 10px) * 0.1)",
+                          }}
+                        />
+                        <div className="iconLabelWrapper--8e144 left--60884">
+                          <span className="icon--54b42">
+                            <span
+                              className="iconWrapper--9127d"
+                              data-role="icon-wrapper"
+                            >
+                              <svg
+                                viewBox="0 0 100 100"
+                                className="iconWrapper--b4e49"
+                                style={{ height: "100%" }}
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 24 24"
+                                  className="icon--8dcd0"
+                                  data-role="double-svg"
+                                  height="100%"
+                                  y="0%"
+                                >
+                                  <path d="M12.017 18.881v-1.49l4.63-4.81c.458-.477.841-.92 1.148-1.275l.082-.095c.287-.344.529-.724.72-1.13a2.57 2.57 0 0 0 .25-1.14 2.12 2.12 0 0 0-.33-1.18 2.17 2.17 0 0 0-.87-.77 2.83 2.83 0 0 0-1.25-.27 2.67 2.67 0 0 0-1.29.3 2.21 2.21 0 0 0-.84.85 2.67 2.67 0 0 0-.29 1.29h-2a4.14 4.14 0 0 1 .58-2.19 3.88 3.88 0 0 1 1.58-1.45 4.85 4.85 0 0 1 2.28-.52 4.84 4.84 0 0 1 2.27.51 3.87 3.87 0 0 1 1.55 1.39c.373.6.564 1.294.55 2a4.107 4.107 0 0 1-.28 1.5 6.777 6.777 0 0 1-1 1.62c-.473.593-1.14 1.313-2 2.16l-2.72 2.85v.1h6.16v1.77l-8.93-.02Zm-4.654-8.02L5.061 8.557 4 9.618l2.303 2.303-2.3 2.3 1.06 1.06 2.3-2.3 2.294 2.294 1.06-1.06-2.293-2.294 2.296-2.296-1.06-1.06-2.297 2.295Z" />
+                                </svg>
+                              </svg>
+                            </span>
+                          </span>
+                        </div>
+                        <div className="badge--81159" />
+                      </span>
+                    </button>
+                    <button className="clickableLabel--8fd8e">
+                      <div className="label--e8213">
+                        <div
+                          className="label--365af disabledButtonLabel--a77ae buttonLocationChipStackHorizontal--4058e"
+                          data-role="chip-stack-label"
+                        >
+                          DOUBLE
+                        </div>
                       </div>
-                    </div>
-                  </button>
-                </div>
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
