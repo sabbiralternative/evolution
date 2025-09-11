@@ -5,6 +5,7 @@ export const API = {
   order: "",
   pnl: "",
   bets: "",
+  history: "",
 };
 
 export const Settings = {

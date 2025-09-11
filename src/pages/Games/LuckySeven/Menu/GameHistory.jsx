@@ -1,5 +1,79 @@
 import { motion } from "motion/react";
+import { useGetHistory } from "../../../../hooks/history";
+import React, { useEffect, useState, useCallback, useRef } from "react";
+
 const GameHistory = ({ setTab, closeModal }) => {
+  const [dateCategory, setDateCategory] = useState([]);
+  const [page, setPage] = useState(1);
+  const [allHistoryData, setAllHistoryData] = useState([]); // Store all accumulated data
+  const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+  const scrollableRef = useRef(null);
+
+  const { data, isLoading } = useGetHistory({ page });
+
+  // Handle new data when page changes
+  useEffect(() => {
+    if (data?.result?.length > 0) {
+      if (page === 1) {
+        // First page - replace all data
+        setAllHistoryData(data.result);
+      } else {
+        // Subsequent pages - merge with existing data
+        setAllHistoryData((prevData) => [...prevData, ...data.result]);
+      }
+
+      // Check if there's more data (assuming less than expected means no more data)
+      if (data.result.length < 10) {
+        // Assuming 10 is your page size
+        setHasMore(false);
+      }
+    } else if (data?.result?.length === 0 && page > 1) {
+      // No more data available
+      setHasMore(false);
+    }
+
+    setLoading(false);
+  }, [data, page]);
+
+  // Update date categories when allHistoryData changes
+  useEffect(() => {
+    if (allHistoryData.length > 0) {
+      const uniqueDateArray = Array.from(
+        new Set(allHistoryData.map((item) => item?.date?.split(" ")[0]))
+      );
+      setDateCategory(uniqueDateArray);
+    }
+  }, [allHistoryData]);
+
+  // Scroll handler for pagination
+  const handleScroll = useCallback(
+    (e) => {
+      const { scrollTop, scrollHeight, clientHeight } = e.target;
+      const threshold = 10; // pixels from bottom to trigger load
+
+      if (
+        scrollHeight - scrollTop <= clientHeight + threshold &&
+        !loading &&
+        !isLoading &&
+        hasMore
+      ) {
+        setLoading(true);
+        setPage((prevPage) => prevPage + 1);
+      }
+    },
+    [loading, isLoading, hasMore]
+  );
+
+  // Reset data when component mounts or when needed
+  const resetPagination = useCallback(() => {
+    setPage(1);
+    setAllHistoryData([]);
+    setDateCategory([]);
+    setHasMore(true);
+    setLoading(false);
+  }, []);
+
   return (
     <motion.div
       initial={{ x: "100%" }}
@@ -132,9 +206,10 @@ const GameHistory = ({ setTab, closeModal }) => {
                   >
                     <div className="loadingIndicator--39463">
                       <div
-                        className="container--c48cc hidden--85eb1"
+                        className={`container--c48cc ${
+                          isLoading || loading ? "" : "hidden--85eb1"
+                        }`}
                         data-role="loading-indicator-container"
-                        dir
                       >
                         <div className="indicator--18cd4">
                           <div className="icon--827c8">
@@ -157,7 +232,9 @@ const GameHistory = ({ setTab, closeModal }) => {
                               <path d="M43.2 35.4l-6 3.5c-4.4-0.1-8.1 0.3-11.2 0.9l0.7-3.9c2.8-0.4 5.9-0.7 9.5-0.7C38.3 35.2 40.6 35.2 43.2 35.4z" />
                             </svg>
                           </div>
-                          <span className="text--51457">Loading...</span>
+                          <span className="text--51457">
+                            {page === 1 ? "Loading..." : "Loading more..."}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -204,741 +281,135 @@ const GameHistory = ({ setTab, closeModal }) => {
                           data-role="scrollable-wrapper"
                         >
                           <div
+                            ref={scrollableRef}
                             data-role="scrollable"
                             className="scrollable--96151 vertical--99fcf"
                             style={{
                               maskImage:
                                 "linear-gradient(transparent 0%, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 97.91%, transparent 100%), linear-gradient(to right, transparent 0%, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 100%, transparent 100%)",
                             }}
+                            onScroll={handleScroll}
                           >
                             <table className="historyTable--564ed">
                               <tbody>
-                                <tr
-                                  data-role="history-day"
-                                  className="row--d06c8 sm--20e69"
-                                >
-                                  <td
-                                    data-role="history-day-date-cell"
-                                    className="date--32e9b"
-                                  >
-                                    −<span dir="auto">03/09/2025</span>
-                                  </td>
-                                  <td
-                                    data-role="history-day-balance-type"
-                                    className="balanceType--4d19a"
-                                  />
-                                  <td
-                                    data-role="history-day-bet"
-                                    className="bet--71853"
-                                  >
-                                    ⁦⁦₹⁩120⁩
-                                  </td>
-                                  <td
-                                    data-role="history-day-win-lose"
-                                    className="winLose--1be70"
-                                  >
-                                    ⁦⁦₹⁩80⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  className="row--a868c sm--179b8"
-                                  data-game-id="18619fcb150c6ec36819fb16"
-                                  data-role="history-transaction-row"
-                                >
-                                  <td className="time--f5e9e" data-role="time">
-                                    06:57:34
-                                  </td>
-                                  <td
-                                    onClick={() =>
-                                      setTab("game-history-details")
-                                    }
-                                    className="gameType--e7702"
-                                    data-role="game-type"
-                                  >
-                                    <span>Golden Wealth Baccarat</span>
-                                  </td>
-                                  <td className="bet--7530c" data-role="bet">
-                                    ⁦⁦₹⁩120⁩
-                                  </td>
-                                  <td
-                                    className="winLose--789d9"
-                                    data-role="amount"
-                                  >
-                                    ⁦⁦₹⁩80⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  data-role="history-day"
-                                  className="row--d06c8 sm--20e69"
-                                >
-                                  <td
-                                    data-role="history-day-date-cell"
-                                    className="date--32e9b"
-                                  >
-                                    −<span dir="auto">02/09/2025</span>
-                                  </td>
-                                  <td
-                                    data-role="history-day-balance-type"
-                                    className="balanceType--4d19a"
-                                  />
-                                  <td
-                                    data-role="history-day-bet"
-                                    className="bet--71853"
-                                  >
-                                    ⁦⁦₹⁩120⁩
-                                  </td>
-                                  <td
-                                    data-role="history-day-win-lose"
-                                    className="winLose--1be70"
-                                  >
-                                    ⁦⁦₹⁩80⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  className="row--a868c sm--179b8"
-                                  data-game-id="18616efdcb293b9c956fcf4d"
-                                  data-role="history-transaction-row"
-                                >
-                                  <td className="time--f5e9e" data-role="time">
-                                    16:03:21
-                                  </td>
-                                  <td
-                                    className="gameType--e7702"
-                                    data-role="game-type"
-                                  >
-                                    <span>Golden Wealth Baccarat</span>
-                                  </td>
-                                  <td className="bet--7530c" data-role="bet">
-                                    ⁦⁦₹⁩120⁩
-                                  </td>
-                                  <td
-                                    className="winLose--789d9"
-                                    data-role="amount"
-                                  >
-                                    ⁦⁦₹⁩80⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  data-role="history-day"
-                                  className="row--d06c8 sm--20e69"
-                                >
-                                  <td
-                                    data-role="history-day-date-cell"
-                                    className="date--32e9b"
-                                  >
-                                    −<span dir="auto">21/08/2025</span>
-                                  </td>
-                                  <td
-                                    data-role="history-day-balance-type"
-                                    className="balanceType--4d19a"
-                                  />
-                                  <td
-                                    data-role="history-day-bet"
-                                    className="bet--71853"
-                                  >
-                                    ⁦⁦₹⁩3,500⁩
-                                  </td>
-                                  <td
-                                    data-role="history-day-win-lose"
-                                    className="winLose--1be70"
-                                  >
-                                    ⁦⁦₹⁩100⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  className="row--a868c sm--179b8"
-                                  data-game-id="185dcb378ab357193637651f"
-                                  data-role="history-transaction-row"
-                                >
-                                  <td className="time--f5e9e" data-role="time">
-                                    19:28:41
-                                  </td>
-                                  <td
-                                    className="gameType--e7702"
-                                    data-role="game-type"
-                                  >
-                                    <span>Roulette</span>
-                                  </td>
-                                  <td className="bet--7530c" data-role="bet">
-                                    ⁦⁦₹⁩3,500⁩
-                                  </td>
-                                  <td
-                                    className="winLose--789d9"
-                                    data-role="amount"
-                                  >
-                                    ⁦⁦₹⁩100⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  data-role="history-day"
-                                  className="row--d06c8 sm--20e69"
-                                >
-                                  <td
-                                    data-role="history-day-date-cell"
-                                    className="date--32e9b"
-                                  >
-                                    −<span dir="auto">20/08/2025</span>
-                                  </td>
-                                  <td
-                                    data-role="history-day-balance-type"
-                                    className="balanceType--4d19a"
-                                  />
-                                  <td
-                                    data-role="history-day-bet"
-                                    className="bet--71853"
-                                  >
-                                    ⁦⁦₹⁩10,510⁩
-                                  </td>
-                                  <td
-                                    data-role="history-day-win-lose"
-                                    className="winLose--1be70"
-                                  >
-                                    ⁦⁦₹⁩310⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  className="row--a868c sm--179b8"
-                                  data-game-id="185d68e6864f2b895f0eb79a"
-                                  data-role="history-transaction-row"
-                                >
-                                  <td className="time--f5e9e" data-role="time">
-                                    13:26:47
-                                  </td>
-                                  <td
-                                    className="gameType--e7702"
-                                    data-role="game-type"
-                                  >
-                                    <span>Roulette</span>
-                                  </td>
-                                  <td className="bet--7530c" data-role="bet">
-                                    ⁦⁦₹⁩1,750⁩
-                                  </td>
-                                  <td
-                                    className="winLose--789d9"
-                                    data-role="amount"
-                                  >
-                                    ⁦⁦₹⁩50⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  className="row--a868c sm--179b8"
-                                  data-game-id="185d679a4075fb3672400c1f"
-                                  data-role="history-transaction-row"
-                                >
-                                  <td className="time--f5e9e" data-role="time">
-                                    13:02:59
-                                  </td>
-                                  <td
-                                    className="gameType--e7702"
-                                    data-role="game-type"
-                                  >
-                                    <span>Roulette</span>
-                                  </td>
-                                  <td className="bet--7530c" data-role="bet">
-                                    ⁦⁦₹⁩1,750⁩
-                                  </td>
-                                  <td
-                                    className="winLose--789d9"
-                                    data-role="amount"
-                                  >
-                                    ⁦⁦₹⁩50⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  className="row--a868c sm--179b8"
-                                  data-game-id="185d678449d5e32f9f0e1445"
-                                  data-role="history-transaction-row"
-                                >
-                                  <td className="time--f5e9e" data-role="time">
-                                    13:01:29
-                                  </td>
-                                  <td
-                                    className="gameType--e7702"
-                                    data-role="game-type"
-                                  >
-                                    <span>Roulette</span>
-                                  </td>
-                                  <td className="bet--7530c" data-role="bet">
-                                    ⁦⁦₹⁩1,750⁩
-                                  </td>
-                                  <td
-                                    className="winLose--789d9"
-                                    data-role="amount"
-                                  >
-                                    ⁦⁦₹⁩50⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  className="row--a868c sm--179b8"
-                                  data-game-id="185d6763bdf923e1895de7b0"
-                                  data-role="history-transaction-row"
-                                >
-                                  <td className="time--f5e9e" data-role="time">
-                                    12:59:18
-                                  </td>
-                                  <td
-                                    className="gameType--e7702"
-                                    data-role="game-type"
-                                  >
-                                    <span>Roulette</span>
-                                  </td>
-                                  <td className="bet--7530c" data-role="bet">
-                                    ⁦⁦₹⁩1,750⁩
-                                  </td>
-                                  <td
-                                    className="winLose--789d9"
-                                    data-role="amount"
-                                  >
-                                    ⁦⁦₹⁩50⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  className="row--a868c sm--179b8"
-                                  data-game-id="185d3ed3f606e11d3e9cd4f3"
-                                  data-role="history-transaction-row"
-                                >
-                                  <td className="time--f5e9e" data-role="time">
-                                    00:35:49
-                                  </td>
-                                  <td
-                                    className="gameType--e7702"
-                                    data-role="game-type"
-                                  >
-                                    <span>⁣⁣Dream catcher</span>
-                                  </td>
-                                  <td className="bet--7530c" data-role="bet">
-                                    ⁦⁦₹⁩10⁩
-                                  </td>
-                                  <td
-                                    className="winLose--789d9"
-                                    data-role="amount"
-                                  >
-                                    ⁦⁦₹⁩10⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  className="row--a868c sm--179b8"
-                                  data-game-id="185d3e4358b4c54a005f1a9c"
-                                  data-role="history-transaction-row"
-                                >
-                                  <td className="time--f5e9e" data-role="time">
-                                    00:25:30
-                                  </td>
-                                  <td
-                                    className="gameType--e7702"
-                                    data-role="game-type"
-                                  >
-                                    <span>Roulette</span>
-                                  </td>
-                                  <td className="bet--7530c" data-role="bet">
-                                    ⁦⁦₹⁩1,750⁩
-                                  </td>
-                                  <td
-                                    className="winLose--789d9"
-                                    data-role="amount"
-                                  >
-                                    ⁦⁦₹⁩50⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  className="row--a868c sm--179b8"
-                                  data-game-id="185d3e33a92eb1ee2d6b32a4"
-                                  data-role="history-transaction-row"
-                                >
-                                  <td className="time--f5e9e" data-role="time">
-                                    00:24:09
-                                  </td>
-                                  <td
-                                    className="gameType--e7702"
-                                    data-role="game-type"
-                                  >
-                                    <span>Roulette</span>
-                                  </td>
-                                  <td className="bet--7530c" data-role="bet">
-                                    ⁦⁦₹⁩1,750⁩
-                                  </td>
-                                  <td
-                                    className="winLose--789d9"
-                                    data-role="amount"
-                                  >
-                                    ⁦⁦₹⁩50⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  data-role="history-day"
-                                  className="row--d06c8 sm--20e69"
-                                >
-                                  <td
-                                    data-role="history-day-date-cell"
-                                    className="date--32e9b"
-                                  >
-                                    −<span dir="auto">19/08/2025</span>
-                                  </td>
-                                  <td
-                                    data-role="history-day-balance-type"
-                                    className="balanceType--4d19a"
-                                  />
-                                  <td
-                                    data-role="history-day-bet"
-                                    className="bet--71853"
-                                  >
-                                    ⁦⁦₹⁩6,850⁩
-                                  </td>
-                                  <td
-                                    data-role="history-day-win-lose"
-                                    className="winLose--1be70"
-                                  >
-                                    ⁦⁦₹⁩350⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  className="row--a868c sm--179b8"
-                                  data-game-id="185d3c3fc6d7e16d94e2ee07"
-                                  data-role="history-transaction-row"
-                                >
-                                  <td className="time--f5e9e" data-role="time">
-                                    23:48:37
-                                  </td>
-                                  <td
-                                    className="gameType--e7702"
-                                    data-role="game-type"
-                                  >
-                                    <span>Roulette</span>
-                                  </td>
-                                  <td className="bet--7530c" data-role="bet">
-                                    ⁦⁦₹⁩1,750⁩
-                                  </td>
-                                  <td
-                                    className="winLose--789d9"
-                                    data-role="amount"
-                                  >
-                                    ⁦⁦₹⁩50⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  className="row--a868c sm--179b8"
-                                  data-game-id="185d3c283f41eaaaee43fcac"
-                                  data-role="history-transaction-row"
-                                >
-                                  <td className="time--f5e9e" data-role="time">
-                                    23:46:57
-                                  </td>
-                                  <td
-                                    className="gameType--e7702"
-                                    data-role="game-type"
-                                  >
-                                    <span>Roulette</span>
-                                  </td>
-                                  <td className="bet--7530c" data-role="bet">
-                                    ⁦⁦₹⁩1,750⁩
-                                  </td>
-                                  <td
-                                    className="winLose--789d9"
-                                    data-role="amount"
-                                  >
-                                    ⁦⁦₹⁩50⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  className="row--a868c sm--179b8"
-                                  data-game-id="185d3c1d0a301ae8284c77c5"
-                                  data-role="history-transaction-row"
-                                >
-                                  <td className="time--f5e9e" data-role="time">
-                                    23:46:10
-                                  </td>
-                                  <td
-                                    className="gameType--e7702"
-                                    data-role="game-type"
-                                  >
-                                    <span>Roulette</span>
-                                  </td>
-                                  <td className="bet--7530c" data-role="bet">
-                                    ⁦⁦₹⁩1,700⁩
-                                  </td>
-                                  <td
-                                    className="winLose--789d9"
-                                    data-role="amount"
-                                  >
-                                    ⁦⁦₹⁩100⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  className="row--a868c sm--179b8"
-                                  data-game-id="185d3c037867e3e48d5a3805"
-                                  data-role="history-transaction-row"
-                                >
-                                  <td className="time--f5e9e" data-role="time">
-                                    23:44:27
-                                  </td>
-                                  <td
-                                    className="gameType--e7702"
-                                    data-role="game-type"
-                                  >
-                                    <span>Roulette</span>
-                                  </td>
-                                  <td className="bet--7530c" data-role="bet">
-                                    ⁦⁦₹⁩1,650⁩
-                                  </td>
-                                  <td
-                                    className="winLose--789d9"
-                                    data-role="amount"
-                                  >
-                                    ⁦⁦₹⁩150⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  data-role="history-day"
-                                  className="row--d06c8 sm--20e69"
-                                >
-                                  <td
-                                    data-role="history-day-date-cell"
-                                    className="date--32e9b"
-                                  >
-                                    −<span dir="auto">29/07/2025</span>
-                                  </td>
-                                  <td
-                                    data-role="history-day-balance-type"
-                                    className="balanceType--4d19a"
-                                  />
-                                  <td
-                                    data-role="history-day-bet"
-                                    className="bet--71853"
-                                  >
-                                    ⁦⁦₹⁩50⁩
-                                  </td>
-                                  <td
-                                    data-role="history-day-win-lose"
-                                    className="winLose--1be70"
-                                  >
-                                    ⁦-⁦₹⁩25⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  className="row--a868c sm--179b8"
-                                  data-game-id="1856aead047922f4e86c9f75"
-                                  data-role="history-transaction-row"
-                                >
-                                  <td className="time--f5e9e" data-role="time">
-                                    15:26:22
-                                  </td>
-                                  <td
-                                    className="gameType--e7702"
-                                    data-role="game-type"
-                                  >
-                                    <span>Dragon Tiger</span>
-                                  </td>
-                                  <td className="bet--7530c" data-role="bet">
-                                    ⁦⁦₹⁩50⁩
-                                  </td>
-                                  <td
-                                    className="winLose--789d9"
-                                    data-role="amount"
-                                  >
-                                    ⁦-⁦₹⁩25⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  data-role="history-day"
-                                  className="row--d06c8 sm--20e69"
-                                >
-                                  <td
-                                    data-role="history-day-date-cell"
-                                    className="date--32e9b"
-                                  >
-                                    −<span dir="auto">24/06/2025</span>
-                                  </td>
-                                  <td
-                                    data-role="history-day-balance-type"
-                                    className="balanceType--4d19a"
-                                  />
-                                  <td
-                                    data-role="history-day-bet"
-                                    className="bet--71853"
-                                  >
-                                    ⁦⁦₹⁩50⁩
-                                  </td>
-                                  <td
-                                    data-role="history-day-win-lose"
-                                    className="winLose--1be70"
-                                  >
-                                    ⁦⁦₹⁩50⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  className="row--a868c sm--179b8"
-                                  data-game-id="184c06a75be030ddaf01d4fb"
-                                  data-role="history-transaction-row"
-                                >
-                                  <td className="time--f5e9e" data-role="time">
-                                    22:14:50
-                                  </td>
-                                  <td
-                                    className="gameType--e7702"
-                                    data-role="game-type"
-                                  >
-                                    <span>Dragon Tiger</span>
-                                  </td>
-                                  <td className="bet--7530c" data-role="bet">
-                                    ⁦⁦₹⁩50⁩
-                                  </td>
-                                  <td
-                                    className="winLose--789d9"
-                                    data-role="amount"
-                                  >
-                                    ⁦⁦₹⁩50⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  data-role="history-day"
-                                  className="row--d06c8 sm--20e69"
-                                >
-                                  <td
-                                    data-role="history-day-date-cell"
-                                    className="date--32e9b"
-                                  >
-                                    −<span dir="auto">03/06/2025</span>
-                                  </td>
-                                  <td
-                                    data-role="history-day-balance-type"
-                                    className="balanceType--4d19a"
-                                  />
-                                  <td
-                                    data-role="history-day-bet"
-                                    className="bet--71853"
-                                  >
-                                    ⁦⁦₹⁩50⁩
-                                  </td>
-                                  <td
-                                    data-role="history-day-win-lose"
-                                    className="winLose--1be70"
-                                  >
-                                    ⁦⁦₹⁩50⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  className="row--a868c sm--179b8"
-                                  data-game-id="18457d8d16762d214aff9b9f"
-                                  data-role="history-transaction-row"
-                                >
-                                  <td className="time--f5e9e" data-role="time">
-                                    15:14:54
-                                  </td>
-                                  <td
-                                    className="gameType--e7702"
-                                    data-role="game-type"
-                                  >
-                                    <span>Dragon Tiger</span>
-                                  </td>
-                                  <td className="bet--7530c" data-role="bet">
-                                    ⁦⁦₹⁩50⁩
-                                  </td>
-                                  <td
-                                    className="winLose--789d9"
-                                    data-role="amount"
-                                  >
-                                    ⁦⁦₹⁩50⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  data-role="history-day"
-                                  className="row--d06c8 sm--20e69"
-                                >
-                                  <td
-                                    data-role="history-day-date-cell"
-                                    className="date--32e9b"
-                                  >
-                                    −<span dir="auto">28/04/2025</span>
-                                  </td>
-                                  <td
-                                    data-role="history-day-balance-type"
-                                    className="balanceType--4d19a"
-                                  />
-                                  <td
-                                    data-role="history-day-bet"
-                                    className="bet--71853"
-                                  >
-                                    ⁦⁦₹⁩800⁩
-                                  </td>
-                                  <td
-                                    data-role="history-day-win-lose"
-                                    className="winLose--1be70"
-                                  >
-                                    ⁦-⁦₹⁩100⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  className="row--a868c sm--179b8"
-                                  data-game-id="183a7517f35e73d475462b0c"
-                                  data-role="history-transaction-row"
-                                >
-                                  <td className="time--f5e9e" data-role="time">
-                                    16:36:09
-                                  </td>
-                                  <td
-                                    className="gameType--e7702"
-                                    data-role="game-type"
-                                  >
-                                    <span>Dragon Tiger</span>
-                                  </td>
-                                  <td className="bet--7530c" data-role="bet">
-                                    ⁦⁦₹⁩100⁩
-                                  </td>
-                                  <td
-                                    className="winLose--789d9"
-                                    data-role="amount"
-                                  >
-                                    ⁦⁦₹⁩0⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  className="row--a868c sm--179b8"
-                                  data-game-id="183a74f2688986e815825eec"
-                                  data-role="history-transaction-row"
-                                >
-                                  <td className="time--f5e9e" data-role="time">
-                                    16:33:28
-                                  </td>
-                                  <td
-                                    className="gameType--e7702"
-                                    data-role="game-type"
-                                  >
-                                    <span>Dragon Tiger</span>
-                                  </td>
-                                  <td className="bet--7530c" data-role="bet">
-                                    ⁦⁦₹⁩50⁩
-                                  </td>
-                                  <td
-                                    className="winLose--789d9"
-                                    data-role="amount"
-                                  >
-                                    ⁦-⁦₹⁩50⁩
-                                  </td>
-                                </tr>
-                                <tr
-                                  className="row--a868c sm--179b8"
-                                  data-game-id="183a74e78fbc521bf2d347ff"
-                                  data-role="history-transaction-row"
-                                >
-                                  <td className="time--f5e9e" data-role="time">
-                                    16:32:42
-                                  </td>
-                                  <td
-                                    className="gameType--e7702"
-                                    data-role="game-type"
-                                  >
-                                    <span>Dragon Tiger</span>
-                                  </td>
-                                  <td className="bet--7530c" data-role="bet">
-                                    ⁦⁦₹⁩50⁩
-                                  </td>
-                                  <td
-                                    className="winLose--789d9"
-                                    data-role="amount"
-                                  >
-                                    ⁦⁦₹⁩50⁩
-                                  </td>
-                                </tr>
+                                {dateCategory?.map((date) => {
+                                  return (
+                                    <React.Fragment key={date}>
+                                      <tr
+                                        data-role="history-day"
+                                        className="row--d06c8 sm--20e69"
+                                      >
+                                        <td
+                                          data-role="history-day-date-cell"
+                                          className="date--32e9b"
+                                        >
+                                          −<span dir="auto">{date}</span>
+                                        </td>
+                                        <td
+                                          data-role="history-day-balance-type"
+                                          className="balanceType--4d19a"
+                                        />
+                                        <td
+                                          data-role="history-day-bet"
+                                          className="bet--71853"
+                                        >
+                                          ⁦⁦₹⁩
+                                          {allHistoryData
+                                            .filter(
+                                              (item) =>
+                                                item?.date?.split(" ")[0] ===
+                                                date
+                                            )
+                                            .reduce(
+                                              (sum, item) =>
+                                                sum + (item?.bet || 0),
+                                              0
+                                            )
+                                            .toLocaleString()}
+                                          ⁩
+                                        </td>
+                                        <td
+                                          data-role="history-day-win-lose"
+                                          className="winLose--1be70"
+                                        >
+                                          ⁦⁦₹⁩
+                                          {allHistoryData
+                                            .filter(
+                                              (item) =>
+                                                item?.date?.split(" ")[0] ===
+                                                date
+                                            )
+                                            .reduce(
+                                              (sum, item) =>
+                                                sum + (item?.win_lose || 0),
+                                              0
+                                            )
+                                            .toLocaleString()}
+                                          ⁩
+                                        </td>
+                                      </tr>
+                                      {allHistoryData
+                                        ?.filter(
+                                          (item) =>
+                                            item?.date?.split(" ")[0] === date
+                                        )
+                                        .map((singleItem, i) => {
+                                          return (
+                                            <tr
+                                              key={`${date}-${i}`}
+                                              className="row--a868c sm--179b8"
+                                              data-game-id="185d68e6864f2b895f0eb79a"
+                                              data-role="history-transaction-row"
+                                            >
+                                              <td
+                                                className="time--f5e9e"
+                                                data-role="time"
+                                              >
+                                                {
+                                                  singleItem?.date?.split(
+                                                    " "
+                                                  )[1]
+                                                }
+                                              </td>
+                                              <td
+                                                className="gameType--e7702"
+                                                data-role="game-type"
+                                              >
+                                                <span>{singleItem?.game}</span>
+                                              </td>
+                                              <td
+                                                className="bet--7530c"
+                                                data-role="bet"
+                                              >
+                                                ₹{singleItem?.bet}
+                                              </td>
+                                              <td
+                                                className="winLose--789d9"
+                                                data-role="amount"
+                                              >
+                                                ₹{singleItem?.win_lose}
+                                              </td>
+                                            </tr>
+                                          );
+                                        })}
+                                    </React.Fragment>
+                                  );
+                                })}
+
+                                {!hasMore && (
+                                  <tr>
+                                    <td
+                                      colSpan="4"
+                                      style={{
+                                        textAlign: "center",
+                                        padding: "20px",
+                                        color: "#666",
+                                      }}
+                                    >
+                                      No more data to load
+                                    </td>
+                                  </tr>
+                                )}
                               </tbody>
                             </table>
                           </div>
