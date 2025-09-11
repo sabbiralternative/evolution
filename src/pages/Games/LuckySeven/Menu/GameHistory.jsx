@@ -356,6 +356,9 @@ const GameHistory = ({ setTab, closeModal }) => {
                                         .map((singleItem, i) => {
                                           return (
                                             <tr
+                                              onClick={() =>
+                                                setTab("game-history-details")
+                                              }
                                               key={`${date}-${i}`}
                                               className="row--a868c sm--179b8"
                                               data-game-id="185d68e6864f2b895f0eb79a"
@@ -381,13 +384,17 @@ const GameHistory = ({ setTab, closeModal }) => {
                                                 className="bet--7530c"
                                                 data-role="bet"
                                               >
-                                                ₹{singleItem?.bet}
+                                                {singleItem?.bet < 0 && "-"} ₹
+                                                {Math.abs(singleItem?.bet)}
                                               </td>
                                               <td
                                                 className="winLose--789d9"
                                                 data-role="amount"
                                               >
-                                                ₹{singleItem?.win_lose}
+                                                {singleItem?.win_lose < 0 &&
+                                                  "-"}{" "}
+                                                ₹
+                                                {Math.abs(singleItem?.win_lose)}
                                               </td>
                                             </tr>
                                           );
