@@ -152,7 +152,10 @@ const GameHistoryDetails = ({ setTab, closeModal }) => {
                         className="navigation--db816 sm--b5a1a"
                         data-role="history-round-navigation"
                       >
-                        <div className="switchToPrevContainer--84636">
+                        <div
+                          onClick={() => setTab("game-history")}
+                          className="switchToPrevContainer--84636"
+                        >
                           <div
                             className="switchRound--4e646"
                             data-role="switch-to-prev"
@@ -171,6 +174,7 @@ const GameHistoryDetails = ({ setTab, closeModal }) => {
                         </div>
                         <div className="goBack--9724a">
                           <button
+                            onClick={() => setTab("game-history")}
                             className="button--673ce xxxs--2d4a2 roundingBoth--6d5e6 labelPositionInside--74c5c buttonRoot--3bd4d"
                             data-type="secondary"
                             data-role="go-back"
