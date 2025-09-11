@@ -36,7 +36,7 @@ const BetSlip = ({
     const { key, data, dataIndex, runnerIndex, type } = payload;
     setAnimation([key]);
     const formatData = {
-      marketId: data?.[dataIndex]?.id,
+      marketId: data?.[dataIndex]?.marketId,
       roundId: data?.[dataIndex]?.roundId,
       name: data?.[dataIndex]?.name,
       eventId: data?.[dataIndex]?.eventId,
@@ -203,13 +203,16 @@ const BetSlip = ({
     >
       <div
         className="scaleToFit--d2b31 bettingGrid--4ddd2"
-        style={{ transform: `scale(${innerWidth / 375})`, }}
+        style={{ transform: `scale(${innerWidth / 375})` }}
       >
         <div
           className="grid--6cb5e vertical--cf832"
-          style={{ "-gridTieSize": 104 ,opacity:status === Status.OPEN ? '1':'0.6'}}
+          style={{
+            "-gridTieSize": 104,
+            opacity: status === Status.OPEN ? "1" : "0.6",
+          }}
         >
-          <div className="mainSpots--b6d48" style={{ overflow: "visible", }}>
+          <div className="mainSpots--b6d48" style={{ overflow: "visible" }}>
             {status === Status.SUSPENDED && (
               <div className="shadowOverlay--3de32"></div>
             )}

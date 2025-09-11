@@ -42,7 +42,7 @@ const BetSlip = ({
       const { key, data, dataIndex, runnerIndex, type } = payload;
       setAnimation([key]);
       const formatData = {
-        marketId: data?.[dataIndex]?.id,
+        marketId: data?.[dataIndex]?.marketId,
         roundId: data?.[dataIndex]?.roundId,
         name: data?.[dataIndex]?.name,
         eventId: data?.[dataIndex]?.eventId,
