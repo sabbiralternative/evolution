@@ -345,9 +345,9 @@ const Bollywood = () => {
             </div>
             {/* Winner */}
             <Winner
+              currentRoundWinAmount={currentRoundWinAmount}
               data={data}
-              showWinLossResult={showWinLossResult}
-              totalWinAmount={totalWinAmount}
+              firstEvent={firstEvent}
             />
 
             <div
