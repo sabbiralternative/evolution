@@ -686,6 +686,7 @@ const Bollywood = () => {
             data={data?.result}
             firstEvent={firstEvent}
             title="Lucky 7"
+            setCurrentRoundWinAmount={setCurrentRoundWinAmount}
           />
           <div className="tooltipsContainer--515fb increasedZIndex--60d95" />
           <div className="container--75075">

@@ -234,7 +234,7 @@ const BetSlip = ({
                 className="item--8e08a vertical--98be1 relative py-2"
                 data-role="bet-spot-PlayerPair"
               >
-                <div className="absolute z-50">
+                <div className="absolute z-50 -top-[1px] left-0.5">
                   <StakeAnimation
                     animation={animation}
                     double={double}
@@ -338,7 +338,7 @@ const BetSlip = ({
                 className="item--8e08a vertical--98be1 relative py-2"
                 data-role="bet-spot-PlayerPair"
               >
-                <div className="absolute z-50">
+                <div className="absolute z-50 -top-[1px] left-0.5">
                   <StakeAnimation
                     animation={animation}
                     double={double}
@@ -441,7 +441,7 @@ const BetSlip = ({
                 className="item--8e08a vertical--98be1 relative py-2"
                 data-role="bet-spot-PlayerPair"
               >
-                <div className="absolute z-50">
+                <div className="absolute z-50 -top-[1px] left-0.5">
                   <StakeAnimation
                     animation={animation}
                     double={double}
@@ -547,7 +547,7 @@ const BetSlip = ({
                 className="item--8e08a vertical--98be1 relative py-2"
                 data-role="bet-spot-PlayerPair"
               >
-                <div className="absolute z-50">
+                <div className="absolute z-50 -top-[1px] left-0.5">
                   <StakeAnimation
                     animation={animation}
                     double={double}
@@ -652,7 +652,7 @@ const BetSlip = ({
                 className="item--8e08a vertical--98be1 relative py-2"
                 data-role="bet-spot-PlayerPair"
               >
-                <div className="absolute z-50">
+                <div className="absolute z-50 -top-[1px] left-0.5">
                   <StakeAnimation
                     animation={animation}
                     double={double}
@@ -755,7 +755,7 @@ const BetSlip = ({
                 className="item--8e08a vertical--98be1 relative py-2"
                 data-role="bet-spot-PlayerPair"
               >
-                <div className="absolute z-50">
+                <div className="absolute z-50 -top-[1px] left-0.5">
                   <StakeAnimation
                     animation={animation}
                     double={double}
@@ -861,7 +861,7 @@ const BetSlip = ({
                 className="item--8e08a vertical--98be1 relative py-2"
                 data-role="bet-spot-PlayerPair"
               >
-                <div className="absolute z-50">
+                <div className="absolute z-50 -top-[1px] left-0.5">
                   <StakeAnimation
                     animation={animation}
                     double={double}
@@ -965,7 +965,7 @@ const BetSlip = ({
                 className="item--8e08a vertical--98be1 relative py-2"
                 data-role="bet-spot-BankerPair"
               >
-                <div className="absolute z-50">
+                <div className="absolute z-50 -top-[1px] left-0.5">
                   <StakeAnimation
                     animation={animation}
                     double={double}
@@ -1069,7 +1069,7 @@ const BetSlip = ({
                 className="item--8e08a vertical--98be1 relative py-2"
                 data-role="bet-spot-PlayerPair"
               >
-                <div className="absolute z-50">
+                <div className="absolute z-50 -top-[1px] left-0.5">
                   <StakeAnimation
                     animation={animation}
                     double={double}
@@ -1172,7 +1172,7 @@ const BetSlip = ({
                 className="item--8e08a vertical--98be1 relative py-2"
                 data-role="bet-spot-BankerPair "
               >
-                <div className="absolute z-50">
+                <div className="absolute z-50 -top-[1px] left-0.5">
                   <StakeAnimation
                     animation={animation}
                     double={double}
