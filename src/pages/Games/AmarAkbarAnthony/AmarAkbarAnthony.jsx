@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ActionButtons from "./ActionButtons";
 import BetSlip from "./BetSlip";
 import Footer from "../../../component/shared/Footer";
@@ -22,6 +22,7 @@ const AmarAkbarAnthony = () => {
   const [totalWinAmount, setTotalWinAmount] = useState(null);
   const { stake } = useSelector((state) => state.global);
   const [showFullScreen, setShowFullScreen] = useState(false);
+  const [currentRoundWinAmount, setCurrentRoundWinAmount] = useState();
 
   const { eventTypeId, eventId } = useParams();
   const { data } = useGetEventDetailsQuery(
@@ -53,6 +54,11 @@ const AmarAkbarAnthony = () => {
   );
 
   const isPlaceStake = Object.values(stakeState).find((item) => item?.show);
+  useEffect(() => {
+    if (firstEvent?.status === Status.OPEN) {
+      setCurrentRoundWinAmount(null);
+    }
+  }, [firstEvent?.status]);
 
   return (
     <>
@@ -333,8 +339,8 @@ const AmarAkbarAnthony = () => {
             {/* Winner */}
             <Winner
               data={data}
-              showWinLossResult={showWinLossResult}
-              totalWinAmount={totalWinAmount}
+              firstEvent={firstEvent}
+              currentRoundWinAmount={currentRoundWinAmount}
             />
 
             <div
@@ -673,6 +679,7 @@ const AmarAkbarAnthony = () => {
             data={data?.result}
             firstEvent={firstEvent}
             title="Amar Akbar Anthony"
+            setCurrentRoundWinAmount={setCurrentRoundWinAmount}
           />
           <div className="tooltipsContainer--515fb increasedZIndex--60d95" />
           <div className="container--75075">
