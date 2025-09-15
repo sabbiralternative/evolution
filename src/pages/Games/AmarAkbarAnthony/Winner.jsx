@@ -45,7 +45,10 @@ const Winner = ({ data, totalWinAmount, showWinLossResult }) => {
                   className="genericPhrase--d0b15"
                   data-role="game-result-winner"
                 >
-                  {card > 7 ? "7 UP" : card < 7 ? "7 DOWN" : 7}
+                  {card < 7 && "Amar"}
+                  {card > 6 && card < 11 && "Akbar"}
+
+                  {card > 10 && "Anthony"}
                 </span>
               </div>
             )}
