@@ -19,6 +19,8 @@ import FootballDice from "../pages/Games/FoolballDice/FootballDice";
 import FootballStudio from "../pages/Games/FoolballStudio/FootballStudio";
 import SuperColor from "../pages/Games/SuperColor/SuperColor";
 import War from "../pages/Games/War/War";
+import ImperialQuest from "../pages/Games/ImperialQuest/ImperialQuest";
+import DragonTigerPhoenix from "../pages/Games/DragonTigerPhoenix/DragonTigerPhoenix";
 
 export const router = createBrowserRouter(
   [
@@ -99,6 +101,14 @@ export const router = createBrowserRouter(
         {
           path: "/game/war/:eventTypeId/:eventId",
           element: <War />,
+        },
+        {
+          path: "/game/imperial-quest/:eventTypeId/:eventId",
+          element: <ImperialQuest />,
+        },
+        {
+          path: "/game/dragon-tiger-phoenix/:eventTypeId/:eventId",
+          element: <DragonTigerPhoenix />,
         },
       ],
     },
