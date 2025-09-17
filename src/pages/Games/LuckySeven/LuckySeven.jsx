@@ -390,7 +390,7 @@ const LuckySeven = () => {
                     data-role="gameControlsWrapper"
                     //  top: "314px",
                     style={{
-                      top: "180px",
+                      top: "314px",
                       bottom: "auto",
                       transform:
                         firstEvent?.status === Status.SUSPENDED

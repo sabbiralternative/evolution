@@ -8,7 +8,7 @@ const Winner = ({ data, firstEvent, currentRoundWinAmount }) => {
   }
 
   return (
-    <div className="overlays--4cd0a" style={{ top: "-115px" }}>
+    <div className="overlays--4cd0a">
       <div className="mobileGameOverlay--a7837">
         <div className="gameResultContainer--374ad isMobile--d2fa5 isPortrait--01bd0 hasWin--ce559 isLargeDevice--710cc shiftBottom--027e5">
           <div className="gameResultElements--81495">
