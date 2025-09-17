@@ -206,7 +206,7 @@ const BetSlip = ({
         status === Status.SUSPENDED ? "pointer-events-none" : ""
       }`}
     >
-      <div style={{ width: `${innerWidth - 10}px`, height: "227px" }}>
+      <div style={{ width: `${innerWidth - 10}px`, height: "170px" }}>
         <div
           className="bettingGrid--0835e bettingTime--7f9cd isVertical--28984 onlyPairs--f14f6"
           data-role="betting-grid-container"

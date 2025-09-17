@@ -415,14 +415,14 @@ export const RoadPrediction = () => {
               <div className="fourRoads--b68dc" style={{ height: "220px" }}>
                 <div
                   className="roadGrid--f3c21"
-                  style={{ transform: "translate(-400px)" }}
+                  style={{ transform: "translate(-295px)" }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 37 9.5"
                     className="gridCreator--9c0f9"
                   >
-                    {/* <svg x={0} y={0} width={18}>
+                    <svg x={0} y={0} width={18}>
                       <svg
                         viewBox="0 0 18 9.5"
                         xmlns="http://www.w3.org/2000/svg"
@@ -4789,7 +4789,7 @@ export const RoadPrediction = () => {
                           fill="freeze"
                         />
                       </svg>
-                    </svg> */}
+                    </svg>
                     <svg x={18} y={0} width={19} height="9.5">
                       <svg
                         data-role="Bead-road"
