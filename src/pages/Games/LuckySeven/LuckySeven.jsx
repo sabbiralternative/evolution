@@ -14,6 +14,7 @@ import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
 import Winner from "./Winner";
 import AntMedia from "../../../component/shared/Antmedia";
+import { RoadPrediction } from "./RoadPrediction";
 
 const LuckySeven = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -415,7 +416,7 @@ const LuckySeven = () => {
                             data={data?.result}
                             status={firstEvent?.status}
                           />
-                          {/* <RoadPrediction /> */}
+                          <RoadPrediction />
                           <div className="dealNow--971b0 portrait--55ead hidden--c5c76">
                             <div className="buttonWrapper--86a37 mobile--2fe7c">
                               <button
