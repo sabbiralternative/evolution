@@ -7,6 +7,7 @@ import Stake from "../../../component/UI/Chip/Stake";
 import { getBackPrice, isRunnerWinner } from "../../../utils/betSlip";
 import StakeAnimation from "../../../component/UI/Chip/StakeAnimation";
 import { cn } from "../../../utils/cn";
+import { RoadPrediction } from "./RoadPrediction";
 
 const BetSlip = ({
   double,
@@ -202,7 +203,7 @@ const BetSlip = ({
   return (
     <div
       onClick={handleShowSuspendedStatus}
-      className={`bettingGrid--a60ca  ${
+      className={`bettingGrid--a60ca flex-col  ${
         status === Status.SUSPENDED ? "pointer-events-none" : ""
       }`}
     >
@@ -1596,6 +1597,7 @@ const BetSlip = ({
           </div>
         </div>
       </div>
+      <RoadPrediction firstEvent={data?.[0]} />
     </div>
   );
 };

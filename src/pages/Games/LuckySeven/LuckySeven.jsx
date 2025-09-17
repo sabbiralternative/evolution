@@ -419,7 +419,6 @@ const LuckySeven = () => {
                             data={data?.result}
                             status={firstEvent?.status}
                           />
-                          {/* <RoadPrediction /> */}
 
                           <div className="dealNow--971b0 portrait--55ead hidden--c5c76">
                             <div className="buttonWrapper--86a37 mobile--2fe7c">
@@ -631,7 +630,6 @@ const LuckySeven = () => {
                     </span>
                   </button>
                 </div> */}
-                <RoadPrediction firstEvent={firstEvent} />
               </div>
             </div>
             <div

@@ -73,4 +73,25 @@ body {
   }
 }
 
+.responsive-prediction-margin {
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 330px) {
+  .responsive-prediction-margin {
+    margin-top: 50px;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .responsive-prediction-margin {
+    margin-top: 70px;
+  }
+}
+@media screen and (min-width: 500px) {
+  .responsive-prediction-margin {
+    margin-top: 270px;
+  }
+}
+
 /*! Circular Progress Bar Animation End  */

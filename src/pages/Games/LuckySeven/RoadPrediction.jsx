@@ -1,22 +1,8 @@
 import { TbSlash } from "react-icons/tb";
-import { Status } from "../../../const";
 
-export const RoadPrediction = ({ firstEvent }) => {
+export const RoadPrediction = () => {
   return (
-    <div
-      className="flex flex-col gap-y-2"
-      style={{
-        position: "absolute",
-        bottom: "50px",
-        right: "0px",
-        left: "0px",
-        transform:
-          firstEvent?.status === Status.SUSPENDED
-            ? "translateY(37px)"
-            : "translateY(0px)",
-        transition: "transform 1s ease",
-      }}
-    >
+    <div className="flex flex-col gap-y-2 responsive-prediction-margin">
       <div className="flex items-center justify-between">
         <span className="text-white text-sm font-medium">#</span>
         <span className="text-white text-sm font-medium">52</span>
