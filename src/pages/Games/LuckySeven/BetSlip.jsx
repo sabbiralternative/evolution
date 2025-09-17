@@ -202,7 +202,7 @@ const BetSlip = ({
   return (
     <div
       onClick={handleShowSuspendedStatus}
-      className={`bettingGrid--a60ca ${
+      className={`bettingGrid--a60ca  ${
         status === Status.SUSPENDED ? "pointer-events-none" : ""
       }`}
     >

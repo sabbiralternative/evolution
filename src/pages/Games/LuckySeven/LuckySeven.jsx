@@ -108,9 +108,11 @@ const LuckySeven = () => {
                     {firstEvent?.status === Status.OPEN && (
                       <Counter firstEvent={firstEvent} />
                     )}
+                    {/* <RoadPrediction2 /> */}
                   </div>
                 </div>
               </div>
+
               <div
                 className="container--ea4e5 commonUiElement"
                 data-role="menu-button-layout"
@@ -417,7 +419,8 @@ const LuckySeven = () => {
                             data={data?.result}
                             status={firstEvent?.status}
                           />
-                          <RoadPrediction />
+                          {/* <RoadPrediction /> */}
+
                           <div className="dealNow--971b0 portrait--55ead hidden--c5c76">
                             <div className="buttonWrapper--86a37 mobile--2fe7c">
                               <button
@@ -628,6 +631,7 @@ const LuckySeven = () => {
                     </span>
                   </button>
                 </div> */}
+                <RoadPrediction firstEvent={firstEvent} />
               </div>
             </div>
             <div
