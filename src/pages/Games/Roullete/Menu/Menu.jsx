@@ -6,6 +6,7 @@ import GameHistory from "../../../../component/shared/GameHistory";
 import GameHistoryDetails from "../../../../component/shared/GameHistoryDetails";
 import HowToPlay from "./HowToPlay";
 import PayoutLimit from "./PayoutLimit";
+import Statistics from "./Statistics";
 
 const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
   const [roundId, setRoundId] = useState(null);
@@ -71,6 +72,11 @@ const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
       <AnimatePresence>
         {tab === "payout-limit" && (
           <PayoutLimit closeModal={closeModal} setTab={setTab} />
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {tab === "statistics" && (
+          <Statistics closeModal={closeModal} setParentTab={setTab} />
         )}
       </AnimatePresence>
 
@@ -252,7 +258,7 @@ const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
                                   </div>
                                 </div>
                                 <div
-                                  onClick={() => setTab("live-support")}
+                                  onClick={() => setTab("statistics")}
                                   className="wrapper--6c1a2"
                                   data-role="menu-item-wrapper"
                                 >
@@ -267,14 +273,20 @@ const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
                                         style={{ height: "100%" }}
                                       >
                                         <svg
-                                          xmlns="http://www.w3.org/2000/svg"
-                                          viewBox="0 0 24 24"
-                                          className="icon--8dcd0"
-                                          data-role="menu-item-icon"
-                                          height="100%"
-                                          y="0%"
+                                          viewBox="0 0 100 100"
+                                          className="iconWrapper--b4e49"
+                                          style={{ height: "100%" }}
                                         >
-                                          <path d="M16.74 8.208c-.005-1.46-.515-2.682-1.46-3.528-.86-.76-2.02-1.18-3.27-1.18-2.28 0-4.74 1.48-4.74 4.74v5.99c0 2.375 1.314 3.81 2.911 4.41a.105.105 0 0 1 .035-.045 2 2 0 1 1-.09 1.607C7.756 19.511 5.77 17.49 5.77 14.23H4c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1l1.77.005C5.772 4.148 8.911 2 12.01 2c3.09 0 6.22 2.126 6.24 6.2h1.74c.55 0 1 .45 1 1v4.03c0 .55-.45 1-1 1h-3.25V8.208Z" />
+                                          <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 24 24"
+                                            className="icon--8dcd0"
+                                            height="100%"
+                                            y="0%"
+                                            data-role="menu-item-icon"
+                                          >
+                                            <path d="M17 20V4h2v16h-2ZM13 6v14h2V6h-2ZM5 20V8h2v12H5Zm4 0V10h2v10H9Z"></path>
+                                          </svg>
                                         </svg>
                                       </svg>
                                       <span className="iconBadge--732f0">
@@ -301,7 +313,7 @@ const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
                                         className="title--9628c"
                                         data-role="menu-item-title-text"
                                       >
-                                        Live Support
+                                        Statistics
                                       </span>
                                     </div>
                                   </div>

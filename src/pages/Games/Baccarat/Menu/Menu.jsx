@@ -2,10 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Chat from "./Chat";
 import { AnimatePresence, motion } from "motion/react";
-import GameHistory from "../../../../component/shared/GameHistory";
-import GameHistoryDetails from "../../../../component/shared/GameHistoryDetails";
+
 import HowToPlay from "./HowToPlay";
 import PayoutLimit from "./PayoutLimit";
+import GameHistory from "./GameHistory";
+import GameHistoryDetails from "./GameHistoryDetails";
 
 const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
   const [roundId, setRoundId] = useState(null);
