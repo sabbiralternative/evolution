@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import images from "../../assets/images";
 
 const Header = ({ setShowSearch }) => {
   const navigate = useNavigate();
@@ -14,10 +15,7 @@ const Header = ({ setShowSearch }) => {
             type="button"
           >
             <div className="Logo--bbd01">
-              <img
-                src="/src/assets/images/evologo.c005ae97.svg"
-                alt="casino-logo"
-              />
+              <img src={images.logo} alt="casino-logo" />
             </div>
           </button>
         </nav>
