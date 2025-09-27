@@ -22,7 +22,7 @@ const Casino = () => {
               <div className="Content--2ceeb">
                 <Header setShowSearch={setShowSearch} />
                 <ScrollableTab />
-                <CasinoThumbnail title="Casino" id="casino" />;
+                <CasinoThumbnail title="Casino" id="casino" />
                 <Footer />
               </div>
             </div>

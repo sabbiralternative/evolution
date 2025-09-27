@@ -1563,7 +1563,7 @@ const BetSlip = ({
                 </div>
               </div>
               <div className="betspotTitle--d0907">
-                <span className>{getBackPrice(data, 2, 1)}</span>
+                <span className>x{getBackPrice(data, 2, 1)}</span>
               </div>
               <div className="chipContainer--9cdca">
                 <div className="isPortrait--96aa8 mediumChip--83319 chipSize--1811f">

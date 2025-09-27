@@ -251,13 +251,13 @@ const LuckySeven = () => {
             <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
               <div className="relativeChildren--99d54" />
             </div>
-            <div style={{ width: "100%", height: "387px", margin: "auto" }}>
+            <div style={{ width: "100%", height: "100%", margin: "auto" }}>
               <div
                 data-role="scaled-video-container"
                 className="videoWrapper--0aab6"
                 style={{
                   width: "100%",
-                  height: "241.875px",
+                  height: "195px",
                   transformOrigin: "center top",
                   transform: "scale(1.1) translate(0px, 0px)",
                 }}
@@ -311,7 +311,7 @@ const LuckySeven = () => {
             </div>
             <div
               className="gradientWrapper--3d7b6"
-              style={{ height: "314px", transform: "translateY(230px)" }}
+              style={{ height: "314px", transform: "translateY(145px)" }}
             >
               <div
                 className="videoGradient--10404"

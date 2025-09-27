@@ -18,7 +18,15 @@ const MainLayout = () => {
     };
   }, [dispatch]);
 
-  return <Outlet />;
+  const handleFullScreen = () => {
+    document.body.requestFullscreen();
+  };
+
+  return (
+    <div onClick={handleFullScreen}>
+      <Outlet />
+    </div>
+  );
 };
 
 export default MainLayout;
