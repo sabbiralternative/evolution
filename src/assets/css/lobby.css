@@ -7450,6 +7450,7 @@
   width: 100%;
   will-change: transform;
   z-index: 9;
+  height: auto;
 }
 
 .RootFooter--703a2.fixed--a67c3 {
