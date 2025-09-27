@@ -375,11 +375,11 @@ const LuckySeven = () => {
                     data-role="gameControlsWrapper"
                     //  top: "314px",
                     style={{
-                      top: "314px",
+                      top: "280px",
                       bottom: "auto",
                       transform:
                         firstEvent?.status === Status.SUSPENDED
-                          ? "translateY(37px)"
+                          ? "translateY(25px)"
                           : "translateY(0px)",
                     }}
                   >
