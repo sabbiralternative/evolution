@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import ActionButtons from "./ActionButtons";
 import BetSlip from "./BetSlip";
 import Footer from "../../../component/shared/Footer";
-// import RoadPrediction from "./RoadPrediction";
 import Menu from "./Menu/Menu";
 import { useParams } from "react-router-dom";
 import { useGetEventDetailsQuery } from "../../../redux/features/events/events";
@@ -14,7 +13,6 @@ import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
 import Winner from "./Winner";
 import AntMedia from "../../../component/shared/Antmedia";
-import { RoadPrediction } from "./RoadPrediction";
 
 const LuckySeven = () => {
   const [showMenu, setShowMenu] = useState(false);

@@ -310,7 +310,7 @@ const GameHistoryDetails = ({ setTab, closeModal, roundId }) => {
                                                     width: "25px",
                                                     height: "30px",
                                                   }}
-                                                  src={`/cards/${data?.result?.game_details?.card}.jpg`}
+                                                  src={`/cards/${data?.result?.game_details?.card}.png`}
                                                   alt=""
                                                 />
                                               )}

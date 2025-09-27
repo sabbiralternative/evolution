@@ -311,7 +311,7 @@ const BetSlip = ({
                 </div>
                 {cardNumber < 7 && (
                   <img
-                    src={`/cards/${indexCard}.jpg`}
+                    src={`/cards/${indexCard}.png`}
                     alt=""
                     style={{ height: "60px", width: "50px" }}
                   />
@@ -564,7 +564,7 @@ const BetSlip = ({
                 {cardNumber > 7 && (
                   <img
                     style={{ height: "60px", width: "50px" }}
-                    src={`/cards/${indexCard}.jpg`}
+                    src={`/cards/${indexCard}.png`}
                     alt=""
                   />
                 )}
@@ -821,7 +821,7 @@ const BetSlip = ({
                 {cardNumber === 7 && (
                   <img
                     style={{ height: "60px" }}
-                    src={`/cards/${indexCard}.jpg`}
+                    src={`/cards/${indexCard}.png`}
                     alt=""
                   />
                 )}
