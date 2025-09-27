@@ -1,7 +1,7 @@
 import { WebPlayer } from "@antmedia/web_player";
 import { useEffect, useRef } from "react";
 
-const AntMedia = () => {
+const AntMedia = ({ server }) => {
   const bigVideo = useRef(null);
   const embeddedPlayerRef = useRef(null);
 
@@ -9,8 +9,8 @@ const AntMedia = () => {
     const playOrderLocal = ["webrtc", "hls", "dash"];
     embeddedPlayerRef.current = new WebPlayer(
       {
-        streamId: "test",
-        httpBaseURL: "https://1app.live/LiveStream/",
+        streamId: server?.streamKey,
+        httpBaseURL: server?.serverLink,
         videoHTMLContent:
           '<video id="video-player" class="video-js vjs-default-skin vjs-big-play-centered"  playsinline style="width:100%;height:100%;object-fit:cover"></video>',
         playOrder: playOrderLocal,

@@ -251,15 +251,15 @@ const LuckySeven = () => {
             <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
               <div className="relativeChildren--99d54" />
             </div>
-            <div style={{ width: "430px", height: "387px", margin: "auto" }}>
+            <div style={{ width: "100%", height: "387px", margin: "auto" }}>
               <div
                 data-role="scaled-video-container"
                 className="videoWrapper--0aab6"
                 style={{
-                  width: "430px",
+                  width: "100%",
                   height: "241.875px",
                   transformOrigin: "center top",
-                  transform: "scale(1.6, 1.6) translate(0px, 0px)",
+                  transform: "scale(1.1) translate(0px, 0px)",
                 }}
               >
                 <div
@@ -278,7 +278,10 @@ const LuckySeven = () => {
                       >
                         <div style={{ height: "100%" }}>
                           <div style={{ width: "100%", height: "100%" }}>
-                            <AntMedia />
+                            {firstEvent?.server && (
+                              <AntMedia server={firstEvent?.server} />
+                            )}
+
                             {/* <video
                               muted="true"
                               preload="none"
