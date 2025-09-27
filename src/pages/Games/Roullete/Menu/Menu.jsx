@@ -8,13 +8,17 @@ import HowToPlay from "./HowToPlay";
 import PayoutLimit from "./PayoutLimit";
 import Statistics from "./Statistics";
 import { useSelector } from "react-redux";
+import { useSound } from "../../../../context/ApiProvider";
+import { playClick } from "../../../../utils/sound";
 
 const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
+  const { sound } = useSound();
   const { deviseHeight } = useSelector((state) => state.global);
   const [roundId, setRoundId] = useState(null);
   const [tab, setTab] = useState("menu");
   const navigate = useNavigate();
   const closeModal = () => {
+    if (sound) playClick();
     setShowMenu(false);
   };
 

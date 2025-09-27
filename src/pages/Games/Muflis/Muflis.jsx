@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ActionButtons from "./ActionButtons";
 import BetSlip from "./BetSlip";
 import Footer from "../../../component/shared/Footer";
-import Menu from "./Menu/Menu";
+import Menu from "../../../component/shared/Menu/Menu";
 import { useParams } from "react-router-dom";
 import { useGetEventDetailsQuery } from "../../../redux/features/events/events";
 import { Status } from "../../../const";
@@ -11,8 +11,7 @@ import { AnimatePresence } from "framer-motion";
 import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
 import { useSound } from "../../../context/ApiProvider";
-// import Counter from "../../../component/UI/Counter";
-// import Winner from "./Winner";
+import { playClick } from "../../../utils/sound";
 
 const Muflis = () => {
   const { sound } = useSound();
@@ -24,7 +23,7 @@ const Muflis = () => {
   const [, setCurrentRoundWinAmount] = useState(null);
   const { stake } = useSelector((state) => state.global);
   const [showFullScreen, setShowFullScreen] = useState(false);
-  const { eventTypeId, eventId } = useParams();
+  const { eventTypeId } = useParams();
   const { data } = useGetEventDetailsQuery(
     { eventTypeId, eventId: 10001 },
     { pollingInterval: 1000 }
@@ -91,7 +90,10 @@ const Muflis = () => {
           <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
             <div className="relativeChildren--99d54">
               <div
-                onClick={() => setShowMenu(true)}
+                onClick={() => {
+                  setShowMenu(true);
+                  if (sound) playClick();
+                }}
                 className="container--ea4e5 commonUiElement"
                 data-role="menu-button-layout"
               >
@@ -309,7 +311,7 @@ const Muflis = () => {
                 className="gradientWrapper--3d7b6 noAnimation--4aa9f"
                 style={{
                   height: "730.125px",
-                  transform: "translateY(201.875px)",
+                  transform: "translateY(145px)",
                 }}
               >
                 <div
@@ -317,7 +319,7 @@ const Muflis = () => {
                   style={{
                     background: `linear-gradient(
                     rgba(217, 196, 154, 0) 0%,
-                    rgb(217, 196, 154) 40px,
+                    rgb(217, 196, 154) 25px,
                     rgb(53, 40, 13) 50%
                   )`,
                   }}
@@ -442,9 +444,9 @@ const Muflis = () => {
                 <div
                   className="portraitMobileOverlay--fc6c8"
                   style={{
-                    "-topoffset": "150.07172131147541px",
-                    "-bottomoffset": "50px",
-                    "-gridHeight": "228px",
+                    "--top-offset": "250.07172131147541px",
+                    "--bottom-offset": "50px",
+                    "--grid-height": "228px",
                   }}
                 >
                   <BetSlip

@@ -1,8 +1,11 @@
 import { motion } from "motion/react";
 import { useGetBets } from "../../hooks/bets";
 import { useSelector } from "react-redux";
+import { useSound } from "../../context/ApiProvider";
+import { playClick } from "../../utils/sound";
 
 const GameHistoryDetails = ({ setTab, closeModal, roundId }) => {
+  const { sound } = useSound();
   const { deviseHeight } = useSelector((state) => state.global);
   const { data, isLoading } = useGetBets({ round_id: roundId });
   const totalWin = data?.result?.bet_details?.reduce(
@@ -47,7 +50,10 @@ const GameHistoryDetails = ({ setTab, closeModal, roundId }) => {
             data-role="header-container"
           >
             <div
-              onClick={() => setTab("menu")}
+              onClick={() => {
+                setTab("menu");
+                if (sound) playClick();
+              }}
               className="backButtonContainer--3999f"
             >
               <div
@@ -169,7 +175,10 @@ const GameHistoryDetails = ({ setTab, closeModal, roundId }) => {
                         data-role="history-round-navigation"
                       >
                         <div
-                          onClick={() => setTab("game-history")}
+                          onClick={() => {
+                            setTab("game-history");
+                            if (sound) playClick();
+                          }}
                           className="switchToPrevContainer--84636"
                         >
                           <div
@@ -190,7 +199,10 @@ const GameHistoryDetails = ({ setTab, closeModal, roundId }) => {
                         </div>
                         <div className="goBack--9724a">
                           <button
-                            onClick={() => setTab("game-history")}
+                            onClick={() => {
+                              setTab("game-history");
+                              if (sound) playClick();
+                            }}
                             className="button--673ce xxxs--2d4a2 roundingBoth--6d5e6 labelPositionInside--74c5c buttonRoot--3bd4d"
                             data-type="secondary"
                             data-role="go-back"

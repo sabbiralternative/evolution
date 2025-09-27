@@ -8,13 +8,17 @@ import PayoutLimit from "./PayoutLimit";
 import GameHistory from "../../../../component/shared/GameHistory";
 import GameHistoryDetails from "../../../../component/shared/GameHistoryDetails";
 import { useSelector } from "react-redux";
+import { playClick } from "../../../../utils/sound";
+import { useSound } from "../../../../context/ApiProvider";
 
 const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
+  const { sound } = useSound();
   const { deviseHeight } = useSelector((state) => state.global);
   const [roundId, setRoundId] = useState(null);
   const [tab, setTab] = useState("menu");
   const navigate = useNavigate();
   const closeModal = () => {
+    if (sound) playClick();
     setShowMenu(false);
   };
 

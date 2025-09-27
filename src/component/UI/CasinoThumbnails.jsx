@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useGetLiveCasinoThumbnailQuery } from "../../redux/features/casino/casino.api";
 import StaticThumbnail from "../shared/StaticThumbnail";
 import { useSound } from "../../context/ApiProvider";
+import { playClick } from "../../utils/sound";
 
 const CasinoThumbnail = ({ title, id }) => {
   const { sound } = useSound();
@@ -11,7 +12,7 @@ const CasinoThumbnail = ({ title, id }) => {
   const handleNavigate = (casino) => {
     const formatLink = `/game/${casino?.slug}/${casino?.eventTypeId}/${casino?.eventId}`;
     if (sound) {
-      new Audio("/click.mp3").play();
+      playClick();
     }
     navigate(formatLink);
   };

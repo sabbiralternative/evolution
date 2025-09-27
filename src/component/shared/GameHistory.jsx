@@ -2,8 +2,11 @@ import { motion } from "motion/react";
 import { useGetHistory } from "../../hooks/history";
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import { useSelector } from "react-redux";
+import { playClick } from "../../utils/sound";
+import { useSound } from "../../context/ApiProvider";
 
 const GameHistory = ({ setTab, closeModal, setRoundId }) => {
+  const { sound } = useSound();
   const { deviseHeight } = useSelector((state) => state.global);
   const [dateCategory, setDateCategory] = useState([]);
   const [page, setPage] = useState(1);
@@ -108,7 +111,10 @@ const GameHistory = ({ setTab, closeModal, setRoundId }) => {
             data-role="header-container"
           >
             <div
-              onClick={() => setTab("menu")}
+              onClick={() => {
+                setTab("menu");
+                if (sound) playClick();
+              }}
               className="backButtonContainer--3999f"
             >
               <div
@@ -363,6 +369,7 @@ const GameHistory = ({ setTab, closeModal, setRoundId }) => {
                                                 setRoundId(
                                                   singleItem?.round_id
                                                 );
+                                                if (sound) playClick();
                                               }}
                                               key={`${date}-${i}`}
                                               className="row--a868c sm--179b8"

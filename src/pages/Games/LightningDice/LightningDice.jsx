@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import ActionButtons from "./ActionButtons";
 import BetSlip from "./BetSlip";
 import Footer from "../../../component/shared/Footer";
-// import RoadPrediction from "./RoadPrediction";
-import Menu from "./Menu/Menu";
+import Menu from "../../../component/shared/Menu/Menu";
 import { useParams } from "react-router-dom";
 import { useGetEventDetailsQuery } from "../../../redux/features/events/events";
 import { Status } from "../../../const";
@@ -12,10 +11,10 @@ import { AnimatePresence } from "framer-motion";
 import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
-// import Winner from "./Winner";
 import RecentResult from "./RecentResult";
 import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
+import { playClick } from "../../../utils/sound";
 
 const LightningDice = () => {
   const { sound } = useSound();
@@ -27,7 +26,7 @@ const LightningDice = () => {
   const [, setCurrentRoundWinAmount] = useState(null);
   const { stake } = useSelector((state) => state.global);
   const [showFullScreen, setShowFullScreen] = useState(false);
-  const { eventTypeId, eventId } = useParams();
+  const { eventTypeId } = useParams();
   const { data } = useGetEventDetailsQuery(
     { eventTypeId, eventId: 10001 },
     { pollingInterval: 1000 }
@@ -127,7 +126,10 @@ const LightningDice = () => {
                 </div>
               </div>
               <div
-                onClick={() => setShowMenu(true)}
+                onClick={() => {
+                  setShowMenu(true);
+                  if (sound) playClick();
+                }}
                 className="container--ea4e5 commonUiElement"
                 data-role="menu-button-layout"
               >

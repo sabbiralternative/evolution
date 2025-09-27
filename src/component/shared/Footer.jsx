@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { setBalance } from "../../redux/features/auth/authSlice";
 import { useSound } from "../../context/ApiProvider";
+import { playWinSound } from "../../utils/sound";
 
 const Footer = ({
   firstEvent,
@@ -91,7 +92,7 @@ const Footer = ({
       if (totalWinAmount > 0 && filterOrderByEventId?.length > 0) {
         dispatch(setBalance(balance + parseFloat(totalWinAmount)));
         if (sound) {
-          new Audio("/win.mp3").play();
+          playWinSound();
         }
       }
 

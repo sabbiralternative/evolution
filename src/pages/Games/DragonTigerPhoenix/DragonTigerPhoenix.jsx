@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import ActionButtons from "./ActionButtons";
 import BetSlip from "./BetSlip";
-
-// import RoadPrediction from "./RoadPrediction";
-import Menu from "./Menu/Menu";
+import Menu from "../../../component/shared/Menu/Menu";
 import { useParams } from "react-router-dom";
 import { useGetEventDetailsQuery } from "../../../redux/features/events/events";
 import { Status } from "../../../const";
@@ -11,22 +9,22 @@ import { useSelector } from "react-redux";
 import { AnimatePresence } from "framer-motion";
 import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
-import Counter from "../../../component/UI/Counter";
 import Footer from "../../../component/shared/Footer";
 import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
+import { playClick } from "../../../utils/sound";
 
 const DragonTigerPhoenix = () => {
   const { sound } = useSound();
   const [showMenu, setShowMenu] = useState(false);
   const [double, setDouble] = useState(false);
-  const [currentRoundWinAmount, setCurrentRoundWinAmount] = useState(null);
+  const [, setCurrentRoundWinAmount] = useState(null);
   const [animation, setAnimation] = useState([]);
   const [showWinLossResult, setShowWinLossResult] = useState(false);
   const [totalWinAmount, setTotalWinAmount] = useState(null);
   const { stake } = useSelector((state) => state.global);
   const [showFullScreen, setShowFullScreen] = useState(false);
-  const { eventTypeId, eventId } = useParams();
+  const { eventTypeId } = useParams();
   const { data } = useGetEventDetailsQuery(
     { eventTypeId, eventId: 10001 },
     { pollingInterval: 1000 }
@@ -100,7 +98,7 @@ const DragonTigerPhoenix = () => {
 
       <div id="root" className="rootContainer--308ad">
         <div className="container--efd24">
-          <div
+          {/* <div
             data-role="branded-gradient"
             className="gradient--5a4aa onlyPortrait--08467"
             style={{
@@ -117,11 +115,14 @@ const DragonTigerPhoenix = () => {
                 rgb(147, 101, 66) 105%
               )`,
             }}
-          />
+          /> */}
           <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
             <div className="relativeChildren--99d54">
               <div
-                onClick={() => setShowMenu(true)}
+                onClick={() => {
+                  setShowMenu(true);
+                  if (sound) playClick();
+                }}
                 className="container--ea4e5 commonUiElement"
                 data-role="menu-button-layout"
               >
@@ -199,7 +200,7 @@ const DragonTigerPhoenix = () => {
                 className="videoWrapper--0aab6 noAnimation--5e625"
                 style={{
                   width: "100%",
-                  height: "241.875px",
+                  height: "195px",
                   transformOrigin: "center top",
                   transform: "scale(1.1) translate(0px, 0px)",
                 }}
@@ -257,31 +258,9 @@ const DragonTigerPhoenix = () => {
                 top: "210.431px",
                 backgroundSize: "758px 621.333px",
                 backgroundRepeat: "no-repeat",
-                backgroundImage: `radial-gradient(
-                circle at 50% -240%,
-                rgba(38, 30, 26, 0) 0%,
-                rgba(38, 30, 26, 0) 70%,
-                rgba(38, 30, 26, 0.024) 70.5%,
-                rgba(38, 30, 26, 0.094) 71%,
-                rgba(38, 30, 26, 0.208) 71.5%,
-                rgba(38, 30, 26, 0.345) 72%,
-                rgba(38, 30, 26, 0.498) 72.5%,
-                rgba(38, 30, 26, 0.655) 73%,
-                rgba(38, 30, 26, 0.792) 73.5%,
-                rgba(38, 30, 26, 0.906) 74%,
-                rgba(38, 30, 26, 0.976) 74.5%,
-                rgb(38, 30, 26) 75%,
-                rgb(38, 30, 26) 80%,
-                rgba(38, 30, 26, 0.976) 81.7%,
-                rgba(38, 30, 26, 0.906) 83.4%,
-                rgba(38, 30, 26, 0.792) 85.1%,
-                rgba(38, 30, 26, 0.655) 86.8%,
-                rgba(38, 30, 26, 0.498) 88.5%,
-                rgba(38, 30, 26, 0.345) 90.2%,
-                rgba(38, 30, 26, 0.208) 91.9%,
-                rgba(38, 30, 26, 0.094) 93.6%,
-                rgba(38, 30, 26, 0.024) 95.3%
-              )`,
+                background:
+                  "linear-gradient(rgba(19, 5, 5, 0) 0%,rgb(19, 5, 5) 25%,rgba(21, 21, 21, 0) 100%)",
+                // transform: "translateY(145px)"
               }}
             />
           </div>

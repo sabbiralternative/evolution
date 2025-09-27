@@ -7,13 +7,17 @@ import GameHistoryDetails from "../../../../component/shared/GameHistoryDetails"
 import HowToPlay from "./HowToPlay";
 import PayoutLimit from "./PayoutLimit";
 import { useSelector } from "react-redux";
+import { playClick } from "../../../../utils/sound";
+import { useSound } from "../../../../context/ApiProvider";
 
 const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
+  const { sound } = useSound();
   const { deviseHeight } = useSelector((state) => state.global);
   const [roundId, setRoundId] = useState(null);
   const [tab, setTab] = useState("menu");
   const navigate = useNavigate();
   const closeModal = () => {
+    if (sound) playClick();
     setShowMenu(false);
   };
 
@@ -216,7 +220,10 @@ const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
                                   </div>
                                 </div>
                                 <div
-                                  onClick={() => setTab("chat")}
+                                  onClick={() => {
+                                    setTab("chat");
+                                    if (sound) playClick();
+                                  }}
                                   className="wrapper--6c1a2"
                                   data-role="menu-item-wrapper"
                                 >

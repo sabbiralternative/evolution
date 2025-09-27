@@ -9,6 +9,7 @@ import GameHistory from "../../../../component/shared/GameHistory";
 import GameHistoryDetails from "../../../../component/shared/GameHistoryDetails";
 import { useSelector } from "react-redux";
 import { useSound } from "../../../../context/ApiProvider";
+import { playClick } from "../../../../utils/sound";
 
 const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
   const { deviseHeight } = useSelector((state) => state.global);
@@ -17,6 +18,7 @@ const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
   const [tab, setTab] = useState("menu");
   const navigate = useNavigate();
   const closeModal = () => {
+    if (sound) playClick();
     setShowMenu(false);
   };
 
@@ -219,7 +221,10 @@ const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
                                   </div>
                                 </div>
                                 <div
-                                  onClick={() => setTab("chat")}
+                                  onClick={() => {
+                                    setTab("chat");
+                                    if (sound) playClick();
+                                  }}
                                   className="wrapper--6c1a2"
                                   data-role="menu-item-wrapper"
                                 >

@@ -1,3 +1,5 @@
+import { SOUND } from "../assets/sound";
+
 export const handleDoubleStake = (
   isRepeatTheBet,
   setDouble,
@@ -6,7 +8,7 @@ export const handleDoubleStake = (
   firstEvent,
   sound
 ) => {
-  if (sound) new Audio("/bet.mp3").play();
+  if (sound) new Audio(SOUND.repeat_double).play();
 
   if (!isRepeatTheBet) {
     setDouble(true);

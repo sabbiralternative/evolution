@@ -1,5 +1,7 @@
+import { SOUND } from "../assets/sound";
+
 export const handleUndoStake = (setStakeState, stakeState, sound) => {
-  if (sound) new Audio("/undo.mp3").play();
+  if (sound) new Audio(SOUND.undo).play();
 
   setStakeState((prev) => {
     const updatedState = { ...prev };

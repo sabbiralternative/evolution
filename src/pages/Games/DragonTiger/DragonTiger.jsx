@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import ActionButtons from "./ActionButtons";
 import BetSlip from "./BetSlip";
-
-// import RoadPrediction from "./RoadPrediction";
-import Menu from "./Menu/Menu";
+import Menu from "../../../component/shared/Menu/Menu";
 import { useParams } from "react-router-dom";
 import { useGetEventDetailsQuery } from "../../../redux/features/events/events";
 import { Status } from "../../../const";
@@ -15,12 +13,13 @@ import Counter from "../../../component/UI/Counter";
 import Footer from "../../../component/shared/Footer";
 import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
+import { playClick } from "../../../utils/sound";
 
 const DragonTiger = () => {
   const { sound } = useSound();
   const [showMenu, setShowMenu] = useState(false);
   const [double, setDouble] = useState(false);
-  const [currentRoundWinAmount, setCurrentRoundWinAmount] = useState(null);
+  const [, setCurrentRoundWinAmount] = useState(null);
   const [animation, setAnimation] = useState([]);
   const [showWinLossResult, setShowWinLossResult] = useState(false);
   const [totalWinAmount, setTotalWinAmount] = useState(null);
@@ -192,7 +191,10 @@ const DragonTiger = () => {
                 </div>
               </div>
               <div
-                onClick={() => setShowMenu(true)}
+                onClick={() => {
+                  setShowMenu(true);
+                  if (sound) playClick();
+                }}
                 className="container--ea4e5 commonUiElement"
                 data-role="menu-button-layout"
               >
@@ -324,13 +326,13 @@ const DragonTiger = () => {
             </div>
             <div
               className="gradientWrapper--3d7b6"
-              style={{ height: "314px", transform: "translateY(230px)" }}
+              style={{ height: "314px", transform: "translateY(145px)" }}
             >
               <div
                 className="videoGradient--10404"
                 style={{
                   background:
-                    "linear-gradient(rgba(19, 5, 5, 0) 0%,rgb(19, 5, 5) 50%,rgba(21, 21, 21, 0) 100%)",
+                    "linear-gradient(rgba(19, 5, 5, 0) 0%,rgb(19, 5, 5) 25%,rgba(21, 21, 21, 0) 100%)",
                 }}
               />
             </div>
@@ -381,11 +383,11 @@ const DragonTiger = () => {
                     className="gameControlsWrapper--9fbf7"
                     data-role="gameControlsWrapper"
                     style={{
-                      top: "314px",
+                      top: "280px",
                       bottom: "auto",
                       transform:
                         firstEvent?.status === Status.SUSPENDED
-                          ? "translateY(37px)"
+                          ? "translateY(25px)"
                           : "translateY(0px)",
                     }}
                   >

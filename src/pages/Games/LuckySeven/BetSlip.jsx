@@ -7,6 +7,8 @@ import Stake from "../../../component/UI/Chip/Stake";
 import { getBackPrice, isRunnerWinner } from "../../../utils/betSlip";
 import StakeAnimation from "../../../component/UI/Chip/StakeAnimation";
 import { cn } from "../../../utils/cn";
+import { playPlaceChip, playSuspendedSound } from "../../../utils/sound";
+import { useSound } from "../../../context/ApiProvider";
 // import { RoadPrediction } from "./RoadPrediction";
 
 const BetSlip = ({
@@ -21,6 +23,7 @@ const BetSlip = ({
   setAnimation,
   initialState,
 }) => {
+  const { sound } = useSound();
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
   const [showSuspendedWarning, setShowSuspendedWarning] = useState(false);
   const dispatch = useDispatch();
@@ -31,6 +34,7 @@ const BetSlip = ({
   // Generic function to update stake state
   const handleStakeChange = (payload) => {
     if (status === Status.OPEN) {
+      if (sound) playPlaceChip();
       const isRepeatTheBet = Object.values(stakeState).find(
         (item) => item?.selection_id && item?.show === false
       );
@@ -182,6 +186,9 @@ const BetSlip = ({
 
   const handleShowSuspendedStatus = () => {
     if (status === Status.SUSPENDED) {
+      if (sound) {
+        playSuspendedSound();
+      }
       setShowSuspendedWarning(true);
     }
   };
@@ -203,11 +210,14 @@ const BetSlip = ({
   return (
     <div
       onClick={handleShowSuspendedStatus}
-      className={`bettingGrid--a60ca flex-col  ${
-        status === Status.SUSPENDED ? "pointer-events-none" : ""
-      }`}
+      className={`bettingGrid--a60ca flex-col  `}
     >
-      <div style={{ width: `${innerWidth - 10}px`, height: "170px" }}>
+      <div
+        style={{ width: `${innerWidth - 10}px`, height: "170px" }}
+        className={`${
+          status === Status.SUSPENDED ? "pointer-events-none" : ""
+        }`}
+      >
         <div
           className="bettingGrid--0835e bettingTime--7f9cd isVertical--28984 onlyPairs--f14f6"
           data-role="betting-grid-container"
@@ -810,7 +820,7 @@ const BetSlip = ({
                   justifyContent: "center",
                 }}
               >
-                <div className="z-50 mb-3 absolute top-[10px]">
+                <div className="z-50 mb-3 absolute -top-16">
                   <div className="relative w-10 h-10">
                     <div
                       className={`${

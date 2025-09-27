@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ActionButtons from "./ActionButtons";
 import BetSlip from "./BetSlip";
 import Footer from "../../../component/shared/Footer";
-import Menu from "./Menu/Menu";
+import Menu from "../../../component/shared/Menu/Menu";
 import { useParams } from "react-router-dom";
 import { useGetEventDetailsQuery } from "../../../redux/features/events/events";
 import { Status } from "../../../const";
@@ -10,10 +10,10 @@ import { useSelector } from "react-redux";
 import { AnimatePresence } from "framer-motion";
 import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
-import Counter from "../../../component/UI/Counter";
 import History from "./History";
 import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
+import { playClick } from "../../../utils/sound";
 
 const SuperColor = () => {
   const { sound } = useSound();
@@ -86,28 +86,22 @@ const SuperColor = () => {
 
       <div id="root" className="rootContainer--308ad">
         <div className="container--efd24">
-          <div
+          {/* <div
             data-role="branded-gradient"
             className="gradient--5a4aa onlyPortrait--08467"
             style={{
-              background: `linear-gradient(
-                45deg,
-                rgba(0, 41, 33, 0) 0%,
-                rgba(0, 41, 33, 0.8) 50%,
-                rgba(0, 41, 33, 0) 100%
-              ),
-              linear-gradient(
-                45deg,
-                rgb(31, 130, 97) -5%,
-                rgb(0, 41, 33) 50%,
-                rgb(31, 130, 97) 105%
-              )`,
+              transform: "translateY(145px)",
+              background:
+                "linear-gradient(rgba(19, 5, 5, 0) 0%,rgba(0, 41, 33, 0.8) 25%,rgba(21, 21, 21, 0) 100%)",
             }}
-          />
+          /> */}
           <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
             <div className="relativeChildren--99d54">
               <div
-                onClick={() => setShowMenu(true)}
+                onClick={() => {
+                  setShowMenu(true);
+                  if (sound) playClick();
+                }}
                 className="container--ea4e5 commonUiElement"
                 data-role="menu-button-layout"
               >
@@ -231,13 +225,13 @@ const SuperColor = () => {
               <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
                 <div className="relativeChildren--99d54" />
               </div>
-              <div style={{ width: "100%", height: "326.2px", margin: "auto" }}>
+              <div style={{ width: "100%", height: "100%", margin: "auto" }}>
                 <div
                   data-role="scaled-video-container"
                   className="videoWrapper--0aab6"
                   style={{
                     width: "100%",
-                    height: "241.875px",
+                    height: "185px",
                     transformOrigin: "center top",
                     transform: "scale(1.1) translate(0px, 0px)",
                   }}
@@ -289,7 +283,7 @@ const SuperColor = () => {
                   </div>
                 </div>
               </div>
-              <div
+              {/* <div
                 data-role="video-gradient"
                 className="videoGradient--eeafb"
                 style={{
@@ -297,7 +291,7 @@ const SuperColor = () => {
                   "-gradientScale": "2.18796992481203",
                   "-fadeoutHeight": "50px",
                 }}
-              />
+              /> */}
             </div>
           </div>
           <div

@@ -4,6 +4,7 @@ import { useGetLiveCasinoThumbnailQuery } from "../../../redux/features/casino/c
 import { useNavigate } from "react-router-dom";
 import images from "../../../assets/images";
 import { useSound } from "../../../context/ApiProvider";
+import { playClick } from "../../../utils/sound";
 
 const Search = ({ setShowSearch }) => {
   const { sound } = useSound();
@@ -15,7 +16,7 @@ const Search = ({ setShowSearch }) => {
   const handleNavigate = (casino) => {
     const formatLink = `/game/${casino?.slug}/${casino?.eventTypeId}/${casino?.eventId}`;
     if (sound) {
-      new Audio("/click.mp3").play();
+      playClick();
     }
     navigate(formatLink);
   };
@@ -29,6 +30,9 @@ const Search = ({ setShowSearch }) => {
   }, [data, searchTerm]);
 
   const handleCloseItem = (casino) => {
+    if (sound) {
+      playClick();
+    }
     const data = casinoData?.filter(
       (item) => item?.eventId !== casino?.eventId
     );
@@ -602,7 +606,10 @@ const Search = ({ setShowSearch }) => {
                           </button>
                         </div>
                         <div
-                          onClick={() => setShowSearch(false)}
+                          onClick={() => {
+                            setShowSearch(false);
+                            if (sound) playClick();
+                          }}
                           className="TableTextInputCancel--dfb74"
                         >
                           <span

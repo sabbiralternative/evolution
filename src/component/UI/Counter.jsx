@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSound } from "../../context/ApiProvider";
+import { SOUND } from "../../assets/sound";
 
 const Counter = ({ firstEvent }) => {
   const { sound } = useSound();
@@ -10,9 +11,9 @@ const Counter = ({ firstEvent }) => {
   const timer = timerDuration - (utcSeconds - lastUpdateTime);
 
   useEffect(() => {
-    if (timer === 3) {
+    if (timer < 4 && timer > 0) {
       if (sound) {
-        new Audio("/countdown.mp3").play();
+        new Audio(SOUND.timer_tick).play();
       }
     }
   }, [timer, sound]);

@@ -1,9 +1,13 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import { useSound } from "../../context/ApiProvider";
+import { playClick } from "../../utils/sound";
 
 const ScrollableTab = () => {
+  const { sound } = useSound();
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const handleNavigate = (link) => {
+    if (sound) playClick();
     navigate(link);
   };
   return (
