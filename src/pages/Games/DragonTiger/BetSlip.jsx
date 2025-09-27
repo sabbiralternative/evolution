@@ -7,6 +7,7 @@ import { setBalance } from "../../../redux/features/auth/authSlice";
 import { isRunnerWinner } from "../../../utils/betSlip";
 import images from "../../../assets/images";
 import StakeAnimation from "../../../component/UI/Chip/StakeAnimation";
+import { useSound } from "../../../context/ApiProvider";
 
 const BetSlip = ({
   double,
@@ -20,6 +21,7 @@ const BetSlip = ({
   setAnimation,
   initialState,
 }) => {
+  const { sound } = useSound();
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
   const [showSuspendedWarning, setShowSuspendedWarning] = useState(false);
   const dispatch = useDispatch();
@@ -40,7 +42,9 @@ const BetSlip = ({
       if (isRepeatTheBet) {
         setStakeState(initialState);
       }
-      new Audio("/bet.mp3").play();
+      if (sound) {
+        new Audio("/bet.mp3").play();
+      }
       const { key, data, dataIndex, runnerIndex, type } = payload;
       setAnimation([key]);
       const formatData = {

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { setBalance } from "../../redux/features/auth/authSlice";
+import { useSound } from "../../context/ApiProvider";
 
 const Footer = ({
   firstEvent,
@@ -13,6 +14,7 @@ const Footer = ({
   title,
   setCurrentRoundWinAmount,
 }) => {
+  const { sound } = useSound();
   const dispatch = useDispatch();
   const totalBetPlace = localStorage.getItem("totalBetPlace");
   const { eventId } = useParams();
@@ -88,7 +90,9 @@ const Footer = ({
       );
       if (totalWinAmount > 0 && filterOrderByEventId?.length > 0) {
         dispatch(setBalance(balance + parseFloat(totalWinAmount)));
-        new Audio("/win.mp3").play();
+        if (sound) {
+          new Audio("/win.mp3").play();
+        }
       }
 
       const filterCurrentEventBet = parseTotalBet?.filter(
@@ -100,7 +104,7 @@ const Footer = ({
         JSON.stringify(filterCurrentEventBet)
       );
     }
-  }, [eventId, totalWinAmount, showWinLossResult]);
+  }, [eventId, totalWinAmount, showWinLossResult, sound]);
 
   return (
     <div

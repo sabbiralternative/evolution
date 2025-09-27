@@ -1,5 +1,6 @@
-export const handleUndoStake = (setStakeState, stakeState) => {
-  new Audio("/undo.mp3").play();
+export const handleUndoStake = (setStakeState, stakeState, sound) => {
+  if (sound) new Audio("/undo.mp3").play();
+
   setStakeState((prev) => {
     const updatedState = { ...prev };
     const prevValues = Object.entries(prev);

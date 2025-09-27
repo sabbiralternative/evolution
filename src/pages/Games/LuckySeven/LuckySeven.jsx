@@ -13,8 +13,10 @@ import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
 import Winner from "./Winner";
 import AntMedia from "../../../component/shared/Antmedia";
+import { useSound } from "../../../context/ApiProvider";
 
 const LuckySeven = () => {
+  const { sound } = useSound();
   const [showMenu, setShowMenu] = useState(false);
   const [double, setDouble] = useState(false);
   const [animation, setAnimation] = useState([]);
@@ -317,7 +319,7 @@ const LuckySeven = () => {
                 className="videoGradient--10404"
                 style={{
                   background:
-                    "linear-gradient(rgba(19, 5, 5, 0) 0%,rgb(19, 5, 5) 50%,rgba(21, 21, 21, 0) 100%)",
+                    "linear-gradient(rgba(19, 5, 5, 0) 0%,rgb(19, 5, 5) 25%,rgba(21, 21, 21, 0) 100%)",
                 }}
               />
             </div>
@@ -650,10 +652,13 @@ const LuckySeven = () => {
                   setDouble,
                   setStakeState,
                   setAnimation,
-                  firstEvent
+                  firstEvent,
+                  sound
                 )
               }
-              handleUndoStake={() => handleUndoStake(setStakeState, stakeState)}
+              handleUndoStake={() =>
+                handleUndoStake(setStakeState, stakeState, sound)
+              }
               isPlaceStake={isPlaceStake}
             />
           )}

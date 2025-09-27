@@ -3,9 +3,11 @@ export const handleDoubleStake = (
   setDouble,
   setStakeState,
   setAnimation,
-  firstEvent
+  firstEvent,
+  sound
 ) => {
-  new Audio("/bet.mp3").play();
+  if (sound) new Audio("/bet.mp3").play();
+
   if (!isRepeatTheBet) {
     setDouble(true);
     setStakeState((prevState) => {

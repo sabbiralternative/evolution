@@ -13,8 +13,10 @@ import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
 import History from "./History";
 import AntMedia from "../../../component/shared/Antmedia";
+import { useSound } from "../../../context/ApiProvider";
 
 const FootballDice = () => {
+  const { sound } = useSound();
   const [showMenu, setShowMenu] = useState(false);
   const [double, setDouble] = useState(false);
   const [animation, setAnimation] = useState([]);
@@ -296,10 +298,13 @@ const FootballDice = () => {
                   setDouble,
                   setStakeState,
                   setAnimation,
-                  firstEvent
+                  firstEvent,
+                  sound
                 )
               }
-              handleUndoStake={() => handleUndoStake(setStakeState, stakeState)}
+              handleUndoStake={() =>
+                handleUndoStake(setStakeState, stakeState, sound)
+              }
               isPlaceStake={isPlaceStake}
             />
           )}

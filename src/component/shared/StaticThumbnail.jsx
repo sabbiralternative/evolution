@@ -1,10 +1,14 @@
 import { useNavigate } from "react-router-dom";
+import { useSound } from "../../context/ApiProvider";
 
 const StaticThumbnail = ({ slug, name }) => {
+  const { sound } = useSound();
   const navigate = useNavigate();
   const handleNavigate = (casino) => {
     const formatLink = `/game/${casino?.slug}/${casino?.eventTypeId}/${casino?.eventId}`;
-    new Audio("/click.mp3").play();
+    if (sound) {
+      new Audio("/click.mp3").play();
+    }
     navigate(formatLink);
   };
   return (

@@ -3,8 +3,10 @@ import Footer from "../Footer";
 import { useGetLiveCasinoThumbnailQuery } from "../../../redux/features/casino/casino.api";
 import { useNavigate } from "react-router-dom";
 import images from "../../../assets/images";
+import { useSound } from "../../../context/ApiProvider";
 
 const Search = ({ setShowSearch }) => {
+  const { sound } = useSound();
   const [searchTerm, setSearchTerm] = useState("");
   const [casinoData, setCasinoData] = useState([]);
   const { data } = useGetLiveCasinoThumbnailQuery({ id: searchTerm });
@@ -12,7 +14,9 @@ const Search = ({ setShowSearch }) => {
 
   const handleNavigate = (casino) => {
     const formatLink = `/game/${casino?.slug}/${casino?.eventTypeId}/${casino?.eventId}`;
-    new Audio("/click.mp3").play();
+    if (sound) {
+      new Audio("/click.mp3").play();
+    }
     navigate(formatLink);
   };
 

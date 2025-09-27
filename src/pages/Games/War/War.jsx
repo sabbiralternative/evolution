@@ -11,10 +11,12 @@ import { AnimatePresence } from "framer-motion";
 import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
 import AntMedia from "../../../component/shared/Antmedia";
+import { useSound } from "../../../context/ApiProvider";
 // import Counter from "../../../component/UI/Counter";
 // import History from "./History";
 
 const War = () => {
+  const { sound } = useSound();
   const [showMenu, setShowMenu] = useState(false);
   const [double, setDouble] = useState(false);
   const [animation, setAnimation] = useState([]);
@@ -518,10 +520,13 @@ const War = () => {
                   setDouble,
                   setStakeState,
                   setAnimation,
-                  firstEvent
+                  firstEvent,
+                  sound
                 )
               }
-              handleUndoStake={() => handleUndoStake(setStakeState, stakeState)}
+              handleUndoStake={() =>
+                handleUndoStake(setStakeState, stakeState, sound)
+              }
               isPlaceStake={isPlaceStake}
             />
           )}

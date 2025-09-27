@@ -1,6 +1,8 @@
 import { useEffect } from "react";
+import { useSound } from "../../context/ApiProvider";
 
 const Counter = ({ firstEvent }) => {
+  const { sound } = useSound();
   const timerDuration = firstEvent?.timerDuration;
   const lastUpdateTime = firstEvent?.lastUpdateTime;
   const utcMilliseconds = Date.now();
@@ -8,10 +10,12 @@ const Counter = ({ firstEvent }) => {
   const timer = timerDuration - (utcSeconds - lastUpdateTime);
 
   useEffect(() => {
-    if (timer < 4 && timer > 0) {
-      new Audio("/countdown.mp3").play();
+    if (timer === 3) {
+      if (sound) {
+        new Audio("/countdown.mp3").play();
+      }
     }
-  }, [timer, timerDuration]);
+  }, [timer, sound]);
 
   return (
     <>

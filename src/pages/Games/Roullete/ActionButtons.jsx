@@ -10,6 +10,7 @@ import { setStake } from "../../../redux/features/global/globalSlice";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
 import Chip50K from "../../../component/UI/Chip/Chip50K";
 import { playChipChange } from "../../../utils/sound";
+import { useSound } from "../../../context/ApiProvider";
 
 const ActionButtons = ({
   isPlaceStake,
@@ -17,6 +18,7 @@ const ActionButtons = ({
   handleDoubleStake,
   isRepeatTheBet,
 }) => {
+  const { sound } = useSound();
   const { stake } = useSelector((state) => state.global);
   const modalRef = useRef();
   const [disable, setDisable] = useState(false);
@@ -35,7 +37,7 @@ const ActionButtons = ({
   const handleChangeChip = (chip) => {
     dispatch(setStake(chip));
     closeModal();
-    playChipChange();
+    if (sound) playChipChange();
   };
 
   useCloseModalClickOutside(modalRef, () => {

@@ -14,8 +14,10 @@ import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
 import Winner from "./Winner";
 import AntMedia from "../../../component/shared/Antmedia";
+import { useSound } from "../../../context/ApiProvider";
 
 const AmarAkbarAnthony = () => {
+  const { sound } = useSound();
   const [showMenu, setShowMenu] = useState(false);
   const [double, setDouble] = useState(false);
   const [animation, setAnimation] = useState([]);
@@ -649,10 +651,13 @@ const AmarAkbarAnthony = () => {
                   setDouble,
                   setStakeState,
                   setAnimation,
-                  firstEvent
+                  firstEvent,
+                  sound
                 )
               }
-              handleUndoStake={() => handleUndoStake(setStakeState, stakeState)}
+              handleUndoStake={() =>
+                handleUndoStake(setStakeState, stakeState, sound)
+              }
               isPlaceStake={isPlaceStake}
             />
           )}

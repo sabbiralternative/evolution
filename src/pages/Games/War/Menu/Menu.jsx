@@ -564,6 +564,54 @@ const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
                                             strokeDashoffset="7.602654221687299"
                                           />
                                         </svg>
+                                        <svg
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          preserveAspectRatio="xMidYMid meet"
+                                          viewBox="0 0 24 24"
+                                          className="icon--e49fa"
+                                          data-role="volume-icon"
+                                        >
+                                          <path
+                                            className="speaker--81c1b"
+                                            data-role="speaker"
+                                            d="M2 9v6a1 1 0 0 0 1 1h5l5 5V3L8 8H3a1 1 0 0 0-1 1Z"
+                                          />
+                                          <path
+                                            className="cross--91683"
+                                            data-role="cross"
+                                            opacity={1}
+                                            fillRule="nonzero"
+                                            d="m18.363 10.955-2.3-2.3-1.061 1.06 2.3 2.301-2.298 2.298 1.06 1.061 2.299-2.298 2.295 2.295 1.061-1.06-2.295-2.296 2.298-2.298-1.061-1.06-2.298 2.297Z"
+                                            style={{
+                                              transform:
+                                                "translateX(0%) rotateZ(0deg)",
+                                            }}
+                                          />
+                                          <circle
+                                            className="stripe--4eaa6"
+                                            data-role="first-stripe"
+                                            fill="transparent"
+                                            cx={10}
+                                            cy="50%"
+                                            strokeWidth="1.5"
+                                            r={0}
+                                            opacity={0}
+                                            strokeDasharray="0 0"
+                                            strokeDashoffset={0}
+                                          />
+                                          <circle
+                                            className="stripe--4eaa6"
+                                            data-role="second-stripe"
+                                            fill="transparent"
+                                            cx={10}
+                                            cy="50%"
+                                            strokeWidth="1.5"
+                                            r={7}
+                                            opacity={0}
+                                            strokeDasharray="8.79645943005142 35.18583772020568"
+                                            strokeDashoffset="4.39822971502571"
+                                          />
+                                        </svg>
                                       </div>
                                     </div>
                                   </div>
