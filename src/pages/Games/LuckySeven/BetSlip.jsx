@@ -7,7 +7,7 @@ import Stake from "../../../component/UI/Chip/Stake";
 import { getBackPrice, isRunnerWinner } from "../../../utils/betSlip";
 import StakeAnimation from "../../../component/UI/Chip/StakeAnimation";
 import { cn } from "../../../utils/cn";
-import { RoadPrediction } from "./RoadPrediction";
+// import { RoadPrediction } from "./RoadPrediction";
 
 const BetSlip = ({
   double,
@@ -293,7 +293,7 @@ const BetSlip = ({
 
               <div className="score--393b3" data-role="score" />
               <div className="symbol--a11ac" style={{ top: "30px" }}>
-                <div className="z-50">
+                <div className="z-50 absolute top-[30px]">
                   <div className="relative w-10 h-10">
                     <div
                       className={`${
@@ -321,7 +321,12 @@ const BetSlip = ({
                 <div className="cards--d48f8 enhanced--181e0" />
               </div>
               <div className="title--967a1">
-                <div className="titleContainer--98fa0">7 Down</div>
+                <div
+                  className="titleContainer--98fa0"
+                  style={{ fontSize: "14px" }}
+                >
+                  7 Down
+                </div>
               </div>
               {/* <div className="liveStatisticsContainer--fc00f">
                 <div
@@ -545,7 +550,7 @@ const BetSlip = ({
                 className="symbol--a11ac"
                 style={{ top: "30px", right: "2%" }}
               >
-                <div className="z-50">
+                <div className="z-50 absolute top-[30px]">
                   <div className="relative w-10 h-10">
                     <div
                       className={`${
@@ -573,7 +578,12 @@ const BetSlip = ({
                 <div className="cards--d48f8 enhanced--181e0" />
               </div>
               <div className="title--967a1">
-                <div className="titleContainer--98fa0">7 Up</div>
+                <div
+                  className="titleContainer--98fa0"
+                  style={{ fontSize: "14px" }}
+                >
+                  7 Up
+                </div>
               </div>
               {/* <div className="liveStatisticsContainer--fc00f">
                 <div
@@ -800,7 +810,7 @@ const BetSlip = ({
                   justifyContent: "center",
                 }}
               >
-                <div className="z-50 mb-3">
+                <div className="z-50 mb-3 absolute top-[10px]">
                   <div className="relative w-10 h-10">
                     <div
                       className={`${
@@ -826,7 +836,9 @@ const BetSlip = ({
                   />
                 )}
                 <div className="titleContainer--98fa0 single--27bc5">
-                  <span className>7</span>
+                  <span className style={{ fontSize: "14px" }}>
+                    7
+                  </span>
                 </div>
                 <div className="payoutContainer--a32db"> </div>
               </div>
@@ -1064,7 +1076,11 @@ const BetSlip = ({
               </svg>
               <div className="payoutContainer--a32db">
                 <div>
-                  <div className="payout--c827b !text-white" data-role="payout">
+                  <div
+                    className="payout--c827b !text-white"
+                    data-role="payout"
+                    style={{ fontSize: "14px" }}
+                  >
                     Even
                   </div>
                 </div>
@@ -1219,7 +1235,11 @@ const BetSlip = ({
               </svg>
               <div className="payoutContainer--a32db">
                 <div>
-                  <div className="payout--c827b !text-white" data-role="payout">
+                  <div
+                    className="payout--c827b !text-white"
+                    data-role="payout"
+                    style={{ fontSize: "14px" }}
+                  >
                     ODD
                   </div>
                 </div>
@@ -1374,7 +1394,11 @@ const BetSlip = ({
               </svg>
               <div className="payoutContainer--a32db">
                 <div>
-                  <div className="payout--c827b !text-white" data-role="payout">
+                  <div
+                    className="payout--c827b !text-white"
+                    data-role="payout"
+                    style={{ fontSize: "14px" }}
+                  >
                     RED
                   </div>
                 </div>
@@ -1529,7 +1553,11 @@ const BetSlip = ({
               </svg>
               <div className="payoutContainer--a32db">
                 <div>
-                  <div className="payout--c827b !text-white" data-role="payout">
+                  <div
+                    className="payout--c827b !text-white"
+                    data-role="payout"
+                    style={{ fontSize: "14px" }}
+                  >
                     BLACK
                   </div>
                 </div>
@@ -1597,7 +1625,7 @@ const BetSlip = ({
           </div>
         </div>
       </div>
-      <RoadPrediction firstEvent={data?.[0]} />
+      {/* <RoadPrediction firstEvent={data?.[0]} /> */}
     </div>
   );
 };

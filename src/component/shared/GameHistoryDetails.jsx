@@ -1,7 +1,9 @@
 import { motion } from "motion/react";
 import { useGetBets } from "../../hooks/bets";
+import { useSelector } from "react-redux";
 
 const GameHistoryDetails = ({ setTab, closeModal, roundId }) => {
+  const { deviseHeight } = useSelector((state) => state.global);
   const { data, isLoading } = useGetBets({ round_id: roundId });
   const totalWin = data?.result?.bet_details?.reduce(
     (sum, item) => sum + (Number(item?.win) || 0),
@@ -26,7 +28,7 @@ const GameHistoryDetails = ({ setTab, closeModal, roundId }) => {
         pointerEvents: "initial",
         transitionDuration: "initial",
         transitionTimingFunction: "initial",
-        height: "605px",
+        height: `${deviseHeight * 0.65}px`,
       }}
     >
       <div

@@ -1,6 +1,8 @@
 /* eslint-disable no-irregular-whitespace */
 import { motion } from "motion/react";
+import { useSelector } from "react-redux";
 const PayoutLimit = ({ setTab, closeModal }) => {
+  const { deviseHeight } = useSelector((state) => state.global);
   return (
     <motion.div
       initial={{ x: "100%" }}
@@ -14,7 +16,7 @@ const PayoutLimit = ({ setTab, closeModal }) => {
         pointerEvents: "initial",
         transitionDuration: "initial",
         transitionTimingFunction: "initial",
-        height: "605px",
+        height: `${deviseHeight * 0.65}px`,
       }}
     >
       <div

@@ -1,6 +1,8 @@
 import { motion } from "motion/react";
+import { useSelector } from "react-redux";
 
 const GameHistory = ({ setTab, closeModal }) => {
+  const { deviseHeight } = useSelector((state) => state.global);
   return (
     <motion.div
       initial={{ x: "100%" }}
@@ -15,7 +17,7 @@ const GameHistory = ({ setTab, closeModal }) => {
         transform: "translate3d(0px, calc(100% - 443px), 1px)",
         transitionDuration: "initial",
         transitionTimingFunction: "initial",
-        height: "605px",
+        height: `${deviseHeight * 0.65}px`,
       }}
     >
       <div

@@ -12,6 +12,7 @@ import { AnimatePresence } from "framer-motion";
 import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
+import AntMedia from "../../../component/shared/Antmedia";
 // import Winner from "./Winner";
 
 const DreamCatcher = () => {
@@ -246,16 +247,16 @@ const DreamCatcher = () => {
                 <div className="relativeChildren--99d54" />
               </div>
               <div
-                style={{ width: "430px", height: "290.25px", margin: "auto" }}
+                style={{ width: "100%", height: "290.25px", margin: "auto" }}
               >
                 <div
                   data-role="scaled-video-container"
                   className="videoWrapper--0aab6"
                   style={{
-                    width: "430px",
+                    width: "100%",
                     height: "241.875px",
                     transformOrigin: "center top",
-                    transform: "scale(1.2, 1.2) translate(0px, 0px)",
+                    transform: "scale(1.1) translate(0px, 0px)",
                   }}
                 >
                   <div
@@ -274,28 +275,9 @@ const DreamCatcher = () => {
                         >
                           <div style={{ height: "100%" }}>
                             <div style={{ width: "100%", height: "100%" }}>
-                              <video
-                                muted="true"
-                                preload="none"
-                                data-current-player="true"
-                                playsInline
-                                style={{
-                                  height: "100%",
-                                  width: "100%",
-                                  pointerEvents: "none",
-                                  display: "block",
-                                  objectFit: "contain",
-                                }}
-                                src="blob:https://babylonbetst.evo-games.com/ba982719-476c-4adf-a744-9ef4419aac9d"
-                              />
-                              <canvas
-                                width={0}
-                                height={0}
-                                style={{
-                                  display: "none",
-                                  objectFit: "contain",
-                                }}
-                              />
+                              {firstEvent?.server && (
+                                <AntMedia server={firstEvent?.server} />
+                              )}
                             </div>
                           </div>
                           <div className="backdropBlurContainer--3eb32" />

@@ -281,26 +281,6 @@ const LuckySeven = () => {
                             {firstEvent?.server && (
                               <AntMedia server={firstEvent?.server} />
                             )}
-
-                            {/* <video
-                              muted="true"
-                              preload="none"
-                              data-current-player="true"
-                              playsInline
-                              style={{
-                                height: "100%",
-                                width: "100%",
-                                pointerEvents: "none",
-                                display: "block",
-                                objectFit: "contain",
-                              }}
-                              src="blob:https://babylonbetst.evo-games.com/1bfbee58-82d4-4911-8af7-cdcb2732567a"
-                            /> */}
-                            {/* <canvas
-                              width={0}
-                              height={0}
-                              style={{ display: "none", objectFit: "contain" }}
-                            /> */}
                           </div>
                         </div>
                         <div className="backdropBlurContainer--3eb32" />

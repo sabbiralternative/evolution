@@ -7,8 +7,10 @@ import HowToPlay from "./HowToPlay";
 import PayoutLimit from "./PayoutLimit";
 import GameHistory from "./GameHistory";
 import GameHistoryDetails from "./GameHistoryDetails";
+import { useSelector } from "react-redux";
 
 const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
+  const { deviseHeight } = useSelector((state) => state.global);
   const [roundId, setRoundId] = useState(null);
   const [tab, setTab] = useState("menu");
   const navigate = useNavigate();
@@ -82,7 +84,9 @@ const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
           data-test-size="65%"
           style={{
             pointerEvents: "initial",
-            transform: "translate3d(0px, calc(100% - 605px), 1px)",
+            transform: `translate3d(0px, calc(100% - ${
+              deviseHeight * 0.65
+            }px), 1px)`,
             transitionDuration: "initial",
             transitionTimingFunction: "initial",
           }}

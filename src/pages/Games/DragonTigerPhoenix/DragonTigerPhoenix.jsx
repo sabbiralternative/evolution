@@ -13,6 +13,7 @@ import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
 import Footer from "../../../component/shared/Footer";
+import AntMedia from "../../../component/shared/Antmedia";
 
 const DragonTigerPhoenix = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -190,15 +191,15 @@ const DragonTigerPhoenix = () => {
             <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
               <div className="relativeChildren--99d54" />
             </div>
-            <div style={{ width: "430px", height: "322.5px", margin: "auto" }}>
+            <div style={{ width: "100%", height: "322.5px", margin: "auto" }}>
               <div
                 data-role="scaled-video-container"
                 className="videoWrapper--0aab6 noAnimation--5e625"
                 style={{
-                  width: "430px",
+                  width: "100%",
                   height: "241.875px",
                   transformOrigin: "center top",
-                  transform: "scale(1.33333, 1.33333) translate(0px, 0px)",
+                  transform: "scale(1.1) translate(0px, 0px)",
                 }}
               >
                 <div
@@ -217,25 +218,9 @@ const DragonTigerPhoenix = () => {
                       >
                         <div style={{ height: "100%" }}>
                           <div style={{ width: "100%", height: "100%" }}>
-                            <video
-                              muted="true"
-                              preload="none"
-                              data-current-player="true"
-                              playsInline
-                              style={{
-                                height: "100%",
-                                width: "100%",
-                                pointerEvents: "none",
-                                display: "block",
-                                objectFit: "contain",
-                              }}
-                              src="blob:https://babylonbetst.evo-games.com/ae67f6cd-ea48-47ba-a346-80924d0c11d0"
-                            />
-                            <canvas
-                              width={0}
-                              height={0}
-                              style={{ display: "none", objectFit: "contain" }}
-                            />
+                            {firstEvent?.server && (
+                              <AntMedia server={firstEvent?.server} />
+                            )}
                           </div>
                         </div>
                         <div className="backdropBlurContainer--3eb32" />

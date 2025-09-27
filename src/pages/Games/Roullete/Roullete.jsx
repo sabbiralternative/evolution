@@ -15,6 +15,7 @@ import { handleUndoStake } from "../../../utils/handleUndoStake";
 // import Winner from "./Winner";
 import RecentNumberContainer from "./RecentNumberContainer";
 import { keysArray } from "./const";
+import AntMedia from "../../../component/shared/Antmedia";
 
 const Roullete = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -181,25 +182,9 @@ const Roullete = () => {
                     >
                       <div style={{ height: "100%" }}>
                         <div style={{ width: "100%", height: "100%" }}>
-                          <video
-                            muted="true"
-                            preload="none"
-                            data-current-player="true"
-                            playsInline
-                            style={{
-                              height: "100%",
-                              width: "100%",
-                              pointerEvents: "none",
-                              display: "block",
-                              objectFit: "contain",
-                            }}
-                            src
-                          />
-                          <canvas
-                            width={0}
-                            height={0}
-                            style={{ display: "none", objectFit: "contain" }}
-                          />
+                          {firstEvent?.server && (
+                            <AntMedia server={firstEvent?.server} />
+                          )}
                         </div>
                       </div>
                       <div className="backdropBlurContainer--3eb32" />

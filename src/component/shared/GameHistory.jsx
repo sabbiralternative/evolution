@@ -1,8 +1,10 @@
 import { motion } from "motion/react";
 import { useGetHistory } from "../../hooks/history";
 import React, { useEffect, useState, useCallback, useRef } from "react";
+import { useSelector } from "react-redux";
 
 const GameHistory = ({ setTab, closeModal, setRoundId }) => {
+  const { deviseHeight } = useSelector((state) => state.global);
   const [dateCategory, setDateCategory] = useState([]);
   const [page, setPage] = useState(1);
   const [allHistoryData, setAllHistoryData] = useState([]); // Store all accumulated data
@@ -87,7 +89,7 @@ const GameHistory = ({ setTab, closeModal, setRoundId }) => {
         pointerEvents: "initial",
         transitionDuration: "initial",
         transitionTimingFunction: "initial",
-        height: "605px",
+        height: `${deviseHeight * 0.65}px`,
       }}
     >
       <div

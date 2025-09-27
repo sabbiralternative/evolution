@@ -12,6 +12,7 @@ import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
 import History from "./History";
+import AntMedia from "../../../component/shared/Antmedia";
 
 const FootballStudio = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -192,17 +193,15 @@ const FootballStudio = () => {
             <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
               <div className="relativeChildren--99d54" />
             </div>
-            <div
-              style={{ width: "430px", height: "338.625px", margin: "auto" }}
-            >
+            <div style={{ width: "100%", height: "338.625px", margin: "auto" }}>
               <div
                 data-role="scaled-video-container"
                 className="videoWrapper--0aab6"
                 style={{
-                  width: "430px",
+                  width: "100%",
                   height: "241.875px",
                   transformOrigin: "center top",
-                  transform: "scale(1.4, 1.4) translate(0px, 0px)",
+                  transform: "scale(1.1) translate(0px, 0px)",
                 }}
               >
                 <div
@@ -221,25 +220,9 @@ const FootballStudio = () => {
                       >
                         <div style={{ height: "100%" }}>
                           <div style={{ width: "100%", height: "100%" }}>
-                            <video
-                              muted="true"
-                              preload="none"
-                              data-current-player="true"
-                              playsInline
-                              style={{
-                                height: "100%",
-                                width: "100%",
-                                pointerEvents: "none",
-                                display: "block",
-                                objectFit: "contain",
-                              }}
-                              src="blob:https://babylonbetst.evo-games.com/11482db2-5a17-4bda-a3f5-1170e2d328d2"
-                            />
-                            <canvas
-                              width={0}
-                              height={0}
-                              style={{ display: "none", objectFit: "contain" }}
-                            />
+                            {firstEvent?.server && (
+                              <AntMedia server={firstEvent?.server} />
+                            )}
                           </div>
                         </div>
                         <div className="backdropBlurContainer--3eb32" />

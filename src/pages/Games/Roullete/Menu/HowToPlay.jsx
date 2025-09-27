@@ -1,7 +1,9 @@
 import { motion } from "motion/react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const HowToPlay = ({ setTab, closeModal }) => {
+  const { deviseHeight } = useSelector((state) => state.global);
   const [tabs, setTabs] = useState("game-details");
   const [open, setOpen] = useState(null);
 
@@ -26,7 +28,7 @@ const HowToPlay = ({ setTab, closeModal }) => {
         pointerEvents: "initial",
         transitionDuration: "initial",
         transitionTimingFunction: "initial",
-        height: "605px",
+        height: `${deviseHeight * 0.65}px`,
       }}
     >
       <div

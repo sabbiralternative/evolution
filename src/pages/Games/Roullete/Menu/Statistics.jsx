@@ -1,7 +1,9 @@
 import { motion } from "motion/react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const Statistics = ({ setParentTab, closeModal }) => {
+  const { deviseHeight } = useSelector((state) => state.global);
   const [tab, setTab] = useState("hot-cold");
   return (
     <motion.div
@@ -17,7 +19,7 @@ const Statistics = ({ setParentTab, closeModal }) => {
         transform: "translate3d(0px, calc(100% - 613px), 1px)",
         transitionDuration: "initial",
         transitionTimingFunction: "initial",
-        height: "605px",
+        height: `${deviseHeight * 0.65}px`,
       }}
     >
       <div
