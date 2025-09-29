@@ -8,7 +8,7 @@ export const handleDoubleStake = (
   firstEvent,
   sound
 ) => {
-  if (sound) new Audio(SOUND.repeat_double).play();
+  if (sound) new Audio(SOUND.place_chip).play();
 
   if (!isRepeatTheBet) {
     setDouble(true);

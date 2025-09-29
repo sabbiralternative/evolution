@@ -206,13 +206,11 @@ const BetSlip = ({
   const cardNumber = indexCard && parseFloat(indexCard.substring(1));
 
   return (
-    <div
-      onClick={handleShowSuspendedStatus}
-      className={`bettingGrid--a60ca ${
-        status === Status.SUSPENDED ? "pointer-events-none" : ""
-      }`}
-    >
-      <div style={{ width: `${innerWidth - 10}px`, height: "227px" }}>
+    <div onClick={handleShowSuspendedStatus} className={`bettingGrid--a60ca`}>
+      <div
+        className={status === Status.SUSPENDED ? "pointer-events-none" : ""}
+        style={{ width: `${innerWidth - 10}px`, height: "227px" }}
+      >
         <div
           className="bettingGrid--0835e bettingTime--7f9cd isVertical--28984 onlyPairs--f14f6"
           data-role="betting-grid-container"
@@ -297,14 +295,19 @@ const BetSlip = ({
               </svg>
 
               <div className="score--393b3" data-role="score" />
-              <div className="symbol--a11ac" style={{ top: "30px" }}>
+              <div
+                className="symbol--a11ac"
+                style={{ top: cardNumber < 7 ? "20px" : "10px" }}
+              >
                 <StakeAnimation
                   animation={animation}
                   double={double}
                   runner="amarBack"
                   stake={stake}
                   stakeState={stakeState}
-                  className="absolute top-[30px]"
+                  className={`absolute ${
+                    cardNumber < 7 ? "-bottom-[40px]" : "top-[30px]"
+                  }  left-3`}
                 />
                 {cardNumber < 7 && (
                   <img
@@ -545,7 +548,7 @@ const BetSlip = ({
 
               <div
                 className="symbol--a11ac"
-                style={{ top: "30px", right: "10%" }}
+                style={{ top: cardNumber > 10 ? "20px" : "10px", right: "10%" }}
               >
                 <StakeAnimation
                   animation={animation}
@@ -553,12 +556,15 @@ const BetSlip = ({
                   runner="anthonyBack"
                   stake={stake}
                   stakeState={stakeState}
-                  className="absolute top-[30px]"
+                  className={`absolute top-[30px] right-5 ${
+                    cardNumber > 10 ? "-bottom-[40px]" : "top-[30px]"
+                  }
+                  `}
                 />
                 {cardNumber > 10 && (
                   <img
                     style={{ height: "60px", width: "60px" }}
-                    src={`/cards/${"D5"}.png`}
+                    src={`/cards/${indexCard}.png`}
                     alt=""
                   />
                 )}
@@ -805,7 +811,9 @@ const BetSlip = ({
                   runner="akbarBack"
                   stake={stake}
                   stakeState={stakeState}
-                  className="absolute -top-11"
+                  className={`absolute ${
+                    cardNumber > 6 && cardNumber < 11 ? "-top-11" : "bottom-14"
+                  } `}
                 />
                 {cardNumber > 6 && cardNumber < 11 && (
                   <img
@@ -966,6 +974,7 @@ const BetSlip = ({
               </div>  */}
             </div>
           </div>
+
           <div
             onClick={() =>
               handleStakeChange({
@@ -997,6 +1006,7 @@ const BetSlip = ({
                 className={cn(
                   `svg--7e996 svgBetspot--43e31 rectShape--a9f3a `,
                   isRunnerWinner(data, 1, 0) && "animate--6c17d  win--e65a1",
+
                   stakeState.even?.show && "hasBet--8e3d4"
                 )}
                 preserveAspectRatio="none"
@@ -1015,6 +1025,7 @@ const BetSlip = ({
                       stopOpacity="0.8"
                       className="gradientLight--ba468 blue--5d4e7"
                     />
+
                     <stop
                       offset={1}
                       stopOpacity="0.8"
@@ -1173,6 +1184,7 @@ const BetSlip = ({
                       stopOpacity="0.8"
                       className="gradientLight--ba468 red--7fb61"
                     />
+
                     <stop
                       offset={1}
                       stopOpacity="0.8"
@@ -1325,12 +1337,13 @@ const BetSlip = ({
                     y1="0%"
                     x2="50%"
                     y2="100%"
-                    id="PlayerPair0.03899799357536238_id_rect_fill"
+                    id="PlayerPair0.03899799357536238_id_rect_fill1"
                   >
                     <stop
                       stopOpacity="0.8"
                       className="gradientLight--ba468 blue--5d4e7"
                     />
+
                     <stop
                       offset={1}
                       stopOpacity="0.8"
@@ -1362,7 +1375,7 @@ const BetSlip = ({
                   data-height={38}
                   rx={4}
                   ry={4}
-                  fill="url(#PlayerPair0.03899799357536238_id_rect_fill)"
+                  fill="url(#PlayerPair0.03899799357536238_id_rect_fill1)"
                   stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke)"
                   strokeWidth={4}
                   fillRule="evenodd"
@@ -1483,12 +1496,13 @@ const BetSlip = ({
                     y1="0%"
                     x2="50%"
                     y2="100%"
-                    id="BankerPair0.6604065570309232_id_rect_fill"
+                    id="BankerPair0.6604065570309232_id_rect_fill1"
                   >
                     <stop
                       stopOpacity="0.8"
                       className="gradientLight--ba468 red--7fb61"
                     />
+
                     <stop
                       offset={1}
                       stopOpacity="0.8"
@@ -1520,7 +1534,7 @@ const BetSlip = ({
                   data-height={38}
                   rx={4}
                   ry={4}
-                  fill="url(#BankerPair0.6604065570309232_id_rect_fill)"
+                  fill="url(#BankerPair0.6604065570309232_id_rect_fill1)"
                   stroke="url(#BankerPair0.6604065570309232_id_rect_stroke)"
                   strokeWidth={4}
                   fillRule="evenodd"
