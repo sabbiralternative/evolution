@@ -57,6 +57,7 @@ export const handleDoubleStake = (
   } else {
     setStakeState((prev) => {
       const updatedState = { ...prev };
+
       setDouble(true);
       const oddNames = [];
       Object.keys(updatedState).forEach((key) => {

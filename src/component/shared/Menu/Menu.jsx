@@ -367,10 +367,6 @@ const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
                                   </div>
                                 </div>
                                 <div
-                                  onClick={() => {
-                                    setTab("settings");
-                                    if (sound) playClick();
-                                  }}
                                   className="wrapper--6c1a2"
                                   data-role="menu-item-wrapper"
                                 >
