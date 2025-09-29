@@ -5,6 +5,8 @@ import { useOrderMutation } from "../../../redux/features/events/events";
 import { setBalance } from "../../../redux/features/auth/authSlice";
 import StakeAnimation from "../../../component/UI/Chip/StakeAnimation";
 import { keyNames } from "./const";
+import { playSuspendedSound } from "../../../utils/sound";
+import { useSound } from "../../../context/ApiProvider";
 const BetSlip = ({
   double,
   data,
@@ -17,6 +19,7 @@ const BetSlip = ({
   setAnimation,
   initialState,
 }) => {
+  const { sound } = useSound();
   const [, setInnerWidth] = useState(window.innerWidth);
   const [showSuspendedWarning, setShowSuspendedWarning] = useState(false);
   const dispatch = useDispatch();
@@ -176,6 +179,9 @@ const BetSlip = ({
 
   const handleShowSuspendedStatus = () => {
     if (status === Status.SUSPENDED) {
+      if (sound) {
+        playSuspendedSound();
+      }
       setShowSuspendedWarning(true);
     }
   };

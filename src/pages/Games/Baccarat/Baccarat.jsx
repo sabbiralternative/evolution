@@ -51,7 +51,7 @@ const Baccarat = () => {
   const isPlaceStake = Object.values(stakeState).find((item) => item?.show);
 
   const isRepeatTheBet = Object.values(stakeState).find(
-    (item) => item?.selection_id && item?.show === false
+    (item) => item?.selection_id && item?.show === false && item?.serial
   );
 
   return (

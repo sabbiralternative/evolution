@@ -6,6 +6,8 @@ import { setBalance } from "../../../redux/features/auth/authSlice";
 import { getBackPrice, isRunnerWinner } from "../../../utils/betSlip";
 import StakeAnimation from "../../../component/UI/Chip/StakeAnimation";
 import { cn } from "../../../utils/cn";
+import { playSuspendedSound } from "../../../utils/sound";
+import { useSound } from "../../../context/ApiProvider";
 
 const BetSlip = ({
   double,
@@ -19,6 +21,7 @@ const BetSlip = ({
   setAnimation,
   initialState,
 }) => {
+  const { sound } = useSound();
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
   const [showSuspendedWarning, setShowSuspendedWarning] = useState(false);
   const dispatch = useDispatch();
@@ -180,6 +183,9 @@ const BetSlip = ({
 
   const handleShowSuspendedStatus = () => {
     if (status === Status.SUSPENDED) {
+      if (sound) {
+        playSuspendedSound();
+      }
       setShowSuspendedWarning(true);
     }
   };

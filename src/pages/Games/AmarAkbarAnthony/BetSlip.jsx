@@ -6,6 +6,8 @@ import { setBalance } from "../../../redux/features/auth/authSlice";
 import { getBackPrice, isRunnerWinner } from "../../../utils/betSlip";
 import StakeAnimation from "../../../component/UI/Chip/StakeAnimation";
 import { cn } from "../../../utils/cn";
+import { useSound } from "../../../context/ApiProvider";
+import { playPlaceChip, playSuspendedSound } from "../../../utils/sound";
 
 const BetSlip = ({
   double,
@@ -19,6 +21,7 @@ const BetSlip = ({
   setAnimation,
   initialState,
 }) => {
+  const { sound } = useSound();
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
   const [showSuspendedWarning, setShowSuspendedWarning] = useState(false);
   const dispatch = useDispatch();
@@ -29,6 +32,7 @@ const BetSlip = ({
   // Generic function to update stake state
   const handleStakeChange = (payload) => {
     if (status === Status.OPEN) {
+      if (sound) playPlaceChip();
       const isRepeatTheBet = Object.values(stakeState).find(
         (item) => item?.selection_id && item?.show === false
       );
@@ -180,6 +184,9 @@ const BetSlip = ({
 
   const handleShowSuspendedStatus = () => {
     if (status === Status.SUSPENDED) {
+      if (sound) {
+        playSuspendedSound();
+      }
       setShowSuspendedWarning(true);
     }
   };
@@ -297,12 +304,13 @@ const BetSlip = ({
                   runner="amarBack"
                   stake={stake}
                   stakeState={stakeState}
+                  className="absolute top-[30px]"
                 />
                 {cardNumber < 7 && (
                   <img
                     src={`/cards/${indexCard}.png`}
                     alt=""
-                    style={{ height: "60px", width: "50px" }}
+                    style={{ height: "60px", width: "60px" }}
                   />
                 )}
               </div>
@@ -310,7 +318,12 @@ const BetSlip = ({
                 <div className="cards--d48f8 enhanced--181e0" />
               </div>
               <div className="title--967a1">
-                <div className="titleContainer--98fa0">Amar</div>
+                <div
+                  className="titleContainer--98fa0"
+                  style={{ fontSize: "14px" }}
+                >
+                  Amar
+                </div>
               </div>
               {/* <div className="liveStatisticsContainer--fc00f">
                 <div
@@ -532,7 +545,7 @@ const BetSlip = ({
 
               <div
                 className="symbol--a11ac"
-                style={{ top: "30px", right: "2%" }}
+                style={{ top: "30px", right: "10%" }}
               >
                 <StakeAnimation
                   animation={animation}
@@ -540,11 +553,12 @@ const BetSlip = ({
                   runner="anthonyBack"
                   stake={stake}
                   stakeState={stakeState}
+                  className="absolute top-[30px]"
                 />
                 {cardNumber > 10 && (
                   <img
-                    style={{ height: "60px", width: "50px" }}
-                    src={`/cards/${indexCard}.png`}
+                    style={{ height: "60px", width: "60px" }}
+                    src={`/cards/${"D5"}.png`}
                     alt=""
                   />
                 )}
@@ -553,7 +567,12 @@ const BetSlip = ({
                 <div className="cards--d48f8 enhanced--181e0" />
               </div>
               <div className="title--967a1">
-                <div className="titleContainer--98fa0">Anthony</div>
+                <div
+                  className="titleContainer--98fa0"
+                  style={{ fontSize: "14px" }}
+                >
+                  Anthony
+                </div>
               </div>
               {/* <div className="liveStatisticsContainer--fc00f">
                 <div
@@ -786,16 +805,19 @@ const BetSlip = ({
                   runner="akbarBack"
                   stake={stake}
                   stakeState={stakeState}
+                  className="absolute -top-11"
                 />
                 {cardNumber > 6 && cardNumber < 11 && (
                   <img
-                    style={{ height: "60px" }}
+                    style={{ height: "60px", width: "60px" }}
                     src={`/cards/${indexCard}.png`}
                     alt=""
                   />
                 )}
                 <div className="titleContainer--98fa0 single--27bc5">
-                  <span className>Akbar</span>
+                  <span className style={{ fontSize: "14px" }}>
+                    Akbar
+                  </span>
                 </div>
                 <div className="payoutContainer--a32db"> </div>
               </div>
@@ -1033,7 +1055,10 @@ const BetSlip = ({
               </svg>
               <div className="payoutContainer--a32db">
                 <div>
-                  <div className="payout--c827b !text-white" data-role="payout">
+                  <div
+                    className="payout--c827b !text-white !text-[14px]"
+                    data-role="payout"
+                  >
                     Even
                   </div>
                 </div>
@@ -1188,7 +1213,10 @@ const BetSlip = ({
               </svg>
               <div className="payoutContainer--a32db">
                 <div>
-                  <div className="payout--c827b !text-white" data-role="payout">
+                  <div
+                    className="payout--c827b !text-white !text-[14px]"
+                    data-role="payout"
+                  >
                     ODD
                   </div>
                 </div>
@@ -1343,7 +1371,10 @@ const BetSlip = ({
               </svg>
               <div className="payoutContainer--a32db">
                 <div>
-                  <div className="payout--c827b !text-white" data-role="payout">
+                  <div
+                    className="payout--c827b !text-white !text-[14px]"
+                    data-role="payout"
+                  >
                     RED
                   </div>
                 </div>
@@ -1498,13 +1529,16 @@ const BetSlip = ({
               </svg>
               <div className="payoutContainer--a32db">
                 <div>
-                  <div className="payout--c827b !text-white" data-role="payout">
+                  <div
+                    className="payout--c827b !text-white !text-[14px]"
+                    data-role="payout"
+                  >
                     BLACK
                   </div>
                 </div>
               </div>
               <div className="betspotTitle--d0907">
-                <span className>{getBackPrice(data, 2, 1)}</span>
+                <span className>x{getBackPrice(data, 2, 1)}</span>
               </div>
               <div className="chipContainer--9cdca">
                 <div className="isPortrait--96aa8 mediumChip--83319 chipSize--1811f">

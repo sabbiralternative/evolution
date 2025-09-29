@@ -8,6 +8,7 @@ import { isRunnerWinner } from "../../../utils/betSlip";
 import images from "../../../assets/images";
 import StakeAnimation from "../../../component/UI/Chip/StakeAnimation";
 import { useSound } from "../../../context/ApiProvider";
+import { playSuspendedSound } from "../../../utils/sound";
 
 const BetSlip = ({
   double,
@@ -188,6 +189,9 @@ const BetSlip = ({
 
   const handleShowSuspendedStatus = () => {
     if (status === Status.SUSPENDED) {
+      if (sound) {
+        playSuspendedSound();
+      }
       setShowSuspendedWarning(true);
     }
   };

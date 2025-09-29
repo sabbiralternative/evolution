@@ -45,7 +45,7 @@ const Muflis = () => {
   const [stakeState, setStakeState] = useState(initialState);
 
   const isRepeatTheBet = Object.values(stakeState).find(
-    (item) => item?.selection_id && item?.show === false
+    (item) => item?.selection_id && item?.show === false && item?.serial
   );
 
   const isPlaceStake = Object.values(stakeState).find((item) => item?.show);
@@ -53,6 +53,21 @@ const Muflis = () => {
   useEffect(() => {
     if (firstEvent?.status === Status.OPEN) {
       setCurrentRoundWinAmount(null);
+    }
+    if (firstEvent?.status === Status.SUSPENDED) {
+      setStakeState((prev) => {
+        const updatedState = { ...prev };
+
+        Object.keys(updatedState).forEach((key) => {
+          if (!updatedState[key].serial) {
+            updatedState[key] = {
+              ...initialState[key],
+            };
+          }
+        });
+
+        return updatedState;
+      });
     }
   }, [firstEvent?.status]);
 
