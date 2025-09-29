@@ -6,13 +6,16 @@ const AntMedia = ({ server }) => {
   const embeddedPlayerRef = useRef(null);
 
   useEffect(() => {
+    if (!server?.streamKey || !server?.serverLink || !bigVideo.current) return;
+
     const playOrderLocal = ["webrtc", "hls", "dash"];
+
     embeddedPlayerRef.current = new WebPlayer(
       {
-        streamId: server?.streamKey,
-        httpBaseURL: server?.serverLink,
+        streamId: server.streamKey,
+        httpBaseURL: server.serverLink,
         videoHTMLContent:
-          '<video id="video-player" class="video-js vjs-default-skin vjs-big-play-centered"  playsinline style="width:100%;height:100%;object-fit:cover"></video>',
+          '<video id="video-player" class="video-js vjs-default-skin vjs-big-play-centered" playsinline autoplay style="width:100%;height:100%;object-fit:cover"></video>',
         playOrder: playOrderLocal,
       },
       bigVideo.current
@@ -24,23 +27,25 @@ const AntMedia = ({ server }) => {
         embeddedPlayerRef.current.play();
       })
       .catch((error) => {
-        console.error("Error while initializing embedded player: " + error);
+        console.error("Error while initializing embedded player:", error);
       });
-  }, []);
 
-  useEffect(() => {
-    if (bigVideo.current) {
-      const videoElement = document.getElementById("videoPlayer");
-
-      if (videoElement.style.display === "none") {
-        videoElement.style.display = "block";
+    // ✅ Proper cleanup
+    return () => {
+      if (embeddedPlayerRef.current) {
+        try {
+          embeddedPlayerRef.current.destroy();
+        } catch (err) {
+          console.warn("Error destroying player:", err);
+        }
+        embeddedPlayerRef.current = null;
       }
-    }
-  }, [bigVideo]);
+    };
+  }, [server?.streamKey, server?.serverLink]);
 
   return (
     <div
-      id="videoPlayer"
+      id="video-container"
       style={{
         width: "100%",
         height: "200px",
@@ -48,7 +53,6 @@ const AntMedia = ({ server }) => {
         top: 0,
         right: 0,
         left: 0,
-        // display: "none",
       }}
       ref={bigVideo}
     ></div>

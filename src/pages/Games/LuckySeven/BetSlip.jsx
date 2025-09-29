@@ -303,7 +303,7 @@ const BetSlip = ({
 
               <div className="score--393b3" data-role="score" />
               <div className="symbol--a11ac" style={{ top: "30px" }}>
-                <div className="z-50 absolute top-[30px]">
+                <div className="z-50 absolute top-[20px] right-5">
                   <div className="relative w-10 h-10">
                     <div
                       className={`${
@@ -323,7 +323,12 @@ const BetSlip = ({
                   <img
                     src={`/cards/${indexCard}.png`}
                     alt=""
-                    style={{ height: "60px", width: "60px" }}
+                    style={{
+                      height: "60px",
+                      width: "60px",
+                      position: "absolute",
+                      zIndex: 9999,
+                    }}
                   />
                 )}
               </div>
@@ -560,7 +565,7 @@ const BetSlip = ({
                 className="symbol--a11ac"
                 style={{ top: "30px", right: "2%" }}
               >
-                <div className="z-50 absolute top-[30px]">
+                <div className="z-50 absolute top-[20px]">
                   <div className="relative w-10 h-10">
                     <div
                       className={`${
@@ -578,7 +583,13 @@ const BetSlip = ({
                 </div>
                 {cardNumber > 7 && (
                   <img
-                    style={{ height: "60px", width: "60px" }}
+                    style={{
+                      height: "60px",
+                      width: "60px",
+                      position: "absolute",
+                      right: "15px",
+                      zIndex: 9999,
+                    }}
                     src={`/cards/${indexCard}.png`}
                     alt=""
                   />
@@ -820,7 +831,7 @@ const BetSlip = ({
                   justifyContent: "center",
                 }}
               >
-                <div className="z-50 mb-3 absolute -top-16">
+                <div className="z-50 mb-3 absolute bottom-10">
                   <div className="relative w-10 h-10">
                     <div
                       className={`${
@@ -840,7 +851,13 @@ const BetSlip = ({
                 </div>
                 {cardNumber === 7 && (
                   <img
-                    style={{ height: "60px", width: "60px" }}
+                    style={{
+                      height: "60px",
+                      width: "60px",
+                      position: "absolute",
+                      bottom: "40px",
+                      zIndex: 9999,
+                    }}
                     src={`/cards/${indexCard}.png`}
                     alt=""
                   />

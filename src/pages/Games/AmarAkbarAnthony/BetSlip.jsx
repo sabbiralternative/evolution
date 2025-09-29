@@ -295,25 +295,25 @@ const BetSlip = ({
               </svg>
 
               <div className="score--393b3" data-role="score" />
-              <div
-                className="symbol--a11ac"
-                style={{ top: cardNumber < 7 ? "20px" : "10px" }}
-              >
+              <div className="symbol--a11ac" style={{ top: "30px" }}>
                 <StakeAnimation
                   animation={animation}
                   double={double}
                   runner="amarBack"
                   stake={stake}
                   stakeState={stakeState}
-                  className={`absolute ${
-                    cardNumber < 7 ? "-bottom-[40px]" : "top-[30px]"
-                  }  left-3`}
+                  className={`absolute top-[20px]  left-3`}
                 />
                 {cardNumber < 7 && (
                   <img
                     src={`/cards/${indexCard}.png`}
                     alt=""
-                    style={{ height: "60px", width: "60px" }}
+                    style={{
+                      height: "60px",
+                      width: "60px",
+                      zIndex: "9999",
+                      position: "absolute",
+                    }}
                   />
                 )}
               </div>
@@ -548,7 +548,7 @@ const BetSlip = ({
 
               <div
                 className="symbol--a11ac"
-                style={{ top: cardNumber > 10 ? "20px" : "10px", right: "10%" }}
+                style={{ top: "30px", right: "10%" }}
               >
                 <StakeAnimation
                   animation={animation}
@@ -556,14 +556,17 @@ const BetSlip = ({
                   runner="anthonyBack"
                   stake={stake}
                   stakeState={stakeState}
-                  className={`absolute top-[30px] right-5 ${
-                    cardNumber > 10 ? "-bottom-[40px]" : "top-[30px]"
-                  }
+                  className={`absolute top-[20px] right-5
                   `}
                 />
                 {cardNumber > 10 && (
                   <img
-                    style={{ height: "60px", width: "60px" }}
+                    style={{
+                      height: "60px",
+                      width: "60px",
+                      zIndex: 9999,
+                      position: "absolute",
+                    }}
                     src={`/cards/${indexCard}.png`}
                     alt=""
                   />
@@ -811,13 +814,17 @@ const BetSlip = ({
                   runner="akbarBack"
                   stake={stake}
                   stakeState={stakeState}
-                  className={`absolute ${
-                    cardNumber > 6 && cardNumber < 11 ? "-top-11" : "bottom-14"
-                  } `}
+                  className={`absolute bottom-14 `}
                 />
                 {cardNumber > 6 && cardNumber < 11 && (
                   <img
-                    style={{ height: "60px", width: "60px" }}
+                    style={{
+                      height: "60px",
+                      width: "60px",
+                      position: "absolute",
+                      bottom: "40px",
+                      zIndex: 9999,
+                    }}
                     src={`/cards/${indexCard}.png`}
                     alt=""
                   />

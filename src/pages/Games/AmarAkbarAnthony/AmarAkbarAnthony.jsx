@@ -79,6 +79,8 @@ const AmarAkbarAnthony = () => {
     }
   }, [firstEvent?.status]);
 
+  console.log(data);
+
   return (
     <>
       {showMenu && (

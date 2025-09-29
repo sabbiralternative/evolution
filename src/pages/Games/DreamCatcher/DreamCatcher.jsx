@@ -13,9 +13,12 @@ import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
 import AntMedia from "../../../component/shared/Antmedia";
+import { playClick } from "../../../utils/sound";
+import { useSound } from "../../../context/ApiProvider";
 // import Winner from "./Winner";
 
 const DreamCatcher = () => {
+  const { sound } = useSound();
   const [showMenu, setShowMenu] = useState(false);
   const [double, setDouble] = useState(false);
   const [animation, setAnimation] = useState([]);
@@ -139,6 +142,12 @@ const DreamCatcher = () => {
                   </div>
                 </div>
                 <div
+                  onClick={() => {
+                    setShowMenu(true);
+                    if (sound) {
+                      playClick();
+                    }
+                  }}
                   className="container--ea4e5 commonUiElement"
                   data-role="menu-button-layout"
                 >
@@ -324,7 +333,7 @@ const DreamCatcher = () => {
               <div
                 className="gradientWrapper--373cf"
                 style={{
-                  top: "187.755px",
+                  top: "150px",
                   height: "108.239px",
                   transform: "translateY(48.375px) translateZ(0px)",
                 }}
@@ -335,9 +344,10 @@ const DreamCatcher = () => {
                     background: `linear-gradient(
                     rgba(60, 65, 80, 0) 0%,
                     30%,
-                    rgb(30, 0, 30) 50%,
+                    rgb(30, 0, 30) 60%,
                     rgba(30, 0, 30, 0) 100%
                   )`,
+                    zIndex: 9999999,
                   }}
                 />
               </div>

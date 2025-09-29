@@ -221,7 +221,7 @@ const FootballDice = () => {
                 className="videoWrapper--0aab6"
                 style={{
                   width: "100%",
-                  height: "241.875px",
+                  height: "195px",
                   transformOrigin: "center top",
                   transform: "scale(1.1) translate(0px, 0px)",
                 }}
@@ -276,12 +276,31 @@ const FootballDice = () => {
             <div
               className="gradient--1c37c mobileI11Portrait--10a8a"
               style={{
-                "-lightcolor": "73, 22, 22",
-                "-darkcolor": "13, 20, 34",
-                "-top": "483.75px",
-                "-videoportraitoverlap": "30px",
+                "--light-color": "73, 22, 22",
+                "--dark-color": "13, 20, 34",
+                "--top": "483.75px",
+                "--video-portrait-overlap": "30px",
               }}
             />
+            <div
+              className="gradientWrapper--45736"
+              style={{
+                top: "120px",
+                height: "200px",
+                transform: "translateY(48.375px) translateZ(0px)",
+              }}
+            >
+              <div
+                className="videoGradient--0cc0b"
+                style={{
+                  background: `linear-gradient(
+                  rgba(83, 10, 10, 0) 0%,
+                  rgb(13, 35, 83) 20%,
+                  rgba(13, 35, 83, 0) 100%
+                )`,
+                }}
+              />
+            </div>
             <div className="overlays--4cd0a">
               <div
                 className="gameResultWrapper--06154 phone--4e26e portrait--fa69a"
