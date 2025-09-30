@@ -208,38 +208,37 @@ const BetSlip = ({
   const cardNumber = indexCard && parseFloat(indexCard.substring(1));
 
   return (
-    <div className="bettingGrid--9427e">
-      <div>
+    <div className="bettingGrid--9427e w-full h-full ">
+      <div className="w-full h-full relative">
         <div className="gameResult--fc618">
           <div className="mobileGameResult--fc3c2">
             <div
               className="winMessage--f6733 isHeaderVisible--6ceab"
-              style={{ "-scale": "0.5" }}
+              style={{ "--scale": "0.5" }}
             />
-            <div className="container--d7d94" style={{ "-scale": "0.5" }}>
+            <div className="container--d7d94" style={{ "--scale": "0.5" }}>
               <canvas style={{ width: "100%", height: "100%" }} />
             </div>
           </div>
         </div>
-        <History />
-        <div className="spotsPerspectiveContainer--7ec32">
+
+        <div className="spotsPerspectiveContainer--7ec32 absolute bottom-0 right-0 left-0">
+          <History />
           <div
             className={`spotsContainer--481f6 portrait--81f54 ${
               status === Status.SUSPENDED ? "collapsed--e75c0" : ""
             }`}
           >
-            <div style={{ height: "357px", width: "408px" }}>
+            <div style={{ height: "100%", width: "100%" }}>
               <div
-                className="spots--49c03"
+                className="spots--49c03 grid grid-cols-2 w-full gap-x-2 gap-y-3"
                 data-is-betting-time="true"
                 data-role="betting-grid-container"
                 style={{
                   height: "306.605px",
-                  width: "351px",
+
                   transform:
-                    status === Status.OPEN
-                      ? "scale(1.1631)"
-                      : "translateY(25px) scale(1.1631)",
+                    status === Status.OPEN ? "none" : "translateY(25px)",
                   transition: "transform 0.5s ease-in-out",
                 }}
               >
@@ -252,7 +251,7 @@ const BetSlip = ({
                   data-role="bet-spot-01"
                   style={{
                     height: "97.5349px",
-                    width: "172px",
+                    width: "100%",
                   }}
                 >
                   <div className="betSpotInner--04779">
@@ -262,13 +261,13 @@ const BetSlip = ({
                         className="styledSpot--fe1f7"
                         style={{
                           height: "97.5349px",
-                          width: "172px",
+                          width: "100%",
                         }}
                       >
                         <svg
                           height="97.53488372093022"
                           viewBox="0 0 172 97.53488372093022"
-                          width={172}
+                          width="100%"
                         >
                           <defs>
                             <linearGradient
@@ -285,7 +284,7 @@ const BetSlip = ({
                             </linearGradient>
                           </defs>
                           <rect
-                            className={`background--728af  ${
+                            className={`background--728af w-full  ${
                               status === Status.OPEN
                                 ? "active--9e66d"
                                 : "disabled--f7c24"
@@ -296,6 +295,7 @@ const BetSlip = ({
                             width="100%"
                           />
                           <rect
+                            className="w-full"
                             fill="transparent"
                             fillOpacity={0}
                             height="100%"
@@ -500,7 +500,7 @@ const BetSlip = ({
                   data-role="bet-spot-02"
                   style={{
                     height: "97.5349px",
-                    width: "172px",
+                    width: "100%",
                   }}
                 >
                   <div className="betSpotInner--04779">
@@ -510,13 +510,13 @@ const BetSlip = ({
                         className="styledSpot--fe1f7"
                         style={{
                           height: "97.5349px",
-                          width: "172px",
+                          width: "100%",
                         }}
                       >
                         <svg
                           height="97.53488372093022"
                           viewBox="0 0 172 97.53488372093022"
-                          width={172}
+                          width="100%"
                         >
                           <defs>
                             <linearGradient
@@ -748,7 +748,7 @@ const BetSlip = ({
                   data-role="bet-spot-05"
                   style={{
                     height: "97.5349px",
-                    width: "172px",
+                    width: "100%",
                   }}
                 >
                   <div className="betSpotInner--04779">
@@ -758,13 +758,13 @@ const BetSlip = ({
                         className="styledSpot--fe1f7"
                         style={{
                           height: "97.5349px",
-                          width: "172px",
+                          width: "100%",
                         }}
                       >
                         <svg
                           height="97.53488372093022"
                           viewBox="0 0 172 97.53488372093022"
-                          width={172}
+                          width="100%"
                         >
                           <defs>
                             <linearGradient
@@ -997,7 +997,7 @@ const BetSlip = ({
                   data-role="bet-spot-10"
                   style={{
                     height: "97.5349px",
-                    width: "172px",
+                    width: "100%",
                   }}
                 >
                   <div className="betSpotInner--04779">
@@ -1007,13 +1007,13 @@ const BetSlip = ({
                         className="styledSpot--fe1f7"
                         style={{
                           height: "97.5349px",
-                          width: "172px",
+                          width: "100%",
                         }}
                       >
                         <svg
                           height="97.53488372093022"
                           viewBox="0 0 172 97.53488372093022"
-                          width={172}
+                          width="100%"
                         >
                           <defs>
                             <linearGradient
@@ -1246,7 +1246,7 @@ const BetSlip = ({
                   data-role="bet-spot-20"
                   style={{
                     height: "97.5349px",
-                    width: "172px",
+                    width: "100%",
                   }}
                 >
                   <div className="betSpotInner--04779">
@@ -1256,13 +1256,13 @@ const BetSlip = ({
                         className="styledSpot--fe1f7"
                         style={{
                           height: "97.5349px",
-                          width: "172px",
+                          width: "100%",
                         }}
                       >
                         <svg
                           height="97.53488372093022"
                           viewBox="0 0 172 97.53488372093022"
-                          width={172}
+                          width="100%"
                         >
                           <defs>
                             <linearGradient
@@ -1495,7 +1495,7 @@ const BetSlip = ({
                   data-role="bet-spot-40"
                   style={{
                     height: "97.5349px",
-                    width: "172px",
+                    width: "100%",
                   }}
                 >
                   <div className="betSpotInner--04779">
@@ -1505,13 +1505,13 @@ const BetSlip = ({
                         className="styledSpot--fe1f7"
                         style={{
                           height: "97.5349px",
-                          width: "172px",
+                          width: "100%",
                         }}
                       >
                         <svg
                           height="97.53488372093022"
                           viewBox="0 0 172 97.53488372093022"
-                          width={172}
+                          width="100%"
                         >
                           <defs>
                             <linearGradient
@@ -1737,122 +1737,137 @@ const BetSlip = ({
               </div>
             </div>
           </div>
+          {status === Status.OPEN && (
+            <div className="betOnAll--41352 mt-4">
+              <div className="betOnAllContainer--8600d">
+                <div
+                  className="betOnAllWithTooltip--490a9 w-full"
+                  data-role="bet-on-all-button-with-tooltip"
+                >
+                  <div className="tooltipContainer--3069a" />
+                  <div
+                    className="button--5e401 visible--3b3cf animated--937e5"
+                    data-role="bet-on-all-button"
+                    data-state-enabled="true"
+                    style={{ width: "100%", height: "41px" }}
+                  >
+                    <div className="buttonSVGWrapper--3b2db relative">
+                      <svg
+                        className="buttonSVG--aaf5b bottom-0 h-full w-full"
+                        viewBox="0 0 408 41"
+                      >
+                        <defs>
+                          <linearGradient
+                            id="fadeGrad-bet-on-all-v2-201133736-1757350227717"
+                            y2={1}
+                            x2={0}
+                          >
+                            <stop
+                              offset={0}
+                              stopColor="white"
+                              stopOpacity={1}
+                            />
+                            <stop
+                              offset="0.3"
+                              stopColor="white"
+                              stopOpacity={1}
+                            />
+                            <stop
+                              offset={1}
+                              stopColor="white"
+                              stopOpacity="0.3"
+                            />
+                          </linearGradient>
+                          <mask id="fadem-bet-on-all-v2-201133736-1757350227717">
+                            <rect
+                              className="buttonMask--41daf"
+                              x={0}
+                              y={0}
+                              width={408}
+                              height={41}
+                              fill="url(#fadeGrad-bet-on-all-v2-201133736-1757350227717)"
+                            />
+                          </mask>
+                          <linearGradient
+                            x1="0%"
+                            y1="50%"
+                            x2="100%"
+                            y2="50%"
+                            id="g1-bet-on-all-v2-201133736-1757350227717"
+                          >
+                            <stop stopColor="#FFC94B" offset="0%" />
+                            <stop stopColor="#59E777" offset="18.25%" />
+                            <stop stopColor="#6298FF" offset="35%" />
+                            <stop stopColor="#FF7840" offset="60.55%" />
+                            <stop stopColor="#CC85FF" offset="76%" />
+                            <stop stopColor="#FF4053" offset="100%" />
+                          </linearGradient>
+                          <linearGradient
+                            x1="100%"
+                            y1="50%"
+                            x2="0%"
+                            y2="50%"
+                            id="g3-bet-on-all-v2-201133736-1757350227717"
+                          >
+                            <stop offset="0.48%" />
+                            <stop stopOpacity={0} offset="31.73%" />
+                            <stop stopOpacity={0} offset="68.59%" />
+                            <stop offset="100%" />
+                          </linearGradient>
+                        </defs>
+                        <g
+                          stroke="none"
+                          strokeWidth={1}
+                          fill="none"
+                          fillRule="evenodd"
+                          mask="url(#fadem-bet-on-all-v2-201133736-1757350227717)"
+                        >
+                          <rect
+                            className="buttonFill--0d9d3"
+                            fill="url(#g1-bet-on-all-v2-201133736-1757350227717)"
+                            width={408}
+                            height={41}
+                          />
+                          <rect
+                            className="buttonDarkBackground--f97af"
+                            fill="#1A1A1A"
+                            x={2}
+                            y={2}
+                            width={404}
+                            height={37}
+                          />
+                          <rect
+                            fill="transparent"
+                            stroke="url(#g3-bet-on-all-v2-201133736-1757350227717)"
+                            strokeOpacity="0.4"
+                            x={6}
+                            y={6}
+                            width={396}
+                            height={29}
+                          />
+                        </g>
+                      </svg>
+                      <div className="buttonInner--f9dac">
+                        <img
+                          className="iconContainer--611d7 animated--937e5"
+                          src={images.chip}
+                        />
+                        <span className="label--382a2 animated--937e5">
+                          BET ON ALL
+                        </span>
+                      </div>
+                      <div className="gradientLeft--3f0bc" />
+                      <div className="gradientRight--80ca2" />
+                    </div>
+                    <div className="disabledForeground--70093" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
         <div className="shadowSpotsContainer--141c5 portrait--81f54" />
       </div>
-      {status === Status.OPEN && (
-        <div className="betOnAll--41352">
-          <div className="betOnAllContainer--8600d">
-            <div
-              className="betOnAllWithTooltip--490a9"
-              data-role="bet-on-all-button-with-tooltip"
-            >
-              <div className="tooltipContainer--3069a" />
-              <div
-                className="button--5e401 visible--3b3cf animated--937e5"
-                data-role="bet-on-all-button"
-                data-state-enabled="true"
-                style={{ width: "408px", height: "41px" }}
-              >
-                <div className="buttonSVGWrapper--3b2db">
-                  <svg className="buttonSVG--aaf5b" viewBox="0 0 408 41">
-                    <defs>
-                      <linearGradient
-                        id="fadeGrad-bet-on-all-v2-201133736-1757350227717"
-                        y2={1}
-                        x2={0}
-                      >
-                        <stop offset={0} stopColor="white" stopOpacity={1} />
-                        <stop offset="0.3" stopColor="white" stopOpacity={1} />
-                        <stop offset={1} stopColor="white" stopOpacity="0.3" />
-                      </linearGradient>
-                      <mask id="fadem-bet-on-all-v2-201133736-1757350227717">
-                        <rect
-                          className="buttonMask--41daf"
-                          x={0}
-                          y={0}
-                          width={408}
-                          height={41}
-                          fill="url(#fadeGrad-bet-on-all-v2-201133736-1757350227717)"
-                        />
-                      </mask>
-                      <linearGradient
-                        x1="0%"
-                        y1="50%"
-                        x2="100%"
-                        y2="50%"
-                        id="g1-bet-on-all-v2-201133736-1757350227717"
-                      >
-                        <stop stopColor="#FFC94B" offset="0%" />
-                        <stop stopColor="#59E777" offset="18.25%" />
-                        <stop stopColor="#6298FF" offset="35%" />
-                        <stop stopColor="#FF7840" offset="60.55%" />
-                        <stop stopColor="#CC85FF" offset="76%" />
-                        <stop stopColor="#FF4053" offset="100%" />
-                      </linearGradient>
-                      <linearGradient
-                        x1="100%"
-                        y1="50%"
-                        x2="0%"
-                        y2="50%"
-                        id="g3-bet-on-all-v2-201133736-1757350227717"
-                      >
-                        <stop offset="0.48%" />
-                        <stop stopOpacity={0} offset="31.73%" />
-                        <stop stopOpacity={0} offset="68.59%" />
-                        <stop offset="100%" />
-                      </linearGradient>
-                    </defs>
-                    <g
-                      stroke="none"
-                      strokeWidth={1}
-                      fill="none"
-                      fillRule="evenodd"
-                      mask="url(#fadem-bet-on-all-v2-201133736-1757350227717)"
-                    >
-                      <rect
-                        className="buttonFill--0d9d3"
-                        fill="url(#g1-bet-on-all-v2-201133736-1757350227717)"
-                        width={408}
-                        height={41}
-                      />
-                      <rect
-                        className="buttonDarkBackground--f97af"
-                        fill="#1A1A1A"
-                        x={2}
-                        y={2}
-                        width={404}
-                        height={37}
-                      />
-                      <rect
-                        fill="transparent"
-                        stroke="url(#g3-bet-on-all-v2-201133736-1757350227717)"
-                        strokeOpacity="0.4"
-                        x={6}
-                        y={6}
-                        width={396}
-                        height={29}
-                      />
-                    </g>
-                  </svg>
-                  <div className="buttonInner--f9dac">
-                    <img
-                      className="iconContainer--611d7 animated--937e5"
-                      src={images.chip}
-                    />
-                    <span className="label--382a2 animated--937e5">
-                      BET ON ALL
-                    </span>
-                  </div>
-                  <div className="gradientLeft--3f0bc" />
-                  <div className="gradientRight--80ca2" />
-                </div>
-                <div className="disabledForeground--70093" />
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
