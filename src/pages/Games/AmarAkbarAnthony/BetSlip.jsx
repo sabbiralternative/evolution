@@ -34,7 +34,7 @@ const BetSlip = ({
 
   // Generic function to update stake state
   const handleStakeChange = (payload) => {
-    if (status !== Status.OPEN) {
+    if (status === Status.OPEN) {
       handleStoreRecentPlay(username, eventId, "aaa");
 
       if (sound) playPlaceChip();
@@ -213,7 +213,7 @@ const BetSlip = ({
   return (
     <div onClick={handleShowSuspendedStatus} className={`bettingGrid--a60ca`}>
       <div
-        // className={status === Status.SUSPENDED ? "pointer-events-none" : ""}
+        className={status === Status.SUSPENDED ? "pointer-events-none" : ""}
         style={{ width: `${innerWidth - 10}px`, height: "227px" }}
       >
         <div

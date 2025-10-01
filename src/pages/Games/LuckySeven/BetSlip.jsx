@@ -36,7 +36,7 @@ const BetSlip = ({
 
   // Generic function to update stake state
   const handleStakeChange = (payload) => {
-    if (status !== Status.OPEN) {
+    if (status === Status.OPEN) {
       console.log(payload);
       handleStoreRecentPlay(username, eventId, "lucky7");
 
@@ -220,9 +220,9 @@ const BetSlip = ({
     >
       <div
         style={{ width: `${innerWidth - 10}px`, height: "170px" }}
-        // className={`${
-        //   status === Status.SUSPENDED ? "pointer-events-none" : ""
-        // }`}
+        className={`${
+          status === Status.SUSPENDED ? "pointer-events-none" : ""
+        }`}
       >
         <div
           className="bettingGrid--0835e bettingTime--7f9cd isVertical--28984 onlyPairs--f14f6"
