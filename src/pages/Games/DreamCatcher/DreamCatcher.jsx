@@ -389,7 +389,7 @@ const DreamCatcher = () => {
             >
               <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
                 <div className="relativeChildren--99d54">
-                  <div className="portraitContent--aa203 h-full">
+                  <div className="portraitContent--aa203 h-full----">
                     <BetSlip
                       initialState={initialState}
                       double={double}

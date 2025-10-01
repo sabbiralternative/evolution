@@ -208,66 +208,2660 @@ const BetSlip = ({
   const cardNumber = indexCard && parseFloat(indexCard.substring(1));
 
   return (
-    <div className="bettingGrid--9427e w-full h-full ">
-      <div className="w-full h-full relative">
+    <div className="bettingGrid--9427e">
+      <div>
         <div className="gameResult--fc618">
           <div className="mobileGameResult--fc3c2">
             <div
               className="winMessage--f6733 isHeaderVisible--6ceab"
               style={{ "--scale": "0.5" }}
-            />
+            >
+              <div />
+            </div>
             <div className="container--d7d94" style={{ "--scale": "0.5" }}>
               <canvas style={{ width: "100%", height: "100%" }} />
             </div>
           </div>
         </div>
-
-        <div className="spotsPerspectiveContainer--7ec32 absolute bottom-0 right-0 left-0">
-          <History />
+        <div className="historyStatistic--81134">
           <div
-            className={`spotsContainer--481f6 portrait--81f54 ${
-              status === Status.SUSPENDED ? "collapsed--e75c0" : ""
-            }`}
+            className="itemsContainer--7ebd3"
+            style={{ paddingBottom: "0%" }}
           >
-            <div style={{ height: "100%", width: "100%" }}>
+            <div className="scrollable--3ef14" data-role="scrollable-container">
+              <div>
+                <div
+                  className="itemsRow--f2f48 isScrollable--2f3cb skipRowsTransition--1fd3d"
+                  style={{
+                    width: "333.333%",
+                    marginLeft: "0%",
+                    paddingBottom: "7.23717%",
+                    paddingLeft: "0%",
+                    paddingRight: "0%",
+                    left: "0%",
+                  }}
+                >
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(0%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-608477219-1759297946680"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-608477219-1759297946680"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#6298FF"
+                          fillOpacity="0.8"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity={1}
+                          stroke="#6298FF"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(255, 255, 255)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: 1,
+                          }}
+                        >
+                          2
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(111.456%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-323457211-1759297946681"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-323457211-1759297946681"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#FFC94B"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#FFC94B"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(255, 201, 75)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          1
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(222.912%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-800347569-1759297946681"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-800347569-1759297946681"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#FFC94B"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#FFC94B"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(255, 201, 75)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          1
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(334.368%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-927794510-1759297946681"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-927794510-1759297946681"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#FFC94B"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#FFC94B"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(255, 201, 75)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          1
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(445.824%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-563913427-1759297946681"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-563913427-1759297946681"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#FFC94B"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#FFC94B"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(255, 201, 75)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          1
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(557.28%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-726776216-1759297946681"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-726776216-1759297946681"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#6298FF"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#6298FF"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(98, 152, 255)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          2
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(668.736%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-397177971-1759297946681"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-397177971-1759297946681"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#6298FF"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#6298FF"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(98, 152, 255)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          2
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(780.192%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-214869369-1759297946682"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-214869369-1759297946682"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#6298FF"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#6298FF"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(98, 152, 255)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          2
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(891.648%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-107081805-1759297946682"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-107081805-1759297946682"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#CC85FF"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#CC85FF"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(204, 133, 255)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          5
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(1003.1%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                        data-sector={10}
+                      >
+                        <linearGradient
+                          id="X2-pill-220776925-1759297946682"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-220776925-1759297946682"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#59E777"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#59E777"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(89, 231, 119)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          10
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(1114.56%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-339373047-1759297946682"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-339373047-1759297946682"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#FFC94B"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#FFC94B"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(255, 201, 75)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          1
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(1226.02%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-98893578-1759297946682"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-98893578-1759297946682"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#FFC94B"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#FFC94B"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(255, 201, 75)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          1
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(1337.47%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-845791171-1759297946682"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-845791171-1759297946682"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#6298FF"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#6298FF"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(98, 152, 255)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          2
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(1448.93%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-425953826-1759297946682"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-425953826-1759297946682"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#CC85FF"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#CC85FF"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(204, 133, 255)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          5
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(1560.38%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-198993507-1759297946682"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-198993507-1759297946682"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#FFC94B"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#FFC94B"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(255, 201, 75)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          1
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(1671.84%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-462051530-1759297946683"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-462051530-1759297946683"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#FFC94B"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#FFC94B"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(255, 201, 75)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          1
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(1783.3%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-278858663-1759297946683"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-278858663-1759297946683"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#FFC94B"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#FFC94B"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(255, 201, 75)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          1
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(1894.75%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                        data-sector={10}
+                      >
+                        <linearGradient
+                          id="X2-pill-665886236-1759297946683"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-665886236-1759297946683"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#59E777"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#59E777"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(89, 231, 119)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          10
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(2006.21%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                        data-sector={40}
+                      >
+                        <linearGradient
+                          id="X2-pill-193980081-1759297946683"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-193980081-1759297946683"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#FF4053"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#FF4053"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(255, 64, 83)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          40
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(2117.66%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                        data-sector={10}
+                      >
+                        <linearGradient
+                          id="X2-pill-571062688-1759297946683"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-571062688-1759297946683"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#59E777"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#59E777"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(89, 231, 119)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          10
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(2229.12%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-812617951-1759297946683"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-812617951-1759297946683"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#FFC94B"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#FFC94B"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(255, 201, 75)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          1
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(2340.58%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-608109694-1759297946683"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-608109694-1759297946683"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#FFC94B"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#FFC94B"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(255, 201, 75)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          1
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(2452.03%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                        data-sector={10}
+                      >
+                        <linearGradient
+                          id="X2-pill-691944715-1759297946683"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-691944715-1759297946683"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#59E777"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#59E777"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(89, 231, 119)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          10
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(2563.49%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-90183882-1759297946683"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-90183882-1759297946683"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#FFC94B"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#FFC94B"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(255, 201, 75)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          1
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(2674.94%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-384971471-1759297946683"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-384971471-1759297946683"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#FFC94B"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#FFC94B"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(255, 201, 75)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          1
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(2786.4%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-957756221-1759297946684"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-957756221-1759297946684"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#FFC94B"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#FFC94B"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(255, 201, 75)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          1
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(2897.86%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                        data-sector={10}
+                      >
+                        <linearGradient
+                          id="X2-pill-45593215-1759297946684"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-45593215-1759297946684"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#59E777"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#59E777"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(89, 231, 119)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          10
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(3009.31%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-745592504-1759297946684"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-745592504-1759297946684"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#6298FF"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#6298FF"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(98, 152, 255)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          2
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(3120.77%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                        data-sector={40}
+                      >
+                        <linearGradient
+                          id="X2-pill-199592772-1759297946684"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-199592772-1759297946684"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#FF4053"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#FF4053"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(255, 64, 83)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          40
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    className="itemContainer--1b33b noTransition--621b7"
+                    style={{
+                      width: "2.98533%",
+                      paddingBottom: "2.17115%",
+                      transform: "translateX(3232.22%)",
+                    }}
+                  >
+                    <div className="itemScale--da47b">
+                      <svg
+                        className
+                        viewBox="0 0 29 19"
+                        width="100%"
+                        height="100%"
+                      >
+                        <linearGradient
+                          id="X2-pill-546078565-1759297946684"
+                          gradientUnits="userSpaceOnUse"
+                          x1="8.99"
+                          y1="-5.130000000000001"
+                          x2="21.169999999999998"
+                          y2="23.18"
+                        >
+                          <stop offset="0%" stopColor="#E6E7E8" />
+                          <stop offset="100%" stopColor="#939598" />
+                        </linearGradient>
+                        <linearGradient
+                          id="X7-pill-546078565-1759297946684"
+                          gradientUnits="userSpaceOnUse"
+                          x1="21.169999999999998"
+                          y1="23.18"
+                          x2="8.99"
+                          y2="-5.130000000000001"
+                        >
+                          <stop offset="0%" stopColor="#DBB251" />
+                          <stop offset="28.89%" stopColor="#D6AA4B" />
+                          <stop offset="48.73%" stopColor="#BE872F" />
+                          <stop offset="68.43%" stopColor="#EBC963" />
+                          <stop offset="100%" stopColor="#FFD67D" />
+                        </linearGradient>
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#000"
+                          fillOpacity="0.7"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="12.879999999999999"
+                          ry="7.88"
+                          fill="#CC85FF"
+                          fillOpacity="0.1"
+                          stroke="none"
+                        />
+                        <ellipse
+                          cx="14.5"
+                          cy="9.5"
+                          rx="13.6"
+                          ry="8.6"
+                          fill="none"
+                          strokeOpacity="0.2"
+                          stroke="#CC85FF"
+                          strokeWidth="1.8"
+                        />
+                        <text
+                          data="pill-value"
+                          dy="14.309999999999999"
+                          dx="14.5"
+                          textAnchor="middle"
+                          style={{
+                            fontSize: "13px",
+                            fill: "rgb(204, 133, 255)",
+                            fontFamily: "Inter, Arial, sans-serif",
+                            fontWeight: 500,
+                            opacity: "0.75",
+                          }}
+                        >
+                          5
+                        </text>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="spotsPerspectiveContainer--7ec32">
+          <div className="spotsContainer--481f6 collapsed--e75c0 portrait--81f54">
+            <div style={{ height: "357px", width: "408px" }}>
               <div
-                className="spots--49c03 grid grid-cols-2 w-full gap-x-2 gap-y-3"
-                data-is-betting-time="true"
+                className="spots--49c03"
+                data-is-betting-time="false"
                 data-role="betting-grid-container"
                 style={{
                   height: "306.605px",
-
-                  transform:
-                    status === Status.OPEN ? "none" : "translateY(25px)",
-                  transition: "transform 0.5s ease-in-out",
+                  width: "351px",
+                  transform: "scale(1.1631)",
                 }}
               >
                 <div
-                  className={`betSpot--3d530 ${
-                    status === Status.OPEN
-                      ? "isBettingTime--be2b7"
-                      : "disabled--9d7b0"
-                  } `}
+                  className="betSpot--3d530 disabled--9d7b0"
                   data-role="bet-spot-01"
-                  style={{
-                    height: "97.5349px",
-                    width: "100%",
-                  }}
+                  style={{ height: "97.5349px", width: "172px" }}
                 >
                   <div className="betSpotInner--04779">
                     <div className="front--563c9">
                       <div className="backdrop--d4490" />
                       <div
                         className="styledSpot--fe1f7"
-                        style={{
-                          height: "97.5349px",
-                          width: "100%",
-                        }}
+                        style={{ height: "97.5349px", width: "172px" }}
                       >
                         <svg
                           height="97.53488372093022"
                           viewBox="0 0 172 97.53488372093022"
-                          width="100%"
+                          width={172}
                         >
                           <defs>
                             <linearGradient
@@ -284,18 +2878,13 @@ const BetSlip = ({
                             </linearGradient>
                           </defs>
                           <rect
-                            className={`background--728af w-full  ${
-                              status === Status.OPEN
-                                ? "active--9e66d"
-                                : "disabled--f7c24"
-                            }`}
+                            className="background--728af disabled--f7c24"
                             fill="#FFC94B"
-                            fillOpacity={status === Status.OPEN ? 1 : 0.2}
+                            fillOpacity="0.2"
                             height="100%"
                             width="100%"
                           />
                           <rect
-                            className="w-full"
                             fill="transparent"
                             fillOpacity={0}
                             height="100%"
@@ -401,34 +2990,25 @@ const BetSlip = ({
                               PAYS 1x
                             </div>
                           </div>
-                          {status === Status.SUSPENDED && (
-                            <div className="disabledOverlay--914ac"></div>
-                          )}
+                          <div className="disabledOverlay--914ac" />
                         </div>
                       </div>
                       <div className="chipContainer--e2b9f">
                         <div
                           className="isPortrait--83052 chipSize--c8c49"
-                          style={{
-                            width: "44px",
-                            height: "44px",
-                          }}
+                          style={{ width: "44px", height: "44px" }}
                         >
                           <div
                             data-is-chip-visible="false"
                             className="hidden--f75dc chip--88d5c"
                           >
-                            <div className="perspectiveChip--09607 betSpotOne--50813">
+                            <div className="perspectiveChip--09607 betSpotOne--50813 perspective--58435">
                               <div className="flange--c8674">
                                 <div className="shadow--ee15e" />
                                 <div
                                   className="background--2f10a"
                                   style={{
-                                    backgroundColor: `rgb(
-                                                    146,
-                                                    146,
-                                                    146
-                                                  )`,
+                                    backgroundColor: "rgb(146, 146, 146)",
                                   }}
                                 />
                                 <div className="shader--d42ad" />
@@ -492,31 +3072,21 @@ const BetSlip = ({
                   </div>
                 </div>
                 <div
-                  className={`betSpot--3d530 ${
-                    status === Status.OPEN
-                      ? "isBettingTime--be2b7"
-                      : "disabled--9d7b0"
-                  } `}
+                  className="betSpot--3d530 disabled--9d7b0"
                   data-role="bet-spot-02"
-                  style={{
-                    height: "97.5349px",
-                    width: "100%",
-                  }}
+                  style={{ height: "97.5349px", width: "172px" }}
                 >
                   <div className="betSpotInner--04779">
                     <div className="front--563c9">
                       <div className="backdrop--d4490" />
                       <div
                         className="styledSpot--fe1f7"
-                        style={{
-                          height: "97.5349px",
-                          width: "100%",
-                        }}
+                        style={{ height: "97.5349px", width: "172px" }}
                       >
                         <svg
                           height="97.53488372093022"
                           viewBox="0 0 172 97.53488372093022"
-                          width="100%"
+                          width={172}
                         >
                           <defs>
                             <linearGradient
@@ -533,13 +3103,9 @@ const BetSlip = ({
                             </linearGradient>
                           </defs>
                           <rect
-                            className={`background--728af  ${
-                              status === Status.OPEN
-                                ? "active--9e66d"
-                                : "disabled--f7c24"
-                            }`}
+                            className="background--728af disabled--f7c24"
                             fill="#6298FF"
-                            fillOpacity={status === Status.OPEN ? 1 : 0.2}
+                            fillOpacity="0.2"
                             height="100%"
                             width="100%"
                           />
@@ -649,34 +3215,25 @@ const BetSlip = ({
                               PAYS 2x
                             </div>
                           </div>
-                          {status === Status.SUSPENDED && (
-                            <div className="disabledOverlay--914ac"></div>
-                          )}
+                          <div className="disabledOverlay--914ac" />
                         </div>
                       </div>
                       <div className="chipContainer--e2b9f">
                         <div
                           className="isPortrait--83052 chipSize--c8c49"
-                          style={{
-                            width: "44px",
-                            height: "44px",
-                          }}
+                          style={{ width: "44px", height: "44px" }}
                         >
                           <div
                             data-is-chip-visible="false"
                             className="hidden--f75dc chip--88d5c"
                           >
-                            <div className="perspectiveChip--09607 betSpotTwo--e9876">
+                            <div className="perspectiveChip--09607 betSpotTwo--e9876 perspective--58435">
                               <div className="flange--c8674">
                                 <div className="shadow--ee15e" />
                                 <div
                                   className="background--2f10a"
                                   style={{
-                                    backgroundColor: `rgb(
-                                                    146,
-                                                    146,
-                                                    146
-                                                  )`,
+                                    backgroundColor: "rgb(146, 146, 146)",
                                   }}
                                 />
                                 <div className="shader--d42ad" />
@@ -740,31 +3297,21 @@ const BetSlip = ({
                   </div>
                 </div>
                 <div
-                  className={`betSpot--3d530 ${
-                    status === Status.OPEN
-                      ? "isBettingTime--be2b7"
-                      : "disabled--9d7b0"
-                  } `}
+                  className="betSpot--3d530 disabled--9d7b0"
                   data-role="bet-spot-05"
-                  style={{
-                    height: "97.5349px",
-                    width: "100%",
-                  }}
+                  style={{ height: "97.5349px", width: "172px" }}
                 >
                   <div className="betSpotInner--04779">
                     <div className="front--563c9">
                       <div className="backdrop--d4490" />
                       <div
                         className="styledSpot--fe1f7"
-                        style={{
-                          height: "97.5349px",
-                          width: "100%",
-                        }}
+                        style={{ height: "97.5349px", width: "172px" }}
                       >
                         <svg
                           height="97.53488372093022"
                           viewBox="0 0 172 97.53488372093022"
-                          width="100%"
+                          width={172}
                         >
                           <defs>
                             <linearGradient
@@ -781,13 +3328,9 @@ const BetSlip = ({
                             </linearGradient>
                           </defs>
                           <rect
-                            className={`background--728af  ${
-                              status === Status.OPEN
-                                ? "active--9e66d"
-                                : "disabled--f7c24"
-                            }`}
+                            className="background--728af disabled--f7c24"
                             fill="#CC85FF"
-                            fillOpacity={status === Status.OPEN ? 1 : 0.2}
+                            fillOpacity="0.2"
                             height="100%"
                             width="100%"
                           />
@@ -897,34 +3440,25 @@ const BetSlip = ({
                               PAYS 5x
                             </div>
                           </div>
-                          {status === Status.SUSPENDED && (
-                            <div className="disabledOverlay--914ac"></div>
-                          )}
+                          <div className="disabledOverlay--914ac" />
                         </div>
                       </div>
                       <div className="chipContainer--e2b9f">
                         <div
                           className="isPortrait--83052 chipSize--c8c49"
-                          style={{
-                            width: "44px",
-                            height: "44px",
-                          }}
+                          style={{ width: "44px", height: "44px" }}
                         >
                           <div
                             data-is-chip-visible="false"
                             className="hidden--f75dc chip--88d5c"
                           >
-                            <div className="perspectiveChip--09607 betSpotFive--d0efe">
+                            <div className="perspectiveChip--09607 betSpotFive--d0efe perspective--58435">
                               <div className="flange--c8674">
                                 <div className="shadow--ee15e" />
                                 <div
                                   className="background--2f10a"
                                   style={{
-                                    backgroundColor: `rgb(
-                                                    146,
-                                                    146,
-                                                    146
-                                                  )`,
+                                    backgroundColor: "rgb(146, 146, 146)",
                                   }}
                                 />
                                 <div className="shader--d42ad" />
@@ -988,32 +3522,22 @@ const BetSlip = ({
                   </div>
                 </div>
                 <div
-                  className={`betSpot--3d530 ${
-                    status === Status.OPEN
-                      ? "isBettingTime--be2b7"
-                      : "disabled--9d7b0"
-                  } `}
+                  className="betSpot--3d530 disabled--9d7b0"
                   data-betspot-destination={10}
                   data-role="bet-spot-10"
-                  style={{
-                    height: "97.5349px",
-                    width: "100%",
-                  }}
+                  style={{ height: "97.5349px", width: "172px" }}
                 >
                   <div className="betSpotInner--04779">
                     <div className="front--563c9">
                       <div className="backdrop--d4490" />
                       <div
                         className="styledSpot--fe1f7"
-                        style={{
-                          height: "97.5349px",
-                          width: "100%",
-                        }}
+                        style={{ height: "97.5349px", width: "172px" }}
                       >
                         <svg
                           height="97.53488372093022"
                           viewBox="0 0 172 97.53488372093022"
-                          width="100%"
+                          width={172}
                         >
                           <defs>
                             <linearGradient
@@ -1030,13 +3554,9 @@ const BetSlip = ({
                             </linearGradient>
                           </defs>
                           <rect
-                            className={`background--728af  ${
-                              status === Status.OPEN
-                                ? "active--9e66d"
-                                : "disabled--f7c24"
-                            }`}
+                            className="background--728af disabled--f7c24"
                             fill="#59E777"
-                            fillOpacity={status === Status.OPEN ? 1 : 0.2}
+                            fillOpacity="0.2"
                             height="100%"
                             width="100%"
                           />
@@ -1146,34 +3666,25 @@ const BetSlip = ({
                               PAYS 10x
                             </div>
                           </div>
-                          {status === Status.SUSPENDED && (
-                            <div className="disabledOverlay--914ac"></div>
-                          )}
+                          <div className="disabledOverlay--914ac" />
                         </div>
                       </div>
                       <div className="chipContainer--e2b9f">
                         <div
                           className="isPortrait--83052 chipSize--c8c49"
-                          style={{
-                            width: "44px",
-                            height: "44px",
-                          }}
+                          style={{ width: "44px", height: "44px" }}
                         >
                           <div
                             data-is-chip-visible="false"
                             className="hidden--f75dc chip--88d5c"
                           >
-                            <div className="perspectiveChip--09607 betSpotTen--e973f">
+                            <div className="perspectiveChip--09607 betSpotTen--e973f perspective--58435">
                               <div className="flange--c8674">
                                 <div className="shadow--ee15e" />
                                 <div
                                   className="background--2f10a"
                                   style={{
-                                    backgroundColor: `rgb(
-                                                    146,
-                                                    146,
-                                                    146
-                                                  )`,
+                                    backgroundColor: "rgb(146, 146, 146)",
                                   }}
                                 />
                                 <div className="shader--d42ad" />
@@ -1237,32 +3748,22 @@ const BetSlip = ({
                   </div>
                 </div>
                 <div
-                  className={`betSpot--3d530 ${
-                    status === Status.OPEN
-                      ? "isBettingTime--be2b7"
-                      : "disabled--9d7b0"
-                  } `}
+                  className="betSpot--3d530 disabled--9d7b0"
                   data-betspot-destination={20}
                   data-role="bet-spot-20"
-                  style={{
-                    height: "97.5349px",
-                    width: "100%",
-                  }}
+                  style={{ height: "97.5349px", width: "172px" }}
                 >
                   <div className="betSpotInner--04779">
                     <div className="front--563c9">
                       <div className="backdrop--d4490" />
                       <div
                         className="styledSpot--fe1f7"
-                        style={{
-                          height: "97.5349px",
-                          width: "100%",
-                        }}
+                        style={{ height: "97.5349px", width: "172px" }}
                       >
                         <svg
                           height="97.53488372093022"
                           viewBox="0 0 172 97.53488372093022"
-                          width="100%"
+                          width={172}
                         >
                           <defs>
                             <linearGradient
@@ -1279,13 +3780,9 @@ const BetSlip = ({
                             </linearGradient>
                           </defs>
                           <rect
-                            className={`background--728af  ${
-                              status === Status.OPEN
-                                ? "active--9e66d"
-                                : "disabled--f7c24"
-                            }`}
+                            className="background--728af disabled--f7c24"
                             fill="#FF7840"
-                            fillOpacity={status === Status.OPEN ? 1 : 0.2}
+                            fillOpacity="0.2"
                             height="100%"
                             width="100%"
                           />
@@ -1395,34 +3892,25 @@ const BetSlip = ({
                               PAYS 20x
                             </div>
                           </div>
-                          {status === Status.SUSPENDED && (
-                            <div className="disabledOverlay--914ac"></div>
-                          )}
+                          <div className="disabledOverlay--914ac" />
                         </div>
                       </div>
                       <div className="chipContainer--e2b9f">
                         <div
                           className="isPortrait--83052 chipSize--c8c49"
-                          style={{
-                            width: "44px",
-                            height: "44px",
-                          }}
+                          style={{ width: "44px", height: "44px" }}
                         >
                           <div
                             data-is-chip-visible="false"
                             className="hidden--f75dc chip--88d5c"
                           >
-                            <div className="perspectiveChip--09607 betSpotTwenty--2d2b5">
+                            <div className="perspectiveChip--09607 betSpotTwenty--2d2b5 perspective--58435">
                               <div className="flange--c8674">
                                 <div className="shadow--ee15e" />
                                 <div
                                   className="background--2f10a"
                                   style={{
-                                    backgroundColor: `rgb(
-                                                    146,
-                                                    146,
-                                                    146
-                                                  )`,
+                                    backgroundColor: "rgb(146, 146, 146)",
                                   }}
                                 />
                                 <div className="shader--d42ad" />
@@ -1486,32 +3974,22 @@ const BetSlip = ({
                   </div>
                 </div>
                 <div
-                  className={`betSpot--3d530 ${
-                    status === Status.OPEN
-                      ? "isBettingTime--be2b7"
-                      : "disabled--9d7b0"
-                  } `}
+                  className="betSpot--3d530 disabled--9d7b0"
                   data-betspot-destination={40}
                   data-role="bet-spot-40"
-                  style={{
-                    height: "97.5349px",
-                    width: "100%",
-                  }}
+                  style={{ height: "97.5349px", width: "172px" }}
                 >
                   <div className="betSpotInner--04779">
                     <div className="front--563c9">
                       <div className="backdrop--d4490" />
                       <div
                         className="styledSpot--fe1f7"
-                        style={{
-                          height: "97.5349px",
-                          width: "100%",
-                        }}
+                        style={{ height: "97.5349px", width: "172px" }}
                       >
                         <svg
                           height="97.53488372093022"
                           viewBox="0 0 172 97.53488372093022"
-                          width="100%"
+                          width={172}
                         >
                           <defs>
                             <linearGradient
@@ -1528,13 +4006,9 @@ const BetSlip = ({
                             </linearGradient>
                           </defs>
                           <rect
-                            className={`background--728af  ${
-                              status === Status.OPEN
-                                ? "active--9e66d"
-                                : "disabled--f7c24"
-                            }`}
+                            className="background--728af disabled--f7c24"
                             fill="#FF4053"
-                            fillOpacity={status === Status.OPEN ? 1 : 0.2}
+                            fillOpacity="0.2"
                             height="100%"
                             width="100%"
                           />
@@ -1644,34 +4118,25 @@ const BetSlip = ({
                               PAYS 40x
                             </div>
                           </div>
-                          {status === Status.SUSPENDED && (
-                            <div className="disabledOverlay--914ac"></div>
-                          )}
+                          <div className="disabledOverlay--914ac" />
                         </div>
                       </div>
                       <div className="chipContainer--e2b9f">
                         <div
                           className="isPortrait--83052 chipSize--c8c49"
-                          style={{
-                            width: "44px",
-                            height: "44px",
-                          }}
+                          style={{ width: "44px", height: "44px" }}
                         >
                           <div
                             data-is-chip-visible="false"
                             className="hidden--f75dc chip--88d5c"
                           >
-                            <div className="perspectiveChip--09607 betSpotForty--2f85b">
+                            <div className="perspectiveChip--09607 betSpotForty--2f85b perspective--58435">
                               <div className="flange--c8674">
                                 <div className="shadow--ee15e" />
                                 <div
                                   className="background--2f10a"
                                   style={{
-                                    backgroundColor: `rgb(
-                                                    146,
-                                                    146,
-                                                    146
-                                                  )`,
+                                    backgroundColor: "rgb(146, 146, 146)",
                                   }}
                                 />
                                 <div className="shader--d42ad" />
@@ -1737,136 +4202,117 @@ const BetSlip = ({
               </div>
             </div>
           </div>
-          {status === Status.OPEN && (
-            <div className="betOnAll--41352 mt-4">
-              <div className="betOnAllContainer--8600d">
-                <div
-                  className="betOnAllWithTooltip--490a9 w-full"
-                  data-role="bet-on-all-button-with-tooltip"
-                >
-                  <div className="tooltipContainer--3069a" />
-                  <div
-                    className="button--5e401 visible--3b3cf animated--937e5"
-                    data-role="bet-on-all-button"
-                    data-state-enabled="true"
-                    style={{ width: "100%", height: "41px" }}
-                  >
-                    <div className="buttonSVGWrapper--3b2db relative">
-                      <svg
-                        className="buttonSVG--aaf5b bottom-0 h-full w-full"
-                        viewBox="0 0 408 41"
-                      >
-                        <defs>
-                          <linearGradient
-                            id="fadeGrad-bet-on-all-v2-201133736-1757350227717"
-                            y2={1}
-                            x2={0}
-                          >
-                            <stop
-                              offset={0}
-                              stopColor="white"
-                              stopOpacity={1}
-                            />
-                            <stop
-                              offset="0.3"
-                              stopColor="white"
-                              stopOpacity={1}
-                            />
-                            <stop
-                              offset={1}
-                              stopColor="white"
-                              stopOpacity="0.3"
-                            />
-                          </linearGradient>
-                          <mask id="fadem-bet-on-all-v2-201133736-1757350227717">
-                            <rect
-                              className="buttonMask--41daf"
-                              x={0}
-                              y={0}
-                              width={408}
-                              height={41}
-                              fill="url(#fadeGrad-bet-on-all-v2-201133736-1757350227717)"
-                            />
-                          </mask>
-                          <linearGradient
-                            x1="0%"
-                            y1="50%"
-                            x2="100%"
-                            y2="50%"
-                            id="g1-bet-on-all-v2-201133736-1757350227717"
-                          >
-                            <stop stopColor="#FFC94B" offset="0%" />
-                            <stop stopColor="#59E777" offset="18.25%" />
-                            <stop stopColor="#6298FF" offset="35%" />
-                            <stop stopColor="#FF7840" offset="60.55%" />
-                            <stop stopColor="#CC85FF" offset="76%" />
-                            <stop stopColor="#FF4053" offset="100%" />
-                          </linearGradient>
-                          <linearGradient
-                            x1="100%"
-                            y1="50%"
-                            x2="0%"
-                            y2="50%"
-                            id="g3-bet-on-all-v2-201133736-1757350227717"
-                          >
-                            <stop offset="0.48%" />
-                            <stop stopOpacity={0} offset="31.73%" />
-                            <stop stopOpacity={0} offset="68.59%" />
-                            <stop offset="100%" />
-                          </linearGradient>
-                        </defs>
-                        <g
-                          stroke="none"
-                          strokeWidth={1}
-                          fill="none"
-                          fillRule="evenodd"
-                          mask="url(#fadem-bet-on-all-v2-201133736-1757350227717)"
-                        >
-                          <rect
-                            className="buttonFill--0d9d3"
-                            fill="url(#g1-bet-on-all-v2-201133736-1757350227717)"
-                            width={408}
-                            height={41}
-                          />
-                          <rect
-                            className="buttonDarkBackground--f97af"
-                            fill="#1A1A1A"
-                            x={2}
-                            y={2}
-                            width={404}
-                            height={37}
-                          />
-                          <rect
-                            fill="transparent"
-                            stroke="url(#g3-bet-on-all-v2-201133736-1757350227717)"
-                            strokeOpacity="0.4"
-                            x={6}
-                            y={6}
-                            width={396}
-                            height={29}
-                          />
-                        </g>
-                      </svg>
-                      <div className="buttonInner--f9dac">
-                        <img
-                          className="iconContainer--611d7 animated--937e5"
-                          src={images.chip}
-                        />
-                        <span className="label--382a2 animated--937e5">
-                          BET ON ALL
-                        </span>
-                      </div>
-                      <div className="gradientLeft--3f0bc" />
-                      <div className="gradientRight--80ca2" />
-                    </div>
-                    <div className="disabledForeground--70093" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
-        <div className="shadowSpotsContainer--141c5 portrait--81f54" />
+        <div className="shadowSpotsContainer--141c5 collapsed--e75c0 portrait--81f54" />
+      </div>
+      <div className="betOnAll--41352">
+        <div className="betOnAllContainer--8600d">
+          <div
+            className="betOnAllWithTooltip--490a9"
+            data-role="bet-on-all-button-with-tooltip"
+          >
+            <div className="tooltipContainer--3069a" />
+            <div
+              className="button--5e401"
+              data-role="bet-on-all-button"
+              data-state-enabled="false"
+              style={{ width: "408px", height: "41px" }}
+            >
+              <div className="buttonSVGWrapper--3b2db">
+                <svg className="buttonSVG--aaf5b" viewBox="0 0 408 41">
+                  <defs>
+                    <linearGradient
+                      id="fadeGrad-bet-on-all-v2-767477178-1759297945580"
+                      y2={1}
+                      x2={0}
+                    >
+                      <stop offset={0} stopColor="white" stopOpacity={1} />
+                      <stop offset="0.3" stopColor="white" stopOpacity={1} />
+                      <stop offset={1} stopColor="white" stopOpacity="0.3" />
+                    </linearGradient>
+                    <mask id="fadem-bet-on-all-v2-767477178-1759297945580">
+                      <rect
+                        className="buttonMask--41daf"
+                        x={0}
+                        y={0}
+                        width={408}
+                        height={41}
+                        fill="url(#fadeGrad-bet-on-all-v2-767477178-1759297945580)"
+                      />
+                    </mask>
+                    <linearGradient
+                      x1="0%"
+                      y1="50%"
+                      x2="100%"
+                      y2="50%"
+                      id="g1-bet-on-all-v2-767477178-1759297945580"
+                    >
+                      <stop stopColor="#FFC94B" offset="0%" />
+                      <stop stopColor="#59E777" offset="18.25%" />
+                      <stop stopColor="#6298FF" offset="35%" />
+                      <stop stopColor="#FF7840" offset="60.55%" />
+                      <stop stopColor="#CC85FF" offset="76%" />
+                      <stop stopColor="#FF4053" offset="100%" />
+                    </linearGradient>
+                    <linearGradient
+                      x1="100%"
+                      y1="50%"
+                      x2="0%"
+                      y2="50%"
+                      id="g3-bet-on-all-v2-767477178-1759297945580"
+                    >
+                      <stop offset="0.48%" />
+                      <stop stopOpacity={0} offset="31.73%" />
+                      <stop stopOpacity={0} offset="68.59%" />
+                      <stop offset="100%" />
+                    </linearGradient>
+                  </defs>
+                  <g
+                    stroke="none"
+                    strokeWidth={1}
+                    fill="none"
+                    fillRule="evenodd"
+                    mask="url(#fadem-bet-on-all-v2-767477178-1759297945580)"
+                  >
+                    <rect
+                      className="buttonFill--0d9d3"
+                      fill="url(#g1-bet-on-all-v2-767477178-1759297945580)"
+                      width={408}
+                      height={41}
+                    />
+                    <rect
+                      className="buttonDarkBackground--f97af"
+                      fill="#1A1A1A"
+                      x={2}
+                      y={2}
+                      width={404}
+                      height={37}
+                    />
+                    <rect
+                      fill="transparent"
+                      stroke="url(#g3-bet-on-all-v2-767477178-1759297945580)"
+                      strokeOpacity="0.4"
+                      x={6}
+                      y={6}
+                      width={396}
+                      height={29}
+                    />
+                  </g>
+                </svg>
+                <div className="buttonInner--f9dac">
+                  <img
+                    className="iconContainer--611d7"
+                    src="/frontend/evo/mini/images/chip.3616ea22.svg"
+                  />
+                  <span className="label--382a2">BET ON ALL</span>
+                </div>
+                <div className="gradientLeft--3f0bc" />
+                <div className="gradientRight--80ca2" />
+              </div>
+              <div className="disabledForeground--70093" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
