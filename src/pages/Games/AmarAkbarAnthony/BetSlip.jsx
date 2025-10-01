@@ -8,6 +8,8 @@ import StakeAnimation from "../../../component/UI/Chip/StakeAnimation";
 import { cn } from "../../../utils/cn";
 import { useSound } from "../../../context/ApiProvider";
 import { playPlaceChip, playSuspendedSound } from "../../../utils/sound";
+import { useParams } from "react-router-dom";
+import { handleStoreRecentPlay } from "../../../utils/handleStorateRecentPlay";
 
 const BetSlip = ({
   double,
@@ -21,17 +23,20 @@ const BetSlip = ({
   setAnimation,
   initialState,
 }) => {
+  const { eventId } = useParams();
   const { sound } = useSound();
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
   const [showSuspendedWarning, setShowSuspendedWarning] = useState(false);
   const dispatch = useDispatch();
   const [addOrder] = useOrderMutation();
   const { stake } = useSelector((state) => state.global);
-  const { balance } = useSelector((state) => state.auth);
+  const { balance, username } = useSelector((state) => state.auth);
 
   // Generic function to update stake state
   const handleStakeChange = (payload) => {
-    if (status === Status.OPEN) {
+    if (status !== Status.OPEN) {
+      handleStoreRecentPlay(username, eventId, "aaa");
+
       if (sound) playPlaceChip();
       const isRepeatTheBet = Object.values(stakeState).find(
         (item) => item?.selection_id && item?.show === false
@@ -208,7 +213,7 @@ const BetSlip = ({
   return (
     <div onClick={handleShowSuspendedStatus} className={`bettingGrid--a60ca`}>
       <div
-        className={status === Status.SUSPENDED ? "pointer-events-none" : ""}
+        // className={status === Status.SUSPENDED ? "pointer-events-none" : ""}
         style={{ width: `${innerWidth - 10}px`, height: "227px" }}
       >
         <div

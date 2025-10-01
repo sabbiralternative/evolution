@@ -9,6 +9,8 @@ import images from "../../../assets/images";
 import StakeAnimation from "../../../component/UI/Chip/StakeAnimation";
 import { useSound } from "../../../context/ApiProvider";
 import { playSuspendedSound } from "../../../utils/sound";
+import { useParams } from "react-router-dom";
+import { handleStoreRecentPlay } from "../../../utils/handleStorateRecentPlay";
 
 const BetSlip = ({
   double,
@@ -22,6 +24,7 @@ const BetSlip = ({
   setAnimation,
   initialState,
 }) => {
+  const { eventId } = useParams();
   const { sound } = useSound();
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
   const [showSuspendedWarning, setShowSuspendedWarning] = useState(false);
@@ -29,7 +32,7 @@ const BetSlip = ({
   const firstData = data?.[0];
   const card1 = firstData?.runners?.[0]?.card?.[0];
   const card2 = firstData?.runners?.[1]?.card?.[0];
-  const { balance } = useSelector((state) => state.auth);
+  const { balance, username } = useSelector((state) => state.auth);
 
   const [addOrder] = useOrderMutation();
   const { stake } = useSelector((state) => state.global);
@@ -37,6 +40,7 @@ const BetSlip = ({
   // Generic function to update stake state
   const handleStakeChange = (payload) => {
     if (status === Status.OPEN) {
+      handleStoreRecentPlay(username, eventId, "dragon-tiger-phoenix");
       const isRepeatTheBet = Object.values(stakeState).find(
         (item) => item?.selection_id && item?.show === false
       );

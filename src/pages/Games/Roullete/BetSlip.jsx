@@ -7,6 +7,8 @@ import StakeAnimation from "../../../component/UI/Chip/StakeAnimation";
 import { keyNames } from "./const";
 import { playSuspendedSound } from "../../../utils/sound";
 import { useSound } from "../../../context/ApiProvider";
+import { useParams } from "react-router-dom";
+import { handleStoreRecentPlay } from "../../../utils/handleStorateRecentPlay";
 const BetSlip = ({
   double,
   data,
@@ -19,16 +21,18 @@ const BetSlip = ({
   setAnimation,
   initialState,
 }) => {
+  const { eventId } = useParams();
   const { sound } = useSound();
   const [, setInnerWidth] = useState(window.innerWidth);
   const [showSuspendedWarning, setShowSuspendedWarning] = useState(false);
   const dispatch = useDispatch();
   const [addOrder] = useOrderMutation();
   const { stake } = useSelector((state) => state.global);
-  const { balance } = useSelector((state) => state.auth);
+  const { balance, username } = useSelector((state) => state.auth);
 
   // Generic function to update stake state
   const handleStakeChange = (payload) => {
+    handleStoreRecentPlay(username, eventId, "roulette");
     const isRepeatTheBet = Object.values(stakeState).find(
       (item) => item?.selection_id && item?.show === false
     );

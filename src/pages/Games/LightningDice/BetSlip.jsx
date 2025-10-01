@@ -9,6 +9,8 @@ import StakeAnimation from "../../../component/UI/Chip/StakeAnimation";
 import { cn } from "../../../utils/cn";
 import { playSuspendedSound } from "../../../utils/sound";
 import { useSound } from "../../../context/ApiProvider";
+import { useParams } from "react-router-dom";
+import { handleStoreRecentPlay } from "../../../utils/handleStorateRecentPlay";
 
 const BetSlip = ({
   double,
@@ -22,17 +24,19 @@ const BetSlip = ({
   setAnimation,
   initialState,
 }) => {
+  const { eventId } = useParams();
   const { sound } = useSound();
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
   const [showSuspendedWarning, setShowSuspendedWarning] = useState(false);
   const dispatch = useDispatch();
   const [addOrder] = useOrderMutation();
   const { stake } = useSelector((state) => state.global);
-  const { balance } = useSelector((state) => state.auth);
+  const { balance, username } = useSelector((state) => state.auth);
 
   // Generic function to update stake state
   const handleStakeChange = (payload) => {
     if (status === Status.OPEN) {
+      handleStoreRecentPlay(username, eventId, "lightning-dice");
       const isRepeatTheBet = Object.values(stakeState).find(
         (item) => item?.selection_id && item?.show === false
       );
