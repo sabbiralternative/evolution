@@ -1,38 +1,15 @@
 import { Status } from "../../../const";
 
 const Winner = ({ data, firstEvent, currentRoundWinAmount }) => {
-  // let card = undefined;
   let winner = undefined;
-  const indexCard = data?.result?.[0]?.indexCard;
 
-  // if (indexCard?.length > 0) {
-  //   card = Number(indexCard[0].slice(1));
-  // }
-
-  if (indexCard == "S1") {
-    winner = "Don";
-  }
-  if (indexCard == "H1" || indexCard == "C1" || indexCard == "D1") {
-    winner = "AAA";
-  }
-
-  if (indexCard == "S13" || indexCard == "S12" || indexCard == "S11") {
-    winner = "SBG";
-  }
-  if (indexCard == "D13" || indexCard == "C13") {
-    winner = "DV";
-  }
-  if (
-    indexCard == "H13" ||
-    indexCard == "C12" ||
-    indexCard == "D12" ||
-    indexCard == "H12"
-  ) {
-    winner = "KKPK";
-  }
-  if (indexCard == "H11" || indexCard == "C11" || indexCard == "D11") {
-    winner = "Ghulam";
-  }
+  data?.result?.forEach((game) => {
+    game?.runners?.forEach((runner) => {
+      if (runner?.status === "WINNER") {
+        winner = runner?.name;
+      }
+    });
+  });
 
   return (
     <div className="overlays--4cd0a">

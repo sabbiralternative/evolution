@@ -265,7 +265,7 @@ const BetSlip = ({
                       y1="0%"
                       x2="50%"
                       y2="100%"
-                      id="PlayerPair0.03899799357536238_id_rect_fill"
+                      id="PlayerPair0.03899799357536238_id_rect_fill8"
                     >
                       <stop
                         stopOpacity="0.8"
@@ -302,7 +302,7 @@ const BetSlip = ({
                     data-height={38}
                     rx={4}
                     ry={4}
-                    fill="url(#PlayerPair0.03899799357536238_id_rect_fill)"
+                    fill="url(#PlayerPair0.03899799357536238_id_rect_fill8)"
                     stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke)"
                     strokeWidth={4}
                     fillRule="evenodd"
@@ -315,12 +315,12 @@ const BetSlip = ({
                       className="payout--c827b !text-white text-[12px]"
                       data-role="payout"
                     >
-                      Don
+                      {data?.[0]?.runners?.[0]?.name}
                     </div>
                   </div>
                 </div>
                 <div className="betspotTitle--d0907">
-                  <span className="text-[12px]">
+                  <span className="text-[10px]">
                     {" "}
                     x{getBackPrice(data, 0, 0)}
                   </span>
@@ -369,7 +369,7 @@ const BetSlip = ({
                       y1="0%"
                       x2="50%"
                       y2="100%"
-                      id="PlayerPair0.03899799357536238_id_rect_fill"
+                      id="PlayerPair0.03899799357536238_id_rect_fill1"
                     >
                       <stop
                         stopOpacity="0.8"
@@ -406,7 +406,7 @@ const BetSlip = ({
                     data-height={38}
                     rx={4}
                     ry={4}
-                    fill="url(#PlayerPair0.03899799357536238_id_rect_fill)"
+                    fill="url(#PlayerPair0.03899799357536238_id_rect_fill1)"
                     stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke)"
                     strokeWidth={4}
                     fillRule="evenodd"
@@ -419,12 +419,12 @@ const BetSlip = ({
                       className="payout--c827b !text-white text-[12px]"
                       data-role="payout"
                     >
-                      AAA
+                      {data?.[0]?.runners?.[1]?.name}
                     </div>
                   </div>
                 </div>
                 <div className="betspotTitle--d0907">
-                  <span className="text-[12px]">
+                  <span className="text-[10px]">
                     x{getBackPrice(data, 0, 1)}
                   </span>
                 </div>
@@ -472,7 +472,7 @@ const BetSlip = ({
                       y1="0%"
                       x2="50%"
                       y2="100%"
-                      id="PlayerPair0.03899799357536238_id_rect_fill"
+                      id="PlayerPair0.03899799357536238_id_rect_fill2"
                     >
                       <stop
                         stopOpacity="0.8"
@@ -509,7 +509,7 @@ const BetSlip = ({
                     data-height={38}
                     rx={4}
                     ry={4}
-                    fill="url(#PlayerPair0.03899799357536238_id_rect_fill)"
+                    fill="url(#PlayerPair0.03899799357536238_id_rect_fill2)"
                     stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke)"
                     strokeWidth={4}
                     fillRule="evenodd"
@@ -522,12 +522,12 @@ const BetSlip = ({
                       className="payout--c827b !text-white text-[12px]"
                       data-role="payout"
                     >
-                      SBG
+                      {data?.[0]?.runners?.[2]?.name}
                     </div>
                   </div>
                 </div>
                 <div className="betspotTitle--d0907">
-                  <span className="text-[12px]">
+                  <span className="text-[10px]">
                     {" "}
                     x{getBackPrice(data, 0, 2)}
                   </span>
@@ -578,7 +578,7 @@ const BetSlip = ({
                       y1="0%"
                       x2="50%"
                       y2="100%"
-                      id="PlayerPair0.03899799357536238_id_rect_fill"
+                      id="PlayerPair0.03899799357536238_id_rect_fill3"
                     >
                       <stop
                         stopOpacity="0.8"
@@ -615,7 +615,7 @@ const BetSlip = ({
                     data-height={38}
                     rx={4}
                     ry={4}
-                    fill="url(#PlayerPair0.03899799357536238_id_rect_fill)"
+                    fill="url(#PlayerPair0.03899799357536238_id_rect_fill3)"
                     stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke)"
                     strokeWidth={4}
                     fillRule="evenodd"
@@ -628,12 +628,12 @@ const BetSlip = ({
                       className="payout--c827b !text-white text-[12px]"
                       data-role="payout"
                     >
-                      DV
+                      {data?.[0]?.runners?.[3]?.name}
                     </div>
                   </div>
                 </div>
                 <div className="betspotTitle--d0907">
-                  <span className="text-[12px]">
+                  <span className="text-[10px]">
                     {" "}
                     x{getBackPrice(data, 0, 3)}
                   </span>
@@ -683,7 +683,7 @@ const BetSlip = ({
                       y1="0%"
                       x2="50%"
                       y2="100%"
-                      id="PlayerPair0.03899799357536238_id_rect_fill"
+                      id="PlayerPair0.03899799357536238_id_rect_fill4"
                     >
                       <stop
                         stopOpacity="0.8"
@@ -720,7 +720,7 @@ const BetSlip = ({
                     data-height={38}
                     rx={4}
                     ry={4}
-                    fill="url(#PlayerPair0.03899799357536238_id_rect_fill)"
+                    fill="url(#PlayerPair0.03899799357536238_id_rect_fill4)"
                     stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke)"
                     strokeWidth={4}
                     fillRule="evenodd"
@@ -733,12 +733,12 @@ const BetSlip = ({
                       className="payout--c827b !text-white text-[12px]"
                       data-role="payout"
                     >
-                      KKPK
+                      {data?.[0]?.runners?.[4]?.name}
                     </div>
                   </div>
                 </div>
                 <div className="betspotTitle--d0907">
-                  <span className="text-[12px]">
+                  <span className="text-[10px]">
                     x{getBackPrice(data, 0, 4)}
                   </span>
                 </div>
@@ -786,7 +786,7 @@ const BetSlip = ({
                       y1="0%"
                       x2="50%"
                       y2="100%"
-                      id="PlayerPair0.03899799357536238_id_rect_fill"
+                      id="PlayerPair0.03899799357536238_id_rect_fill5"
                     >
                       <stop
                         stopOpacity="0.8"
@@ -823,7 +823,7 @@ const BetSlip = ({
                     data-height={38}
                     rx={4}
                     ry={4}
-                    fill="url(#PlayerPair0.03899799357536238_id_rect_fill)"
+                    fill="url(#PlayerPair0.03899799357536238_id_rect_fill5)"
                     stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke)"
                     strokeWidth={4}
                     fillRule="evenodd"
@@ -836,12 +836,12 @@ const BetSlip = ({
                       className="payout--c827b !text-white text-[12px]"
                       data-role="payout"
                     >
-                      Ghulam
+                      {data?.[0]?.runners?.[5]?.name}
                     </div>
                   </div>
                 </div>
                 <div className="betspotTitle--d0907">
-                  <span className="text-[12px]">
+                  <span className="text-[10px]">
                     {" "}
                     x{getBackPrice(data, 0, 5)}
                   </span>
@@ -856,7 +856,7 @@ const BetSlip = ({
                 handleStakeChange({
                   key: "kq",
                   data,
-                  dataIndex: 2,
+                  dataIndex: 1,
                   runnerIndex: 0,
                   type: "back",
                 })
@@ -879,7 +879,7 @@ const BetSlip = ({
                 <svg
                   className={cn(
                     `svg--7e996 svgBetspot--43e31 rectShape--a9f3a `,
-                    isRunnerWinner(data, 2, 0) && "animate--6c17d  win--e65a1",
+                    isRunnerWinner(data, 1, 0) && "animate--6c17d  win--e65a1",
                     stakeState.kq?.show && "hasBet--8e3d4"
                   )}
                   preserveAspectRatio="none"
@@ -892,7 +892,7 @@ const BetSlip = ({
                       y1="0%"
                       x2="50%"
                       y2="100%"
-                      id="PlayerPair0.03899799357536238_id_rect_fill"
+                      id="PlayerPair0.03899799357536238_id_rect_fill6"
                     >
                       <stop
                         stopOpacity="0.8"
@@ -929,7 +929,7 @@ const BetSlip = ({
                     data-height={38}
                     rx={4}
                     ry={4}
-                    fill="url(#PlayerPair0.03899799357536238_id_rect_fill)"
+                    fill="url(#PlayerPair0.03899799357536238_id_rect_fill6)"
                     stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke)"
                     strokeWidth={4}
                     fillRule="evenodd"
@@ -942,14 +942,14 @@ const BetSlip = ({
                       className="payout--c827b !text-white text-[12px]"
                       data-role="payout"
                     >
-                      K-Q
+                      {data?.[1]?.runners?.[0]?.name}
                     </div>
                   </div>
                 </div>
                 <div className="betspotTitle--d0907">
-                  <span className="text-[12px]">
+                  <span className="text-[10px]">
                     {" "}
-                    x{getBackPrice(data, 2, 0)}
+                    x{getBackPrice(data, 1, 0)}
                   </span>
                 </div>
               </div>
@@ -959,7 +959,7 @@ const BetSlip = ({
                 handleStakeChange({
                   key: "ja",
                   data,
-                  dataIndex: 2,
+                  dataIndex: 1,
                   runnerIndex: 1,
                   type: "back",
                 })
@@ -983,7 +983,7 @@ const BetSlip = ({
                 <svg
                   className={cn(
                     `svg--7e996 svgBetspot--43e31 isMirrored--d9896 rectShape--a9f3a `,
-                    isRunnerWinner(data, 2, 1) && "animate--6c17d  win--e65a1",
+                    isRunnerWinner(data, 1, 1) && "animate--6c17d  win--e65a1",
                     stakeState.ja?.show && "hasBet--8e3d4"
                   )}
                   preserveAspectRatio="none"
@@ -996,7 +996,7 @@ const BetSlip = ({
                       y1="0%"
                       x2="50%"
                       y2="100%"
-                      id="BankerPair0.6604065570309232_id_rect_fill"
+                      id="BankerPair0.6604065570309232_id_rect_fillkq"
                     >
                       <stop
                         stopOpacity="0.8"
@@ -1033,7 +1033,7 @@ const BetSlip = ({
                     data-height={38}
                     rx={4}
                     ry={4}
-                    fill="url(#BankerPair0.6604065570309232_id_rect_fill)"
+                    fill="url(#BankerPair0.6604065570309232_id_rect_fillkq)"
                     stroke="url(#BankerPair0.6604065570309232_id_rect_stroke)"
                     strokeWidth={4}
                     fillRule="evenodd"
@@ -1046,14 +1046,14 @@ const BetSlip = ({
                       className="payout--c827b !text-white text-[12px]"
                       data-role="payout"
                     >
-                      J-A
+                      {data?.[1]?.runners?.[1]?.name}
                     </div>
                   </div>
                 </div>
                 <div className="betspotTitle--d0907">
-                  <span className="text-[12px]">
+                  <span className="text-[10px]">
                     {" "}
-                    x{getBackPrice(data, 2, 1)}
+                    x{getBackPrice(data, 1, 1)}
                   </span>
                 </div>
               </div>
@@ -1063,7 +1063,7 @@ const BetSlip = ({
                 handleStakeChange({
                   key: "black",
                   data,
-                  dataIndex: 3,
+                  dataIndex: 2,
                   runnerIndex: 1,
                   type: "back",
                 })
@@ -1087,8 +1087,8 @@ const BetSlip = ({
                 <svg
                   className={cn(
                     `svg--7e996 svgBetspot--43e31 rectShape--a9f3a`,
-                    isRunnerWinner(data, 3, 1) && "animate--6c17d  win--e65a1",
-                    stakeState.red?.show && "hasBet--8e3d4"
+                    isRunnerWinner(data, 2, 1) && "animate--6c17d  win--e65a1",
+                    stakeState.black?.show && "hasBet--8e3d4"
                   )}
                   preserveAspectRatio="none"
                   width={122}
@@ -1100,7 +1100,7 @@ const BetSlip = ({
                       y1="0%"
                       x2="50%"
                       y2="100%"
-                      id="PlayerPair0.03899799357536238_id_rect_fill"
+                      id="PlayerPair0.03899799357536238_id_rect_fill7"
                     >
                       <stop
                         stopOpacity="0.8"
@@ -1137,7 +1137,7 @@ const BetSlip = ({
                     data-height={38}
                     rx={4}
                     ry={4}
-                    fill="url(#PlayerPair0.03899799357536238_id_rect_fill)"
+                    fill="url(#PlayerPair0.03899799357536238_id_rect_fill7)"
                     stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke)"
                     strokeWidth={4}
                     fillRule="evenodd"
@@ -1150,13 +1150,13 @@ const BetSlip = ({
                       className="payout--c827b !text-white text-[12px]"
                       data-role="payout"
                     >
-                      Black
+                      {data?.[2]?.runners?.[1]?.name}
                     </div>
                   </div>
                 </div>
                 <div className="betspotTitle--d0907">
-                  <span className="text-[12px]">
-                    x{getBackPrice(data, 3, 1)}
+                  <span className="text-[10px]">
+                    x{getBackPrice(data, 2, 1)}
                   </span>
                 </div>
               </div>
@@ -1166,7 +1166,7 @@ const BetSlip = ({
                 handleStakeChange({
                   key: "red",
                   data,
-                  dataIndex: 3,
+                  dataIndex: 2,
                   runnerIndex: 0,
                   type: "back",
                 })
@@ -1190,8 +1190,8 @@ const BetSlip = ({
                 <svg
                   className={cn(
                     `svg--7e996 svgBetspot--43e31 isMirrored--d9896 rectShape--a9f3a`,
-                    isRunnerWinner(data, 3, 0) && "animate--6c17d  win--e65a1",
-                    stakeState.black?.show && "hasBet--8e3d4"
+                    isRunnerWinner(data, 2, 0) && "animate--6c17d  win--e65a1",
+                    stakeState.red?.show && "hasBet--8e3d4"
                   )}
                   preserveAspectRatio="none"
                   width={122}
@@ -1203,7 +1203,7 @@ const BetSlip = ({
                       y1="0%"
                       x2="50%"
                       y2="100%"
-                      id="BankerPair0.6604065570309232_id_rect_fill"
+                      id="BankerPair0.6604065570309232_id_rect_fill1"
                     >
                       <stop
                         stopOpacity="0.8"
@@ -1240,7 +1240,7 @@ const BetSlip = ({
                     data-height={38}
                     rx={4}
                     ry={4}
-                    fill="url(#BankerPair0.6604065570309232_id_rect_fill)"
+                    fill="url(#BankerPair0.6604065570309232_id_rect_fill1)"
                     stroke="url(#BankerPair0.6604065570309232_id_rect_stroke)"
                     strokeWidth={4}
                     fillRule="evenodd"
@@ -1253,13 +1253,13 @@ const BetSlip = ({
                       className="payout--c827b !text-white text-[12px]"
                       data-role="payout"
                     >
-                      Red
+                      {data?.[2]?.runners?.[0]?.name}
                     </div>
                   </div>
                 </div>
                 <div className="betspotTitle--d0907">
-                  <span className="text-[12px]">
-                    x{getBackPrice(data, 3, 0)}
+                  <span className="text-[10px]">
+                    x{getBackPrice(data, 2, 0)}
                   </span>
                 </div>
               </div>
