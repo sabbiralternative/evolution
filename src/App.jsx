@@ -1,12 +1,15 @@
 import { useNavigate } from "react-router-dom";
-import MainLayout from "./layout/MainLayout";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Settings } from "./api";
 import { useDispatch } from "react-redux";
 import disableDevtool from "disable-devtool";
 import { logout } from "./redux/features/auth/authSlice";
+import { setDeviseHeight } from "./redux/features/global/globalSlice";
+import DesktopLayout from "./layout/DesktopLayout";
+import MobileLayout from "./layout/MobileLayout";
 
 function App() {
+  const [deviseWidth, setDeviceWidth] = useState(window.innerWidth);
   const disabledDevtool = Settings.disabledDevtool;
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -25,7 +28,28 @@ function App() {
     }
   }, [navigate, disabledDevtool, dispatch]);
 
-  return <MainLayout />;
+  useEffect(() => {
+    const handleResize = () => {
+      dispatch(setDeviseHeight(window.innerHeight));
+      setDeviceWidth(window.innerWidth);
+    };
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [dispatch]);
+
+  const handleFullScreen = () => {
+    // document.body.requestFullscreen();
+  };
+
+  return (
+    <div onClick={handleFullScreen}>
+      {deviseWidth > 786 ? <DesktopLayout /> : <MobileLayout />}
+    </div>
+  );
 }
 
 export default App;
