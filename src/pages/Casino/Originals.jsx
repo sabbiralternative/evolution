@@ -22,7 +22,7 @@ const Originals = () => {
               <div className="Content--2ceeb">
                 <Header setShowSearch={setShowSearch} />
                 <ScrollableTab />
-                <CasinoThumbnail title="Originals" id="originals" />
+                <CasinoThumbnail title="Originals" id="originals" column={2} />
                 <Footer />
               </div>
             </div>

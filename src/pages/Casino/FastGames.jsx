@@ -22,7 +22,7 @@ const FastGames = () => {
               <div className="Content--2ceeb">
                 <Header setShowSearch={setShowSearch} />
                 <ScrollableTab />
-                <CasinoThumbnail title="Fast Games" id="fast" />
+                <CasinoThumbnail title="Fast Games" id="fast" column={2} />
                 <Footer />
               </div>
             </div>

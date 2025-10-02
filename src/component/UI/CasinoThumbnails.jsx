@@ -4,7 +4,7 @@ import StaticThumbnail from "../shared/StaticThumbnail";
 import { useSound } from "../../context/ApiProvider";
 import { playClick } from "../../utils/sound";
 
-const CasinoThumbnail = ({ title, id }) => {
+const CasinoThumbnail = ({ title, id, column }) => {
   const { sound } = useSound();
   const navigate = useNavigate();
   const { data } = useGetLiveCasinoThumbnailQuery({ id });
@@ -36,11 +36,12 @@ const CasinoThumbnail = ({ title, id }) => {
           data-role="grid"
           id="category-grid-top_games"
           style={{
-            "-arrowWidth": "1rem",
-            "-columns": 2,
-            "-columnGap": "1rem",
-            "-columnGutter": "1rem",
-            "-rowGap": "1rem",
+            "--arrow-width": "1rem",
+            "--columns": column,
+            "--column-gap": "1rem",
+            "--column-gutter": "1rem",
+            "--row-gap": "2rem",
+            " --arrow-height-indent": "52px",
           }}
         >
           <ul
