@@ -1,6 +1,7 @@
 import Casino from "../pages/Desktop/Casino/Casino";
 import FastGames from "../pages/Desktop/Casino/FastGames";
 import Originals from "../pages/Desktop/Casino/Originals";
+import LuckySeven from "../pages/Desktop/Games/LuckySeven/LuckySeven";
 import Home from "../pages/Desktop/Home/Home";
 
 export const desktopRoutes = [
@@ -20,10 +21,10 @@ export const desktopRoutes = [
     path: "/fast-games",
     element: <FastGames />,
   },
-  //   {
-  //     path: "/game/lucky7/:eventTypeId/:eventId",
-  //     element: <LuckySeven />,
-  //   },
+  {
+    path: "/game/lucky7/:eventTypeId/:eventId",
+    element: <LuckySeven />,
+  },
   //   {
   //     path: "/game/dt20/:eventTypeId/:eventId",
   //     element: <DragonTiger />,
