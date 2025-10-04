@@ -20,6 +20,9 @@ const BetSlip = ({
   animation,
   setAnimation,
   initialState,
+  height,
+  width,
+  transform,
 }) => {
   const { eventId } = useParams();
   const { sound } = useSound();
@@ -207,13 +210,20 @@ const BetSlip = ({
       className="bettingGridContainer--f9317"
       style={{
         transform: `${
-          status === Status.OPEN ? "translateY(50vh)" : "translateY(55vh)"
+          transform
+            ? status === Status.OPEN
+              ? "translateY(50vh)"
+              : "translateY(55vh)"
+            : "none"
         }`,
       }}
     >
       <div
         className="scaleToFit--d2b31 bettingGrid--4ddd2"
-        style={{ transform: `scale(${innerWidth / 375})` }}
+        style={{
+          transform: transform ? `scale(${innerWidth / 375})` : "none",
+          position: transform ? "absolute" : "static",
+        }}
       >
         <div
           className="grid--6cb5e vertical--cf832"

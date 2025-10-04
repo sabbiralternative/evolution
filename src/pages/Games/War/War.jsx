@@ -525,6 +525,9 @@ const War = () => {
               setStakeState={setStakeState}
               data={data?.result}
               status={firstEvent?.status}
+              height={true}
+              width={true}
+              transform={true}
             />
             <div className="bottomChipHolder--e9aba" />
           </div>

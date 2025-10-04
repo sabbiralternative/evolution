@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setStake } from "../../../../redux/features/global/globalSlice";
-import { playChipChange } from "../../../../utils/sound";
-import { useSound } from "../../../../context/ApiProvider";
+import { setStake } from "../../../redux/features/global/globalSlice";
+import { playChipChange } from "../../../utils/sound";
+import { useSound } from "../../../context/ApiProvider";
 
 const ChipContainer = ({
   isPlaceStake,

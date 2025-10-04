@@ -388,6 +388,9 @@ const LightningDice = () => {
                         setStakeState={setStakeState}
                         data={data?.result}
                         status={firstEvent?.status}
+                        height={true}
+                        width={true}
+                        transform={true}
                       />
                     </div>
                   </div>

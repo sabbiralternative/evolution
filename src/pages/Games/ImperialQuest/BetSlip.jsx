@@ -25,6 +25,9 @@ const BetSlip = ({
   animation,
   setAnimation,
   initialState,
+  height,
+  width,
+  transform,
 }) => {
   const { eventId } = useParams();
   const { sound } = useSound();

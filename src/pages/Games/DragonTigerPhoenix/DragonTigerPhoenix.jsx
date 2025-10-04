@@ -317,6 +317,9 @@ const DragonTigerPhoenix = () => {
                       setStakeState={setStakeState}
                       data={data?.result}
                       status={firstEvent?.status}
+                      height={true}
+                      width={true}
+                      transform={true}
                     />
                     {/* <RoadPrediction/> */}
                     <div className="menuButtonSpace--f0aa1" />

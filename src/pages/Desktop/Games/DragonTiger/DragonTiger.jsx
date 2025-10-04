@@ -9,9 +9,9 @@ import ChipContainer from "../../../../component/shared/CommonUIElement/ChipCont
 import { handleDoubleStake } from "../../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../../utils/handleUndoStake";
 import CommonUIElement from "../../../../component/shared/CommonUIElement/CommonUIElement";
-import BetSlip from "../../../Games/LuckySeven/BetSlip";
+import BetSlip from "../../../Games/DragonTiger/BetSlip";
 
-const LuckySeven = () => {
+const DragonTiger = () => {
   const { sound } = useSound();
   const [double, setDouble] = useState(false);
   const [animation, setAnimation] = useState([]);
@@ -374,4 +374,4 @@ const LuckySeven = () => {
   );
 };
 
-export default LuckySeven;
+export default DragonTiger;

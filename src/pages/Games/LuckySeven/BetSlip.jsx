@@ -24,6 +24,9 @@ const BetSlip = ({
   animation,
   setAnimation,
   initialState,
+  height,
+  width,
+  transform,
 }) => {
   const { eventId } = useParams();
   const { sound } = useSound();
@@ -219,7 +222,10 @@ const BetSlip = ({
       className={`bettingGrid--a60ca flex-col  `}
     >
       <div
-        style={{ width: `${innerWidth - 10}px`, height: "170px" }}
+        style={{
+          width: width ? `${innerWidth - 10}px` : "auto",
+          height: height ? "170px" : "200px",
+        }}
         className={`${
           status === Status.SUSPENDED ? "pointer-events-none" : ""
         }`}
@@ -228,7 +234,7 @@ const BetSlip = ({
           className="bettingGrid--0835e bettingTime--7f9cd isVertical--28984 onlyPairs--f14f6"
           data-role="betting-grid-container"
           style={{
-            transform: `scale(${innerWidth / 375})`,
+            transform: transform ? `scale(${innerWidth / 375})` : "none",
             opacity: status === Status.SUSPENDED ? 0.7 : 1,
           }}
         >

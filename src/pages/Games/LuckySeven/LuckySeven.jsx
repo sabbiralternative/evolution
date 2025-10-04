@@ -420,6 +420,9 @@ const LuckySeven = () => {
                             setStakeState={setStakeState}
                             data={data?.result}
                             status={firstEvent?.status}
+                            height={true}
+                            width={true}
+                            transform={true}
                           />
 
                           <div className="dealNow--971b0 portrait--55ead hidden--c5c76">

@@ -22,6 +22,9 @@ const BetSlip = ({
   animation,
   setAnimation,
   initialState,
+  height,
+  width,
+  transform,
 }) => {
   const { eventId } = useParams();
   const { sound } = useSound();
@@ -136,7 +139,9 @@ const BetSlip = ({
   }, [stake]); // Runs when stake value changes
 
   useEffect(() => {
-    const filterPlacedBet = Object.values(stakeState).filter((bet) => bet.show);
+    const filterPlacedBet = Object.values(stakeState).filter(
+      (bet) => bet?.show
+    );
     let payload = filterPlacedBet.map((bet) => ({
       roundId: bet?.roundId,
       name: bet?.name,
@@ -206,12 +211,17 @@ const BetSlip = ({
 
   return (
     <div onClick={handleShowSuspendedStatus} className="bettingGrid--a60ca">
-      <div style={{ width: `${innerWidth - 10}px`, height: "227px" }}>
+      <div
+        style={{
+          width: width ? `${innerWidth - 10}px` : "auto",
+          height: height ? "227px" : "200px",
+        }}
+      >
         <div
           className="bettingGrid--0835e bettingTime--7f9cd isVertical--28984 onlyPairs--f14f6"
           data-role="betting-grid-container"
           style={{
-            transform: `scale(${innerWidth / 375})`,
+            transform: transform ? `scale(${innerWidth / 375})` : "none",
             opacity: status === Status.SUSPENDED ? 0.7 : 1,
           }}
         >
@@ -235,7 +245,7 @@ const BetSlip = ({
                 className={cn(
                   `svg--7e996 mainShape--f586c svgBetspot--43e31 `,
                   isRunnerWinner(data, 0, 0) && "animate--6c17d  win--e65a1",
-                  stakeState.player.show && "hasBet--8e3d4"
+                  stakeState?.player?.show && "hasBet--8e3d4"
                 )}
                 preserveAspectRatio="none"
                 width={180}
@@ -469,7 +479,7 @@ const BetSlip = ({
                 className={cn(
                   `svg--7e996 mainShape--f586c svgBetspot--43e31 isMirrored--d9896`,
                   isRunnerWinner(data, 0, 1) && "animate--6c17d  win--e65a1",
-                  stakeState.banker.show && "hasBet--8e3d4"
+                  stakeState?.banker?.show && "hasBet--8e3d4"
                 )}
                 preserveAspectRatio="none"
                 width={180}
@@ -704,7 +714,7 @@ const BetSlip = ({
                 className={cn(
                   `svg--7e996 tieShape--d6bfd svgBetspot--43e31 `,
                   isRunnerWinner(data, 4, 2) && "animate--6c17d  win--e65a1",
-                  stakeState.tie.show && "hasBet--8e3d4"
+                  stakeState?.tie?.show && "hasBet--8e3d4"
                 )}
                 width={123}
                 height={130}
@@ -944,7 +954,7 @@ const BetSlip = ({
                 className={cn(
                   `svg--7e996 svgBetspot--43e31 isMirrored--d9896 rectShape--a9f3a `,
                   isRunnerWinner(data, 1, 0) && "animate--6c17d  win--e65a1",
-                  stakeState.playerPair.show && "hasBet--8e3d4"
+                  stakeState?.playerPair?.show && "hasBet--8e3d4"
                 )}
                 preserveAspectRatio="none"
                 width={122}
@@ -1096,7 +1106,7 @@ const BetSlip = ({
                 className={cn(
                   `svg--7e996 svgBetspot--43e31  isMirrored--d9896 rectShape--a9f3a `,
                   isRunnerWinner(data, 2, 0) && "animate--6c17d  win--e65a1",
-                  stakeState.bankerPair.show && "hasBet--8e3d4"
+                  stakeState?.bankerPair?.show && "hasBet--8e3d4"
                 )}
                 preserveAspectRatio="none"
                 width={122}

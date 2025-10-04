@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useSound } from "../../../../../context/ApiProvider";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { setBalance } from "../../../../../redux/features/auth/authSlice";
-import { playWinSound } from "../../../../../utils/sound";
+import { useSound } from "../../../context/ApiProvider";
+import { setBalance } from "../../../redux/features/auth/authSlice";
+import { playWinSound } from "../../../utils/sound";
 
 const AmountSection = ({
   data,

@@ -1,4 +1,4 @@
-import { useSound } from "../../../../../context/ApiProvider";
+import { useSound } from "../../../context/ApiProvider";
 
 const ActionButtons = () => {
   const { sound, setSound } = useSound();

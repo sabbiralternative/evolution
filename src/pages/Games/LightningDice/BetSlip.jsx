@@ -23,6 +23,9 @@ const BetSlip = ({
   animation,
   setAnimation,
   initialState,
+  height,
+  width,
+  transform,
 }) => {
   const { eventId } = useParams();
   const { sound } = useSound();
@@ -216,10 +219,11 @@ const BetSlip = ({
       }`}
       data-role="mobile-grid"
       style={{
-        transform:
-          status === Status.OPEN
+        transform: transform
+          ? status === Status.OPEN
             ? "translateY(0px) scale(1)"
-            : "translateY(calc(var(--size) * 9.4)) scale(.8)",
+            : "translateY(calc(var(--size) * 9.4)) scale(.8)"
+          : "scale(.7)",
       }}
     >
       <div

@@ -22,6 +22,9 @@ const BetSlip = ({
   animation,
   setAnimation,
   initialState,
+  height,
+  width,
+  transform,
 }) => {
   const { eventId } = useParams();
   const { sound } = useSound();
@@ -214,13 +217,16 @@ const BetSlip = ({
     <div onClick={handleShowSuspendedStatus} className={`bettingGrid--a60ca`}>
       <div
         className={status === Status.SUSPENDED ? "pointer-events-none" : ""}
-        style={{ width: `${innerWidth - 10}px`, height: "227px" }}
+        style={{
+          width: width ? `${innerWidth - 10}px` : "auto",
+          height: height ? "227px" : "200px",
+        }}
       >
         <div
           className="bettingGrid--0835e bettingTime--7f9cd isVertical--28984 onlyPairs--f14f6"
           data-role="betting-grid-container"
           style={{
-            transform: `scale(${innerWidth / 375})`,
+            transform: transform ? `scale(${innerWidth / 375})` : "none",
             opacity: status === Status.SUSPENDED ? 0.7 : 1,
           }}
         >

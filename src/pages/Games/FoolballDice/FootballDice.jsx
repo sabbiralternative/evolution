@@ -324,6 +324,9 @@ const FootballDice = () => {
               setStakeState={setStakeState}
               data={data?.result}
               status={firstEvent?.status}
+              height={true}
+              width={true}
+              transform={true}
             />
             <div className="flyingChips--468b5" />
           </div>
