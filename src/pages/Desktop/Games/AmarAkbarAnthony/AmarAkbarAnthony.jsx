@@ -11,6 +11,7 @@ import { handleUndoStake } from "../../../../utils/handleUndoStake";
 import CommonUIElement from "../../../../component/shared/CommonUIElement/CommonUIElement";
 import BetSlip from "../../../Games/AmarAkbarAnthony/BetSlip";
 import Timer from "../../../../component/shared/Timer";
+import Winner from "../../../Games/AmarAkbarAnthony/Winner";
 
 const AmarAkbarAnthony = () => {
   const { sound } = useSound();
@@ -159,6 +160,11 @@ const AmarAkbarAnthony = () => {
                     </div>
                   </div>
                 </div>
+                <Winner
+                  data={data}
+                  firstEvent={firstEvent}
+                  currentRoundWinAmount={currentRoundWinAmount}
+                />
               </div>
             </div>
             <div data-role="layout-classic">
@@ -350,7 +356,14 @@ const AmarAkbarAnthony = () => {
                 </div>
               </div>
             </div>
-            <CommonUIElement data={data} />
+            <CommonUIElement
+              data={data}
+              setCurrentRoundWinAmount={setCurrentRoundWinAmount}
+              setShowWinLossResult={setShowWinLossResult}
+              setTotalWinAmount={setTotalWinAmount}
+              showWinLossResult={showWinLossResult}
+              totalWinAmount={totalWinAmount}
+            />
             <div className="tooltipsContainer--515fb" />
             <div
               className="onboardingBubbleContainer--d208c desktop--86dc8"

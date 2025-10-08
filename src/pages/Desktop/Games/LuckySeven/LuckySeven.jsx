@@ -11,6 +11,7 @@ import { handleUndoStake } from "../../../../utils/handleUndoStake";
 import CommonUIElement from "../../../../component/shared/CommonUIElement/CommonUIElement";
 import BetSlip from "../../../Games/LuckySeven/BetSlip";
 import Timer from "../../../../component/shared/Timer";
+import Winner from "../../../Games/LuckySeven/Winner";
 
 const LuckySeven = () => {
   const { sound } = useSound();
@@ -159,6 +160,11 @@ const LuckySeven = () => {
                     </div>
                   </div>
                 </div>
+                <Winner
+                  data={data}
+                  firstEvent={firstEvent}
+                  currentRoundWinAmount={currentRoundWinAmount}
+                />
               </div>
             </div>
             <div data-role="layout-classic">
@@ -277,6 +283,7 @@ const LuckySeven = () => {
                     />
                   </div>
                 </div>
+
                 <div
                   className="gradient--e96cd commonUiElement"
                   data-role="top-corner-gradient"
@@ -285,6 +292,7 @@ const LuckySeven = () => {
                   <div className="box--28913" />
                 </div>
                 <div className="top-container--67c84" />
+
                 <div className="bottom-container--11469">
                   <Timer firstEvent={firstEvent} />
 
@@ -350,7 +358,14 @@ const LuckySeven = () => {
                 </div>
               </div>
             </div>
-            <CommonUIElement data={data} />
+            <CommonUIElement
+              data={data}
+              setCurrentRoundWinAmount={setCurrentRoundWinAmount}
+              setShowWinLossResult={setShowWinLossResult}
+              setTotalWinAmount={setTotalWinAmount}
+              showWinLossResult={showWinLossResult}
+              totalWinAmount={totalWinAmount}
+            />
             <div className="tooltipsContainer--515fb" />
             <div
               className="onboardingBubbleContainer--d208c desktop--86dc8"

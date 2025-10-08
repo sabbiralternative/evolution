@@ -349,7 +349,14 @@ const LightningDice = () => {
                 </div>
               </div>
             </div>
-            <CommonUIElement data={data} />
+            <CommonUIElement
+              data={data}
+              setCurrentRoundWinAmount={setCurrentRoundWinAmount}
+              setShowWinLossResult={setShowWinLossResult}
+              setTotalWinAmount={setTotalWinAmount}
+              showWinLossResult={showWinLossResult}
+              totalWinAmount={totalWinAmount}
+            />
             <div className="tooltipsContainer--515fb" />
             <div
               className="onboardingBubbleContainer--d208c desktop--86dc8"
