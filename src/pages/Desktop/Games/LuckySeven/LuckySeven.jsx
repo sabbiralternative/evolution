@@ -287,23 +287,26 @@ const LuckySeven = () => {
                 <div className="top-container--67c84" />
                 <div className="bottom-container--11469">
                   <Timer firstEvent={firstEvent} />
-                  <ChipContainer
-                    isRepeatTheBet={isRepeatTheBet}
-                    handleDoubleStake={() =>
-                      handleDoubleStake(
-                        isRepeatTheBet,
-                        setDouble,
-                        setStakeState,
-                        setAnimation,
-                        firstEvent,
-                        sound
-                      )
-                    }
-                    handleUndoStake={() =>
-                      handleUndoStake(setStakeState, stakeState, sound)
-                    }
-                    isPlaceStake={isPlaceStake}
-                  />
+
+                  {firstEvent?.status === Status.OPEN && (
+                    <ChipContainer
+                      isRepeatTheBet={isRepeatTheBet}
+                      handleDoubleStake={() =>
+                        handleDoubleStake(
+                          isRepeatTheBet,
+                          setDouble,
+                          setStakeState,
+                          setAnimation,
+                          firstEvent,
+                          sound
+                        )
+                      }
+                      handleUndoStake={() =>
+                        handleUndoStake(setStakeState, stakeState, sound)
+                      }
+                      isPlaceStake={isPlaceStake}
+                    />
+                  )}
                 </div>
               </div>
             </div>
@@ -320,7 +323,16 @@ const LuckySeven = () => {
               className="pot--e01f2"
               style={{ left: "580.698px", top: "220.896px" }}
             />
-            <div className="gameOverlay--ad8aa">
+            <div
+              className="gameOverlay--ad8aa"
+              style={{
+                transform:
+                  firstEvent?.status === Status.SUSPENDED
+                    ? "translateY(25px)"
+                    : "translateY(0px)",
+                transition: "transform 0.5s ease-in-out",
+              }}
+            >
               <div className="classicOverlay--fde0a">
                 <div className="bettingGrid--190e8">
                   <BetSlip

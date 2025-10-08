@@ -775,7 +775,7 @@ const ChipContainer = ({
                   className="labelText--1755b"
                   data-role="expanded-chip-stack-double-repeat-label"
                 >
-                  DOUBLE
+                  {isRepeatTheBet ? "Repeat" : "Double"}
                 </span>
               </button>
             </div>

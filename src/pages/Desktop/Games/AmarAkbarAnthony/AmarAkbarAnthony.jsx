@@ -288,23 +288,25 @@ const AmarAkbarAnthony = () => {
                 <div className="bottom-container--11469">
                   <Timer firstEvent={firstEvent} />
 
-                  <ChipContainer
-                    isRepeatTheBet={isRepeatTheBet}
-                    handleDoubleStake={() =>
-                      handleDoubleStake(
-                        isRepeatTheBet,
-                        setDouble,
-                        setStakeState,
-                        setAnimation,
-                        firstEvent,
-                        sound
-                      )
-                    }
-                    handleUndoStake={() =>
-                      handleUndoStake(setStakeState, stakeState, sound)
-                    }
-                    isPlaceStake={isPlaceStake}
-                  />
+                  {firstEvent?.status === Status.OPEN && (
+                    <ChipContainer
+                      isRepeatTheBet={isRepeatTheBet}
+                      handleDoubleStake={() =>
+                        handleDoubleStake(
+                          isRepeatTheBet,
+                          setDouble,
+                          setStakeState,
+                          setAnimation,
+                          firstEvent,
+                          sound
+                        )
+                      }
+                      handleUndoStake={() =>
+                        handleUndoStake(setStakeState, stakeState, sound)
+                      }
+                      isPlaceStake={isPlaceStake}
+                    />
+                  )}
                 </div>
               </div>
             </div>
