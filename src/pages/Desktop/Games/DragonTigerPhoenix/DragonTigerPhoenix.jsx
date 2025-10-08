@@ -10,6 +10,7 @@ import { handleDoubleStake } from "../../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../../utils/handleUndoStake";
 import CommonUIElement from "../../../../component/shared/CommonUIElement/CommonUIElement";
 import BetSlip from "../../../Games/DragonTigerPhoenix/BetSlip";
+import Timer from "../../../../component/shared/Timer";
 
 const DragonTigerPhoenix = () => {
   const { sound } = useSound();
@@ -285,27 +286,7 @@ const DragonTigerPhoenix = () => {
                 </div>
                 <div className="top-container--67c84" />
                 <div className="bottom-container--11469">
-                  <div className="traffic-light--b8484">
-                    <div className="box--28913">
-                      <div
-                        className="status--76267 green--94fb8 animate--3d687"
-                        data-role="status-bar"
-                      >
-                        <div
-                          className="background--1fbe1"
-                          data-role="status-bar-background"
-                          style={{}}
-                        >
-                          <div className="fill--fdd99" style={{}} />
-                        </div>
-                        <div className="text--264e2" data-role="status-text">
-                          <div className="backgroundContainer--6c7e1">
-                            PLACE YOUR BETS 12
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <Timer firstEvent={firstEvent} />
                   <ChipContainer
                     isRepeatTheBet={isRepeatTheBet}
                     handleDoubleStake={() =>
