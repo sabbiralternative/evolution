@@ -223,7 +223,7 @@ const BetSlip = ({
     >
       <div
         style={{
-          width: width ? `${innerWidth - 10}px` : "auto",
+          width: width ? `${innerWidth - 10}px` : `auto`,
           height: height ? "170px" : "200px",
         }}
         className={`${
@@ -234,8 +234,11 @@ const BetSlip = ({
           className="bettingGrid--0835e bettingTime--7f9cd isVertical--28984 onlyPairs--f14f6"
           data-role="betting-grid-container"
           style={{
-            transform: transform ? `scale(${innerWidth / 375})` : "none",
+            transform: transform
+              ? `scale(${innerWidth / 375})`
+              : `scaleX(1.8) scaleY(1.3)`,
             opacity: status === Status.SUSPENDED ? 0.7 : 1,
+            transformOrigin: "center",
           }}
         >
           <div className="bubble--2b7a1" />
