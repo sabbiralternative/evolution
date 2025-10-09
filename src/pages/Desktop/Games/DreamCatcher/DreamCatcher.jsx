@@ -345,6 +345,7 @@ const DreamCatcher = () => {
                     setStakeState={setStakeState}
                     data={data?.result}
                     status={firstEvent?.status}
+                    transform={false}
                   />
                 </div>
               </div>

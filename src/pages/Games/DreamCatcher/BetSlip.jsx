@@ -215,7 +215,10 @@ const BetSlip = ({
   const cardNumber = indexCard && parseFloat(indexCard.substring(1));
 
   return (
-    <div className="bettingGrid--9427e">
+    <div
+      className="bettingGrid--9427e"
+      style={{ left: "35%", bottom: "-7%", scale: "0.7" }}
+    >
       <div>
         <div className="gameResult--fc618">
           <div className="mobileGameResult--fc3c2">
