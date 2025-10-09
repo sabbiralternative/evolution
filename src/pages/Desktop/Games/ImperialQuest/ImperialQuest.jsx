@@ -333,7 +333,13 @@ const ImperialQuest = () => {
               }}
             >
               <div className="classicOverlay--fde0a">
-                <div className="bettingGrid--190e8">
+                <div
+                  className="bettingGrid--190e8"
+                  style={{
+                    transform: "scaleX(1.2) scaleY(0.7)",
+                    transformOrigin: "top",
+                  }}
+                >
                   <BetSlip
                     initialState={initialState}
                     double={double}

@@ -333,7 +333,14 @@ const Muflis = () => {
               }}
             >
               <div className="classicOverlay--fde0a">
-                <div className="bettingGrid--190e8">
+                <div
+                  className="bettingGrid--190e8"
+                  style={{
+                    transform: "scaleX(1.7) scaleY(1.2)",
+                    transformOrigin: "center",
+                    marginTop: "40px",
+                  }}
+                >
                   <BetSlip
                     initialState={initialState}
                     double={double}

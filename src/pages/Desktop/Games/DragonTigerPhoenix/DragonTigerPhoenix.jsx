@@ -333,7 +333,13 @@ const DragonTigerPhoenix = () => {
               }}
             >
               <div className="classicOverlay--fde0a">
-                <div className="bettingGrid--190e8">
+                <div
+                  className="bettingGrid--190e8"
+                  style={{
+                    transform: "scaleX(1.2)",
+                    transformOrigin: "center",
+                  }}
+                >
                   <BetSlip
                     initialState={initialState}
                     double={double}

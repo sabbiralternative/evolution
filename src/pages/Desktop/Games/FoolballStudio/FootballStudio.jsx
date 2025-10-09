@@ -333,7 +333,14 @@ const FootballStudio = () => {
               }}
             >
               <div className="classicOverlay--fde0a">
-                <div className="bettingGrid--190e8">
+                <div
+                  className="bettingGrid--190e8"
+                  style={{
+                    transform: "scaleX(1.4) scaleY(1.1)",
+                    transformOrigin: "center",
+                    marginTop: "40px",
+                  }}
+                >
                   <BetSlip
                     initialState={initialState}
                     double={double}

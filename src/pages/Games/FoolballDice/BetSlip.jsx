@@ -215,6 +215,7 @@ const BetSlip = ({
     <div
       className="layout--36a3c mobileI11Portrait--f6091 withChipStack--976d3"
       data-role="game-mobile-layout"
+      style={{ position: transform ? "absolute" : "static" }}
     >
       <div
         className="betSpotsWrapper--d94fd portrait--54cb7"
@@ -229,6 +230,7 @@ const BetSlip = ({
           "-awaysaturationshift": 0,
           "-awaybrightnessshift": 0,
           "-diceresultaspectratio": "27%",
+          paddingTop: transform ? "27%" : "0px",
         }}
       >
         <div
@@ -266,7 +268,10 @@ const BetSlip = ({
           className={`diceResultsDesktopOrPortrait--5f385 diceResults--a3b29 ${
             status === Status.SUSPENDED ? "" : "hidden--145cf"
           }`}
-          style={{ "-width": "417.0999999999999px", paddingBottom: "150px" }}
+          style={{
+            "-width": "417.0999999999999px",
+            paddingBottom: transform ? "150px" : "50px",
+          }}
         >
           <div
             style={{ display: status === Status.SUSPENDED ? "block" : "none" }}

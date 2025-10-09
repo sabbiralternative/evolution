@@ -332,8 +332,17 @@ const DreamCatcher = () => {
                 transition: "transform 0.5s ease-in-out",
               }}
             >
-              <div className="classicOverlay--fde0a">
-                <div className="bettingGrid--190e8">
+              <div
+                className="classicOverlay--fde0a"
+                style={{ alignItems: "start" }}
+              >
+                <div
+                  className="bettingGrid--190e8"
+                  style={{
+                    transform: "scaleX(1.4) scaleY(0.7)",
+                    transformOrigin: "top",
+                  }}
+                >
                   <BetSlip
                     initialState={initialState}
                     double={double}

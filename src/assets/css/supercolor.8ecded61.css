@@ -1602,7 +1602,7 @@
   transition: gap 0.35s 0ms;
 }
 .bettingGridContainer--1ba64.phone--0e01b {
-  --additional-padding-bottom: calc(var(--root-size) * 5.5);
+  /* --additional-padding-bottom: calc(var(--root-size) * 5.5); */
   height: auto;
   min-width: 0;
   width: calc(var(--root-size) * 32.2);

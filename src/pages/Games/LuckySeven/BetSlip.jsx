@@ -239,6 +239,7 @@ const BetSlip = ({
               : `scaleX(1.8) scaleY(1.3)`,
             opacity: status === Status.SUSPENDED ? 0.7 : 1,
             transformOrigin: "center",
+            marginTop: transform ? "" : "20px",
           }}
         >
           <div className="bubble--2b7a1" />

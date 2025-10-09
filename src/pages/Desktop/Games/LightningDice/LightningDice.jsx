@@ -333,7 +333,14 @@ const LightningDice = () => {
               }}
             >
               <div className="classicOverlay--fde0a">
-                <div className="bettingGrid--190e8">
+                <div
+                  className="bettingGrid--190e8"
+                  style={{
+                    transform: "scaleX(3) scaleY(1.4)",
+                    transformOrigin: "center",
+                    paddingTop: "10px",
+                  }}
+                >
                   <BetSlip
                     initialState={initialState}
                     double={double}

@@ -207,7 +207,7 @@ const BetSlip = ({
   return (
     <div
       onClick={handleShowSuspendedStatus}
-      className={`absolute h-[70%]  origin-bottom  flex flex-col justify-end items-center px-2 w-full mx-auto gap-1 perspective transition-all ease-in-out duration-1000 bottom-12 right-4  lg:bottom-32 scale-[100%] text-[12px]`}
+      className={`absolute h-[70%]  origin-bottom  flex flex-col justify-end items-center px-2 w-full mx-auto gap-1 perspective transition-all ease-in-out duration-1000 bottom-12  right-4  scale-[100%] text-[12px]`}
     >
       {/* {showSuspendedWarning && <NextGame />} */}
       <span className>

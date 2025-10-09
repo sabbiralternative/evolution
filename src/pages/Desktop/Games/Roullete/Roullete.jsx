@@ -333,7 +333,12 @@ const Roullete = () => {
               }}
             >
               <div className="classicOverlay--fde0a">
-                <div className="bettingGrid--190e8">
+                <div
+                  className="bettingGrid--190e8"
+                  style={{
+                    transform: "rotate(-90deg",
+                  }}
+                >
                   <BetSlip
                     initialState={initialState}
                     double={double}
