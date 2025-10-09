@@ -725,10 +725,10 @@
   width: 100%;
 }
 .content--6d02a {
-  height: calc(var(--rem-migration-size) * 90);
+  /* height: calc(var(--rem-migration-size) * 90);
   overflow: hidden;
   position: absolute;
-  width: calc(var(--rem-migration-size) * 160);
+  width: calc(var(--rem-migration-size) * 160); */
 }
 .safeContainer--71c25 {
   -webkit-tap-highlight-color: transparent;

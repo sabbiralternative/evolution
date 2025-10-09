@@ -4092,7 +4092,7 @@
 }
 .classicOverlay--fde0a {
   --size: calc(var(--root-size) * 1.2);
-  align-items: flex-end;
+  /* align-items: flex-end; */
   display: flex;
   padding-bottom: calc(var(--size) * 12);
 }
