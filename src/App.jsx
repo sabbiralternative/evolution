@@ -42,7 +42,9 @@ function App() {
   }, [dispatch]);
 
   const handleFullScreen = () => {
-    document.body.requestFullscreen();
+    if (!window.origin.includes("localhost")) {
+      document.body.requestFullscreen();
+    }
   };
 
   return (

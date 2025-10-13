@@ -215,7 +215,10 @@ const BetSlip = ({
     <div
       className="layout--36a3c mobileI11Portrait--f6091 withChipStack--976d3"
       data-role="game-mobile-layout"
-      style={{ position: transform ? "absolute" : "static" }}
+      style={{
+        position: transform ? "absolute" : "static",
+        transform: innerWidth < 371 ? "scaleX(0.7)" : "scaleX(0.8)",
+      }}
     >
       <div
         className="betSpotsWrapper--d94fd portrait--54cb7"
