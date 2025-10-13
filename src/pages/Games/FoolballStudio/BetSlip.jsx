@@ -220,11 +220,22 @@ const BetSlip = ({
       <div>
         <div>
           <div className="bettingGrid--b7220">
-            <div style={{ width: "420px", height: "231px" }}>
+            <div
+              style={{
+                width: "100%",
+                height: "231px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
               <div
                 className="container--8b37f isPortrait--54d78 isPortraitVeryNarrowOrHigher--280b6 isVeryNarrowLikeOrHigher--c1e32"
                 data-role="betting-grid-container"
-                style={{ transform: "scale(1.15)" }}
+                style={{
+                  transform: innerWidth < 371 ? "scale(0.8)" : "none",
+                  transformOrigin: "center",
+                }}
               >
                 <div className="mainBetsContainer--30daa isPortrait--54d78 isPortraitVeryNarrowOrHigher--280b6 isVeryNarrowLikeOrHigher--c1e32">
                   <div
