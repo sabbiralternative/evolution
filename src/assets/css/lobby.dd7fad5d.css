@@ -2539,10 +2539,12 @@
 }
 .FanTanHistory--37436 {
   --history-item-overlap: 2px;
-  grid-template-columns: repeat(
+  grid-template-columns:
+    repeat(
       auto-fill,
       calc(var(--history-item-width) - var(--history-item-overlap))
-    ) var(--history-item-width);
+    )
+    var(--history-item-width);
 }
 .FanTanHistory--37436,
 .FanTanHistory--37436.sizexs--6ef6e {
@@ -7438,13 +7440,13 @@
   transition: background-color 0.15s, transform 0.3s ease;
   will-change: transform;
 }
-@media (orientation: portrait) {
+/* @media (orientation: portrait) {
   .RootHeaderContent--aa74c {
     padding-top: calc(
       var(--header-content-padding-y) + env(safe-area-inset-top, 0)
     );
   }
-}
+} */
 @media (min-width: 985px) {
   .RootHeaderContent--aa74c {
     column-gap: 1rem;

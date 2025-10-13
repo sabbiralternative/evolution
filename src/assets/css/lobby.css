@@ -8924,13 +8924,13 @@
   will-change: transform;
 }
 
-@media (orientation: portrait) {
+/* @media (orientation: portrait) {
   .RootHeaderContent--aa74c {
     padding-top: calc(
       var(--header-content-padding-y) + env(safe-area-inset-top, 0)
     );
   }
-}
+} */
 
 @media (min-width: 985px) {
   .RootHeaderContent--aa74c {
