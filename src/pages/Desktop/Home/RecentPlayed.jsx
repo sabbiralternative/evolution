@@ -192,7 +192,7 @@ const RecentlyPlayed = () => {
                               className="Typography--d2c9a Limits--300ef Typography_xs_subtitle2--d8518 Typography_md_subtitle1--a027c Typography_xl_h6--d162d bold--d200f colorAccent--465da"
                               data-role="typography"
                             >
-                              ₹{game?.min} ₹{game?.max}
+                              ₹{game?.min}
                             </span>
                           </div>
                         </div>
