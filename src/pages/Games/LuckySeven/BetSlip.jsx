@@ -234,7 +234,7 @@ const BetSlip = ({
           className="bettingGrid--0835e bettingTime--7f9cd isVertical--28984 onlyPairs--f14f6"
           data-role="betting-grid-container"
           style={{
-            transform: `scale(${innerWidth / 375})`,
+            transform: transform ? `scale(${innerWidth / 375})` : "none",
             opacity: status === Status.SUSPENDED ? 0.7 : 1,
             marginTop: transform ? "" : "20px",
           }}
@@ -1126,7 +1126,7 @@ const BetSlip = ({
                 </div>
               </div>
               <div className="betspotTitle--d0907">
-                <span className style={{ fontSize: "14px" }}>
+                <span className style={{ fontSize: "12px" }}>
                   {" "}
                   x{getBackPrice(data, 1, 0)}
                 </span>
@@ -1288,7 +1288,7 @@ const BetSlip = ({
                 </div>
               </div>
               <div className="betspotTitle--d0907">
-                <span className style={{ fontSize: "14px" }}>
+                <span className style={{ fontSize: "12px" }}>
                   {" "}
                   x{getBackPrice(data, 1, 1)}
                 </span>
@@ -1450,7 +1450,7 @@ const BetSlip = ({
                 </div>
               </div>
               <div className="betspotTitle--d0907">
-                <span className style={{ fontSize: "14px" }}>
+                <span className style={{ fontSize: "12px" }}>
                   x{getBackPrice(data, 2, 0)}
                 </span>
               </div>
@@ -1611,7 +1611,7 @@ const BetSlip = ({
                 </div>
               </div>
               <div className="betspotTitle--d0907">
-                <span className style={{ fontSize: "14px" }}>
+                <span className style={{ fontSize: "12px" }}>
                   x{getBackPrice(data, 2, 1)}
                 </span>
               </div>

@@ -346,6 +346,7 @@ const LuckySeven = () => {
                 style={{
                   transform: "scaleX(1.8) scaleY(1.3)",
                   transformOrigin: "center",
+                  marginTop: "50px",
                 }}
               >
                 <div className="bettingGrid--190e8">
