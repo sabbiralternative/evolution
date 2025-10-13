@@ -341,7 +341,13 @@ const LuckySeven = () => {
                 transition: "transform 0.5s ease-in-out",
               }}
             >
-              <div className="classicOverlay--fde0a">
+              <div
+                className="classicOverlay--fde0a"
+                style={{
+                  transform: "scaleX(1.8) scaleY(1.3)",
+                  transformOrigin: "center",
+                }}
+              >
                 <div className="bettingGrid--190e8">
                   <BetSlip
                     initialState={initialState}

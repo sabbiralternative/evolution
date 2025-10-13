@@ -234,11 +234,8 @@ const BetSlip = ({
           className="bettingGrid--0835e bettingTime--7f9cd isVertical--28984 onlyPairs--f14f6"
           data-role="betting-grid-container"
           style={{
-            transform: transform
-              ? `scale(${innerWidth / 375})`
-              : `scaleX(1.8) scaleY(1.3)`,
+            transform: `scale(${innerWidth / 375})`,
             opacity: status === Status.SUSPENDED ? 0.7 : 1,
-            transformOrigin: "center",
             marginTop: transform ? "" : "20px",
           }}
         >
@@ -1129,7 +1126,10 @@ const BetSlip = ({
                 </div>
               </div>
               <div className="betspotTitle--d0907">
-                <span className> x{getBackPrice(data, 1, 0)}</span>
+                <span className style={{ fontSize: "14px" }}>
+                  {" "}
+                  x{getBackPrice(data, 1, 0)}
+                </span>
               </div>
               <div className="chipContainer--9cdca">
                 <div className="isPortrait--96aa8 mediumChip--83319 chipSize--1811f">
@@ -1288,7 +1288,10 @@ const BetSlip = ({
                 </div>
               </div>
               <div className="betspotTitle--d0907">
-                <span className> x{getBackPrice(data, 1, 1)}</span>
+                <span className style={{ fontSize: "14px" }}>
+                  {" "}
+                  x{getBackPrice(data, 1, 1)}
+                </span>
               </div>
               <div className="chipContainer--9cdca">
                 <div className="isPortrait--96aa8 mediumChip--83319 chipSize--1811f">
@@ -1447,7 +1450,9 @@ const BetSlip = ({
                 </div>
               </div>
               <div className="betspotTitle--d0907">
-                <span className>x{getBackPrice(data, 2, 0)}</span>
+                <span className style={{ fontSize: "14px" }}>
+                  x{getBackPrice(data, 2, 0)}
+                </span>
               </div>
               <div className="chipContainer--9cdca">
                 <div className="isPortrait--96aa8 mediumChip--83319 chipSize--1811f">
@@ -1606,7 +1611,9 @@ const BetSlip = ({
                 </div>
               </div>
               <div className="betspotTitle--d0907">
-                <span className>x{getBackPrice(data, 2, 1)}</span>
+                <span className style={{ fontSize: "14px" }}>
+                  x{getBackPrice(data, 2, 1)}
+                </span>
               </div>
               <div className="chipContainer--9cdca">
                 <div className="isPortrait--96aa8 mediumChip--83319 chipSize--1811f">
