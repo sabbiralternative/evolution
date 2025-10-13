@@ -127,7 +127,7 @@ const CasinoThumbnail = ({ title, id, column }) => {
                             className="Typography--d2c9a Limits--300ef Typography_xs_subtitle2--d8518 Typography_md_subtitle1--a027c Typography_xl_h6--d162d bold--d200f colorAccent--465da"
                             data-role="typography"
                           >
-                            ₹{casino?.min} ₹{casino?.max}
+                            ₹{casino?.min}
                           </span>
                           <div className="Players--5da78">
                             <div className="LobbyIcon--67f66 Icon--ce81e LobbyIcon_xs_atomic--45429 LobbyIcon_md_micro--75f95 LobbyIcon_xl_tiny--ad0cd">
