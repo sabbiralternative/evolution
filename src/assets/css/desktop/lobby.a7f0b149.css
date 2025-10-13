@@ -6020,11 +6020,11 @@
     --x-padding: 3.75rem;
   }
 }
-@media (orientation: portrait) {
+/* @media (orientation: portrait) {
   .SearchInputContainer--d56ee {
     padding-top: calc(1.5rem + env(safe-area-inset-top, 0));
   }
-}
+} */
 @media (orientation: landscape) {
   .SearchInputContainerSafe--453be {
     width: calc(
