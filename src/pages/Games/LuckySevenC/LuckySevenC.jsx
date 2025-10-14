@@ -15,6 +15,8 @@ import Winner from "./Winner";
 import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
+import { cn } from "../../../utils/cn";
+import RecentWinner from "./RecentWinner";
 
 const LuckySevenC = () => {
   const { sound } = useSound();
@@ -24,7 +26,7 @@ const LuckySevenC = () => {
   const [showWinLossResult, setShowWinLossResult] = useState(false);
   const [totalWinAmount, setTotalWinAmount] = useState(null);
   const [currentRoundWinAmount, setCurrentRoundWinAmount] = useState(null);
-  const { stake } = useSelector((state) => state.global);
+  const { stake, deviceWidth } = useSelector((state) => state.global);
   const [showFullScreen, setShowFullScreen] = useState(false);
   const { eventTypeId, eventId } = useParams();
   const { data } = useGetEventDetailsQuery(
@@ -424,7 +426,19 @@ const LuckySevenC = () => {
                             width={true}
                             transform={true}
                           />
-
+                          <div
+                            className={cn(
+                              deviceWidth > 370 && deviceWidth < 400 && "mt-12",
+                              deviceWidth < 370 && "mt-5",
+                              deviceWidth > 400 && "mt-20",
+                              deviceWidth > 500 && "mt-40",
+                              deviceWidth > 700 && "mt-60"
+                            )}
+                          >
+                            <RecentWinner
+                              recentWinner={firstEvent?.recent_winner}
+                            />
+                          </div>
                           <div className="dealNow--971b0 portrait--55ead hidden--c5c76">
                             <div className="buttonWrapper--86a37 mobile--2fe7c">
                               <button
