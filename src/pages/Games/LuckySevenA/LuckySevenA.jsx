@@ -16,6 +16,7 @@ import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
 import RecentWinner from "./RecentWinner";
+import { cn } from "../../../utils/cn";
 
 const LuckySevenA = () => {
   const { sound } = useSound();
@@ -25,7 +26,7 @@ const LuckySevenA = () => {
   const [showWinLossResult, setShowWinLossResult] = useState(false);
   const [totalWinAmount, setTotalWinAmount] = useState(null);
   const [currentRoundWinAmount, setCurrentRoundWinAmount] = useState(null);
-  const { stake } = useSelector((state) => state.global);
+  const { stake, deviceWidth } = useSelector((state) => state.global);
   const [showFullScreen, setShowFullScreen] = useState(false);
   const { eventTypeId, eventId } = useParams();
   const { data } = useGetEventDetailsQuery(
@@ -424,7 +425,15 @@ const LuckySevenA = () => {
                             width={true}
                             transform={true}
                           />
-                          <div className="">
+                          <div
+                            className={cn(
+                              deviceWidth > 370 && deviceWidth < 400 && "mt-10",
+                              deviceWidth < 370 && "mt-3",
+                              deviceWidth > 400 && "mt-20",
+                              deviceWidth > 500 && "mt-40",
+                              deviceWidth > 700 && "mt-60"
+                            )}
+                          >
                             <RecentWinner
                               recentWinner={firstEvent?.recent_winner}
                             />

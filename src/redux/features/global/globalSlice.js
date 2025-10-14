@@ -12,6 +12,7 @@ const initialState = {
   showChip: false,
   stake: 100,
   deviseHeight: 0,
+  deviceWidth: 0,
 };
 
 const stateSlice = createSlice({
@@ -51,6 +52,9 @@ const stateSlice = createSlice({
     setDeviseHeight: (state, action) => {
       state.deviseHeight = action.payload;
     },
+    setDeviceWidth: (state, action) => {
+      state.deviceWidth = action.payload;
+    },
   },
 });
 
@@ -66,6 +70,7 @@ export const {
   setShowLanguageModal,
   setShowNotification,
   setDeviseHeight,
+  setDeviceWidth,
 } = stateSlice.actions;
 
 export default stateSlice.reducer;
