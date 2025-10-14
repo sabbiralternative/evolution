@@ -12,48 +12,126 @@ const RecentWinner = ({ recentWinner }) => {
           setRecentWinnerData={setRecentWinnerData}
         />
       )} */}
-      <div className=" flex items-center gap-0.5 pb-1 pt-3 w-full">
-        {recentWinner?.map((winner) => {
-          return (
-            <span
-              onClick={() => setRecentWinnerData(winner)}
-              key={winner?.roundId}
-            >
-              <div className="bounceInAnimation text-black uppercase flex items-center justify-center gap-2">
-                <div
-                  className={`px-2 py-1  flex items-center justify-center gap-1 cursor-pointer rounded-md ${
-                    winner?.winner === "H"
-                      ? "bg-[#38b142] text-white"
-                      : winner.winner === "L"
-                      ? "bg-[#d83b32] text-white"
-                      : winner.winner === "7"
-                      ? "bg-[#156ed1] text-white"
-                      : "bg-white"
-                  }`}
+      <div className="withScroll--c621b isPortrait--50a23 rightMask--f2b75 overflow-touch-enabled--9779a">
+        <div
+          className="historyStatistic--92a75 largeMobileIcon--d8d4c"
+          data-role="history-statistic"
+        >
+          {recentWinner?.map((winner) => {
+            return (
+              <div
+                onClick={() => setRecentWinnerData(winner)}
+                key={winner?.roundId}
+                className={`historyItem--47528 largeMobileIcon--7bcc0 `}
+                style={{ color: "rgb(255, 255, 255)" }}
+              >
+                <svg
+                  width={53}
+                  height={31}
+                  viewBox="0 0 53 31"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  {/* <span className="w-4 h-4">
-                  <svg
-                    width={198}
-                    height={260}
-                    viewBox="0 0 198 260"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-4 h-4"
-                  >
+                  <g filter="url(#history)">
                     <path
-                      d="M151.5 77.6C130.7 50.3 114.6 24.1 102.2 0.699951C89.4002 22.4 73.4002 46.5 53.7002 71.4C40.8002 87.7 23.3002 108.1 0.700195 130.3C17.5002 146.8 35.6002 166.3 53.7002 189.2C73.4002 214.1 89.4002 238.2 102.2 259.9C114.6 236.6 130.7 210.3 151.5 183C167 162.7 182.5 145.2 197.1 130.2C182.5 115.4 167 97.9 151.5 77.6Z"
-                      fill="#DD181F"
+                      fill="black"
+                      fillOpacity="0.4"
+                      d="M 37.5 1 H 5.5 C 3.6 1 2.4 2.9 3.3 4.5 L 7.7 11.5 C 8.1 12.2 8.1 13.1 7.7 13.8 L 3.3 20.9 C 2.4 22.4 3.6 24.4 5.5 24.4 H 37.5 C 39.8 24.4 41.8 23.2 42.9 21.4 L 47.6 13.8 C 48 13.1 48 12.2 47.6 11.5 L 42.9 3.9 C 41.8 2.1 39.8 1 37.5 1 Z"
                     />
-                  </svg>
-                </span> */}
-                  <span className="text-sm font-semibold ">
-                    {winner?.winner}
-                  </span>
-                </div>
-              </div>{" "}
-            </span>
-          );
-        })}
+                    <path
+                      fill={`${
+                        winner?.winner === "H"
+                          ? "#38b142"
+                          : winner.winner === "L"
+                          ? "#d83b32"
+                          : winner.winner === "7"
+                          ? "#156ed1"
+                          : "transparent"
+                      }`}
+                      fillOpacity="0.8"
+                      stroke="url(#history-icon-LasWin-Tiger)"
+                      fillRule="evenodd"
+                      strokeWidth={2}
+                      d="M 37.5 1 H 5.5 C 3.6 1 2.4 2.9 3.3 4.5 L 7.7 11.5 C 8.1 12.2 8.1 13.1 7.7 13.8 L 3.3 20.9 C 2.4 22.4 3.6 24.4 5.5 24.4 H 37.5 C 39.8 24.4 41.8 23.2 42.9 21.4 L 47.6 13.8 C 48 13.1 48 12.2 47.6 11.5 L 42.9 3.9 C 41.8 2.1 39.8 1 37.5 1 Z"
+                    />
+                    <text x={19} y={19} fill="#fff" fontSize={16}>
+                      {winner?.winner}
+                    </text>
+                  </g>
+                  <filter
+                    id="history"
+                    x="0.307218"
+                    y="0.10144"
+                    width="52.1238"
+                    height="30.5495"
+                    filterUnits="userSpaceOnUse"
+                  >
+                    <feFlood floodOpacity={0} result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset dx="0.898515" dy="2.69554" />
+                    <feGaussianBlur stdDeviation="1.34777" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.45 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_84_5998"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect1_dropShadow_84_5998"
+                      result="shape"
+                    />
+                  </filter>
+                  <defs>
+                    <linearGradient
+                      id="history-icon-LasWin-Tiger"
+                      x1={27}
+                      y1={1}
+                      x2={27}
+                      y2={27}
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop
+                        stopColor={`${
+                          winner?.winner === "H"
+                            ? "#38b142"
+                            : winner.winner === "L"
+                            ? "#d83b32"
+                            : winner.winner === "7"
+                            ? "#156ed1"
+                            : "transparent"
+                        }`}
+                      />
+                      <stop
+                        offset={1}
+                        stopColor={`${
+                          winner?.winner === "H"
+                            ? "#38b142"
+                            : winner.winner === "L"
+                            ? "#d83b32"
+                            : winner.winner === "7"
+                            ? "#156ed1"
+                            : "transparent"
+                        }`}
+                        stopOpacity={0}
+                      />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </>
   );

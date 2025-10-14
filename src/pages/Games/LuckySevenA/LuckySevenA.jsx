@@ -427,8 +427,8 @@ const LuckySevenA = () => {
                           />
                           <div
                             className={cn(
-                              deviceWidth > 370 && deviceWidth < 400 && "mt-10",
-                              deviceWidth < 370 && "mt-3",
+                              deviceWidth > 370 && deviceWidth < 400 && "mt-12",
+                              deviceWidth < 370 && "mt-5",
                               deviceWidth > 400 && "mt-20",
                               deviceWidth > 500 && "mt-40",
                               deviceWidth > 700 && "mt-60"
