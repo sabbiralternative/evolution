@@ -17,13 +17,18 @@ const RecentWinner = ({ recentWinner }) => {
           className="historyStatistic--92a75 largeMobileIcon--d8d4c"
           data-role="history-statistic"
         >
-          {recentWinner?.map((winner) => {
+          {recentWinner?.map((winner, i) => {
+            console.log(winner);
             return (
               <div
                 onClick={() => setRecentWinnerData(winner)}
                 key={winner?.roundId}
                 className={`historyItem--47528 largeMobileIcon--7bcc0 `}
-                style={{ color: "rgb(255, 255, 255)" }}
+                style={{
+                  color: "rgb(255, 255, 255)",
+                  marginRight: "0px",
+                  transform: "scaleX(1.1)",
+                }}
               >
                 <svg
                   width={53}
@@ -40,16 +45,16 @@ const RecentWinner = ({ recentWinner }) => {
                     />
                     <path
                       fill={`${
-                        winner?.winner === "H"
-                          ? "#38b142"
-                          : winner.winner === "L"
+                        winner?.winner == "H"
                           ? "#d83b32"
                           : winner.winner === "7"
+                          ? "#38b142"
+                          : winner.winner == "L"
                           ? "#156ed1"
                           : "transparent"
                       }`}
                       fillOpacity="0.8"
-                      stroke="url(#history-icon-LasWin-Tiger)"
+                      stroke={`url(#history-icon-LasWin-Tiger-${i})`}
                       fillRule="evenodd"
                       strokeWidth={2}
                       d="M 37.5 1 H 5.5 C 3.6 1 2.4 2.9 3.3 4.5 L 7.7 11.5 C 8.1 12.2 8.1 13.1 7.7 13.8 L 3.3 20.9 C 2.4 22.4 3.6 24.4 5.5 24.4 H 37.5 C 39.8 24.4 41.8 23.2 42.9 21.4 L 47.6 13.8 C 48 13.1 48 12.2 47.6 11.5 L 42.9 3.9 C 41.8 2.1 39.8 1 37.5 1 Z"
@@ -94,7 +99,7 @@ const RecentWinner = ({ recentWinner }) => {
                   </filter>
                   <defs>
                     <linearGradient
-                      id="history-icon-LasWin-Tiger"
+                      id={`history-icon-LasWin-Tiger-${i}`}
                       x1={27}
                       y1={1}
                       x2={27}
@@ -103,11 +108,11 @@ const RecentWinner = ({ recentWinner }) => {
                     >
                       <stop
                         stopColor={`${
-                          winner?.winner === "H"
-                            ? "#38b142"
-                            : winner.winner === "L"
+                          winner?.winner == "H"
                             ? "#d83b32"
-                            : winner.winner === "7"
+                            : winner.winner == "7"
+                            ? "#38b142"
+                            : winner.winner == "L"
                             ? "#156ed1"
                             : "transparent"
                         }`}
@@ -115,11 +120,11 @@ const RecentWinner = ({ recentWinner }) => {
                       <stop
                         offset={1}
                         stopColor={`${
-                          winner?.winner === "H"
-                            ? "#38b142"
-                            : winner.winner === "L"
+                          winner?.winner == "H"
                             ? "#d83b32"
-                            : winner.winner === "7"
+                            : winner.winner == "7"
+                            ? "#38b142"
+                            : winner.winner == "L"
                             ? "#156ed1"
                             : "transparent"
                         }`}
