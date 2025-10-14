@@ -343,11 +343,6 @@ const LuckySevenA = () => {
               />
             </div>
             {/* Winner */}
-            <Winner
-              data={data}
-              firstEvent={firstEvent}
-              currentRoundWinAmount={currentRoundWinAmount}
-            />
 
             <div
               className="winnersListPortraitPhone--57744 winnersListGradient--6fa71"
@@ -408,7 +403,7 @@ const LuckySevenA = () => {
                       data-expanded="true"
                     >
                       <div>
-                        <div>
+                        <div className="relative flex flex-col items-center justify-center">
                           <BetSlip
                             initialState={initialState}
                             double={double}
@@ -424,7 +419,13 @@ const LuckySevenA = () => {
                             width={true}
                             transform={true}
                           />
-
+                          <div className="absolute -bottom-16">
+                            <Winner
+                              data={data}
+                              firstEvent={firstEvent}
+                              currentRoundWinAmount={currentRoundWinAmount}
+                            />
+                          </div>
                           <div className="dealNow--971b0 portrait--55ead hidden--c5c76">
                             <div className="buttonWrapper--86a37 mobile--2fe7c">
                               <button

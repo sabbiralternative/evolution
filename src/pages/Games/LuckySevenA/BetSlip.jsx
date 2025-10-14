@@ -11,6 +11,7 @@ import { playPlaceChip, playSuspendedSound } from "../../../utils/sound";
 import { useSound } from "../../../context/ApiProvider";
 import { useParams } from "react-router-dom";
 import { handleStoreRecentPlay } from "../../../utils/handleStorateRecentPlay";
+import Winner from "./Winner";
 // import { RoadPrediction } from "./RoadPrediction";
 
 const BetSlip = ({
