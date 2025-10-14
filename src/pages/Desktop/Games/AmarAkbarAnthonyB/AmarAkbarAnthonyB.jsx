@@ -9,11 +9,12 @@ import ChipContainer from "../../../../component/shared/CommonUIElement/ChipCont
 import { handleDoubleStake } from "../../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../../utils/handleUndoStake";
 import CommonUIElement from "../../../../component/shared/CommonUIElement/CommonUIElement";
-import BetSlip from "../../../Games/AmarAkbarAnthony/BetSlip";
+import BetSlip from "../../../Games/AmarAkbarAnthonyB/BetSlip";
 import Timer from "../../../../component/shared/Timer";
-import Winner from "../../../Games/AmarAkbarAnthony/Winner";
+import Winner from "../../../Games/AmarAkbarAnthonyB/Winner";
+import History from "./History";
 
-const AmarAkbarAnthony = () => {
+const AmarAkbarAnthonyB = () => {
   const { sound } = useSound();
   const [double, setDouble] = useState(false);
   const [animation, setAnimation] = useState([]);
@@ -290,7 +291,9 @@ const AmarAkbarAnthony = () => {
                 <div className="fullScreenGameOverlay--e2de7">
                   <div className="box--28913" />
                 </div>
-                <div className="top-container--67c84" />
+                <div className="top-container--67c84">
+                  <History recentWinner={firstEvent?.recent_winner} />
+                </div>
                 <div className="bottom-container--11469">
                   <Timer firstEvent={firstEvent} />
 
@@ -387,4 +390,4 @@ const AmarAkbarAnthony = () => {
   );
 };
 
-export default AmarAkbarAnthony;
+export default AmarAkbarAnthonyB;

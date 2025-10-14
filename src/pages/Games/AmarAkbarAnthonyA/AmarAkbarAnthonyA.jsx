@@ -16,15 +16,17 @@ import Winner from "./Winner";
 import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
+import { cn } from "../../../utils/cn";
+import RecentWinner from "./RecentWinner";
 
-const AmarAkbarAnthony = () => {
+const AmarAkbarAnthonyA = () => {
   const { sound } = useSound();
   const [showMenu, setShowMenu] = useState(false);
   const [double, setDouble] = useState(false);
   const [animation, setAnimation] = useState([]);
   const [showWinLossResult, setShowWinLossResult] = useState(false);
   const [totalWinAmount, setTotalWinAmount] = useState(null);
-  const { stake } = useSelector((state) => state.global);
+  const { stake, deviceWidth } = useSelector((state) => state.global);
   const [showFullScreen, setShowFullScreen] = useState(false);
   const [currentRoundWinAmount, setCurrentRoundWinAmount] = useState();
 
@@ -423,6 +425,11 @@ const AmarAkbarAnthony = () => {
                             width={true}
                             transform={true}
                           />
+                          <div className={cn(deviceWidth < 370 && "-mt-10")}>
+                            <RecentWinner
+                              recentWinner={firstEvent?.recent_winner}
+                            />
+                          </div>
                           {/* <RoadPrediction /> */}
                           <div className="dealNow--971b0 portrait--55ead hidden--c5c76">
                             <div className="buttonWrapper--86a37 mobile--2fe7c">
@@ -847,4 +854,4 @@ const AmarAkbarAnthony = () => {
   );
 };
 
-export default AmarAkbarAnthony;
+export default AmarAkbarAnthonyA;
