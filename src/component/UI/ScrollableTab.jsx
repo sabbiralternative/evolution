@@ -206,12 +206,14 @@ const ScrollableTab = () => {
           </div>
         </li>
         <li
+          onClick={() => handleNavigate("/bollywood")}
           className="ScrollableListItem--0b815 CategoryContainer--62d87"
           id="category-navigator-korean_dealer"
         >
           <div className="Category--17479">
             <div className="CategoryIcon--d2629">
               <svg
+                style={{ opacity: pathname === "/bollywood" ? "1" : "0.6" }}
                 className="AnimatedCategoryIcon--87bac"
                 fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg"
@@ -238,13 +240,105 @@ const ScrollableTab = () => {
               </svg>
             </div>
             <span
+              style={{ opacity: pathname === "/bollywood" ? "1" : "0.6" }}
               className="Typography--d2c9a CategoryName--b3bef Typography_xs_subtitle1--6fd5e Typography_xl_h6--d162d bold--d200f colorPrimary--f2f02 ellipsisModeTwoLines--ab28e hyphens--b1b61"
               data-role="typography"
             >
-              Korean Dealer
+              Bollywood
             </span>
           </div>
         </li>
+        <li
+          onClick={() => handleNavigate("/teenpatti")}
+          className="ScrollableListItem--0b815 CategoryContainer--62d87"
+          id="category-navigator-blackjack"
+        >
+          <div className="Category--17479">
+            <div className="CategoryIcon--d2629">
+              <div className="AnimatedCategoryIcon--87bac BlackjackCategoryIcon--afd3e">
+                <svg
+                  style={{ opacity: pathname === "/teenpatti" ? "1" : "0.6" }}
+                  className="AnimatedCategoryElement--c589b IconWrappedElement--ee8b6 BlackjackRightGroup--b5865"
+                  viewBox="0 0 110 110"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M54.1888 5.04524C52.0143 5.04524 50.2516 6.79346 50.2516 8.95001V86.6751H101.017C103.191 86.6751 104.955 84.9269 104.955 82.7703V8.95001C104.955 6.79346 103.191 5.04524 101.017 5.04524H54.1888ZM52.8173 84.1331V8.94978C52.8173 8.19705 53.4325 7.58684 54.1915 7.58684H101.02C101.778 7.58684 102.394 8.19705 102.394 8.94978V82.7702C102.394 83.5229 101.778 84.1331 101.02 84.1331H52.8173ZM85.194 21.5575V18.6271H77.7215V21.5575H79.5939V38.9691C79.5939 38.9691 79.5939 43.1601 76.5877 43.1601C73.5815 43.1601 73.3066 39.0883 73.3066 39.0883V38.1513H69.5275V39.0883C69.5275 39.0883 69.1666 46.8741 76.6221 46.8741C83.459 46.7719 83.27 39.0543 83.27 39.0543V21.5575H85.194ZM77.5986 54.507C79.845 56.6953 81.8755 59.0913 83.6625 61.6624C86.4625 65.8535 84.9853 69.806 81.6183 70.0104C80.1277 70.0617 78.8222 69.0273 78.5434 67.5742C78.4575 67.1483 78.1998 67.2335 78.1998 67.2505V67.4209C78.1434 69.3376 78.6124 71.2335 79.5569 72.9068C78.2271 72.5684 76.8326 72.5684 75.5028 72.9068C76.4474 71.2335 76.9163 69.3376 76.8599 67.4209V67.2505C76.8599 67.2505 76.6023 67.1483 76.5163 67.5742C76.2376 69.0273 74.932 70.0617 73.4414 70.0104C70.1432 69.789 68.7518 65.8535 71.5346 61.6624C73.3217 59.0913 75.3522 56.6953 77.5986 54.507Z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <svg
+                  style={{ opacity: pathname === "/teenpatti" ? "1" : "0.6" }}
+                  className="AnimatedCategoryElement--c589b IconWrappedElement--ee8b6 BlackjackLeftGroup--b11cd"
+                  viewBox="0 0 110 110"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <defs>
+                    <linearGradient
+                      id="brandingColor"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="0%"
+                    >
+                      <stop className="IconBrandingColor--e8856" offset={0} />
+                      <stop
+                        className="IconBrandingColor--e8856"
+                        offset="100%"
+                      />
+                    </linearGradient>
+                    <linearGradient
+                      id="brandingColorOverlay"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="0%"
+                    >
+                      <stop
+                        className="IconBrandingColorOverlay--41018"
+                        offset="10%"
+                      />
+                      <stop
+                        className="IconBrandingColorOverlay--41018"
+                        offset="100%"
+                      />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M6.88159 25.8692L59.0136 24.8709L58.1479 103.972L8.38679 103.664L6.88159 25.8692Z"
+                    fill="url(#brandingColor)"
+                  />
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M6.88159 25.8692L59.0136 24.8709L58.1479 103.972L8.38679 103.664L6.88159 25.8692Z"
+                    fill="url(#brandingColorOverlay)"
+                  />
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M56.5355 105H8.9983C6.7901 105 5 103.244 5 101.077L5 26.9266C5 24.7604 6.7901 23.0043 8.9983 23.0043H56.5878C58.796 23.0043 60.5862 24.7604 60.5862 26.9284L60.5338 101.078C60.5333 103.244 58.7434 105 56.5355 105ZM57.9768 26.9273L57.9245 101.078C57.9245 101.834 57.2996 102.447 56.5289 102.447H8.99166C8.2209 102.447 7.59607 101.834 7.59607 101.078V26.9273C7.59607 26.1711 8.22089 25.5582 8.99166 25.5582H56.5812C57.352 25.5582 57.9768 26.1711 57.9768 26.9273ZM29.4599 60.8116H31.7627V64.4909H23.2322V60.6062H25.1685L30.5764 36.648H34.99L40.4153 60.726H42.439V64.5594H34.0654V60.726H36.0367L35.3563 57.543H30.1229L29.4599 60.8116ZM32.7844 44.6041L34.7034 53.8624H30.9352L32.7844 44.6041ZM32.9788 73.1845C35.2601 75.3825 37.3221 77.7892 39.1369 80.372C41.8931 84.5818 40.4801 88.5349 37.0609 88.7573C35.5472 88.8088 34.2214 87.7697 33.9383 86.3101C33.851 85.8823 33.5894 85.9679 33.5894 85.985V86.1561C33.5321 88.0814 34.0084 89.9859 34.9675 91.6665C33.6171 91.3268 32.201 91.3268 30.8505 91.6665C31.8097 89.9859 32.286 88.0814 32.2287 86.1561V85.985C32.2287 85.985 31.967 85.8823 31.8798 86.3101C31.5967 87.7697 30.2709 88.8088 28.7571 88.7573C25.4077 88.5349 23.9948 84.5818 26.8208 80.372C28.6355 77.7892 30.6976 75.3825 32.9788 73.1845Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+            </div>
+            <span
+              style={{ opacity: pathname === "/teenpatti" ? "1" : "0.6" }}
+              className="Typography--d2c9a CategoryName--b3bef Typography_xs_subtitle1--6fd5e Typography_xl_h6--d162d bold--d200f colorPrimary--f2f02 ellipsisModeTwoLines--ab28e hyphens--b1b61"
+              data-role="typography"
+            >
+              Teenpatti
+            </span>
+          </div>
+        </li>
+
         <li
           className="ScrollableListItem--0b815 CategoryContainer--62d87"
           id="category-navigator-roulette"

@@ -2,7 +2,7 @@ import Home from "../pages/Home/Home";
 import Casino from "../pages/Casino/Casino";
 import Originals from "../pages/Casino/Originals";
 import FastGames from "../pages/Casino/FastGames";
-import LuckySeven from "../pages/Games/LuckySeven/LuckySeven";
+import LuckySevenA from "../pages/Games/LuckySevenA/LuckySevenA";
 import DragonTiger from "../pages/Games/DragonTiger/DragonTiger";
 import Baccarat from "../pages/Games/Baccarat/Baccarat";
 import AmarAkbarAnthony from "../pages/Games/AmarAkbarAnthony/AmarAkbarAnthony";
@@ -17,6 +17,10 @@ import SuperColor from "../pages/Games/SuperColor/SuperColor";
 import War from "../pages/Games/War/War";
 import ImperialQuest from "../pages/Games/ImperialQuest/ImperialQuest";
 import DragonTigerPhoenix from "../pages/Games/DragonTigerPhoenix/DragonTigerPhoenix";
+import BollywoodThumbnail from "../pages/Casino/Bollywood";
+import Teenpatti from "../pages/Casino/Teenpatti";
+import LuckySevenB from "../pages/Games/LuckySevenB/LuckySevenB";
+import LuckySevenC from "../pages/Games/LuckySevenC/LuckySevenC";
 
 export const mobileRoutes = [
   {
@@ -37,8 +41,24 @@ export const mobileRoutes = [
     element: <FastGames />,
   },
   {
-    path: "/game/lucky7/:eventTypeId/:eventId",
-    element: <LuckySeven />,
+    path: "/bollywood",
+    element: <BollywoodThumbnail />,
+  },
+  {
+    path: "/teenpatti",
+    element: <Teenpatti />,
+  },
+  {
+    path: "/game/lucky7a/:eventTypeId/:eventId",
+    element: <LuckySevenA />,
+  },
+  {
+    path: "/game/lucky7b/:eventTypeId/:eventId",
+    element: <LuckySevenB />,
+  },
+  {
+    path: "/game/lucky7c/:eventTypeId/:eventId",
+    element: <LuckySevenC />,
   },
   {
     path: "/game/dt20/:eventTypeId/:eventId",

@@ -16,7 +16,7 @@ import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
 
-const LuckySeven = () => {
+const LuckySevenB = () => {
   const { sound } = useSound();
   const [showMenu, setShowMenu] = useState(false);
   const [double, setDouble] = useState(false);
@@ -848,4 +848,4 @@ const LuckySeven = () => {
   );
 };
 
-export default LuckySeven;
+export default LuckySevenB;
