@@ -15,6 +15,7 @@ import Winner from "./Winner";
 import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
+import RecentWinner from "./RecentWinner";
 
 const LuckySevenA = () => {
   const { sound } = useSound();
@@ -343,7 +344,11 @@ const LuckySevenA = () => {
               />
             </div>
             {/* Winner */}
-
+            <Winner
+              data={data}
+              firstEvent={firstEvent}
+              currentRoundWinAmount={currentRoundWinAmount}
+            />
             <div
               className="winnersListPortraitPhone--57744 winnersListGradient--6fa71"
               data-role="video-winners-list"
@@ -403,7 +408,7 @@ const LuckySevenA = () => {
                       data-expanded="true"
                     >
                       <div>
-                        <div className="relative flex flex-col items-center justify-center">
+                        <div className="">
                           <BetSlip
                             initialState={initialState}
                             double={double}
@@ -419,13 +424,12 @@ const LuckySevenA = () => {
                             width={true}
                             transform={true}
                           />
-                          <div className="absolute -bottom-16">
-                            <Winner
-                              data={data}
-                              firstEvent={firstEvent}
-                              currentRoundWinAmount={currentRoundWinAmount}
+                          <div className="">
+                            <RecentWinner
+                              recentWinner={firstEvent?.recent_winner}
                             />
                           </div>
+
                           <div className="dealNow--971b0 portrait--55ead hidden--c5c76">
                             <div className="buttonWrapper--86a37 mobile--2fe7c">
                               <button
