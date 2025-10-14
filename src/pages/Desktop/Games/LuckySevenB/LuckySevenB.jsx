@@ -12,6 +12,7 @@ import CommonUIElement from "../../../../component/shared/CommonUIElement/Common
 import BetSlip from "../../../Games/LuckySevenB/BetSlip";
 import Timer from "../../../../component/shared/Timer";
 import Winner from "../../../Games/LuckySevenB/Winner";
+import History from "./History";
 
 const LuckySevenB = () => {
   const { sound } = useSound();
@@ -291,7 +292,9 @@ const LuckySevenB = () => {
                 <div className="fullScreenGameOverlay--e2de7">
                   <div className="box--28913" />
                 </div>
-                <div className="top-container--67c84" />
+                <div className="top-container--67c84">
+                  <History recentWinner={firstEvent?.recent_winner} />
+                </div>
 
                 <div className="bottom-container--11469">
                   <Timer firstEvent={firstEvent} />
