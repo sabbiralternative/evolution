@@ -280,10 +280,16 @@ const BetSlip = ({
                       id="PlayerPair0.03899799357536238_id_rect_fill8"
                     >
                       <stop
+                        style={{
+                          stopColor: "#08d307",
+                        }}
                         stopOpacity="0.8"
                         className="gradientLight--ba468 blue--5d4e7"
                       />
                       <stop
+                        style={{
+                          stopColor: "#08d307",
+                        }}
                         offset={1}
                         stopOpacity="0.8"
                         className="gradientDark--2ae9f blue--5d4e7"
@@ -294,13 +300,19 @@ const BetSlip = ({
                       y1="0%"
                       x2="50%"
                       y2="100%"
-                      id="PlayerPair0.03899799357536238_id_rect_stroke"
+                      id="PlayerPair0.03899799357536238_id_rect_stroke8"
                     >
                       <stop
+                        style={{
+                          stopColor: "#08d307",
+                        }}
                         stopOpacity="0.8"
                         className="strokeLight--26bed blue--5d4e7"
                       />
                       <stop
+                        style={{
+                          stopColor: "#08d307",
+                        }}
                         offset={1}
                         stopOpacity="0.8"
                         className="strokeDark--60bd1 blue--5d4e7"
@@ -315,7 +327,7 @@ const BetSlip = ({
                     rx={4}
                     ry={4}
                     fill="url(#PlayerPair0.03899799357536238_id_rect_fill8)"
-                    stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke)"
+                    stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke8)"
                     strokeWidth={4}
                     fillRule="evenodd"
                     className="shape--84077"
@@ -384,10 +396,16 @@ const BetSlip = ({
                       id="PlayerPair0.03899799357536238_id_rect_fill1"
                     >
                       <stop
+                        style={{
+                          stopColor: "#08d307",
+                        }}
                         stopOpacity="0.8"
                         className="gradientLight--ba468 blue--5d4e7"
                       />
                       <stop
+                        style={{
+                          stopColor: "#08d307",
+                        }}
                         offset={1}
                         stopOpacity="0.8"
                         className="gradientDark--2ae9f blue--5d4e7"
@@ -398,13 +416,19 @@ const BetSlip = ({
                       y1="0%"
                       x2="50%"
                       y2="100%"
-                      id="PlayerPair0.03899799357536238_id_rect_stroke"
+                      id="PlayerPair0.03899799357536238_id_rect_stroke1"
                     >
                       <stop
+                        style={{
+                          stopColor: "#08d307",
+                        }}
                         stopOpacity="0.8"
                         className="strokeLight--26bed blue--5d4e7"
                       />
                       <stop
+                        style={{
+                          stopColor: "#08d307",
+                        }}
                         offset={1}
                         stopOpacity="0.8"
                         className="strokeDark--60bd1 blue--5d4e7"
@@ -419,7 +443,7 @@ const BetSlip = ({
                     rx={4}
                     ry={4}
                     fill="url(#PlayerPair0.03899799357536238_id_rect_fill1)"
-                    stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke)"
+                    stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke1)"
                     strokeWidth={4}
                     fillRule="evenodd"
                     className="shape--84077"
@@ -442,6 +466,8 @@ const BetSlip = ({
                 </div>
               </div>
             </div>
+          </div>
+          <div className="h-[44px] flex items-center justify-between w-full gap-x-1">
             <div
               className="h-full w-full"
               onClick={() =>
@@ -487,10 +513,16 @@ const BetSlip = ({
                       id="PlayerPair0.03899799357536238_id_rect_fill2"
                     >
                       <stop
+                        style={{
+                          stopColor: "#08d307",
+                        }}
                         stopOpacity="0.8"
                         className="gradientLight--ba468 blue--5d4e7"
                       />
                       <stop
+                        style={{
+                          stopColor: "#08d307",
+                        }}
                         offset={1}
                         stopOpacity="0.8"
                         className="gradientDark--2ae9f blue--5d4e7"
@@ -501,13 +533,19 @@ const BetSlip = ({
                       y1="0%"
                       x2="50%"
                       y2="100%"
-                      id="PlayerPair0.03899799357536238_id_rect_stroke"
+                      id="PlayerPair0.03899799357536238_id_rect_stroke2"
                     >
                       <stop
+                        style={{
+                          stopColor: "#08d307",
+                        }}
                         stopOpacity="0.8"
                         className="strokeLight--26bed blue--5d4e7"
                       />
                       <stop
+                        style={{
+                          stopColor: "#08d307",
+                        }}
                         offset={1}
                         stopOpacity="0.8"
                         className="strokeDark--60bd1 blue--5d4e7"
@@ -522,7 +560,7 @@ const BetSlip = ({
                     rx={4}
                     ry={4}
                     fill="url(#PlayerPair0.03899799357536238_id_rect_fill2)"
-                    stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke)"
+                    stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke2)"
                     strokeWidth={4}
                     fillRule="evenodd"
                     className="shape--84077"
@@ -546,8 +584,6 @@ const BetSlip = ({
                 </div>
               </div>
             </div>
-          </div>
-          <div className="h-[44px] flex items-center justify-between w-full gap-x-1">
             <div
               className="h-full w-full"
               onClick={() =>
@@ -593,10 +629,16 @@ const BetSlip = ({
                       id="PlayerPair0.03899799357536238_id_rect_fill3"
                     >
                       <stop
+                        style={{
+                          stopColor: "#9478",
+                        }}
                         stopOpacity="0.8"
                         className="gradientLight--ba468 blue--5d4e7"
                       />
                       <stop
+                        style={{
+                          stopColor: "#9478",
+                        }}
                         offset={1}
                         stopOpacity="0.8"
                         className="gradientDark--2ae9f blue--5d4e7"
@@ -607,13 +649,19 @@ const BetSlip = ({
                       y1="0%"
                       x2="50%"
                       y2="100%"
-                      id="PlayerPair0.03899799357536238_id_rect_stroke"
+                      id="PlayerPair0.03899799357536238_id_rect_stroke3"
                     >
                       <stop
+                        style={{
+                          stopColor: "#9478",
+                        }}
                         stopOpacity="0.8"
                         className="strokeLight--26bed blue--5d4e7"
                       />
                       <stop
+                        style={{
+                          stopColor: "#9478",
+                        }}
                         offset={1}
                         stopOpacity="0.8"
                         className="strokeDark--60bd1 blue--5d4e7"
@@ -628,7 +676,7 @@ const BetSlip = ({
                     rx={4}
                     ry={4}
                     fill="url(#PlayerPair0.03899799357536238_id_rect_fill3)"
-                    stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke)"
+                    stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke3)"
                     strokeWidth={4}
                     fillRule="evenodd"
                     className="shape--84077"
@@ -652,7 +700,8 @@ const BetSlip = ({
                 </div>
               </div>
             </div>
-
+          </div>
+          <div className="h-[44px] flex items-center justify-between w-full gap-x-1">
             <div
               onClick={() =>
                 handleStakeChange({
@@ -698,10 +747,16 @@ const BetSlip = ({
                       id="PlayerPair0.03899799357536238_id_rect_fill4"
                     >
                       <stop
+                        style={{
+                          stopColor: "#9478",
+                        }}
                         stopOpacity="0.8"
                         className="gradientLight--ba468 blue--5d4e7"
                       />
                       <stop
+                        style={{
+                          stopColor: "#9478",
+                        }}
                         offset={1}
                         stopOpacity="0.8"
                         className="gradientDark--2ae9f blue--5d4e7"
@@ -712,13 +767,19 @@ const BetSlip = ({
                       y1="0%"
                       x2="50%"
                       y2="100%"
-                      id="PlayerPair0.03899799357536238_id_rect_stroke"
+                      id="PlayerPair0.03899799357536238_id_rect_stroke4"
                     >
                       <stop
+                        style={{
+                          stopColor: "#9478",
+                        }}
                         stopOpacity="0.8"
                         className="strokeLight--26bed blue--5d4e7"
                       />
                       <stop
+                        style={{
+                          stopColor: "#9478",
+                        }}
                         offset={1}
                         stopOpacity="0.8"
                         className="strokeDark--60bd1 blue--5d4e7"
@@ -733,7 +794,7 @@ const BetSlip = ({
                     rx={4}
                     ry={4}
                     fill="url(#PlayerPair0.03899799357536238_id_rect_fill4)"
-                    stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke)"
+                    stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke4)"
                     strokeWidth={4}
                     fillRule="evenodd"
                     className="shape--84077"
@@ -801,10 +862,16 @@ const BetSlip = ({
                       id="PlayerPair0.03899799357536238_id_rect_fill5"
                     >
                       <stop
+                        style={{
+                          stopColor: "#9478",
+                        }}
                         stopOpacity="0.8"
                         className="gradientLight--ba468 blue--5d4e7"
                       />
                       <stop
+                        style={{
+                          stopColor: "#9478",
+                        }}
                         offset={1}
                         stopOpacity="0.8"
                         className="gradientDark--2ae9f blue--5d4e7"
@@ -815,13 +882,19 @@ const BetSlip = ({
                       y1="0%"
                       x2="50%"
                       y2="100%"
-                      id="PlayerPair0.03899799357536238_id_rect_stroke"
+                      id="PlayerPair0.03899799357536238_id_rect_stroke5"
                     >
                       <stop
+                        style={{
+                          stopColor: "#9478",
+                        }}
                         stopOpacity="0.8"
                         className="strokeLight--26bed blue--5d4e7"
                       />
                       <stop
+                        style={{
+                          stopColor: "#9478",
+                        }}
                         offset={1}
                         stopOpacity="0.8"
                         className="strokeDark--60bd1 blue--5d4e7"
@@ -836,7 +909,7 @@ const BetSlip = ({
                     rx={4}
                     ry={4}
                     fill="url(#PlayerPair0.03899799357536238_id_rect_fill5)"
-                    stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke)"
+                    stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke5)"
                     strokeWidth={4}
                     fillRule="evenodd"
                     className="shape--84077"
@@ -921,7 +994,7 @@ const BetSlip = ({
                       y1="0%"
                       x2="50%"
                       y2="100%"
-                      id="PlayerPair0.03899799357536238_id_rect_stroke"
+                      id="PlayerPair0.03899799357536238_id_rect_stroke6"
                     >
                       <stop
                         stopOpacity="0.8"
@@ -942,7 +1015,7 @@ const BetSlip = ({
                     rx={4}
                     ry={4}
                     fill="url(#PlayerPair0.03899799357536238_id_rect_fill6)"
-                    stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke)"
+                    stroke="url(#PlayerPair0.03899799357536238_id_rect_stroke6)"
                     strokeWidth={4}
                     fillRule="evenodd"
                     className="shape--84077"

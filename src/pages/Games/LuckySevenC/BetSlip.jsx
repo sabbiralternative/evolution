@@ -28,6 +28,7 @@ const BetSlip = ({
   width,
   transform: isMobile,
 }) => {
+  const firstEvent = data?.[0];
   const { eventId } = useParams();
   const { sound } = useSound();
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
@@ -234,10 +235,15 @@ const BetSlip = ({
           className="bettingGrid--0835e bettingTime--7f9cd isVertical--28984 onlyPairs--f14f6"
           data-role="betting-grid-container"
           style={{
-            transform: isMobile ? `scale(${innerWidth / 375})` : "scale(1.4)",
+            transform: isMobile
+              ? `scale(${innerWidth / 375})`
+              : firstEvent?.status === Status.SUSPENDED
+              ? "scale(1)"
+              : "scale(1.4)",
             opacity: status === Status.SUSPENDED ? 0.7 : 1,
             marginTop: isMobile ? "" : "20px",
             transformOrigin: isMobile ? "" : "top",
+            transition: "transform 0.5s ease-in-out",
           }}
         >
           <div className="bubble--2b7a1" />
