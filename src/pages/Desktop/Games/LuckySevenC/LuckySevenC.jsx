@@ -336,21 +336,27 @@ const LuckySevenC = () => {
             />
             <div
               className="gameOverlay--ad8aa"
-              style={{
-                perspective: "1000px",
-              }}
+              style={
+                {
+                  // perspective: "1000px",
+                }
+              }
             >
               <div
                 className="classicOverlay--fde0a"
                 style={{
+                  // transform:
+                  //   firstEvent?.status === Status.SUSPENDED
+                  //     ? "rotateX(36deg) scaleX(1.7) scaleY(1.2)"
+                  //     : "scaleX(1.8) scaleY(1.3)",
                   transform:
                     firstEvent?.status === Status.SUSPENDED
-                      ? "rotateX(36deg) scaleX(1.7) scaleY(1.2)"
+                      ? "scale(1)"
                       : "scaleX(1.8) scaleY(1.3)",
                   transformOrigin: "center",
                   marginTop: "100px",
                   transition: "transform 0.5s ease-in-out",
-                  transformStyle: "preserve-3d",
+                  // transformStyle: "preserve-3d",
                 }}
               >
                 <div className="bettingGrid--190e8">
