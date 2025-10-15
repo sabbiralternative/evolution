@@ -352,7 +352,7 @@ const LuckySevenA = () => {
                   transform:
                     firstEvent?.status === Status.SUSPENDED
                       ? "scale(1)"
-                      : "scaleX(1.8) scaleY(1.3)",
+                      : "scaleX(1.4) scaleY(1.4)",
                   transformOrigin: "center",
                   marginTop: "100px",
                   transition: "transform 0.5s ease-in-out",
