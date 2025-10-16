@@ -399,14 +399,14 @@ const BetSlip = ({
                     >
                       <stop
                         style={{
-                          stopColor: "#08d307",
+                          stopColor: "#08d378",
                         }}
                         stopOpacity="0.8"
                         className="gradientLight--ba468 blue--5d4e7"
                       />
                       <stop
                         style={{
-                          stopColor: "#08d307",
+                          stopColor: "#08d378",
                         }}
                         offset={1}
                         stopOpacity="0.8"
@@ -422,14 +422,14 @@ const BetSlip = ({
                     >
                       <stop
                         style={{
-                          stopColor: "#08d307",
+                          stopColor: "#08d378",
                         }}
                         stopOpacity="0.8"
                         className="strokeLight--26bed blue--5d4e7"
                       />
                       <stop
                         style={{
-                          stopColor: "#08d307",
+                          stopColor: "#08d378",
                         }}
                         offset={1}
                         stopOpacity="0.8"
@@ -516,14 +516,14 @@ const BetSlip = ({
                     >
                       <stop
                         style={{
-                          stopColor: "#08d307",
+                          stopColor: "#08d3ff",
                         }}
                         stopOpacity="0.8"
                         className="gradientLight--ba468 blue--5d4e7"
                       />
                       <stop
                         style={{
-                          stopColor: "#08d307",
+                          stopColor: "#08d3ff",
                         }}
                         offset={1}
                         stopOpacity="0.8"
@@ -539,14 +539,14 @@ const BetSlip = ({
                     >
                       <stop
                         style={{
-                          stopColor: "#08d307",
+                          stopColor: "#08d3ff",
                         }}
                         stopOpacity="0.8"
                         className="strokeLight--26bed blue--5d4e7"
                       />
                       <stop
                         style={{
-                          stopColor: "#08d307",
+                          stopColor: "#08d3ff",
                         }}
                         offset={1}
                         stopOpacity="0.8"
@@ -750,14 +750,14 @@ const BetSlip = ({
                     >
                       <stop
                         style={{
-                          stopColor: "#9478",
+                          stopColor: "#9478ff",
                         }}
                         stopOpacity="0.8"
                         className="gradientLight--ba468 blue--5d4e7"
                       />
                       <stop
                         style={{
-                          stopColor: "#9478",
+                          stopColor: "#9478ff",
                         }}
                         offset={1}
                         stopOpacity="0.8"
@@ -773,14 +773,14 @@ const BetSlip = ({
                     >
                       <stop
                         style={{
-                          stopColor: "#9478",
+                          stopColor: "#9478ff",
                         }}
                         stopOpacity="0.8"
                         className="strokeLight--26bed blue--5d4e7"
                       />
                       <stop
                         style={{
-                          stopColor: "#9478",
+                          stopColor: "#9478ff",
                         }}
                         offset={1}
                         stopOpacity="0.8"
@@ -865,14 +865,14 @@ const BetSlip = ({
                     >
                       <stop
                         style={{
-                          stopColor: "#9478",
+                          stopColor: "#94733F",
                         }}
                         stopOpacity="0.8"
                         className="gradientLight--ba468 blue--5d4e7"
                       />
                       <stop
                         style={{
-                          stopColor: "#9478",
+                          stopColor: "#94733F",
                         }}
                         offset={1}
                         stopOpacity="0.8"
@@ -888,14 +888,14 @@ const BetSlip = ({
                     >
                       <stop
                         style={{
-                          stopColor: "#9478",
+                          stopColor: "#94733F",
                         }}
                         stopOpacity="0.8"
                         className="strokeLight--26bed blue--5d4e7"
                       />
                       <stop
                         style={{
-                          stopColor: "#9478",
+                          stopColor: "#94733F",
                         }}
                         offset={1}
                         stopOpacity="0.8"
