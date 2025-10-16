@@ -16,6 +16,8 @@ import Winner from "./Winner";
 import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
+import { cn } from "../../../utils/cn";
+import RecentWinner from "./RecentWinner";
 
 const Bollywood = () => {
   const { sound } = useSound();
@@ -25,7 +27,7 @@ const Bollywood = () => {
   const [animation, setAnimation] = useState([]);
   const [showWinLossResult, setShowWinLossResult] = useState(false);
   const [totalWinAmount, setTotalWinAmount] = useState(null);
-  const { stake } = useSelector((state) => state.global);
+  const { stake, deviceWidth } = useSelector((state) => state.global);
   // const [toast, setToast] = useState(null);
   const [showFullScreen, setShowFullScreen] = useState(false);
   const { eventTypeId, eventId } = useParams();
@@ -86,6 +88,8 @@ const Bollywood = () => {
       });
     }
   }, [firstEvent?.status]);
+
+  console.log(firstEvent);
   return (
     <>
       {showMenu && (
@@ -430,6 +434,12 @@ const Bollywood = () => {
                             width={true}
                             transform={true}
                           />
+
+                          <div className={cn(deviceWidth > 370 && "mt-14")}>
+                            <RecentWinner
+                              recentWinner={firstEvent?.recent_winner}
+                            />
+                          </div>
                           {/* <RoadPrediction /> */}
                           <div className="dealNow--971b0 portrait--55ead hidden--c5c76">
                             <div className="buttonWrapper--86a37 mobile--2fe7c">

@@ -80,7 +80,7 @@ const BetSlip = ({
               eventName: formatData?.eventName,
               show: true,
               animation: false,
-              stake: prev[key].show
+              stake: prev[key]?.show
                 ? prev[key].stake + prev[key].actionBy
                 : prev[key].stake,
               marketId: formatData?.marketId,
@@ -106,7 +106,7 @@ const BetSlip = ({
       setStakeState((prev) => {
         const updatedState = { ...prev };
         Object.keys(updatedState).forEach((key) => {
-          if (updatedState[key].show) {
+          if (updatedState[key]?.show) {
             updatedState[key] = {
               ...updatedState[key],
               show: false,
@@ -130,7 +130,7 @@ const BetSlip = ({
       for (const key in prev) {
         updatedState[key] = {
           ...prev[key],
-          stake: prev[key].show ? prev[key].stake : stake,
+          stake: prev[key]?.show ? prev[key].stake : stake,
           actionBy: stake,
         };
       }
@@ -139,7 +139,9 @@ const BetSlip = ({
   }, [stake]); // Runs when stake value changes
 
   useEffect(() => {
-    const filterPlacedBet = Object.values(stakeState).filter((bet) => bet.show);
+    const filterPlacedBet = Object.values(stakeState).filter(
+      (bet) => bet?.show
+    );
     let payload = filterPlacedBet.map((bet) => ({
       roundId: bet?.roundId,
       name: bet?.name,
@@ -221,7 +223,7 @@ const BetSlip = ({
       <div
         style={{
           width: width ? `${innerWidth - 10}px` : "auto",
-          height: height ? "227px" : "200px",
+          height: height ? "auto" : "auto",
         }}
       >
         <div
