@@ -374,7 +374,10 @@ const BetSlip = ({
                     data-role="bet-spot-tiger"
                   >
                     <svg
-                      style={{ opacity: status === Status.OPEN ? 1 : 0.5 }}
+                      style={{
+                        opacity: status === Status.OPEN ? 1 : 0.5,
+                        transform: "rotate(180deg)",
+                      }}
                       viewBox="0 0 180 200"
                       preserveAspectRatio="none"
                     >
@@ -389,12 +392,12 @@ const BetSlip = ({
                         >
                           <stop
                             stopColor="rgba(14,94,255,1)"
-                            stopOpacity="0.75"
+                            stopOpacity="0.25"
                           />
                           <stop
                             offset={1}
                             stopColor="rgba(14,94,255,1)"
-                            stopOpacity="0.25"
+                            stopOpacity="0.75"
                           />
                         </linearGradient>
                         <linearGradient
@@ -407,17 +410,16 @@ const BetSlip = ({
                         >
                           <stop
                             stopColor="rgba(14,94,255,1)"
-                            stopOpacity="0.75"
+                            stopOpacity="0.25"
                           />
                           <stop
                             offset={1}
                             stopColor="rgba(14,94,255,1)"
-                            stopOpacity="0.25"
+                            stopOpacity="0.75"
                           />
                         </linearGradient>
                       </defs>
                       <g fill="none" fillRule="evenodd">
-                        {/* Base background */}
                         <path
                           d="M180 0V200H6C2.686 200 0 197.314 0 194V6C0 2.686 2.686 0 6 0H180Z"
                           fill="black"
@@ -431,7 +433,65 @@ const BetSlip = ({
                         />
                       </g>
                     </svg>
-
+                    {/* <svg
+                      viewBox="0 0 180 200"
+                      preserveAspectRatio="none"
+                      style={{ opacity: 1 }}
+                    >
+                      <defs>
+                        <linearGradient
+                          id="foreground-BetsOpen-left"
+                          x1={0}
+                          y1={0}
+                          x2={0}
+                          y2="100%"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop stopColor="rgba(14,94,255,1)" stopOpacity={1} />
+                          <stop
+                            offset={1}
+                            stopColor="rgba(14,94,255,1)"
+                            stopOpacity={1}
+                          />
+                        </linearGradient>
+                        <linearGradient
+                          id="border-BetsOpen-left"
+                          x1={0}
+                          y1={0}
+                          x2={0}
+                          y2="100%"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop stopColor="rgba(14,94,255,1)" stopOpacity={1} />
+                          <stop
+                            offset={1}
+                            stopColor="rgba(14,94,255,1)"
+                            stopOpacity={1}
+                          />
+                        </linearGradient>
+                      </defs>
+                      <g fill="none" fillRule="evenodd">
+              
+                        <path
+                          d="M0 0V33.0293C36.078 34.087 65 63.6659 65 100C65 136.334 36.078 165.913 0 166.971V200H174C177.314 200 180 197.314 180 194V6C180 2.686 177.314 0 174 0H0Z"
+                          fill="black"
+                          fillOpacity="0.85"
+                        />
+                
+                        <path
+                          d="M0 0V33.0293C36.078 34.087 65 63.6659 65 100C65 136.334 36.078 165.913 0 166.971V200H174C177.314 200 180 197.314 180 194V6C180 2.686 177.314 0 174 0H0Z"
+                          fill="url(#foreground-BetsOpen-left)"
+                          stroke="url(#border-BetsOpen-left)"
+                          strokeWidth={2}
+                        />
+                     
+                        <path
+                          d="M99 80a65 85 0 0 1 -125 65a65 65 0 0 1 0 -130a65 65 0 0 1 165 65Z"
+                          fill="url(#foreground-BetsOpen-left)"
+                          fillOpacity={1}
+                        />
+                      </g>
+                    </svg> */}
                     <div
                       className="title--4a5d2 noSerif--946d0 isPortrait--54d78 isPortraitVeryNarrowOrHigher--280b6 isVeryNarrowLikeOrHigher--c1e32"
                       data-role="title"
