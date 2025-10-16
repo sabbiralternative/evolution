@@ -215,6 +215,10 @@ const BetSlip = ({
 
   return (
     <div
+      style={{
+        transform: transform ? `scale(${innerWidth / 375})` : "none",
+        marginBottom: "0px",
+      }}
       onClick={handleShowSuspendedStatus}
       className={`bettingGrid--a60ca ${
         status === Status.SUSPENDED ? "pointer-events-none" : ""
@@ -222,7 +226,7 @@ const BetSlip = ({
     >
       <div
         style={{
-          width: width ? `${innerWidth - 10}px` : "auto",
+          // width: width ? `${innerWidth - 10}px` : "auto",
           height: height ? "auto" : "auto",
         }}
       >
@@ -230,7 +234,7 @@ const BetSlip = ({
           className="bettingGrid--0835e bettingTime--7f9cd isVertical--28984 onlyPairs--f14f6 flex-col !h-auto"
           data-role="betting-grid-container"
           style={{
-            transform: transform ? `scale(${innerWidth / 375})` : "none",
+            // transform: transform ? `scale(${innerWidth / 375})` : "none",
             opacity: status === Status.SUSPENDED ? 0.7 : 1,
           }}
         >

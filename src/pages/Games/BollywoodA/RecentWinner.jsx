@@ -64,7 +64,7 @@ const RecentWinner = ({ recentWinner }) => {
                       strokeWidth={2}
                       d="M 37.5 1 H 5.5 C 3.6 1 2.4 2.9 3.3 4.5 L 7.7 11.5 C 8.1 12.2 8.1 13.1 7.7 13.8 L 3.3 20.9 C 2.4 22.4 3.6 24.4 5.5 24.4 H 37.5 C 39.8 24.4 41.8 23.2 42.9 21.4 L 47.6 13.8 C 48 13.1 48 12.2 47.6 11.5 L 42.9 3.9 C 41.8 2.1 39.8 1 37.5 1 Z"
                     />
-                    <text x={19} y={19} fill="#fff" fontSize={16}>
+                    <text x={19} y={19} fill="#fff" fontSize={13}>
                       {winner?.winner}
                     </text>
                   </g>

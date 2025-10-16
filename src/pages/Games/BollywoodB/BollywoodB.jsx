@@ -435,7 +435,7 @@ const BollywoodB = () => {
                             transform={true}
                           />
 
-                          <div className={cn(deviceWidth > 370 && "mt-14")}>
+                          <div className={cn(deviceWidth > 380 && "mt-5")}>
                             <RecentWinner
                               recentWinner={firstEvent?.recent_winner}
                             />

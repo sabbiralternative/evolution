@@ -23,6 +23,8 @@ import LuckySevenB from "../pages/Desktop/Games/LuckySevenB/LuckySevenB";
 import LuckySevenC from "../pages/Desktop/Games/LuckySevenC/LuckySevenC";
 import AmarAkbarAnthonyB from "../pages/Desktop/Games/AmarAkbarAnthonyB/AmarAkbarAnthonyB";
 import BollywoodB from "../pages/Desktop/Games/BollywoodB/BollywoodB";
+import Roulette from "../pages/Desktop/Casino/Roulette";
+import TwoCardsTP from "../pages/Desktop/Games/TwoCardsTP/TwoCardsTP";
 
 export const desktopRoutes = [
   {
@@ -48,6 +50,10 @@ export const desktopRoutes = [
   {
     path: "/teenpatti",
     element: <Teenpatti />,
+  },
+  {
+    path: "/roulette",
+    element: <Roulette />,
   },
   {
     path: "/game/lucky7a/:eventTypeId/:eventId",
@@ -102,15 +108,19 @@ export const desktopRoutes = [
     element: <LightningDice />,
   },
   {
-    path: "/game/football-dice/:eventTypeId/:eventId",
+    path: "/game/footballdice/:eventTypeId/:eventId",
     element: <FootballDice />,
   },
   {
-    path: "/game/football-studio/:eventTypeId/:eventId",
+    path: "/game/2cardstp/:eventTypeId/:eventId",
+    element: <TwoCardsTP />,
+  },
+  {
+    path: "/game/footballstudio/:eventTypeId/:eventId",
     element: <FootballStudio />,
   },
   {
-    path: "/game/super-color/:eventTypeId/:eventId",
+    path: "/game/supercolor/:eventTypeId/:eventId",
     element: <SuperColor />,
   },
   {
@@ -118,11 +128,11 @@ export const desktopRoutes = [
     element: <War />,
   },
   {
-    path: "/game/imperial-quest/:eventTypeId/:eventId",
+    path: "/game/imperialquest/:eventTypeId/:eventId",
     element: <ImperialQuest />,
   },
   {
-    path: "/game/dragon-tiger-phoenix/:eventTypeId/:eventId",
+    path: "/game/dtp/:eventTypeId/:eventId",
     element: <DragonTigerPhoenix />,
   },
 ];

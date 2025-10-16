@@ -434,129 +434,128 @@ const BollywoodA = () => {
                             width={true}
                             transform={true}
                           />
-
-                          <div className={cn(deviceWidth > 370 && "mt-14")}>
+                          <div className={cn(deviceWidth > 380 && "mt-5")}>
                             <RecentWinner
                               recentWinner={firstEvent?.recent_winner}
                             />
                           </div>
-                          {/* <RoadPrediction /> */}
-                          <div className="dealNow--971b0 portrait--55ead hidden--c5c76">
-                            <div className="buttonWrapper--86a37 mobile--2fe7c">
-                              <button
-                                type="button"
-                                className="button--8e600 mobile--2fe7c"
-                                data-role="play-now-button"
+                        </div>
+                        {/* <RoadPrediction /> */}
+                        <div className="dealNow--971b0 portrait--55ead hidden--c5c76">
+                          <div className="buttonWrapper--86a37 mobile--2fe7c">
+                            <button
+                              type="button"
+                              className="button--8e600 mobile--2fe7c"
+                              data-role="play-now-button"
+                            >
+                              <svg
+                                className="buttonSVG--c2730 shouldAnimateFill--5e1e6"
+                                width="100%"
+                                height="100%"
+                                viewBox="0 0 204 60"
+                                preserveAspectRatio="xMaxYMid meet"
                               >
-                                <svg
-                                  className="buttonSVG--c2730 shouldAnimateFill--5e1e6"
-                                  width="100%"
-                                  height="100%"
-                                  viewBox="0 0 204 60"
-                                  preserveAspectRatio="xMaxYMid meet"
-                                >
-                                  <defs>
-                                    <linearGradient id="actionNowGradient-200504">
-                                      <stop stopColor="#A1701B" offset="0%" />
-                                      <stop stopColor="#fff" offset="50%" />
-                                      <stop stopColor="#A1701B" offset="100%" />
-                                    </linearGradient>
-                                    <linearGradient
-                                      id="actionNowBGGradient-200504"
-                                      x1="0%"
-                                      y1="0%"
-                                      x2="0%"
-                                      y2="100%"
-                                    >
-                                      <stop offset="0%" stopColor="#1a1a1a" />
-                                      <stop offset="100%" stopColor="#333333" />
-                                    </linearGradient>
-                                    <filter id="glowBlur-200504">
-                                      <feGaussianBlur
-                                        in="SourceGraphic"
-                                        stdDeviation={4}
-                                      />
-                                    </filter>
-                                    <filter id="lightStripeBlur-200504">
-                                      <feGaussianBlur
-                                        in="SourceGraphic"
-                                        stdDeviation={6}
-                                      />
-                                    </filter>
-                                  </defs>
-                                  <rect
-                                    rx={27}
-                                    ry={27}
-                                    width={198}
-                                    height={54}
-                                    x={3}
-                                    y={3}
-                                    stroke="url(#actionNowGradient-200504)"
-                                    strokeWidth={3}
-                                    fill="url(#actionNowBGGradient-200504)"
-                                    data-role="touchendable"
-                                  />
-                                  <clipPath id="effectsClip-200504">
-                                    <rect
-                                      rx={26}
-                                      ry={26}
-                                      width={194}
-                                      height={50}
-                                      x={5}
-                                      y={5}
+                                <defs>
+                                  <linearGradient id="actionNowGradient-200504">
+                                    <stop stopColor="#A1701B" offset="0%" />
+                                    <stop stopColor="#fff" offset="50%" />
+                                    <stop stopColor="#A1701B" offset="100%" />
+                                  </linearGradient>
+                                  <linearGradient
+                                    id="actionNowBGGradient-200504"
+                                    x1="0%"
+                                    y1="0%"
+                                    x2="0%"
+                                    y2="100%"
+                                  >
+                                    <stop offset="0%" stopColor="#1a1a1a" />
+                                    <stop offset="100%" stopColor="#333333" />
+                                  </linearGradient>
+                                  <filter id="glowBlur-200504">
+                                    <feGaussianBlur
+                                      in="SourceGraphic"
+                                      stdDeviation={4}
                                     />
-                                  </clipPath>
+                                  </filter>
+                                  <filter id="lightStripeBlur-200504">
+                                    <feGaussianBlur
+                                      in="SourceGraphic"
+                                      stdDeviation={6}
+                                    />
+                                  </filter>
+                                </defs>
+                                <rect
+                                  rx={27}
+                                  ry={27}
+                                  width={198}
+                                  height={54}
+                                  x={3}
+                                  y={3}
+                                  stroke="url(#actionNowGradient-200504)"
+                                  strokeWidth={3}
+                                  fill="url(#actionNowBGGradient-200504)"
+                                  data-role="touchendable"
+                                />
+                                <clipPath id="effectsClip-200504">
                                   <rect
-                                    className="buttonInnerBorder--11ef2"
                                     rx={26}
                                     ry={26}
                                     width={194}
                                     height={50}
                                     x={5}
                                     y={5}
-                                    stroke="#20201C"
-                                    strokeWidth={1}
                                   />
-                                  <svg
-                                    viewBox="0 0 36 36"
-                                    width={36}
-                                    height={36}
-                                    x={13}
-                                    y={12}
+                                </clipPath>
+                                <rect
+                                  className="buttonInnerBorder--11ef2"
+                                  rx={26}
+                                  ry={26}
+                                  width={194}
+                                  height={50}
+                                  x={5}
+                                  y={5}
+                                  stroke="#20201C"
+                                  strokeWidth={1}
+                                />
+                                <svg
+                                  viewBox="0 0 36 36"
+                                  width={36}
+                                  height={36}
+                                  x={13}
+                                  y={12}
+                                >
+                                  <g
+                                    className="iconActionContainer--805aa"
+                                    fill="#FFFFFF"
                                   >
-                                    <g
-                                      className="iconActionContainer--805aa"
-                                      fill="#FFFFFF"
-                                    >
-                                      <path
-                                        className="icon--640c1"
-                                        d="M20.392 2.355l-1.082-.214v-1.07h-8.55a1.167 1.167 0 0 0-.19 0H3.082v23.55H4.38l-.216 1.071H3.082c-.598 0-1.082-.48-1.082-1.07V1.07C2 .479 2.484 0 3.082 0H19.31c.597 0 1.082.48 1.082 1.07v1.285zm-9.123-.848l15.874 3.339c.584.123.957.691.833 1.27l-4.948 23.036a1.082 1.082 0 0 1-1.284.824L5.871 26.638a1.07 1.07 0 0 1-.833-1.27L9.986 2.332a1.082 1.082 0 0 1 1.283-.825zm-.224 1.047L6.096 25.591l15.873 3.338 4.949-23.036-15.873-3.339zm-5.258 6.01c.435.416 1.524 1.074 1.617 1.923.101.928-1.182 1.088-1.516.486.022.43.254.803.254.803h-.71s.231-.365.253-.795c-.334.602-1.617.434-1.516-.494.093-.849 1.182-1.507 1.618-1.923zM17.182 12.6c.565.829 2.108 2.274 1.963 3.69-.16 1.547-2.308 1.368-2.641.272-.115.708.132 1.396.132 1.396l-1.158-.244s.506-.515.692-1.208c-.755.867-2.788.152-2.298-1.325.449-1.352 2.453-2.051 3.31-2.58zM7.409 2.698H7.02l.005 3.316s.024 1.478-1.386 1.48c-1.55 0-1.475-1.476-1.475-1.476V5.84l.779.004v.177s.034.774.682.773c.632 0 .623-.795.623-.795l-.005-3.3h-.39v-.556l1.555-.002.001.557zm11.882 19.649l-.317-.067.112-.523 1.216.258-.111.52-.318-.066-.021.871 1.06.223.337-.805-.318-.066.113-.524 1.216.258-.11.522-.32-.067-1.91 4.523-.741-.158.112-4.9zm1.4 1.717l-.846-.178-.074 2.404.92-2.226zM11.184 8.603l1.911-4.522.742.155-.113 4.9.32.068-.115.521-1.217-.254.112-.523.318.066.023-.87-1.06-.223-.339.804.318.067-.112.52-1.218-.253.113-.523.317.067zm1.986-1.005l.074-2.404-.92 2.226.846.178z"
-                                      />
-                                    </g>
-                                  </svg>
-                                  <svg width={135} height={50} x={49} y={5}>
-                                    <rect
-                                      width="100%"
-                                      height="100%"
-                                      fill="none"
+                                    <path
+                                      className="icon--640c1"
+                                      d="M20.392 2.355l-1.082-.214v-1.07h-8.55a1.167 1.167 0 0 0-.19 0H3.082v23.55H4.38l-.216 1.071H3.082c-.598 0-1.082-.48-1.082-1.07V1.07C2 .479 2.484 0 3.082 0H19.31c.597 0 1.082.48 1.082 1.07v1.285zm-9.123-.848l15.874 3.339c.584.123.957.691.833 1.27l-4.948 23.036a1.082 1.082 0 0 1-1.284.824L5.871 26.638a1.07 1.07 0 0 1-.833-1.27L9.986 2.332a1.082 1.082 0 0 1 1.283-.825zm-.224 1.047L6.096 25.591l15.873 3.338 4.949-23.036-15.873-3.339zm-5.258 6.01c.435.416 1.524 1.074 1.617 1.923.101.928-1.182 1.088-1.516.486.022.43.254.803.254.803h-.71s.231-.365.253-.795c-.334.602-1.617.434-1.516-.494.093-.849 1.182-1.507 1.618-1.923zM17.182 12.6c.565.829 2.108 2.274 1.963 3.69-.16 1.547-2.308 1.368-2.641.272-.115.708.132 1.396.132 1.396l-1.158-.244s.506-.515.692-1.208c-.755.867-2.788.152-2.298-1.325.449-1.352 2.453-2.051 3.31-2.58zM7.409 2.698H7.02l.005 3.316s.024 1.478-1.386 1.48c-1.55 0-1.475-1.476-1.475-1.476V5.84l.779.004v.177s.034.774.682.773c.632 0 .623-.795.623-.795l-.005-3.3h-.39v-.556l1.555-.002.001.557zm11.882 19.649l-.317-.067.112-.523 1.216.258-.111.52-.318-.066-.021.871 1.06.223.337-.805-.318-.066.113-.524 1.216.258-.11.522-.32-.067-1.91 4.523-.741-.158.112-4.9zm1.4 1.717l-.846-.178-.074 2.404.92-2.226zM11.184 8.603l1.911-4.522.742.155-.113 4.9.32.068-.115.521-1.217-.254.112-.523.318.066.023-.87-1.06-.223-.339.804.318.067-.112.52-1.218-.253.113-.523.317.067zm1.986-1.005l.074-2.404-.92 2.226.846.178z"
                                     />
-                                    <text
-                                      className
-                                      textAnchor="middle"
-                                      fontFamily="Inter, Arial, sans-serif"
-                                      fontSize={20}
-                                      fontWeight={500}
-                                      fill="#FFFFFF"
-                                      y="50%"
-                                      x="50%"
-                                      dominantBaseline="central"
-                                    >
-                                      DEAL NOW
-                                    </text>
-                                  </svg>
+                                  </g>
                                 </svg>
-                              </button>
-                            </div>
+                                <svg width={135} height={50} x={49} y={5}>
+                                  <rect
+                                    width="100%"
+                                    height="100%"
+                                    fill="none"
+                                  />
+                                  <text
+                                    className
+                                    textAnchor="middle"
+                                    fontFamily="Inter, Arial, sans-serif"
+                                    fontSize={20}
+                                    fontWeight={500}
+                                    fill="#FFFFFF"
+                                    y="50%"
+                                    x="50%"
+                                    dominantBaseline="central"
+                                  >
+                                    DEAL NOW
+                                  </text>
+                                </svg>
+                              </svg>
+                            </button>
                           </div>
                         </div>
                       </div>

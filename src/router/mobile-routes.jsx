@@ -23,6 +23,8 @@ import LuckySevenC from "../pages/Games/LuckySevenC/LuckySevenC";
 import AmarAkbarAnthonyB from "../pages/Games/AmarAkbarAnthonyB/AmarAkbarAnthonyB";
 import BollywoodA from "../pages/Games/BollywoodA/BollywoodA";
 import BollywoodB from "../pages/Games/BollywoodB/BollywoodB";
+import Roulette from "../pages/Casino/Roulette";
+import TwoCardsTP from "../pages/Games/TwoCardsTP/TwoCardsTP";
 
 export const mobileRoutes = [
   {
@@ -49,6 +51,10 @@ export const mobileRoutes = [
   {
     path: "/teenpatti",
     element: <Teenpatti />,
+  },
+  {
+    path: "/roulette",
+    element: <Roulette />,
   },
   {
     path: "/game/lucky7a/:eventTypeId/:eventId",
@@ -103,15 +109,19 @@ export const mobileRoutes = [
     element: <LightningDice />,
   },
   {
-    path: "/game/football-dice/:eventTypeId/:eventId",
+    path: "/game/footballdice/:eventTypeId/:eventId",
     element: <FootballDice />,
   },
   {
-    path: "/game/football-studio/:eventTypeId/:eventId",
+    path: "/game/footballstudio/:eventTypeId/:eventId",
     element: <FootballStudio />,
   },
   {
-    path: "/game/super-color/:eventTypeId/:eventId",
+    path: "/game/2cardstp/:eventTypeId/:eventId",
+    element: <TwoCardsTP />,
+  },
+  {
+    path: "/game/supercolor/:eventTypeId/:eventId",
     element: <SuperColor />,
   },
   {
@@ -119,11 +129,11 @@ export const mobileRoutes = [
     element: <War />,
   },
   {
-    path: "/game/imperial-quest/:eventTypeId/:eventId",
+    path: "/game/imperialquest/:eventTypeId/:eventId",
     element: <ImperialQuest />,
   },
   {
-    path: "/game/dragon-tiger-phoenix/:eventTypeId/:eventId",
+    path: "/game/dtp/:eventTypeId/:eventId",
     element: <DragonTigerPhoenix />,
   },
 ];

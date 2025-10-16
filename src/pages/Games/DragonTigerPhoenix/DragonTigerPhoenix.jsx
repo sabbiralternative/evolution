@@ -22,7 +22,7 @@ const DragonTigerPhoenix = () => {
   const [animation, setAnimation] = useState([]);
   const [showWinLossResult, setShowWinLossResult] = useState(false);
   const [totalWinAmount, setTotalWinAmount] = useState(null);
-  const { stake } = useSelector((state) => state.global);
+  const { stake, deviceWidth } = useSelector((state) => state.global);
   const [showFullScreen, setShowFullScreen] = useState(false);
   const { eventTypeId } = useParams();
   const { data } = useGetEventDetailsQuery(
@@ -304,7 +304,9 @@ const DragonTigerPhoenix = () => {
                 <div className="relativeChildren--99d54">
                   <div
                     className="betPanelWithRoads--efe50 isPortrait--c529f"
-                    style={{ "-roadsheight": "0px" }}
+                    style={{
+                      transform: `scale(${deviceWidth / 440})`,
+                    }}
                   >
                     <BetSlip
                       initialState={initialState}

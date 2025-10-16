@@ -340,6 +340,7 @@ const ScrollableTab = () => {
         </li>
 
         <li
+          onClick={() => handleNavigate("/roulette")}
           className="ScrollableListItem--0b815 CategoryContainer--62d87"
           id="category-navigator-roulette"
         >
@@ -347,6 +348,7 @@ const ScrollableTab = () => {
             <div className="CategoryIcon--d2629">
               <div className="AnimatedCategoryIcon--87bac RouletteIcon--ac30f">
                 <svg
+                  style={{ opacity: pathname === "/roulette" ? "1" : "0.6" }}
                   className="AnimatedCategoryElement--c589b IconWrappedElement--ee8b6 RouletteInnerElement1--5e028"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 110 110"
@@ -361,6 +363,7 @@ const ScrollableTab = () => {
                   />
                 </svg>
                 <svg
+                  style={{ opacity: pathname === "/roulette" ? "1" : "0.6" }}
                   className="AnimatedCategoryElement--c589b IconWrappedElement--ee8b6 RouletteInnerElement2--40cf7"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 110 110"
@@ -375,6 +378,7 @@ const ScrollableTab = () => {
               </div>
             </div>
             <span
+              style={{ opacity: pathname === "/roulette" ? "1" : "0.6" }}
               className="Typography--d2c9a CategoryName--b3bef Typography_xs_subtitle1--6fd5e Typography_xl_h6--d162d bold--d200f colorPrimary--f2f02 ellipsisModeTwoLines--ab28e hyphens--b1b61"
               data-role="typography"
             >

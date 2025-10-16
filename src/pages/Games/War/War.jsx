@@ -13,6 +13,7 @@ import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import Menu from "../../../component/shared/Menu/Menu";
 import { playClick } from "../../../utils/sound";
+import Counter from "../../../component/UI/Counter";
 
 const War = () => {
   const { sound } = useSound();
@@ -127,8 +128,15 @@ const War = () => {
                 <div
                   className="timer--51f1d"
                   data-role="status-text"
-                  data-status="NEXT GAME SOON"
-                />
+                  data-status="PLACE YOUR BETS"
+                >
+                  <div className="wrapper--8b249">
+                    {firstEvent?.status === Status.OPEN && (
+                      <Counter firstEvent={firstEvent} />
+                    )}
+                    {/* <RoadPrediction2 /> */}
+                  </div>
+                </div>
               </div>
               <div
                 onClick={() => {
@@ -423,7 +431,7 @@ const War = () => {
                 <div className="tableInfoGradient--9ec30" />
               </div>
               <div className="innerContainer--9ef9f">
-                <div className="trafficLightContainer--9a485">
+                {/* <div className="trafficLightContainer--9a485">
                   <div
                     className="overlayStatus--ad1a9"
                     data-role="status-container"
@@ -469,7 +477,7 @@ const War = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div className="decisionContainer--85f12">
                   <div
                     className="hidden--6c351"

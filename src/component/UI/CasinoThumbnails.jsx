@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useGetLiveCasinoThumbnailQuery } from "../../redux/features/casino/casino.api";
-import StaticThumbnail from "../shared/StaticThumbnail";
+// import StaticThumbnail from "../shared/StaticThumbnail";
 import { useSound } from "../../context/ApiProvider";
 import { playClick } from "../../utils/sound";
 
@@ -153,7 +153,7 @@ const CasinoThumbnail = ({ title, id, column }) => {
                 </li>
               );
             })}
-            <StaticThumbnail slug="football-dice" name="Football Dice" />
+            {/* <StaticThumbnail slug="football-dice" name="Football Dice" />
             <StaticThumbnail slug="football-studio" name="Football Studio" />
             <StaticThumbnail slug="super-color" name="super-color" />
             <StaticThumbnail slug="war" name="War" />
@@ -161,7 +161,7 @@ const CasinoThumbnail = ({ title, id, column }) => {
             <StaticThumbnail
               slug="dragon-tiger-phoenix"
               name="Dragon Tiger Phoenix"
-            />
+            /> */}
           </ul>
         </div>
       </section>

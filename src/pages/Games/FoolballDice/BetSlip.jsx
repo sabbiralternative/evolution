@@ -217,7 +217,7 @@ const BetSlip = ({
       data-role="game-mobile-layout"
       style={{
         position: transform ? "absolute" : "static",
-        transform: innerWidth < 371 ? "scaleX(0.7)" : "scaleX(0.8)",
+        transform: innerWidth < 371 ? "scale(0.7)" : "scaleX(0.8)",
       }}
     >
       <div
@@ -233,10 +233,10 @@ const BetSlip = ({
           "-awaysaturationshift": 0,
           "-awaybrightnessshift": 0,
           "-diceresultaspectratio": "27%",
-          paddingTop: transform ? "27%" : "0px",
+          paddingTop: transform ? "27%" : "20px",
         }}
       >
-        <div
+        {/* <div
           className={`betSpotsBackground--c37bf  betSpotsBackground--53b7c mobileI11Portrait--fd431 ${
             status === Status.SUSPENDED ? "" : "hidden--145cf"
           }`}
@@ -266,8 +266,8 @@ const BetSlip = ({
               </linearGradient>
             </defs>
           </svg>
-        </div>
-        <div
+        </div> */}
+        {/* <div
           className={`diceResultsDesktopOrPortrait--5f385 diceResults--a3b29 ${
             status === Status.SUSPENDED ? "" : "hidden--145cf"
           }`}
@@ -398,7 +398,7 @@ const BetSlip = ({
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div
           className="betSpotsContainer--862c3"
           style={{ width: "417.1px", height: "156.672px" }}
