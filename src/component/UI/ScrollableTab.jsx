@@ -17,9 +17,9 @@ const ScrollableTab = () => {
         className="ScrollableList--5f4fa CategoryList--4227e"
         style={{ "-categoryListColumnGap": "17px" }}
       >
-        <div aria-hidden="true" className="CategorySideLine--b64f0">
+        {/* <div aria-hidden="true" className="CategorySideLine--b64f0">
           <span />
-        </div>
+        </div> */}
         <li
           className="ScrollableListItem--0b815 CategoryContainer--62d87"
           id="category-navigator-all_games"
