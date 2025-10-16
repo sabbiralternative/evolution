@@ -9,12 +9,12 @@ import ChipContainer from "../../../../component/shared/CommonUIElement/ChipCont
 import { handleDoubleStake } from "../../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../../utils/handleUndoStake";
 import CommonUIElement from "../../../../component/shared/CommonUIElement/CommonUIElement";
-import BetSlip from "../../../Games/Bollywood/BetSlip";
+import BetSlip from "../../../Games/BollywoodA/BetSlip";
 import Timer from "../../../../component/shared/Timer";
-import Winner from "../../../Games/Bollywood/Winner";
+import Winner from "../../../Games/BollywoodA/Winner";
 import History from "./History";
 
-const Bollywood = () => {
+const BollywoodA = () => {
   const { sound } = useSound();
   const [double, setDouble] = useState(false);
   const [animation, setAnimation] = useState([]);
@@ -389,4 +389,4 @@ const Bollywood = () => {
   );
 };
 
-export default Bollywood;
+export default BollywoodA;

@@ -19,7 +19,7 @@ import { playClick } from "../../../utils/sound";
 import { cn } from "../../../utils/cn";
 import RecentWinner from "./RecentWinner";
 
-const Bollywood = () => {
+const BollywoodA = () => {
   const { sound } = useSound();
   const [currentRoundWinAmount, setCurrentRoundWinAmount] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
@@ -864,4 +864,4 @@ const Bollywood = () => {
   );
 };
 
-export default Bollywood;
+export default BollywoodA;

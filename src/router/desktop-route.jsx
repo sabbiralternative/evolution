@@ -3,7 +3,7 @@ import FastGames from "../pages/Desktop/Casino/FastGames";
 import Originals from "../pages/Desktop/Casino/Originals";
 import AmarAkbarAnthonyA from "../pages/Desktop/Games/AmarAkbarAnthonyA/AmarAkbarAnthonyA";
 import Baccarat from "../pages/Desktop/Games/Baccarat/Baccarat";
-import Bollywood from "../pages/Desktop/Games/Bollywood/Bollywood";
+import BollywoodA from "../pages/Desktop/Games/BollywoodA/BollywoodA";
 import DragonTiger from "../pages/Desktop/Games/DragonTiger/DragonTiger";
 import DragonTigerPhoenix from "../pages/Desktop/Games/DragonTigerPhoenix/DragonTigerPhoenix";
 import DreamCatcher from "../pages/Desktop/Games/DreamCatcher/DreamCatcher";
@@ -22,6 +22,7 @@ import Teenpatti from "../pages/Desktop/Casino/Teenpatti";
 import LuckySevenB from "../pages/Desktop/Games/LuckySevenB/LuckySevenB";
 import LuckySevenC from "../pages/Desktop/Games/LuckySevenC/LuckySevenC";
 import AmarAkbarAnthonyB from "../pages/Desktop/Games/AmarAkbarAnthonyB/AmarAkbarAnthonyB";
+import BollywoodB from "../pages/Desktop/Games/BollywoodB/BollywoodB";
 
 export const desktopRoutes = [
   {
@@ -77,8 +78,12 @@ export const desktopRoutes = [
     element: <AmarAkbarAnthonyB />,
   },
   {
-    path: "/game/btable/:eventTypeId/:eventId",
-    element: <Bollywood />,
+    path: "/game/bcasinoa/:eventTypeId/:eventId",
+    element: <BollywoodA />,
+  },
+  {
+    path: "/game/bcasinob/:eventTypeId/:eventId",
+    element: <BollywoodB />,
   },
   {
     path: "/game/roulette/:eventTypeId/:eventId",

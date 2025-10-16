@@ -6,7 +6,6 @@ import LuckySevenA from "../pages/Games/LuckySevenA/LuckySevenA";
 import DragonTiger from "../pages/Games/DragonTiger/DragonTiger";
 import Baccarat from "../pages/Games/Baccarat/Baccarat";
 import AmarAkbarAnthonyA from "../pages/Games/AmarAkbarAnthonyA/AmarAkbarAnthonyA";
-import Bollywood from "../pages/Games/Bollywood/Bollywood";
 import Roullete from "../pages/Games/Roullete/Roullete";
 import Muflis from "../pages/Games/Muflis/Muflis";
 import LightningDice from "../pages/Games/LightningDice/LightningDice";
@@ -22,6 +21,8 @@ import Teenpatti from "../pages/Casino/Teenpatti";
 import LuckySevenB from "../pages/Games/LuckySevenB/LuckySevenB";
 import LuckySevenC from "../pages/Games/LuckySevenC/LuckySevenC";
 import AmarAkbarAnthonyB from "../pages/Games/AmarAkbarAnthonyB/AmarAkbarAnthonyB";
+import BollywoodA from "../pages/Games/BollywoodA/BollywoodA";
+import BollywoodB from "../pages/Games/BollywoodB/BollywoodB";
 
 export const mobileRoutes = [
   {
@@ -78,8 +79,12 @@ export const mobileRoutes = [
     element: <AmarAkbarAnthonyB />,
   },
   {
-    path: "/game/btable/:eventTypeId/:eventId",
-    element: <Bollywood />,
+    path: "/game/bcasinoa/:eventTypeId/:eventId",
+    element: <BollywoodA />,
+  },
+  {
+    path: "/game/bcasinob/:eventTypeId/:eventId",
+    element: <BollywoodB />,
   },
   {
     path: "/game/roulette/:eventTypeId/:eventId",
