@@ -737,6 +737,10 @@ const Search = ({ setShowSearch }) => {
                                   </div>
                                   <div className="BrowseAll--09141">
                                     <button
+                                      onClick={() => {
+                                        navigate("/");
+                                        setShowSearch(false);
+                                      }}
                                       aria-label="button"
                                       className="Button--3be20 colorPrimary--5595c sizeMediumLarge--782fe variantContained--c1d90 BrowseAllButton--feac6"
                                       data-role="browse-all-button"
