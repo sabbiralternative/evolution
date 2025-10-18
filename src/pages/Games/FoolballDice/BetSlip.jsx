@@ -217,7 +217,12 @@ const BetSlip = ({
       data-role="game-mobile-layout"
       style={{
         position: transform ? "absolute" : "static",
-        transform: innerWidth < 371 ? "scale(0.7)" : "scaleX(0.8)",
+        transform:
+          innerWidth < 371
+            ? "scale(0.7)"
+            : innerWidth < 400
+            ? "scale(0.8)"
+            : "scale(0.9)",
       }}
     >
       <div
