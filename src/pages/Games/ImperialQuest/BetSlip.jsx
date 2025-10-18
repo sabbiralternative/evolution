@@ -217,7 +217,16 @@ const BetSlip = ({
   return (
     <div
       className="bettingGrid--9427e"
-      style={{ position: transform ? "absolute" : "static" }}
+      style={{
+        position: transform ? "absolute" : "static",
+        transform: transform
+          ? innerWidth < 371
+            ? "scale(0.7)"
+            : innerWidth < 400
+            ? "scale(0.8)"
+            : "scale(0.9)"
+          : "none",
+      }}
     >
       <div>
         <div className="gameResult--fc618">
