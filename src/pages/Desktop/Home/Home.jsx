@@ -11,6 +11,7 @@ const Home = () => {
   const top_picks = data?.top_picks;
   const casinos_choice = data?.casinos_choice;
   const top_games = data?.top_games;
+
   return (
     <div
       id="root"
