@@ -25,6 +25,7 @@ import AmarAkbarAnthonyB from "../pages/Desktop/Games/AmarAkbarAnthonyB/AmarAkba
 import BollywoodB from "../pages/Desktop/Games/BollywoodB/BollywoodB";
 import Roulette from "../pages/Desktop/Casino/Roulette";
 import TwoCardsTP from "../pages/Desktop/Games/TwoCardsTP/TwoCardsTP";
+import LuckySixA from "../pages/Desktop/Games/LuckySixA/LuckySixA";
 
 export const desktopRoutes = [
   {
@@ -66,6 +67,10 @@ export const desktopRoutes = [
   {
     path: "/game/lucky7c/:eventTypeId/:eventId",
     element: <LuckySevenC />,
+  },
+  {
+    path: "/game/lucky6a/:eventTypeId/:eventId",
+    element: <LuckySixA />,
   },
   {
     path: "/game/dt20/:eventTypeId/:eventId",

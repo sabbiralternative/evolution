@@ -25,6 +25,7 @@ import BollywoodA from "../pages/Games/BollywoodA/BollywoodA";
 import BollywoodB from "../pages/Games/BollywoodB/BollywoodB";
 import Roulette from "../pages/Casino/Roulette";
 import TwoCardsTP from "../pages/Games/TwoCardsTP/TwoCardsTP";
+import LuckySixA from "../pages/Games/LuckySixA/LuckySixA";
 
 export const mobileRoutes = [
   {
@@ -67,6 +68,10 @@ export const mobileRoutes = [
   {
     path: "/game/lucky7c/:eventTypeId/:eventId",
     element: <LuckySevenC />,
+  },
+  {
+    path: "/game/lucky6a/:eventTypeId/:eventId",
+    element: <LuckySixA />,
   },
   {
     path: "/game/dt20/:eventTypeId/:eventId",
