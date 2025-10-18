@@ -338,7 +338,7 @@ const FootballDice = () => {
                   style={{
                     transform: "scaleX(1.4) scaleY(1.1)",
                     transformOrigin: "center",
-                    marginTop: "40px",
+                    marginTop: "70px",
                   }}
                 >
                   <BetSlip
