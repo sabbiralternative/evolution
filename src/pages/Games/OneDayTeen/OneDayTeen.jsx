@@ -16,7 +16,7 @@ import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
 
-const Muflis = () => {
+const OneDayTeen = () => {
   const { sound } = useSound();
   const [showMenu, setShowMenu] = useState(false);
   const [double, setDouble] = useState(false);
@@ -554,4 +554,4 @@ const Muflis = () => {
   );
 };
 
-export default Muflis;
+export default OneDayTeen;

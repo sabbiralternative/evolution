@@ -6,11 +6,10 @@ import Baccarat from "../pages/Desktop/Games/Baccarat/Baccarat";
 import BollywoodA from "../pages/Desktop/Games/BollywoodA/BollywoodA";
 import DragonTiger from "../pages/Desktop/Games/DragonTiger/DragonTiger";
 import DragonTigerPhoenix from "../pages/Desktop/Games/DragonTigerPhoenix/DragonTigerPhoenix";
-import DreamCatcher from "../pages/Desktop/Games/DreamCatcher/DreamCatcher";
+
 import FootballDice from "../pages/Desktop/Games/FoolballDice/FootballDice";
 import FootballStudio from "../pages/Desktop/Games/FoolballStudio/FootballStudio";
 import ImperialQuest from "../pages/Desktop/Games/ImperialQuest/ImperialQuest";
-import LightningDice from "../pages/Desktop/Games/LightningDice/LightningDice";
 import LuckySevenA from "../pages/Desktop/Games/LuckySevenA/LuckySevenA";
 import Muflis from "../pages/Desktop/Games/Muflis/Muflis";
 import Roullete from "../pages/Desktop/Games/Roullete/Roullete";
@@ -26,6 +25,8 @@ import BollywoodB from "../pages/Desktop/Games/BollywoodB/BollywoodB";
 import Roulette from "../pages/Desktop/Casino/Roulette";
 import TwoCardsTP from "../pages/Desktop/Games/TwoCardsTP/TwoCardsTP";
 import LuckySixA from "../pages/Desktop/Games/LuckySixA/LuckySixA";
+import TeenTwenty from "../pages/Desktop/Games/TeenTwenty/TeenTwenty";
+import OneDayTeen from "../pages/Desktop/Games/OneDayTeen/OneDayTeen";
 
 export const desktopRoutes = [
   {
@@ -106,11 +107,11 @@ export const desktopRoutes = [
   },
   {
     path: "/game/teen20/:eventTypeId/:eventId",
-    element: <DreamCatcher />,
+    element: <TeenTwenty />,
   },
   {
     path: "/game/teen/:eventTypeId/:eventId",
-    element: <LightningDice />,
+    element: <OneDayTeen />,
   },
   {
     path: "/game/footballdice/:eventTypeId/:eventId",

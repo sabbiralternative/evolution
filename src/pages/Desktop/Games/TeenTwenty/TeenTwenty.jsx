@@ -9,10 +9,10 @@ import ChipContainer from "../../../../component/shared/CommonUIElement/ChipCont
 import { handleDoubleStake } from "../../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../../utils/handleUndoStake";
 import CommonUIElement from "../../../../component/shared/CommonUIElement/CommonUIElement";
-import BetSlip from "../../../Games/LightningDice/BetSlip";
+import BetSlip from "../../../Games/TwoCardsTP/BetSlip";
 import Timer from "../../../../component/shared/Timer";
 
-const LightningDice = () => {
+const TeenTwenty = () => {
   const { sound } = useSound();
   const [double, setDouble] = useState(false);
   const [animation, setAnimation] = useState([]);
@@ -336,9 +336,9 @@ const LightningDice = () => {
                 <div
                   className="bettingGrid--190e8"
                   style={{
-                    transform: "scaleX(3) scaleY(1.4)",
+                    transform: "scaleX(1.4) scaleY(1.1)",
                     transformOrigin: "center",
-                    paddingTop: "10px",
+                    marginTop: "40px",
                   }}
                 >
                   <BetSlip
@@ -380,4 +380,4 @@ const LightningDice = () => {
   );
 };
 
-export default LightningDice;
+export default TeenTwenty;

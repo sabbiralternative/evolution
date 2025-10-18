@@ -9,10 +9,10 @@ import ChipContainer from "../../../../component/shared/CommonUIElement/ChipCont
 import { handleDoubleStake } from "../../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../../utils/handleUndoStake";
 import CommonUIElement from "../../../../component/shared/CommonUIElement/CommonUIElement";
-import BetSlip from "../../../Games/DreamCatcher/BetSlip";
+import BetSlip from "../../../Games/TwoCardsTP/BetSlip";
 import Timer from "../../../../component/shared/Timer";
 
-const DreamCatcher = () => {
+const OneDayTeen = () => {
   const { sound } = useSound();
   const [double, setDouble] = useState(false);
   const [animation, setAnimation] = useState([]);
@@ -332,15 +332,13 @@ const DreamCatcher = () => {
                 transition: "transform 0.5s ease-in-out",
               }}
             >
-              <div
-                className="classicOverlay--fde0a"
-                style={{ alignItems: "start" }}
-              >
+              <div className="classicOverlay--fde0a">
                 <div
                   className="bettingGrid--190e8"
                   style={{
-                    transform: "scaleX(1.4) scaleY(0.7)",
-                    transformOrigin: "top",
+                    transform: "scaleX(1.4) scaleY(1.1)",
+                    transformOrigin: "center",
+                    marginTop: "40px",
                   }}
                 >
                   <BetSlip
@@ -354,7 +352,6 @@ const DreamCatcher = () => {
                     setStakeState={setStakeState}
                     data={data?.result}
                     status={firstEvent?.status}
-                    transform={false}
                   />
                 </div>
               </div>
@@ -383,4 +380,4 @@ const DreamCatcher = () => {
   );
 };
 
-export default DreamCatcher;
+export default OneDayTeen;

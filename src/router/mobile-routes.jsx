@@ -7,9 +7,6 @@ import DragonTiger from "../pages/Games/DragonTiger/DragonTiger";
 import Baccarat from "../pages/Games/Baccarat/Baccarat";
 import AmarAkbarAnthonyA from "../pages/Games/AmarAkbarAnthonyA/AmarAkbarAnthonyA";
 import Roullete from "../pages/Games/Roullete/Roullete";
-import Muflis from "../pages/Games/Muflis/Muflis";
-import LightningDice from "../pages/Games/LightningDice/LightningDice";
-import DreamCatcher from "../pages/Games/DreamCatcher/DreamCatcher";
 import FootballDice from "../pages/Games/FoolballDice/FootballDice";
 import FootballStudio from "../pages/Games/FoolballStudio/FootballStudio";
 import SuperColor from "../pages/Games/SuperColor/SuperColor";
@@ -26,6 +23,9 @@ import BollywoodB from "../pages/Games/BollywoodB/BollywoodB";
 import Roulette from "../pages/Casino/Roulette";
 import TwoCardsTP from "../pages/Games/TwoCardsTP/TwoCardsTP";
 import LuckySixA from "../pages/Games/LuckySixA/LuckySixA";
+import TeenTwenty from "../pages/Games/TeenTwenty/TeenTwenty";
+import Muflis from "../pages/Games/Muflis/Muflis";
+import OneDayTeen from "../pages/Games/OneDayTeen/OneDayTeen";
 
 export const mobileRoutes = [
   {
@@ -107,11 +107,11 @@ export const mobileRoutes = [
   },
   {
     path: "/game/teen20/:eventTypeId/:eventId",
-    element: <DreamCatcher />,
+    element: <TeenTwenty />,
   },
   {
     path: "/game/teen/:eventTypeId/:eventId",
-    element: <LightningDice />,
+    element: <OneDayTeen />,
   },
   {
     path: "/game/footballdice/:eventTypeId/:eventId",
