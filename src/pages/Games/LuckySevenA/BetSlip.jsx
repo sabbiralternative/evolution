@@ -11,8 +11,6 @@ import { playPlaceChip, playSuspendedSound } from "../../../utils/sound";
 import { useSound } from "../../../context/ApiProvider";
 import { useParams } from "react-router-dom";
 import { handleStoreRecentPlay } from "../../../utils/handleStorateRecentPlay";
-import Winner from "./Winner";
-// import { RoadPrediction } from "./RoadPrediction";
 
 const BetSlip = ({
   double,
@@ -364,149 +362,6 @@ const BetSlip = ({
                   7 Down
                 </div>
               </div>
-              {/* <div className="liveStatisticsContainer--fc00f">
-                <div
-                  className="liveStatistics--951fa LeftSpot--cfe31 isPortrait--b2a22"
-                  data-role="betting-stats"
-                  data-total-wager="92,439.39"
-                  data-total-bettors={42}
-                  data-currency-symbol="₹"
-                  style={{ color: "rgb(0, 150, 255)" }}
-                >
-                  <div className="currency--abe5b">
-                    <span className="symbol--08ff1">₹</span>
-                    <span>92,439.39</span>
-                  </div>
-                  <div className="count--17131">
-                    <span className="symbol--08ff1">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="100%"
-                        height="100%"
-                        viewBox="0 0 8 12"
-                      >
-                        <g fill="#0096FF" fillRule="evenodd">
-                          <circle cx={4} cy={3} r={3} />
-                          <path d="M4 6c2.21 0 4 1.151 4 2.571V12H0V8.571l.006-.14C.12 7.075 1.864 6 4 6z" />
-                        </g>
-                      </svg>
-                    </span>
-                    <span>42</span>
-                  </div>
-                </div>
-              </div> */}
-              {/* <div className="bettingStatistics--1bd62">
-                <svg
-                  data-total-percent={20}
-                  width={108}
-                  height={108}
-                  viewBox="0 0 108 108"
-                >
-                  <defs>
-                    <linearGradient
-                      x1="50%"
-                      y1="0%"
-                      x2="50%"
-                      y2="100%"
-                      id="background_Player0.9441224087490725_id_gradient"
-                    >
-                      <stop stopColor="#000" stopOpacity="0.7" offset="0%" />
-                      <stop stopColor="#000" stopOpacity={0} offset="100%" />
-                    </linearGradient>
-                  </defs>
-                  <circle
-                    cx={54}
-                    cy={54}
-                    r={54}
-                    fill="url(#background_Player0.9441224087490725_id_gradient)"
-                  />
-                  <circle
-                    cx={54}
-                    cy={54}
-                    r={50}
-                    strokeWidth={8}
-                    fill="none"
-                    stroke="#0096FF"
-                    strokeOpacity="0.1"
-                  />
-                  <circle
-                    cx={54}
-                    cy={54}
-                    r={50}
-                    strokeWidth={8}
-                    fill="none"
-                    stroke="#0096FF"
-                    strokeDashoffset="251.32741228718348"
-                    strokeDasharray="314.1592653589793"
-                    transform="rotate(-90 54 54)"
-                    style={{
-                      transition: "stroke-dashoffset 500ms",
-                    }}
-                  />
-                </svg>
-                <span
-                  className="indicatorPercentage--ac6cf"
-                  style={{ color: "rgb(0, 150, 255)" }}
-                >
-                  20%
-                </span>
-              </div> */}
-              <div className="chipContainer--9cdca">
-                <div className="isPortrait--96aa8 mediumChip--83319 chipSize--1811f">
-                  <div
-                    data-is-chip-visible="false"
-                    className="hidden--f4c2b interactable--180c0 chip--618c4"
-                  >
-                    <div
-                      className="chip--29b81 shadow--24a83 cover--6df8f"
-                      data-role="chip"
-                      data-value={0}
-                    >
-                      <svg
-                        viewBox="0 0 78 78"
-                        className="graphics--22cbe"
-                        data-role="default-svg"
-                        style={{
-                          color: "rgb(146, 146, 146)",
-                        }}
-                      >
-                        <g>
-                          <circle
-                            className="paint--13ff6"
-                            cx="39.019"
-                            cy="38.999"
-                            r="38.5"
-                          />
-                          <path
-                            className="body--369ee"
-                            d="M38.94 12.5A26.5 26.5 0 1 0 65.44 39a26.529 26.529 0 0 0-26.5-26.5zm0 52A25.5 25.5 0 1 1 64.439 39 25.53 25.53 0 0 1 38.94 64.5z"
-                          />
-                          <circle
-                            className="textBackground--84c26"
-                            cx={39}
-                            cy="38.997"
-                            r="25.5"
-                          />
-                          <path
-                            className="body--369ee"
-                            d="M38.941 0a39 39 0 1 0 39 39 39.046 39.046 0 0 0-39-39zm-2.088 76.439l.483-8.471a28.99 28.99 0 0 1-4.668-.639l-1.783 8.291a37.277 37.277 0 0 1-12.144-5.051l4.6-7.124a29.143 29.143 0 0 1-8.85-8.851l-7.124 4.6a37.28 37.28 0 0 1-5.045-12.13l8.3-1.784a28.99 28.99 0 0 1-.639-4.668l-8.483.482C1.463 40.4 1.44 39.7 1.44 39s.023-1.391.061-2.08l8.478.483a28.99 28.99 0 0 1 .639-4.668l-8.3-1.785a37.275 37.275 0 0 1 5.047-12.142l7.126 4.6a29.143 29.143 0 0 1 8.85-8.851l-4.6-7.125a37.28 37.28 0 0 1 12.142-5.05l1.786 8.3a28.99 28.99 0 0 1 4.668-.639l-.483-8.484c.692-.038 1.388-.061 2.089-.061s1.4.023 2.087.061l-.483 8.484a28.99 28.99 0 0 1 4.668.639L47 2.381a37.276 37.276 0 0 1 12.14 5.05l-4.6 7.126a29.14 29.14 0 0 1 8.849 8.85l7.127-4.6a37.276 37.276 0 0 1 5.044 12.142l-8.3 1.785a28.99 28.99 0 0 1 .64 4.666l8.478-.483c.038.689.061 1.382.061 2.08s-.023 1.4-.062 2.1l-8.477-.486a28.99 28.99 0 0 1-.639 4.668l8.3 1.784a37.282 37.282 0 0 1-5.046 12.132l-7.125-4.6a29.14 29.14 0 0 1-8.849 8.85l4.6 7.125A37.275 37.275 0 0 1 47 75.619l-1.783-8.291a28.99 28.99 0 0 1-4.668.639l.483 8.471c-.691.038-1.386.061-2.087.061s-1.401-.022-2.092-.06z"
-                          />
-                        </g>
-                        <text
-                          className="value--ebf30"
-                          x="50%"
-                          y="50%"
-                          fontSize={30}
-                          dy={10}
-                          data-role="chip-value"
-                        >
-                          0
-                        </text>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
             <div
               onClick={() =>
@@ -627,149 +482,6 @@ const BetSlip = ({
                   7 Up
                 </div>
               </div>
-              {/* <div className="liveStatisticsContainer--fc00f">
-                <div
-                  className="liveStatistics--951fa RightSpot--29540 isPortrait--b2a22 medium--0dfff"
-                  data-role="betting-stats"
-                  data-total-wager="347,866.70"
-                  data-total-bettors={139}
-                  data-currency-symbol="₹"
-                  style={{ color: "rgb(255, 0, 6)" }}
-                >
-                  <div className="currency--abe5b">
-                    <span className="symbol--08ff1">₹</span>
-                    <span>347,866.70</span>
-                  </div>
-                  <div className="count--17131">
-                    <span className="symbol--08ff1">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="100%"
-                        height="100%"
-                        viewBox="0 0 8 12"
-                      >
-                        <g fill="#FF0006" fillRule="evenodd">
-                          <circle cx={4} cy={3} r={3} />
-                          <path d="M4 6c2.21 0 4 1.151 4 2.571V12H0V8.571l.006-.14C.12 7.075 1.864 6 4 6z" />
-                        </g>
-                      </svg>
-                    </span>
-                    <span>139</span>
-                  </div>
-                </div>
-              </div>
-              <div className="bettingStatistics--1bd62">
-                <svg
-                  data-total-percent={76}
-                  width={108}
-                  height={108}
-                  viewBox="0 0 108 108"
-                >
-                  <defs>
-                    <linearGradient
-                      x1="50%"
-                      y1="0%"
-                      x2="50%"
-                      y2="100%"
-                      id="background_Banker0.8946531488189704_id_gradient"
-                    >
-                      <stop stopColor="#000" stopOpacity="0.7" offset="0%" />
-                      <stop stopColor="#000" stopOpacity={0} offset="100%" />
-                    </linearGradient>
-                  </defs>
-                  <circle
-                    cx={54}
-                    cy={54}
-                    r={54}
-                    fill="url(#background_Banker0.8946531488189704_id_gradient)"
-                  />
-                  <circle
-                    cx={54}
-                    cy={54}
-                    r={50}
-                    strokeWidth={8}
-                    fill="none"
-                    stroke="#FF0006"
-                    strokeOpacity="0.1"
-                  />
-                  <circle
-                    cx={54}
-                    cy={54}
-                    r={50}
-                    strokeWidth={8}
-                    fill="none"
-                    stroke="#FF0006"
-                    strokeDashoffset="75.39822368615503"
-                    strokeDasharray="314.1592653589793"
-                    transform="rotate(-90 54 54)"
-                    style={{
-                      transition: "stroke-dashoffset 500ms",
-                    }}
-                  />
-                </svg>
-                <span
-                  className="indicatorPercentage--ac6cf"
-                  style={{ color: "rgb(255, 0, 6)" }}
-                >
-                  76%
-                </span>
-              </div>
-              <div className="chipContainer--9cdca">
-                <div className="isPortrait--96aa8 mediumChip--83319 chipSize--1811f">
-                  <div
-                    data-is-chip-visible="false"
-                    className="hidden--f4c2b interactable--180c0 chip--618c4"
-                  >
-                    <div
-                      className="chip--29b81 shadow--24a83 cover--6df8f"
-                      data-role="chip"
-                      data-value={0}
-                    >
-                      <svg
-                        viewBox="0 0 78 78"
-                        className="graphics--22cbe"
-                        data-role="default-svg"
-                        style={{
-                          color: "rgb(146, 146, 146)",
-                        }}
-                      >
-                        <g>
-                          <circle
-                            className="paint--13ff6"
-                            cx="39.019"
-                            cy="38.999"
-                            r="38.5"
-                          />
-                          <path
-                            className="body--369ee"
-                            d="M38.94 12.5A26.5 26.5 0 1 0 65.44 39a26.529 26.529 0 0 0-26.5-26.5zm0 52A25.5 25.5 0 1 1 64.439 39 25.53 25.53 0 0 1 38.94 64.5z"
-                          />
-                          <circle
-                            className="textBackground--84c26"
-                            cx={39}
-                            cy="38.997"
-                            r="25.5"
-                          />
-                          <path
-                            className="body--369ee"
-                            d="M38.941 0a39 39 0 1 0 39 39 39.046 39.046 0 0 0-39-39zm-2.088 76.439l.483-8.471a28.99 28.99 0 0 1-4.668-.639l-1.783 8.291a37.277 37.277 0 0 1-12.144-5.051l4.6-7.124a29.143 29.143 0 0 1-8.85-8.851l-7.124 4.6a37.28 37.28 0 0 1-5.045-12.13l8.3-1.784a28.99 28.99 0 0 1-.639-4.668l-8.483.482C1.463 40.4 1.44 39.7 1.44 39s.023-1.391.061-2.08l8.478.483a28.99 28.99 0 0 1 .639-4.668l-8.3-1.785a37.275 37.275 0 0 1 5.047-12.142l7.126 4.6a29.143 29.143 0 0 1 8.85-8.851l-4.6-7.125a37.28 37.28 0 0 1 12.142-5.05l1.786 8.3a28.99 28.99 0 0 1 4.668-.639l-.483-8.484c.692-.038 1.388-.061 2.089-.061s1.4.023 2.087.061l-.483 8.484a28.99 28.99 0 0 1 4.668.639L47 2.381a37.276 37.276 0 0 1 12.14 5.05l-4.6 7.126a29.14 29.14 0 0 1 8.849 8.85l7.127-4.6a37.276 37.276 0 0 1 5.044 12.142l-8.3 1.785a28.99 28.99 0 0 1 .64 4.666l8.478-.483c.038.689.061 1.382.061 2.08s-.023 1.4-.062 2.1l-8.477-.486a28.99 28.99 0 0 1-.639 4.668l8.3 1.784a37.282 37.282 0 0 1-5.046 12.132l-7.125-4.6a29.14 29.14 0 0 1-8.849 8.85l4.6 7.125A37.275 37.275 0 0 1 47 75.619l-1.783-8.291a28.99 28.99 0 0 1-4.668.639l.483 8.471c-.691.038-1.386.061-2.087.061s-1.401-.022-2.092-.06z"
-                          />
-                        </g>
-                        <text
-                          className="value--ebf30"
-                          x="50%"
-                          y="50%"
-                          fontSize={30}
-                          dy={10}
-                          data-role="chip-value"
-                        >
-                          0
-                        </text>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
             </div>
             <div
               onClick={() =>
@@ -890,149 +602,6 @@ const BetSlip = ({
                 </div>
                 <div className="payoutContainer--a32db"> </div>
               </div>
-              {/* <div className="liveStatisticsContainer--fc00f">
-                <div
-                  className="liveStatistics--951fa Tie--9449f horizontal--dc92b isPortrait--b2a22"
-                  data-role="betting-stats"
-                  data-total-wager="18,188.65"
-                  data-total-bettors={47}
-                  data-currency-symbol="₹"
-                  style={{ color: "rgb(0, 255, 0)" }}
-                >
-                  <div className="currency--abe5b">
-                    <span className="symbol--08ff1">₹</span>
-                    <span>18,188.65</span>
-                  </div>
-                  <div className="count--17131">
-                    <span className="symbol--08ff1">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="100%"
-                        height="100%"
-                        viewBox="0 0 8 12"
-                      >
-                        <g fill="#00FF00" fillRule="evenodd">
-                          <circle cx={4} cy={3} r={3} />
-                          <path d="M4 6c2.21 0 4 1.151 4 2.571V12H0V8.571l.006-.14C.12 7.075 1.864 6 4 6z" />
-                        </g>
-                      </svg>
-                    </span>
-                    <span>47</span>
-                  </div>
-                </div>
-              </div>
-              <div className="bettingStatistics--1bd62">
-                <svg
-                  data-total-percent={4}
-                  width={108}
-                  height={108}
-                  viewBox="0 0 108 108"
-                >
-                  <defs>
-                    <linearGradient
-                      x1="50%"
-                      y1="0%"
-                      x2="50%"
-                      y2="100%"
-                      id="background_Tie0.37193448220955583_id_gradient"
-                    >
-                      <stop stopColor="#000" stopOpacity="0.7" offset="0%" />
-                      <stop stopColor="#000" stopOpacity={0} offset="100%" />
-                    </linearGradient>
-                  </defs>
-                  <circle
-                    cx={54}
-                    cy={54}
-                    r={54}
-                    fill="url(#background_Tie0.37193448220955583_id_gradient)"
-                  />
-                  <circle
-                    cx={54}
-                    cy={54}
-                    r={50}
-                    strokeWidth={8}
-                    fill="none"
-                    stroke="#00FF00"
-                    strokeOpacity="0.1"
-                  />
-                  <circle
-                    cx={54}
-                    cy={54}
-                    r={50}
-                    strokeWidth={8}
-                    fill="none"
-                    stroke="#00FF00"
-                    strokeDashoffset="301.59289474462014"
-                    strokeDasharray="314.1592653589793"
-                    transform="rotate(-90 54 54)"
-                    style={{
-                      transition: "stroke-dashoffset 500ms",
-                    }}
-                  />
-                </svg>
-                <span
-                  className="indicatorPercentage--ac6cf"
-                  style={{ color: "rgb(0, 255, 0)" }}
-                >
-                  4%
-                </span>
-              </div>
-              <div className="chipContainer--9cdca">
-                <div className="isPortrait--96aa8 mediumChip--83319 chipSize--1811f">
-                  <div
-                    data-is-chip-visible="false"
-                    className="hidden--f4c2b interactable--180c0 chip--618c4"
-                  >
-                    <div
-                      className="chip--29b81 shadow--24a83 cover--6df8f"
-                      data-role="chip"
-                      data-value={0}
-                    >
-                      <svg
-                        viewBox="0 0 78 78"
-                        className="graphics--22cbe"
-                        data-role="default-svg"
-                        style={{
-                          color: "rgb(146, 146, 146)",
-                        }}
-                      >
-                        <g>
-                          <circle
-                            className="paint--13ff6"
-                            cx="39.019"
-                            cy="38.999"
-                            r="38.5"
-                          />
-                          <path
-                            className="body--369ee"
-                            d="M38.94 12.5A26.5 26.5 0 1 0 65.44 39a26.529 26.529 0 0 0-26.5-26.5zm0 52A25.5 25.5 0 1 1 64.439 39 25.53 25.53 0 0 1 38.94 64.5z"
-                          />
-                          <circle
-                            className="textBackground--84c26"
-                            cx={39}
-                            cy="38.997"
-                            r="25.5"
-                          />
-                          <path
-                            className="body--369ee"
-                            d="M38.941 0a39 39 0 1 0 39 39 39.046 39.046 0 0 0-39-39zm-2.088 76.439l.483-8.471a28.99 28.99 0 0 1-4.668-.639l-1.783 8.291a37.277 37.277 0 0 1-12.144-5.051l4.6-7.124a29.143 29.143 0 0 1-8.85-8.851l-7.124 4.6a37.28 37.28 0 0 1-5.045-12.13l8.3-1.784a28.99 28.99 0 0 1-.639-4.668l-8.483.482C1.463 40.4 1.44 39.7 1.44 39s.023-1.391.061-2.08l8.478.483a28.99 28.99 0 0 1 .639-4.668l-8.3-1.785a37.275 37.275 0 0 1 5.047-12.142l7.126 4.6a29.143 29.143 0 0 1 8.85-8.851l-4.6-7.125a37.28 37.28 0 0 1 12.142-5.05l1.786 8.3a28.99 28.99 0 0 1 4.668-.639l-.483-8.484c.692-.038 1.388-.061 2.089-.061s1.4.023 2.087.061l-.483 8.484a28.99 28.99 0 0 1 4.668.639L47 2.381a37.276 37.276 0 0 1 12.14 5.05l-4.6 7.126a29.14 29.14 0 0 1 8.849 8.85l7.127-4.6a37.276 37.276 0 0 1 5.044 12.142l-8.3 1.785a28.99 28.99 0 0 1 .64 4.666l8.478-.483c.038.689.061 1.382.061 2.08s-.023 1.4-.062 2.1l-8.477-.486a28.99 28.99 0 0 1-.639 4.668l8.3 1.784a37.282 37.282 0 0 1-5.046 12.132l-7.125-4.6a29.14 29.14 0 0 1-8.849 8.85l4.6 7.125A37.275 37.275 0 0 1 47 75.619l-1.783-8.291a28.99 28.99 0 0 1-4.668.639l.483 8.471c-.691.038-1.386.061-2.087.061s-1.401-.022-2.092-.06z"
-                          />
-                        </g>
-                        <text
-                          className="value--ebf30"
-                          x="50%"
-                          y="50%"
-                          fontSize={30}
-                          dy={10}
-                          data-role="chip-value"
-                        >
-                          0
-                        </text>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>  */}
             </div>
           </div>
           <div
@@ -1065,7 +634,7 @@ const BetSlip = ({
               <svg
                 className={cn(
                   `svg--7e996 svgBetspot--43e31 rectShape--a9f3a `,
-                  isRunnerWinner(data, 1, 0) && "animate--6c17d  win--e65a1",
+                  isRunnerWinner(data, 1, 0) && "animate-win",
                   stakeState.even.show && "hasBet--8e3d4"
                 )}
                 preserveAspectRatio="none"
@@ -1139,62 +708,6 @@ const BetSlip = ({
                   x{getBackPrice(data, 1, 0)}
                 </span>
               </div>
-              <div className="chipContainer--9cdca">
-                <div className="isPortrait--96aa8 mediumChip--83319 chipSize--1811f">
-                  <div
-                    data-is-chip-visible="false"
-                    className="hidden--f4c2b interactable--180c0 chip--618c4"
-                  >
-                    <div
-                      className="chip--29b81 shadow--24a83 cover--6df8f"
-                      data-role="chip"
-                      data-value={0}
-                    >
-                      <svg
-                        viewBox="0 0 78 78"
-                        className="graphics--22cbe"
-                        data-role="default-svg"
-                        style={{
-                          color: "rgb(146, 146, 146)",
-                        }}
-                      >
-                        <g>
-                          <circle
-                            className="paint--13ff6"
-                            cx="39.019"
-                            cy="38.999"
-                            r="38.5"
-                          />
-                          <path
-                            className="body--369ee"
-                            d="M38.94 12.5A26.5 26.5 0 1 0 65.44 39a26.529 26.529 0 0 0-26.5-26.5zm0 52A25.5 25.5 0 1 1 64.439 39 25.53 25.53 0 0 1 38.94 64.5z"
-                          />
-                          <circle
-                            className="textBackground--84c26"
-                            cx={39}
-                            cy="38.997"
-                            r="25.5"
-                          />
-                          <path
-                            className="body--369ee"
-                            d="M38.941 0a39 39 0 1 0 39 39 39.046 39.046 0 0 0-39-39zm-2.088 76.439l.483-8.471a28.99 28.99 0 0 1-4.668-.639l-1.783 8.291a37.277 37.277 0 0 1-12.144-5.051l4.6-7.124a29.143 29.143 0 0 1-8.85-8.851l-7.124 4.6a37.28 37.28 0 0 1-5.045-12.13l8.3-1.784a28.99 28.99 0 0 1-.639-4.668l-8.483.482C1.463 40.4 1.44 39.7 1.44 39s.023-1.391.061-2.08l8.478.483a28.99 28.99 0 0 1 .639-4.668l-8.3-1.785a37.275 37.275 0 0 1 5.047-12.142l7.126 4.6a29.143 29.143 0 0 1 8.85-8.851l-4.6-7.125a37.28 37.28 0 0 1 12.142-5.05l1.786 8.3a28.99 28.99 0 0 1 4.668-.639l-.483-8.484c.692-.038 1.388-.061 2.089-.061s1.4.023 2.087.061l-.483 8.484a28.99 28.99 0 0 1 4.668.639L47 2.381a37.276 37.276 0 0 1 12.14 5.05l-4.6 7.126a29.14 29.14 0 0 1 8.849 8.85l7.127-4.6a37.276 37.276 0 0 1 5.044 12.142l-8.3 1.785a28.99 28.99 0 0 1 .64 4.666l8.478-.483c.038.689.061 1.382.061 2.08s-.023 1.4-.062 2.1l-8.477-.486a28.99 28.99 0 0 1-.639 4.668l8.3 1.784a37.282 37.282 0 0 1-5.046 12.132l-7.125-4.6a29.14 29.14 0 0 1-8.849 8.85l4.6 7.125A37.275 37.275 0 0 1 47 75.619l-1.783-8.291a28.99 28.99 0 0 1-4.668.639l.483 8.471c-.691.038-1.386.061-2.087.061s-1.401-.022-2.092-.06z"
-                          />
-                        </g>
-                        <text
-                          className="value--ebf30"
-                          x="50%"
-                          y="50%"
-                          fontSize={30}
-                          dy={10}
-                          data-role="chip-value"
-                        >
-                          0
-                        </text>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
           <div
@@ -1227,7 +740,7 @@ const BetSlip = ({
               <svg
                 className={cn(
                   `svg--7e996 svgBetspot--43e31 isMirrored--d9896 rectShape--a9f3a `,
-                  isRunnerWinner(data, 1, 1) && "animate--6c17d  win--e65a1",
+                  isRunnerWinner(data, 1, 1) && "animate-win",
                   stakeState.odd.show && "hasBet--8e3d4"
                 )}
                 preserveAspectRatio="none"
@@ -1301,62 +814,6 @@ const BetSlip = ({
                   x{getBackPrice(data, 1, 1)}
                 </span>
               </div>
-              <div className="chipContainer--9cdca">
-                <div className="isPortrait--96aa8 mediumChip--83319 chipSize--1811f">
-                  <div
-                    data-is-chip-visible="false"
-                    className="hidden--f4c2b interactable--180c0 chip--618c4"
-                  >
-                    <div
-                      className="chip--29b81 shadow--24a83 cover--6df8f"
-                      data-role="chip"
-                      data-value={0}
-                    >
-                      <svg
-                        viewBox="0 0 78 78"
-                        className="graphics--22cbe"
-                        data-role="default-svg"
-                        style={{
-                          color: "rgb(146, 146, 146)",
-                        }}
-                      >
-                        <g>
-                          <circle
-                            className="paint--13ff6"
-                            cx="39.019"
-                            cy="38.999"
-                            r="38.5"
-                          />
-                          <path
-                            className="body--369ee"
-                            d="M38.94 12.5A26.5 26.5 0 1 0 65.44 39a26.529 26.529 0 0 0-26.5-26.5zm0 52A25.5 25.5 0 1 1 64.439 39 25.53 25.53 0 0 1 38.94 64.5z"
-                          />
-                          <circle
-                            className="textBackground--84c26"
-                            cx={39}
-                            cy="38.997"
-                            r="25.5"
-                          />
-                          <path
-                            className="body--369ee"
-                            d="M38.941 0a39 39 0 1 0 39 39 39.046 39.046 0 0 0-39-39zm-2.088 76.439l.483-8.471a28.99 28.99 0 0 1-4.668-.639l-1.783 8.291a37.277 37.277 0 0 1-12.144-5.051l4.6-7.124a29.143 29.143 0 0 1-8.85-8.851l-7.124 4.6a37.28 37.28 0 0 1-5.045-12.13l8.3-1.784a28.99 28.99 0 0 1-.639-4.668l-8.483.482C1.463 40.4 1.44 39.7 1.44 39s.023-1.391.061-2.08l8.478.483a28.99 28.99 0 0 1 .639-4.668l-8.3-1.785a37.275 37.275 0 0 1 5.047-12.142l7.126 4.6a29.143 29.143 0 0 1 8.85-8.851l-4.6-7.125a37.28 37.28 0 0 1 12.142-5.05l1.786 8.3a28.99 28.99 0 0 1 4.668-.639l-.483-8.484c.692-.038 1.388-.061 2.089-.061s1.4.023 2.087.061l-.483 8.484a28.99 28.99 0 0 1 4.668.639L47 2.381a37.276 37.276 0 0 1 12.14 5.05l-4.6 7.126a29.14 29.14 0 0 1 8.849 8.85l7.127-4.6a37.276 37.276 0 0 1 5.044 12.142l-8.3 1.785a28.99 28.99 0 0 1 .64 4.666l8.478-.483c.038.689.061 1.382.061 2.08s-.023 1.4-.062 2.1l-8.477-.486a28.99 28.99 0 0 1-.639 4.668l8.3 1.784a37.282 37.282 0 0 1-5.046 12.132l-7.125-4.6a29.14 29.14 0 0 1-8.849 8.85l4.6 7.125A37.275 37.275 0 0 1 47 75.619l-1.783-8.291a28.99 28.99 0 0 1-4.668.639l.483 8.471c-.691.038-1.386.061-2.087.061s-1.401-.022-2.092-.06z"
-                          />
-                        </g>
-                        <text
-                          className="value--ebf30"
-                          x="50%"
-                          y="50%"
-                          fontSize={30}
-                          dy={10}
-                          data-role="chip-value"
-                        >
-                          0
-                        </text>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
           <div
@@ -1389,7 +846,7 @@ const BetSlip = ({
               <svg
                 className={cn(
                   `svg--7e996 svgBetspot--43e31 rectShape--a9f3a`,
-                  isRunnerWinner(data, 2, 0) && "animate--6c17d  win--e65a1",
+                  isRunnerWinner(data, 2, 0) && "animate-win",
                   stakeState.red.show && "hasBet--8e3d4"
                 )}
                 preserveAspectRatio="none"
@@ -1462,62 +919,6 @@ const BetSlip = ({
                   x{getBackPrice(data, 2, 0)}
                 </span>
               </div>
-              <div className="chipContainer--9cdca">
-                <div className="isPortrait--96aa8 mediumChip--83319 chipSize--1811f">
-                  <div
-                    data-is-chip-visible="false"
-                    className="hidden--f4c2b interactable--180c0 chip--618c4"
-                  >
-                    <div
-                      className="chip--29b81 shadow--24a83 cover--6df8f"
-                      data-role="chip"
-                      data-value={0}
-                    >
-                      <svg
-                        viewBox="0 0 78 78"
-                        className="graphics--22cbe"
-                        data-role="default-svg"
-                        style={{
-                          color: "rgb(146, 146, 146)",
-                        }}
-                      >
-                        <g>
-                          <circle
-                            className="paint--13ff6"
-                            cx="39.019"
-                            cy="38.999"
-                            r="38.5"
-                          />
-                          <path
-                            className="body--369ee"
-                            d="M38.94 12.5A26.5 26.5 0 1 0 65.44 39a26.529 26.529 0 0 0-26.5-26.5zm0 52A25.5 25.5 0 1 1 64.439 39 25.53 25.53 0 0 1 38.94 64.5z"
-                          />
-                          <circle
-                            className="textBackground--84c26"
-                            cx={39}
-                            cy="38.997"
-                            r="25.5"
-                          />
-                          <path
-                            className="body--369ee"
-                            d="M38.941 0a39 39 0 1 0 39 39 39.046 39.046 0 0 0-39-39zm-2.088 76.439l.483-8.471a28.99 28.99 0 0 1-4.668-.639l-1.783 8.291a37.277 37.277 0 0 1-12.144-5.051l4.6-7.124a29.143 29.143 0 0 1-8.85-8.851l-7.124 4.6a37.28 37.28 0 0 1-5.045-12.13l8.3-1.784a28.99 28.99 0 0 1-.639-4.668l-8.483.482C1.463 40.4 1.44 39.7 1.44 39s.023-1.391.061-2.08l8.478.483a28.99 28.99 0 0 1 .639-4.668l-8.3-1.785a37.275 37.275 0 0 1 5.047-12.142l7.126 4.6a29.143 29.143 0 0 1 8.85-8.851l-4.6-7.125a37.28 37.28 0 0 1 12.142-5.05l1.786 8.3a28.99 28.99 0 0 1 4.668-.639l-.483-8.484c.692-.038 1.388-.061 2.089-.061s1.4.023 2.087.061l-.483 8.484a28.99 28.99 0 0 1 4.668.639L47 2.381a37.276 37.276 0 0 1 12.14 5.05l-4.6 7.126a29.14 29.14 0 0 1 8.849 8.85l7.127-4.6a37.276 37.276 0 0 1 5.044 12.142l-8.3 1.785a28.99 28.99 0 0 1 .64 4.666l8.478-.483c.038.689.061 1.382.061 2.08s-.023 1.4-.062 2.1l-8.477-.486a28.99 28.99 0 0 1-.639 4.668l8.3 1.784a37.282 37.282 0 0 1-5.046 12.132l-7.125-4.6a29.14 29.14 0 0 1-8.849 8.85l4.6 7.125A37.275 37.275 0 0 1 47 75.619l-1.783-8.291a28.99 28.99 0 0 1-4.668.639l.483 8.471c-.691.038-1.386.061-2.087.061s-1.401-.022-2.092-.06z"
-                          />
-                        </g>
-                        <text
-                          className="value--ebf30"
-                          x="50%"
-                          y="50%"
-                          fontSize={30}
-                          dy={10}
-                          data-role="chip-value"
-                        >
-                          0
-                        </text>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
           <div
@@ -1550,7 +951,7 @@ const BetSlip = ({
               <svg
                 className={cn(
                   `svg--7e996 svgBetspot--43e31 isMirrored--d9896 rectShape--a9f3a`,
-                  isRunnerWinner(data, 2, 1) && "animate--6c17d  win--e65a1",
+                  isRunnerWinner(data, 2, 1) && "animate-win",
                   stakeState.black.show && "hasBet--8e3d4"
                 )}
                 preserveAspectRatio="none"
@@ -1622,62 +1023,6 @@ const BetSlip = ({
                 <span className style={{ fontSize: "12px" }}>
                   x{getBackPrice(data, 2, 1)}
                 </span>
-              </div>
-              <div className="chipContainer--9cdca">
-                <div className="isPortrait--96aa8 mediumChip--83319 chipSize--1811f">
-                  <div
-                    data-is-chip-visible="false"
-                    className="hidden--f4c2b interactable--180c0 chip--618c4"
-                  >
-                    <div
-                      className="chip--29b81 shadow--24a83 cover--6df8f"
-                      data-role="chip"
-                      data-value={0}
-                    >
-                      <svg
-                        viewBox="0 0 78 78"
-                        className="graphics--22cbe"
-                        data-role="default-svg"
-                        style={{
-                          color: "rgb(146, 146, 146)",
-                        }}
-                      >
-                        <g>
-                          <circle
-                            className="paint--13ff6"
-                            cx="39.019"
-                            cy="38.999"
-                            r="38.5"
-                          />
-                          <path
-                            className="body--369ee"
-                            d="M38.94 12.5A26.5 26.5 0 1 0 65.44 39a26.529 26.529 0 0 0-26.5-26.5zm0 52A25.5 25.5 0 1 1 64.439 39 25.53 25.53 0 0 1 38.94 64.5z"
-                          />
-                          <circle
-                            className="textBackground--84c26"
-                            cx={39}
-                            cy="38.997"
-                            r="25.5"
-                          />
-                          <path
-                            className="body--369ee"
-                            d="M38.941 0a39 39 0 1 0 39 39 39.046 39.046 0 0 0-39-39zm-2.088 76.439l.483-8.471a28.99 28.99 0 0 1-4.668-.639l-1.783 8.291a37.277 37.277 0 0 1-12.144-5.051l4.6-7.124a29.143 29.143 0 0 1-8.85-8.851l-7.124 4.6a37.28 37.28 0 0 1-5.045-12.13l8.3-1.784a28.99 28.99 0 0 1-.639-4.668l-8.483.482C1.463 40.4 1.44 39.7 1.44 39s.023-1.391.061-2.08l8.478.483a28.99 28.99 0 0 1 .639-4.668l-8.3-1.785a37.275 37.275 0 0 1 5.047-12.142l7.126 4.6a29.143 29.143 0 0 1 8.85-8.851l-4.6-7.125a37.28 37.28 0 0 1 12.142-5.05l1.786 8.3a28.99 28.99 0 0 1 4.668-.639l-.483-8.484c.692-.038 1.388-.061 2.089-.061s1.4.023 2.087.061l-.483 8.484a28.99 28.99 0 0 1 4.668.639L47 2.381a37.276 37.276 0 0 1 12.14 5.05l-4.6 7.126a29.14 29.14 0 0 1 8.849 8.85l7.127-4.6a37.276 37.276 0 0 1 5.044 12.142l-8.3 1.785a28.99 28.99 0 0 1 .64 4.666l8.478-.483c.038.689.061 1.382.061 2.08s-.023 1.4-.062 2.1l-8.477-.486a28.99 28.99 0 0 1-.639 4.668l8.3 1.784a37.282 37.282 0 0 1-5.046 12.132l-7.125-4.6a29.14 29.14 0 0 1-8.849 8.85l4.6 7.125A37.275 37.275 0 0 1 47 75.619l-1.783-8.291a28.99 28.99 0 0 1-4.668.639l.483 8.471c-.691.038-1.386.061-2.087.061s-1.401-.022-2.092-.06z"
-                          />
-                        </g>
-                        <text
-                          className="value--ebf30"
-                          x="50%"
-                          y="50%"
-                          fontSize={30}
-                          dy={10}
-                          data-role="chip-value"
-                        >
-                          0
-                        </text>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

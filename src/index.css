@@ -95,3 +95,8 @@ body {
 }
 
 /*! Circular Progress Bar Animation End  */
+
+.animate-win {
+  animation: highlightSvgKeyframes--56b80 1s;
+  animation-iteration-count: infinite;
+}
