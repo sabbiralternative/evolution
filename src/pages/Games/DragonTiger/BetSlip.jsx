@@ -11,6 +11,7 @@ import { useSound } from "../../../context/ApiProvider";
 import { playSuspendedSound } from "../../../utils/sound";
 import { useParams } from "react-router-dom";
 import { handleStoreRecentPlay } from "../../../utils/handleStorateRecentPlay";
+import { cn } from "../../../utils/cn";
 
 const BetSlip = ({
   double,
@@ -251,7 +252,10 @@ const BetSlip = ({
                 data-role="bet-spot-tie"
               >
                 <svg
-                  className="svg--bbbd4 betspot--f231e"
+                  className={cn(
+                    "svg--bbbd4 betspot--f231e",
+                    isRunnerWinner(data, 0, 2) && "animate-win"
+                  )}
                   preserveAspectRatio="none"
                   viewBox="0 0 144 70"
                   width={144}
@@ -455,7 +459,10 @@ const BetSlip = ({
                 data-role="bet-spot-suitedTie"
               >
                 <svg
-                  className="svg--bbbd4 betspot--f231e"
+                  className={cn(
+                    "svg--bbbd4 betspot--f231e",
+                    isRunnerWinner(data, 0, 3) && "animate-win"
+                  )}
                   preserveAspectRatio="none"
                   viewBox="0 0 144 70"
                   width={144}
@@ -871,7 +878,10 @@ const BetSlip = ({
                 viewBox="0 0 180 148"
                 width={180}
                 height={148}
-                className="svg--bbbd4 betspot--f231e isMirrored--8be15"
+                className={cn(
+                  "svg--bbbd4 betspot--f231e isMirrored--8be15",
+                  isRunnerWinner(data, 0, 1) && "animate-win"
+                )}
                 preserveAspectRatio="none"
               >
                 <g fill="none" fillRule="evenodd">

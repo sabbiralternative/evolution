@@ -249,7 +249,7 @@ const BetSlip = ({
               <svg
                 className={cn(
                   `svg--7e996 mainShape--f586c svgBetspot--43e31 `,
-                  isRunnerWinner(data, 0, 0) && "animate--6c17d  win--e65a1",
+                  isRunnerWinner(data, 0, 0) && "animate-win",
                   stakeState.down?.show && "hasBet--8e3d4"
                 )}
                 preserveAspectRatio="none"
@@ -500,7 +500,7 @@ const BetSlip = ({
               <svg
                 className={cn(
                   `svg--7e996 mainShape--f586c svgBetspot--43e31 isMirrored--d9896`,
-                  isRunnerWinner(data, 0, 2) && "animate--6c17d  win--e65a1",
+                  isRunnerWinner(data, 0, 2) && "animate-win",
                   stakeState.up?.show && "hasBet--8e3d4"
                 )}
                 preserveAspectRatio="none"
@@ -756,7 +756,7 @@ const BetSlip = ({
                 preserveAspectRatio="none"
                 className={cn(
                   `svg--7e996 tieShape--d6bfd svgBetspot--43e31 `,
-                  isRunnerWinner(data, 0, 1) && "animate--6c17d  win--e65a1",
+                  isRunnerWinner(data, 0, 1) && "animate-win",
                   stakeState.seven?.show && "hasBet--8e3d4"
                 )}
                 width={123}
@@ -1023,7 +1023,7 @@ const BetSlip = ({
               <svg
                 className={cn(
                   `svg--7e996 svgBetspot--43e31 rectShape--a9f3a `,
-                  isRunnerWinner(data, 1, 0) && "animate--6c17d  win--e65a1",
+                  isRunnerWinner(data, 1, 0) && "animate-win",
 
                   stakeState.even?.show && "hasBet--8e3d4"
                 )}
@@ -1183,7 +1183,7 @@ const BetSlip = ({
               <svg
                 className={cn(
                   `svg--7e996 svgBetspot--43e31 isMirrored--d9896 rectShape--a9f3a `,
-                  isRunnerWinner(data, 1, 1) && "animate--6c17d  win--e65a1",
+                  isRunnerWinner(data, 1, 1) && "animate-win",
                   stakeState.odd?.show && "hasBet--8e3d4"
                 )}
                 preserveAspectRatio="none"
@@ -1342,7 +1342,7 @@ const BetSlip = ({
               <svg
                 className={cn(
                   `svg--7e996 svgBetspot--43e31 rectShape--a9f3a`,
-                  isRunnerWinner(data, 2, 0) && "animate--6c17d  win--e65a1",
+                  isRunnerWinner(data, 2, 0) && "animate-win",
                   stakeState.red?.show && "hasBet--8e3d4"
                 )}
                 preserveAspectRatio="none"
@@ -1501,7 +1501,7 @@ const BetSlip = ({
               <svg
                 className={cn(
                   `svg--7e996 svgBetspot--43e31 isMirrored--d9896 rectShape--a9f3a`,
-                  isRunnerWinner(data, 2, 1) && "animate--6c17d  win--e65a1",
+                  isRunnerWinner(data, 2, 1) && "animate-win",
                   stakeState.black?.show && "hasBet--8e3d4"
                 )}
                 preserveAspectRatio="none"
