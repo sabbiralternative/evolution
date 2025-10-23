@@ -1,7 +1,7 @@
 import { WebPlayer } from "@antmedia/web_player";
 import { useEffect, useRef } from "react";
 
-const AntMedia = ({ server }) => {
+const AntMedia = ({ server, height = "200px" }) => {
   const bigVideo = useRef(null);
   const embeddedPlayerRef = useRef(null);
 
@@ -48,7 +48,7 @@ const AntMedia = ({ server }) => {
       id="video-container"
       style={{
         width: "100%",
-        height: "200px",
+        height,
         position: "absolute",
         top: 0,
         right: 0,

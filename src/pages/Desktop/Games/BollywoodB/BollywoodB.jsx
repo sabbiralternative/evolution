@@ -104,7 +104,10 @@ const BollywoodB = () => {
                         <div style={{ height: "100%" }}>
                           <div style={{ width: "100%", height: "100%" }}>
                             {firstEvent?.server && (
-                              <AntMedia server={firstEvent?.server} />
+                              <AntMedia
+                                server={firstEvent?.server}
+                                height="100%"
+                              />
                             )}
                             {/* <video
                               muted="true"
