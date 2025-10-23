@@ -18,7 +18,6 @@ const RecentWinner = ({ recentWinner }) => {
           data-role="history-statistic"
         >
           {recentWinner?.map((winner, i) => {
-            console.log(winner);
             return (
               <div
                 onClick={() => setRecentWinnerData(winner)}

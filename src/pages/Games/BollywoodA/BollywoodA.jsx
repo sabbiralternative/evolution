@@ -89,7 +89,6 @@ const BollywoodA = () => {
     }
   }, [firstEvent?.status]);
 
-  console.log(firstEvent);
   return (
     <>
       {showMenu && (

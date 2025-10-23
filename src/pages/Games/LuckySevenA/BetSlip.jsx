@@ -40,7 +40,6 @@ const BetSlip = ({
   // Generic function to update stake state
   const handleStakeChange = (payload) => {
     if (status === Status.OPEN) {
-      console.log(payload);
       handleStoreRecentPlay(username, eventId, "lucky7");
 
       if (sound) playPlaceChip();

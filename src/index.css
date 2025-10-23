@@ -100,3 +100,11 @@ body {
   animation: highlightSvgKeyframes--56b80 1s;
   animation-iteration-count: infinite;
 }
+
+.vjs-loading-spinner {
+  display: none !important;
+}
+
+.vjs-control-bar {
+  display: none !important;
+}
