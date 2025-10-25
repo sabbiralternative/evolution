@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { cardsArray } from "./const";
 
-const CardBox = ({ width = 9 }) => {
+const CardBox = ({ mobile }) => {
   const [cards, setCards] = useState([]);
 
   const handleSelectCard = (card) => {
@@ -35,7 +35,8 @@ const CardBox = ({ width = 9 }) => {
             }`}
           >
             <div
-              className={`flex relative flex-col items-center w-${width} text-black rounded border aspect-[3/4] border-zinc-800 bg-zinc-200`}
+              style={{ width: mobile ? "2.25rem" : "2.5rem" }}
+              className={`flex relative flex-col items-center w-9  text-black rounded border aspect-[3/4] border-zinc-800 bg-zinc-200`}
             >
               <div className="flex absolute inset-0 justify-center items-center font-semibold">
                 <span className="flex justify-center items-center w-10 h-10 font-bold text-black rounded-md">

@@ -361,7 +361,7 @@ const ThreeCardJudgement = () => {
                     }}
                   >
                     {/* <History /> */}
-                    <CardBox width={9} />
+                    <CardBox mobile={true} />
                     <BetSlip
                       initialState={initialState}
                       double={double}

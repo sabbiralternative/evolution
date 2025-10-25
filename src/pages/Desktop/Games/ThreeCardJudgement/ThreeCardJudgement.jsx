@@ -345,7 +345,7 @@ const ThreeCardJudgement = () => {
                     pointerEvents: "auto",
                   }}
                 >
-                  <CardBox width={10} />
+                  <CardBox />
                   <BetSlip
                     initialState={initialState}
                     double={double}
