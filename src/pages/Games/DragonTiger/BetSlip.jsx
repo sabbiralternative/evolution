@@ -220,7 +220,7 @@ const BetSlip = ({
       <div
         style={{
           width: width ? `${innerWidth - 10}px` : "auto",
-          height: height ? "171px" : "200px",
+          height: height ? "auto" : "200px",
         }}
       >
         <div
@@ -623,7 +623,7 @@ const BetSlip = ({
                 width={180}
                 height={148}
                 className={`svg--bbbd4 betspot--f231e ${
-                  isRunnerWinner(data, 0, 0) ? "animate--6c17d  win--e65a1" : ""
+                  isRunnerWinner(data, 0, 0) ? "animate-win" : ""
                 }`}
                 preserveAspectRatio="none"
               >
@@ -755,6 +755,19 @@ const BetSlip = ({
                       stake={stake}
                       stakeState={stakeState}
                     />
+                    {card1 && (
+                      <img
+                        src={`/cards/${"D5"}.png`}
+                        alt=""
+                        style={{
+                          height: "60px",
+                          width: "60px",
+                          position: "absolute",
+                          top: "20px",
+                          zIndex: 9999,
+                        }}
+                      />
+                    )}
                   </div>
                   <div className="liveStatisticsContainer--06bfc isPortrait--1de25 isVeryNarrowLikeOrHigher--d74cb withStats--a0c3b phone--48206">
                     {/* <div
@@ -1044,6 +1057,19 @@ const BetSlip = ({
                       stake={stake}
                       stakeState={stakeState}
                     />
+                    {card2 && (
+                      <img
+                        src={`/cards/${card2}.png`}
+                        alt=""
+                        style={{
+                          height: "60px",
+                          width: "60px",
+                          position: "absolute",
+                          top: "20px",
+                          zIndex: 9999,
+                        }}
+                      />
+                    )}
                   </div>
                 </div>
               </div>

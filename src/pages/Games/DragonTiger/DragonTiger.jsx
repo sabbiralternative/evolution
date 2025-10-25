@@ -14,16 +14,19 @@ import Footer from "../../../component/shared/Footer";
 import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
+import RecentWinner from "./RecentWinner";
+import { cn } from "../../../utils/cn";
+import Winner from "./Winner";
 
 const DragonTiger = () => {
   const { sound } = useSound();
   const [showMenu, setShowMenu] = useState(false);
   const [double, setDouble] = useState(false);
-  const [, setCurrentRoundWinAmount] = useState(null);
+  const [currentRoundWinAmount, setCurrentRoundWinAmount] = useState(null);
   const [animation, setAnimation] = useState([]);
   const [showWinLossResult, setShowWinLossResult] = useState(false);
   const [totalWinAmount, setTotalWinAmount] = useState(null);
-  const { stake } = useSelector((state) => state.global);
+  const { stake, deviceWidth } = useSelector((state) => state.global);
   const [showFullScreen, setShowFullScreen] = useState(false);
   const { eventTypeId, eventId } = useParams();
   const { data } = useGetEventDetailsQuery(
@@ -351,6 +354,12 @@ const DragonTiger = () => {
                 }}
               />
             </div>
+            {/* Winner */}
+            <Winner
+              data={data}
+              firstEvent={firstEvent}
+              currentRoundWinAmount={currentRoundWinAmount}
+            />
             <div className="overlays--4cd0a">
               <div className="mobileGameOverlay--a7837" />
             </div>
@@ -428,6 +437,18 @@ const DragonTiger = () => {
                             width={true}
                             transform={true}
                           />
+                          <div
+                            className={cn(
+                              deviceWidth > 370 && "mt-5",
+                              deviceWidth > 400 && "mt-8"
+                              // deviceWidth > 500 && "mt-40",
+                              // deviceWidth > 700 && "mt-60"
+                            )}
+                          >
+                            <RecentWinner
+                              recentWinner={firstEvent?.recent_winner}
+                            />
+                          </div>
                           {/* <RoadPrediction /> */}
                           <div className="dealNow--971b0 portrait--55ead hidden--c5c76">
                             <div className="buttonWrapper--86a37 mobile--2fe7c">
