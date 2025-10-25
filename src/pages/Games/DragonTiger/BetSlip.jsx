@@ -8,7 +8,7 @@ import { isRunnerWinner } from "../../../utils/betSlip";
 import images from "../../../assets/images";
 import StakeAnimation from "../../../component/UI/Chip/StakeAnimation";
 import { useSound } from "../../../context/ApiProvider";
-import { playSuspendedSound } from "../../../utils/sound";
+import { playPlaceChip, playSuspendedSound } from "../../../utils/sound";
 import { useParams } from "react-router-dom";
 import { handleStoreRecentPlay } from "../../../utils/handleStorateRecentPlay";
 import { cn } from "../../../utils/cn";
@@ -34,8 +34,9 @@ const BetSlip = ({
   const [showSuspendedWarning, setShowSuspendedWarning] = useState(false);
   const dispatch = useDispatch();
   const firstData = data?.[0];
-  const card1 = firstData?.runners?.[0]?.card?.[0];
-  const card2 = firstData?.runners?.[1]?.card?.[0];
+  const card1 = firstData?.runners?.[0]?.card;
+  const card2 = firstData?.runners?.[1]?.card;
+
   const { balance, username } = useSelector((state) => state.auth);
 
   const [addOrder] = useOrderMutation();
@@ -44,6 +45,16 @@ const BetSlip = ({
   // Generic function to update stake state
   const handleStakeChange = (payload) => {
     if (status === Status.OPEN) {
+      if (stakeState?.dragon?.show) {
+        if (payload?.key === "tiger") {
+          return;
+        }
+      }
+      if (stakeState?.tiger?.show) {
+        if (payload?.key === "dragon") {
+          return;
+        }
+      }
       handleStoreRecentPlay(username, eventId, "dragon-tiger");
       const isRepeatTheBet = Object.values(stakeState).find(
         (item) => item?.selection_id && item?.show === false
@@ -52,7 +63,7 @@ const BetSlip = ({
         setStakeState(initialState);
       }
       if (sound) {
-        new Audio("/bet.mp3").play();
+        playPlaceChip();
       }
       const { key, data, dataIndex, runnerIndex, type } = payload;
       setAnimation([key]);
@@ -88,7 +99,7 @@ const BetSlip = ({
               eventName: formatData?.eventName,
               show: true,
               animation: false,
-              stake: prev[key].show
+              stake: prev[key]?.show
                 ? prev[key].stake + prev[key].actionBy
                 : prev[key].stake,
               marketId: formatData?.marketId,
@@ -605,6 +616,9 @@ const BetSlip = ({
             {/* Tie suited tie end */}
             {/* Dragon Start */}
             <div
+              style={{
+                pointerEvents: stakeState?.tiger?.show ? "none" : "auto",
+              }}
               onClick={() =>
                 handleStakeChange({
                   key: "dragon",
@@ -757,11 +771,11 @@ const BetSlip = ({
                     />
                     {card1 && (
                       <img
-                        src={`/cards/${"D5"}.png`}
+                        src={`/cards/${card1}.png`}
                         alt=""
                         style={{
-                          height: "60px",
-                          width: "60px",
+                          height: "50px",
+                          width: "50px",
                           position: "absolute",
                           top: "20px",
                           zIndex: 9999,
@@ -874,6 +888,9 @@ const BetSlip = ({
             {/* Dragon end */}
             {/* Tiger start */}
             <div
+              style={{
+                pointerEvents: stakeState?.dragon?.show ? "none" : "none",
+              }}
               onClick={() =>
                 handleStakeChange({
                   key: "tiger",
@@ -1062,8 +1079,8 @@ const BetSlip = ({
                         src={`/cards/${card2}.png`}
                         alt=""
                         style={{
-                          height: "60px",
-                          width: "60px",
+                          height: "50px",
+                          width: "50px",
                           position: "absolute",
                           top: "20px",
                           zIndex: 9999,

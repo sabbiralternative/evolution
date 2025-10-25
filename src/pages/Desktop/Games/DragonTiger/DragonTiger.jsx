@@ -30,17 +30,10 @@ const DragonTiger = () => {
   const firstEvent = data?.result?.[0];
 
   const initialState = {
-    even: { show: false, stake },
-    up: { show: false, stake },
-    odd: { show: false, stake },
-    red: { show: false, stake },
-    down: { show: false, stake },
-    black: { show: false, stake },
-    seven: { show: false, stake },
-    diamond: { show: false, stake },
-    heart: { show: false, stake },
-    spade: { show: false, stake },
-    club: { show: false, stake },
+    dragon: { show: false, stake },
+    tiger: { show: false, stake },
+    tie: { show: false, stake },
+    suitedTie: { show: false, stake },
   };
 
   const [stakeState, setStakeState] = useState(initialState);
@@ -342,7 +335,7 @@ const DragonTiger = () => {
                 <div
                   className="bettingGrid--190e8"
                   style={{
-                    transform: "scaleX(1.7) scaleY(1.4)",
+                    transform: "scale(1.4)",
                     transformOrigin: "center",
                     marginTop: "130px",
                   }}
