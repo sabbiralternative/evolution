@@ -11,6 +11,7 @@ import { handleUndoStake } from "../../../../utils/handleUndoStake";
 import CommonUIElement from "../../../../component/shared/CommonUIElement/CommonUIElement";
 import BetSlip from "../../../Games/ThreeCardJudgement/BetSlip";
 import Timer from "../../../../component/shared/Timer";
+import CardBox from "../../../Games/ThreeCardJudgement/CardBox";
 
 const ThreeCardJudgement = () => {
   const { sound } = useSound();
@@ -339,11 +340,12 @@ const ThreeCardJudgement = () => {
                 <div
                   className="bettingGrid--190e8"
                   style={{
-                    transform: "scaleX(1.4) scaleY(1.1)",
+                    transform: "scale(1)",
                     transformOrigin: "center",
-                    marginTop: "40px",
+                    pointerEvents: "auto",
                   }}
                 >
+                  <CardBox width={10} />
                   <BetSlip
                     initialState={initialState}
                     double={double}

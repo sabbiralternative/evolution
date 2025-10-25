@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { cardsArray } from "./const";
 
-const CardBox = () => {
+const CardBox = ({ width = 9 }) => {
   const [cards, setCards] = useState([]);
 
   const handleSelectCard = (card) => {
-    console.log(card);
     const isSameCard = cards?.find((c) => c?.name === card?.name);
     if (isSameCard) {
       const updatedCard = cards?.filter((c) => c?.name !== card?.name);
@@ -35,7 +34,9 @@ const CardBox = () => {
               isSelected ? "bg-green-500" : "bg-zinc-800"
             }`}
           >
-            <div className="flex relative flex-col items-center w-9 text-black rounded border aspect-[3/4] border-zinc-800 bg-zinc-200">
+            <div
+              className={`flex relative flex-col items-center w-${width} text-black rounded border aspect-[3/4] border-zinc-800 bg-zinc-200`}
+            >
               <div className="flex absolute inset-0 justify-center items-center font-semibold">
                 <span className="flex justify-center items-center w-10 h-10 font-bold text-black rounded-md">
                   {card.name}
