@@ -26,6 +26,7 @@ import LuckySixA from "../pages/Games/LuckySixA/LuckySixA";
 import TeenTwenty from "../pages/Games/TeenTwenty/TeenTwenty";
 import Muflis from "../pages/Games/Muflis/Muflis";
 import OneDayTeen from "../pages/Games/OneDayTeen/OneDayTeen";
+import ThreeCardJudgement from "../pages/Games/ThreeCardJudgement/ThreeCardJudgement";
 
 export const mobileRoutes = [
   {
@@ -140,5 +141,9 @@ export const mobileRoutes = [
   {
     path: "/game/dtp/:eventTypeId/:eventId",
     element: <DragonTigerPhoenix />,
+  },
+  {
+    path: "/game/3cardjudgement/:eventTypeId/:eventId",
+    element: <ThreeCardJudgement />,
   },
 ];

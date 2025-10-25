@@ -6,7 +6,6 @@ import Baccarat from "../pages/Desktop/Games/Baccarat/Baccarat";
 import BollywoodA from "../pages/Desktop/Games/BollywoodA/BollywoodA";
 import DragonTiger from "../pages/Desktop/Games/DragonTiger/DragonTiger";
 import DragonTigerPhoenix from "../pages/Desktop/Games/DragonTigerPhoenix/DragonTigerPhoenix";
-
 import FootballDice from "../pages/Desktop/Games/FoolballDice/FootballDice";
 import FootballStudio from "../pages/Desktop/Games/FoolballStudio/FootballStudio";
 import ImperialQuest from "../pages/Desktop/Games/ImperialQuest/ImperialQuest";
@@ -27,6 +26,7 @@ import TwoCardsTP from "../pages/Desktop/Games/TwoCardsTP/TwoCardsTP";
 import LuckySixA from "../pages/Desktop/Games/LuckySixA/LuckySixA";
 import TeenTwenty from "../pages/Desktop/Games/TeenTwenty/TeenTwenty";
 import OneDayTeen from "../pages/Desktop/Games/OneDayTeen/OneDayTeen";
+import ThreeCardJudgement from "../pages/Desktop/Games/ThreeCardJudgement/ThreeCardJudgement";
 
 export const desktopRoutes = [
   {
@@ -140,5 +140,9 @@ export const desktopRoutes = [
   {
     path: "/game/dtp/:eventTypeId/:eventId",
     element: <DragonTigerPhoenix />,
+  },
+  {
+    path: "/game/3cardjudgement/:eventTypeId/:eventId",
+    element: <ThreeCardJudgement />,
   },
 ];
