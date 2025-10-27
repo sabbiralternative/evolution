@@ -1,19 +1,22 @@
+import { Status } from "../../../const";
 import { cardsArray } from "./const";
 
-const CardBox = ({ mobile, cards, setCards }) => {
+const CardBox = ({ mobile, cards, setCards, status }) => {
   const handleSelectCard = (card) => {
-    const isSameCard = cards?.find((c) => c?.value === card?.value);
-    if (isSameCard) {
-      const updatedCard = cards?.filter((c) => c?.value !== card?.value);
-      setCards(updatedCard);
-      return;
-    }
-    if (cards?.length === 3) {
-      return;
-    }
+    if (status === Status.OPEN) {
+      const isSameCard = cards?.find((c) => c?.value === card?.value);
+      if (isSameCard) {
+        const updatedCard = cards?.filter((c) => c?.value !== card?.value);
+        setCards(updatedCard);
+        return;
+      }
+      if (cards?.length === 3) {
+        return;
+      }
 
-    // Add new card
-    setCards((prev) => [...prev, card]);
+      // Add new card
+      setCards((prev) => [...prev, card]);
+    }
   };
 
   return (

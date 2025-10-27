@@ -340,7 +340,11 @@ const ThreeCardJudgement = () => {
                     pointerEvents: "auto",
                   }}
                 >
-                  <CardBox cards={cards} setCards={setCards} />
+                  <CardBox
+                    cards={cards}
+                    setCards={setCards}
+                    status={firstEvent?.status}
+                  />
                   <BetSlip
                     initialState={initialState}
                     double={double}
@@ -353,6 +357,7 @@ const ThreeCardJudgement = () => {
                     data={data?.result}
                     status={firstEvent?.status}
                     cards={cards}
+                    setCards={setCards}
                   />
                 </div>
               </div>

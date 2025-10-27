@@ -23,6 +23,7 @@ const BetSlip = ({
   setAnimation,
   initialState,
   cards,
+  setCards,
 }) => {
   const { eventId } = useParams();
   const { sound } = useSound();
@@ -32,10 +33,12 @@ const BetSlip = ({
   const [addOrder] = useOrderMutation();
   const { stake } = useSelector((state) => state.global);
   const { balance, username } = useSelector((state) => state.auth);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Generic function to update stake state
   const handleStakeChange = (payload) => {
-    if (status === Status.OPEN) {
+    if (status === Status.OPEN && cards?.length === 3) {
+      setIsLoading(true);
       handleStoreRecentPlay(username, eventId, "football-studio");
       const isRepeatTheBet = Object.values(stakeState).find(
         (item) => item?.selection_id && item?.show === false
@@ -92,6 +95,7 @@ const BetSlip = ({
             },
           };
         });
+        setIsLoading(false);
       }, 500);
 
       return () => clearTimeout(timeout);
@@ -113,6 +117,7 @@ const BetSlip = ({
         });
         return updatedState;
       });
+      setCards([]);
     }
     if (showSuspendedWarning) {
       setTimeout(() => {
@@ -236,7 +241,8 @@ const BetSlip = ({
               >
                 <div className="mainBetsContainer--30daa isPortrait--54d78 isPortraitVeryNarrowOrHigher--280b6 isVeryNarrowLikeOrHigher--c1e32">
                   {/* ---- */}
-                  <div
+                  <button
+                    disabled={stakeState?.no?.show || isLoading}
                     onClick={() =>
                       handleStakeChange({
                         key: "yes",
@@ -390,9 +396,10 @@ const BetSlip = ({
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </button>
                   {/* ---- */}
-                  <div
+                  <button
+                    disabled={stakeState?.yes?.show || isLoading}
                     onClick={() =>
                       handleStakeChange({
                         key: "no",
@@ -403,7 +410,7 @@ const BetSlip = ({
                       })
                     }
                     data-betspot-destination="Tiger"
-                    className="mainBet--c6e6f tiger--54a0d isPortrait--54d78 isPortraitVeryNarrowOrHigher--280b6 isVeryNarrowLikeOrHigher--c1e32"
+                    className="mainBet--c6e6f tiger--54a0d isPortrait--54d78 isPortraitVeryNarrowOrHigher--280b6 isVeryNarrowLikeOrHigher--c1e32 pointer-events-none"
                     data-role="bet-spot-tiger"
                   >
                     <svg
@@ -548,7 +555,7 @@ const BetSlip = ({
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </button>
                   {/* ---- */}
                 </div>
               </div>

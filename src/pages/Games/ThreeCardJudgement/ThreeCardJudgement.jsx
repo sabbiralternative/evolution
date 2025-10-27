@@ -353,7 +353,12 @@ const ThreeCardJudgement = () => {
                     }}
                   >
                     {/* <History /> */}
-                    <CardBox mobile={true} cards={cards} setCards={setCards} />
+                    <CardBox
+                      mobile={true}
+                      cards={cards}
+                      setCards={setCards}
+                      status={firstEvent?.status}
+                    />
                     <BetSlip
                       initialState={initialState}
                       double={double}
@@ -369,6 +374,7 @@ const ThreeCardJudgement = () => {
                       width={true}
                       transform={true}
                       cards={cards}
+                      setCards={setCards}
                     />
                   </div>
                 </div>
