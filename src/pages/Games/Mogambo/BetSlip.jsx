@@ -241,7 +241,7 @@ const BetSlip = ({
                     disabled={stakeState?.no?.show || isLoading}
                     onClick={() =>
                       handleStakeChange({
-                        key: "yes",
+                        key: "daga/teja",
                         data,
                         dataIndex: 0,
                         runnerIndex: 0,
@@ -256,7 +256,7 @@ const BetSlip = ({
                       className={cn(
                         `svg--7e996 mainShape--f586c svgBetspot--43e31 `,
                         isRunnerWinner(data, 0, 0) && "animate-win",
-                        stakeState.yes?.show && "hasBet--8e3d4"
+                        stakeState?.["daga/teja"]?.show && "hasBet--8e3d4"
                       )}
                       style={{ opacity: status === Status.OPEN ? 1 : 0.5 }}
                       viewBox="0 0 180 200"
@@ -318,7 +318,7 @@ const BetSlip = ({
                     <StakeAnimation
                       animation={animation}
                       double={double}
-                      runner="yes"
+                      runner="daga/teja"
                       stake={stake}
                       stakeState={stakeState}
                       className={`absolute top-[20px]  left-3`}
@@ -327,7 +327,7 @@ const BetSlip = ({
                       className="title--4a5d2 noSerif--946d0 isPortrait--54d78 isPortraitVeryNarrowOrHigher--280b6 isVeryNarrowLikeOrHigher--c1e32"
                       data-role="title"
                     >
-                      Yes
+                      {data?.[0]?.runners?.[0]?.name}
                     </div>
 
                     <div
@@ -395,10 +395,10 @@ const BetSlip = ({
                   </button>
                   {/* ---- */}
                   <button
-                    disabled={stakeState?.yes?.show || isLoading}
+                    disabled={stakeState?.["daga/teja"]?.show || isLoading}
                     onClick={() =>
                       handleStakeChange({
-                        key: "no",
+                        key: "mogambo",
                         data,
                         dataIndex: 1,
                         runnerIndex: 0,
@@ -413,7 +413,7 @@ const BetSlip = ({
                       className={cn(
                         `svg--7e996 mainShape--f586c svgBetspot--43e31 `,
                         isRunnerWinner(data, 1, 0) && "animate-win",
-                        stakeState.no?.show && "hasBet--8e3d4"
+                        stakeState.mogambo?.show && "hasBet--8e3d4"
                       )}
                       style={{
                         opacity: status === Status.OPEN ? 1 : 0.5,
@@ -477,7 +477,7 @@ const BetSlip = ({
                     <StakeAnimation
                       animation={animation}
                       double={double}
-                      runner="no"
+                      runner="mogambo"
                       stake={stake}
                       stakeState={stakeState}
                       className={`absolute top-[20px]  left-3`}
@@ -486,14 +486,14 @@ const BetSlip = ({
                       className="title--4a5d2 noSerif--946d0 isPortrait--54d78 isPortraitVeryNarrowOrHigher--280b6 isVeryNarrowLikeOrHigher--c1e32"
                       data-role="title"
                     >
-                      No
+                      {data?.[0]?.runners?.[1]?.name}
                     </div>
 
                     <div
                       className="payout--22a94 isPortrait--54d78 isPortraitVeryNarrowOrHigher--280b6 isVeryNarrowLikeOrHigher--c1e32"
                       data-role="payout"
                     >
-                      <span>{data?.[1]?.runners?.[0]?.back?.[0]?.price}</span>
+                      <span>{data?.[0]?.runners?.[1]?.back?.[0]?.price}</span>
                     </div>
                     <div className="chipContainer--f421a isPortrait--54d78 isPortraitVeryNarrowOrHigher--280b6 isVeryNarrowLikeOrHigher--c1e32">
                       <div className="isPortrait--beef1 relative--a3924 chipSize--8b13c">

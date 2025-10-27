@@ -30,8 +30,8 @@ const Mogambo = () => {
   const firstEvent = data?.result?.[0];
 
   const initialState = {
-    yes: { show: false, stake },
-    no: { show: false, stake },
+    "daga/teja": { show: false, stake },
+    mogambo: { show: false, stake },
   };
 
   const [stakeState, setStakeState] = useState(initialState);
