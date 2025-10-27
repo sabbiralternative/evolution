@@ -28,6 +28,7 @@ import Muflis from "../pages/Games/Muflis/Muflis";
 import OneDayTeen from "../pages/Games/OneDayTeen/OneDayTeen";
 import ThreeCardJudgement from "../pages/Games/ThreeCardJudgement/ThreeCardJudgement";
 import Mogambo from "../pages/Games/Mogambo/Mogambo";
+import CenterCard from "../pages/Games/CenterCard/CenterCard";
 
 export const mobileRoutes = [
   {
@@ -150,5 +151,9 @@ export const mobileRoutes = [
   {
     path: "/game/mogambo/:eventTypeId/:eventId",
     element: <Mogambo />,
+  },
+  {
+    path: "/game/centercard/:eventTypeId/:eventId",
+    element: <CenterCard />,
   },
 ];
