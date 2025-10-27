@@ -12,6 +12,7 @@ import CommonUIElement from "../../../../component/shared/CommonUIElement/Common
 import BetSlip from "../../../Games/ThreeCardJudgement/BetSlip";
 import Timer from "../../../../component/shared/Timer";
 import CardBox from "../../../Games/ThreeCardJudgement/CardBox";
+import History from "./History";
 
 const ThreeCardJudgement = () => {
   const { sound } = useSound();
@@ -22,6 +23,7 @@ const ThreeCardJudgement = () => {
   const [currentRoundWinAmount, setCurrentRoundWinAmount] = useState(null);
   const { stake } = useSelector((state) => state.global);
   const { eventTypeId, eventId } = useParams();
+  const [cards, setCards] = useState([]);
   const { data } = useGetEventDetailsQuery(
     { eventTypeId, eventId },
     { pollingInterval: 1000 }
@@ -30,17 +32,8 @@ const ThreeCardJudgement = () => {
   const firstEvent = data?.result?.[0];
 
   const initialState = {
-    even: { show: false, stake },
-    up: { show: false, stake },
-    odd: { show: false, stake },
-    red: { show: false, stake },
-    down: { show: false, stake },
-    black: { show: false, stake },
-    seven: { show: false, stake },
-    diamond: { show: false, stake },
-    heart: { show: false, stake },
-    spade: { show: false, stake },
-    club: { show: false, stake },
+    yes: { show: false, stake },
+    no: { show: false, stake },
   };
 
   const [stakeState, setStakeState] = useState(initialState);
@@ -288,7 +281,9 @@ const ThreeCardJudgement = () => {
                 <div className="fullScreenGameOverlay--e2de7">
                   <div className="box--28913" />
                 </div>
-                <div className="top-container--67c84" />
+                <div className="top-container--67c84">
+                  <History recentWinner={firstEvent?.recent_winner} />
+                </div>
                 <div className="bottom-container--11469">
                   <Timer firstEvent={firstEvent} />
                   {firstEvent?.status === Status.OPEN && (
@@ -345,7 +340,7 @@ const ThreeCardJudgement = () => {
                     pointerEvents: "auto",
                   }}
                 >
-                  <CardBox />
+                  <CardBox cards={cards} setCards={setCards} />
                   <BetSlip
                     initialState={initialState}
                     double={double}
@@ -357,6 +352,7 @@ const ThreeCardJudgement = () => {
                     setStakeState={setStakeState}
                     data={data?.result}
                     status={firstEvent?.status}
+                    cards={cards}
                   />
                 </div>
               </div>

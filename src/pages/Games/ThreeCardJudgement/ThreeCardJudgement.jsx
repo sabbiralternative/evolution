@@ -11,7 +11,7 @@ import { AnimatePresence } from "framer-motion";
 import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
-import History from "./History";
+// import History from "./History";
 import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
@@ -28,6 +28,7 @@ const ThreeCardJudgement = () => {
   const { stake } = useSelector((state) => state.global);
   const [showFullScreen, setShowFullScreen] = useState(false);
   const { eventTypeId, eventId } = useParams();
+  const [cards, setCards] = useState([]);
   const { data } = useGetEventDetailsQuery(
     { eventTypeId, eventId: eventId },
     { pollingInterval: 1000 }
@@ -36,17 +37,8 @@ const ThreeCardJudgement = () => {
   const firstEvent = data?.result?.[0];
 
   const initialState = {
-    even: { show: false, stake },
-    up: { show: false, stake },
-    odd: { show: false, stake },
-    red: { show: false, stake },
-    down: { show: false, stake },
-    black: { show: false, stake },
-    seven: { show: false, stake },
-    diamond: { show: false, stake },
-    heart: { show: false, stake },
-    spade: { show: false, stake },
-    club: { show: false, stake },
+    yes: { show: false, stake },
+    no: { show: false, stake },
   };
 
   const [stakeState, setStakeState] = useState(initialState);
@@ -361,7 +353,7 @@ const ThreeCardJudgement = () => {
                     }}
                   >
                     {/* <History /> */}
-                    <CardBox mobile={true} />
+                    <CardBox mobile={true} cards={cards} setCards={setCards} />
                     <BetSlip
                       initialState={initialState}
                       double={double}
@@ -376,6 +368,7 @@ const ThreeCardJudgement = () => {
                       height={true}
                       width={true}
                       transform={true}
+                      cards={cards}
                     />
                   </div>
                 </div>

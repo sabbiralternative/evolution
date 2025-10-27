@@ -1,13 +1,10 @@
-import { useState } from "react";
 import { cardsArray } from "./const";
 
-const CardBox = ({ mobile }) => {
-  const [cards, setCards] = useState([]);
-
+const CardBox = ({ mobile, cards, setCards }) => {
   const handleSelectCard = (card) => {
-    const isSameCard = cards?.find((c) => c?.name === card?.name);
+    const isSameCard = cards?.find((c) => c?.value === card?.value);
     if (isSameCard) {
-      const updatedCard = cards?.filter((c) => c?.name !== card?.name);
+      const updatedCard = cards?.filter((c) => c?.value !== card?.value);
       setCards(updatedCard);
       return;
     }
@@ -25,7 +22,7 @@ const CardBox = ({ mobile }) => {
       className="flex flex-wrap gap-1 justify-center items-center"
     >
       {cardsArray?.map((card) => {
-        const isSelected = cards?.find((c) => c?.name === card?.name);
+        const isSelected = cards?.find((c) => c?.value === card?.value);
         return (
           <div
             onClick={() => handleSelectCard(card)}

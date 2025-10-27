@@ -7,6 +7,9 @@ import { playSuspendedSound } from "../../../utils/sound";
 import { useSound } from "../../../context/ApiProvider";
 import { useParams } from "react-router-dom";
 import { handleStoreRecentPlay } from "../../../utils/handleStorateRecentPlay";
+import { cn } from "../../../utils/cn";
+import { isRunnerWinner } from "../../../utils/betSlip";
+import StakeAnimation from "../../../component/UI/Chip/StakeAnimation";
 
 const BetSlip = ({
   double,
@@ -19,9 +22,7 @@ const BetSlip = ({
   animation,
   setAnimation,
   initialState,
-  height,
-  width,
-  transform,
+  cards,
 }) => {
   const { eventId } = useParams();
   const { sound } = useSound();
@@ -148,6 +149,7 @@ const BetSlip = ({
       stake: bet?.stake,
       isback: bet?.isback,
       price: bet?.price,
+      cards: cards?.map((card) => card?.value)?.join(""),
     }));
 
     if (status === Status.SUSPENDED && payload?.length > 0) {
@@ -207,11 +209,12 @@ const BetSlip = ({
 
   return (
     <div
+      onClick={handleShowSuspendedStatus}
       className="gameControls--c8a56"
       data-role="expand-betting-grid"
       data-expanded="true"
     >
-      <div>
+      <div className={status === Status.SUSPENDED ? "pointer-events-none" : ""}>
         <div>
           <div className="bettingGrid--b7220">
             <div
@@ -234,11 +237,25 @@ const BetSlip = ({
                 <div className="mainBetsContainer--30daa isPortrait--54d78 isPortraitVeryNarrowOrHigher--280b6 isVeryNarrowLikeOrHigher--c1e32">
                   {/* ---- */}
                   <div
+                    onClick={() =>
+                      handleStakeChange({
+                        key: "yes",
+                        data,
+                        dataIndex: 0,
+                        runnerIndex: 0,
+                        type: "back",
+                      })
+                    }
                     data-betspot-destination="Dragon"
                     className="mainBet--c6e6f dragon--85bae isPortrait--54d78 isPortraitVeryNarrowOrHigher--280b6 isVeryNarrowLikeOrHigher--c1e32"
                     data-role="bet-spot-dragon"
                   >
                     <svg
+                      className={cn(
+                        `svg--7e996 mainShape--f586c svgBetspot--43e31 `,
+                        isRunnerWinner(data, 0, 0) && "animate-win",
+                        stakeState.yes?.show && "hasBet--8e3d4"
+                      )}
                       style={{ opacity: status === Status.OPEN ? 1 : 0.5 }}
                       viewBox="0 0 180 200"
                       preserveAspectRatio="none"
@@ -296,7 +313,14 @@ const BetSlip = ({
                         />
                       </g>
                     </svg>
-
+                    <StakeAnimation
+                      animation={animation}
+                      double={double}
+                      runner="yes"
+                      stake={stake}
+                      stakeState={stakeState}
+                      className={`absolute top-[20px]  left-3`}
+                    />
                     <div
                       className="title--4a5d2 noSerif--946d0 isPortrait--54d78 isPortraitVeryNarrowOrHigher--280b6 isVeryNarrowLikeOrHigher--c1e32"
                       data-role="title"
@@ -308,7 +332,7 @@ const BetSlip = ({
                       className="payout--22a94 isPortrait--54d78 isPortraitVeryNarrowOrHigher--280b6 isVeryNarrowLikeOrHigher--c1e32"
                       data-role="payout"
                     >
-                      <span>1:1</span>
+                      <span>{data?.[0]?.runners?.[0]?.back?.[0]?.price}</span>
                     </div>
                     <div className="chipContainer--f421a isPortrait--54d78 isPortraitVeryNarrowOrHigher--280b6 isVeryNarrowLikeOrHigher--c1e32">
                       <div className="isPortrait--beef1 relative--a3924 chipSize--8b13c">
@@ -369,11 +393,25 @@ const BetSlip = ({
                   </div>
                   {/* ---- */}
                   <div
+                    onClick={() =>
+                      handleStakeChange({
+                        key: "no",
+                        data,
+                        dataIndex: 1,
+                        runnerIndex: 0,
+                        type: "back",
+                      })
+                    }
                     data-betspot-destination="Tiger"
                     className="mainBet--c6e6f tiger--54a0d isPortrait--54d78 isPortraitVeryNarrowOrHigher--280b6 isVeryNarrowLikeOrHigher--c1e32"
                     data-role="bet-spot-tiger"
                   >
                     <svg
+                      className={cn(
+                        `svg--7e996 mainShape--f586c svgBetspot--43e31 `,
+                        isRunnerWinner(data, 1, 0) && "animate-win",
+                        stakeState.no?.show && "hasBet--8e3d4"
+                      )}
                       style={{
                         opacity: status === Status.OPEN ? 1 : 0.5,
                         transform: "rotate(180deg)",
@@ -433,7 +471,14 @@ const BetSlip = ({
                         />
                       </g>
                     </svg>
-
+                    <StakeAnimation
+                      animation={animation}
+                      double={double}
+                      runner="no"
+                      stake={stake}
+                      stakeState={stakeState}
+                      className={`absolute top-[20px]  left-3`}
+                    />
                     <div
                       className="title--4a5d2 noSerif--946d0 isPortrait--54d78 isPortraitVeryNarrowOrHigher--280b6 isVeryNarrowLikeOrHigher--c1e32"
                       data-role="title"
@@ -445,7 +490,7 @@ const BetSlip = ({
                       className="payout--22a94 isPortrait--54d78 isPortraitVeryNarrowOrHigher--280b6 isVeryNarrowLikeOrHigher--c1e32"
                       data-role="payout"
                     >
-                      <span>1:1</span>
+                      <span>{data?.[1]?.runners?.[0]?.back?.[0]?.price}</span>
                     </div>
                     <div className="chipContainer--f421a isPortrait--54d78 isPortraitVeryNarrowOrHigher--280b6 isVeryNarrowLikeOrHigher--c1e32">
                       <div className="isPortrait--beef1 relative--a3924 chipSize--8b13c">
