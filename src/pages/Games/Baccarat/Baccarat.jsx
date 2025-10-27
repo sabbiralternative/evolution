@@ -661,7 +661,7 @@ const Baccarat = () => {
             totalWinAmount={totalWinAmount}
             data={data?.result}
             firstEvent={firstEvent}
-            title="Baccarat"
+            title={firstEvent?.eventName}
           />
           <div className="tooltipsContainer--515fb increasedZIndex--60d95" />
           <div className="container--75075">

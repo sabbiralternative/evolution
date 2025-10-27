@@ -656,7 +656,7 @@ const Roullete = () => {
               totalWinAmount={totalWinAmount}
               data={data?.result}
               firstEvent={firstEvent}
-              title="Roullete"
+              title={firstEvent?.eventName}
               setCurrentRoundWinAmount={setCurrentRoundWinAmount}
             />
 

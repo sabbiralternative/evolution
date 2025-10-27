@@ -356,7 +356,7 @@ const FootballDice = () => {
             totalWinAmount={totalWinAmount}
             data={data?.result}
             firstEvent={firstEvent}
-            title="Football Dice"
+            title={firstEvent?.eventName}
             setCurrentRoundWinAmount={setCurrentRoundWinAmount}
           />
           <div className="tooltipsContainer--515fb increasedZIndex--60d95" />

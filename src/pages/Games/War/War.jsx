@@ -565,7 +565,7 @@ const War = () => {
             totalWinAmount={totalWinAmount}
             data={data?.result}
             firstEvent={firstEvent}
-            title="Super Color"
+            title={firstEvent?.eventName}
             setCurrentRoundWinAmount={setCurrentRoundWinAmount}
           />
           <div className="tooltipsContainer--515fb increasedZIndex--60d95" />

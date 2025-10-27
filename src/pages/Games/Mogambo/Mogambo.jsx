@@ -11,12 +11,12 @@ import { AnimatePresence } from "framer-motion";
 import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
-import History from "./History";
+// import History from "./History";
 import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
 
-const TeenTwenty = () => {
+const Mogambo = () => {
   const { sound } = useSound();
   const [showMenu, setShowMenu] = useState(false);
   const [double, setDouble] = useState(false);
@@ -35,17 +35,8 @@ const TeenTwenty = () => {
   const firstEvent = data?.result?.[0];
 
   const initialState = {
-    even: { show: false, stake },
-    up: { show: false, stake },
-    odd: { show: false, stake },
-    red: { show: false, stake },
-    down: { show: false, stake },
-    black: { show: false, stake },
-    seven: { show: false, stake },
-    diamond: { show: false, stake },
-    heart: { show: false, stake },
-    spade: { show: false, stake },
-    club: { show: false, stake },
+    yes: { show: false, stake },
+    no: { show: false, stake },
   };
 
   const [stakeState, setStakeState] = useState(initialState);
@@ -331,13 +322,21 @@ const TeenTwenty = () => {
             </div>
           </div>
           <div
+            style={{
+              pointerEvents: "auto",
+            }}
             className="gameOverlay--aabc7"
             data-role="game-overlay-container"
           >
             <div className="backdrop--8ba63 isPortrait--83f63" />
             <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
               <div className="relativeChildren--99d54">
-                <div className="overlay--37e59">
+                <div
+                  className="overlay--37e59"
+                  style={{
+                    pointerEvents: "auto",
+                  }}
+                >
                   <div
                     className="gameControlsWrapper--cb0d1"
                     data-role="gameControlsWrapper"
@@ -348,9 +347,11 @@ const TeenTwenty = () => {
                           ? "translateY(25px)"
                           : "translateY(0px)",
                       transition: "transform 0.5s ease-in-out",
+                      pointerEvents: "auto",
                     }}
                   >
-                    <History />
+                    {/* <History /> */}
+
                     <BetSlip
                       initialState={initialState}
                       double={double}
@@ -554,4 +555,4 @@ const TeenTwenty = () => {
   );
 };
 
-export default TeenTwenty;
+export default Mogambo;

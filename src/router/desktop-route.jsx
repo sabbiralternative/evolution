@@ -27,6 +27,7 @@ import LuckySixA from "../pages/Desktop/Games/LuckySixA/LuckySixA";
 import TeenTwenty from "../pages/Desktop/Games/TeenTwenty/TeenTwenty";
 import OneDayTeen from "../pages/Desktop/Games/OneDayTeen/OneDayTeen";
 import ThreeCardJudgement from "../pages/Desktop/Games/ThreeCardJudgement/ThreeCardJudgement";
+import Mogambo from "../pages/Desktop/Games/Mogambo/Mogambo";
 
 export const desktopRoutes = [
   {
@@ -144,5 +145,9 @@ export const desktopRoutes = [
   {
     path: "/game/3cardjudgement/:eventTypeId/:eventId",
     element: <ThreeCardJudgement />,
+  },
+  {
+    path: "/game/mogambo/:eventTypeId/:eventId",
+    element: <Mogambo />,
   },
 ];
