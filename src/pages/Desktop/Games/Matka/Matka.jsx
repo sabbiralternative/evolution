@@ -29,12 +29,31 @@ const Matka = () => {
 
   const firstEvent = data?.result?.[0];
 
-  const initialState = {
-    centerYes: { show: false, stake },
-    centerNo: { show: false, stake },
-  };
+  const keysArray = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "0",
+    "Line 1",
+    "Line 2",
+    "Line 1",
+    "Line 2",
+  ];
 
-  const [stakeState, setStakeState] = useState(initialState);
+  const initialState =
+    keysArray &&
+    keysArray?.reduce((acc, key) => {
+      acc[key] = { show: false, stake };
+      return acc;
+    }, {});
+
+  const [stakeState, setStakeState] = useState(initialState || {});
 
   const isRepeatTheBet = Object.values(stakeState).find(
     (item) => item?.selection_id && item?.show === false && item?.serial
