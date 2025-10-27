@@ -29,6 +29,7 @@ import OneDayTeen from "../pages/Desktop/Games/OneDayTeen/OneDayTeen";
 import ThreeCardJudgement from "../pages/Desktop/Games/ThreeCardJudgement/ThreeCardJudgement";
 import Mogambo from "../pages/Desktop/Games/Mogambo/Mogambo";
 import CenterCard from "../pages/Desktop/Games/CenterCard/CenterCard";
+import Matka from "../pages/Desktop/Games/Matka/Matka";
 
 export const desktopRoutes = [
   {
@@ -154,5 +155,9 @@ export const desktopRoutes = [
   {
     path: "/game/centercard/:eventTypeId/:eventId",
     element: <CenterCard />,
+  },
+  {
+    path: "/game/matka/:eventTypeId/:eventId",
+    element: <Matka />,
   },
 ];

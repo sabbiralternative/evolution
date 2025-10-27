@@ -11,12 +11,12 @@ import { AnimatePresence } from "framer-motion";
 import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
-import History from "./History";
+// import History from "./History";
 import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
 
-const Muflis = () => {
+const Matka = () => {
   const { sound } = useSound();
   const [showMenu, setShowMenu] = useState(false);
   const [double, setDouble] = useState(false);
@@ -34,21 +34,36 @@ const Muflis = () => {
 
   const firstEvent = data?.result?.[0];
 
-  const initialState = {
-    even: { show: false, stake },
-    up: { show: false, stake },
-    odd: { show: false, stake },
-    red: { show: false, stake },
-    down: { show: false, stake },
-    black: { show: false, stake },
-    seven: { show: false, stake },
-    diamond: { show: false, stake },
-    heart: { show: false, stake },
-    spade: { show: false, stake },
-    club: { show: false, stake },
-  };
+  // const keysArray = data?.result
+  //   ?.slice(0, 3)
+  //   ?.map((game) => game?.runners?.map((runner) => runner?.name))
+  //   .flat();
 
-  const [stakeState, setStakeState] = useState(initialState);
+  const keysArray = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "0",
+    "Line 1",
+    "Line 2",
+    "Line 1",
+    "Line 2",
+  ];
+
+  const initialState =
+    keysArray &&
+    keysArray?.reduce((acc, key) => {
+      acc[key] = { show: false, stake };
+      return acc;
+    }, {});
+
+  const [stakeState, setStakeState] = useState(initialState || {});
 
   const isRepeatTheBet = Object.values(stakeState).find(
     (item) => item?.selection_id && item?.show === false && item?.serial
@@ -76,6 +91,10 @@ const Muflis = () => {
       });
     }
   }, [firstEvent?.status]);
+
+  if (!data || !data?.result) {
+    return null;
+  }
 
   return (
     <>
@@ -331,13 +350,21 @@ const Muflis = () => {
             </div>
           </div>
           <div
+            style={{
+              pointerEvents: "auto",
+            }}
             className="gameOverlay--aabc7"
             data-role="game-overlay-container"
           >
             <div className="backdrop--8ba63 isPortrait--83f63" />
             <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
               <div className="relativeChildren--99d54">
-                <div className="overlay--37e59">
+                <div
+                  className="overlay--37e59"
+                  style={{
+                    pointerEvents: "auto",
+                  }}
+                >
                   <div
                     className="gameControlsWrapper--cb0d1"
                     data-role="gameControlsWrapper"
@@ -348,9 +375,11 @@ const Muflis = () => {
                           ? "translateY(25px)"
                           : "translateY(0px)",
                       transition: "transform 0.5s ease-in-out",
+                      pointerEvents: "auto",
                     }}
                   >
-                    <History />
+                    {/* <History /> */}
+
                     <BetSlip
                       initialState={initialState}
                       double={double}
@@ -554,4 +583,4 @@ const Muflis = () => {
   );
 };
 
-export default Muflis;
+export default Matka;

@@ -29,6 +29,7 @@ import OneDayTeen from "../pages/Games/OneDayTeen/OneDayTeen";
 import ThreeCardJudgement from "../pages/Games/ThreeCardJudgement/ThreeCardJudgement";
 import Mogambo from "../pages/Games/Mogambo/Mogambo";
 import CenterCard from "../pages/Games/CenterCard/CenterCard";
+import Matka from "../pages/Games/Matka/Matka";
 
 export const mobileRoutes = [
   {
@@ -155,5 +156,9 @@ export const mobileRoutes = [
   {
     path: "/game/centercard/:eventTypeId/:eventId",
     element: <CenterCard />,
+  },
+  {
+    path: "/game/matka/:eventTypeId/:eventId",
+    element: <Matka />,
   },
 ];
