@@ -8,9 +8,10 @@ import { isRunnerWinner } from "../../../utils/betSlip";
 import images from "../../../assets/images";
 import StakeAnimation from "../../../component/UI/Chip/StakeAnimation";
 import { useSound } from "../../../context/ApiProvider";
-import { playSuspendedSound } from "../../../utils/sound";
+import { playPlaceChip, playSuspendedSound } from "../../../utils/sound";
 import { useParams } from "react-router-dom";
 import { handleStoreRecentPlay } from "../../../utils/handleStorateRecentPlay";
+import { cn } from "../../../utils/cn";
 
 const BetSlip = ({
   double,
@@ -23,9 +24,6 @@ const BetSlip = ({
   animation,
   setAnimation,
   initialState,
-  height,
-  width,
-  transform,
 }) => {
   const { eventId } = useParams();
   const { sound } = useSound();
@@ -51,7 +49,7 @@ const BetSlip = ({
         setStakeState(initialState);
       }
       if (sound) {
-        new Audio("/bet.mp3").play();
+        playPlaceChip();
       }
       const { key, data, dataIndex, runnerIndex, type } = payload;
       setAnimation([key]);
@@ -213,7 +211,7 @@ const BetSlip = ({
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
+  console.log(data);
   return (
     <div
       className="betPanel--b3b31 portrait--d6948"
@@ -224,6 +222,15 @@ const BetSlip = ({
     >
       <div className="cardBetSpots--13ff1">
         <div
+          onClick={() =>
+            handleStakeChange({
+              key: "dragon",
+              data,
+              dataIndex: 0,
+              runnerIndex: 0,
+              type: "back",
+            })
+          }
           data-role="card1"
           className="betSpot--c8f75 betSpotCard--41838"
           style={{
@@ -242,12 +249,12 @@ const BetSlip = ({
             opacity: status === Status.SUSPENDED ? 0.8 : 1,
           }}
         >
-          <div
+          {/* <div
             className="betSpotLetter--caf10"
             style={{ color: "rgb(var(--3c-card1-primary))" }}
           >
             Q
-          </div>
+          </div> */}
           <div
             className="betSpotImage--7b34c"
             style={{
@@ -265,8 +272,10 @@ const BetSlip = ({
           <div className="betSpotName--fcc18" style={{ "-fontsize": 2 }}>
             DRAGON
           </div>
-          <div className="payout--e71a0">1.8 : 1</div>
-          <div className="statisticsPosition--dcce6 statistics--6668c">
+          <div className="payout--e71a0">
+            {data?.[0]?.runners?.[0]?.back?.[0]?.price}
+          </div>
+          {/* <div className="statisticsPosition--dcce6 statistics--6668c">
             <svg
               className="percentIndicator--e9c2c"
               viewBox="0 0 176 176"
@@ -410,11 +419,23 @@ const BetSlip = ({
                 4
               </div>
             </div>
-          </div>
+          </div> */}
+          <StakeAnimation
+            animation={animation}
+            double={double}
+            runner="dragon"
+            stake={stake}
+            stakeState={stakeState}
+            className={`absolute top-[20px]  left-14`}
+          />
           <svg
+            className={cn(
+              `cardBackground--c510a`,
+              isRunnerWinner(data, 0, 0) && "animate-win",
+              stakeState.dragon?.show && "hasBet--8e3d4"
+            )}
             viewBox="0 0 133 154"
             fill="none"
-            className="cardBackground--c510a"
           >
             <path
               d="
@@ -489,6 +510,15 @@ const BetSlip = ({
           </svg>
         </div>
         <div
+          onClick={() =>
+            handleStakeChange({
+              key: "tiger",
+              data,
+              dataIndex: 0,
+              runnerIndex: 1,
+              type: "back",
+            })
+          }
           data-role="card2"
           className="betSpot--c8f75 betSpotCard--41838"
           style={{
@@ -507,12 +537,12 @@ const BetSlip = ({
             opacity: status === Status.SUSPENDED ? 0.8 : 1,
           }}
         >
-          <div
+          {/* <div
             className="betSpotLetter--caf10"
             style={{ color: "rgb(var(--3c-card2-primary))" }}
           >
             Y
-          </div>
+          </div> */}
           <div
             className="betSpotImage--7b34c"
             style={{
@@ -542,8 +572,11 @@ const BetSlip = ({
           <div className="betSpotName--fcc18" style={{ "-fontsize": 2 }}>
             TIGER
           </div>
-          <div className="payout--e71a0">1.8 : 1</div>
-          <div className="statisticsPosition--dcce6 statistics--6668c">
+          <div className="payout--e71a0">
+            {" "}
+            {data?.[0]?.runners?.[1]?.back?.[0]?.price}
+          </div>
+          {/* <div className="statisticsPosition--dcce6 statistics--6668c">
             <svg
               className="percentIndicator--e9c2c"
               viewBox="0 0 176 176"
@@ -687,11 +720,23 @@ const BetSlip = ({
                 5
               </div>
             </div>
-          </div>
+          </div> */}
+          <StakeAnimation
+            animation={animation}
+            double={double}
+            runner="tiger"
+            stake={stake}
+            stakeState={stakeState}
+            className={`absolute top-[20px]  left-14`}
+          />
           <svg
+            className={cn(
+              `cardBackground--c510a`,
+              isRunnerWinner(data, 0, 1) && "animate-win",
+              stakeState.tiger?.show && "hasBet--8e3d4"
+            )}
             viewBox="0 0 133 154"
             fill="none"
-            className="cardBackground--c510a"
           >
             <rect x={1} y={1} width={131} height={152} fill="#000" />
             <rect x={1} y={1} width={131} height={152} fill="url(#card2Fill)" />
@@ -743,6 +788,15 @@ const BetSlip = ({
           </svg>
         </div>
         <div
+          onClick={() =>
+            handleStakeChange({
+              key: "phoenix",
+              data,
+              dataIndex: 0,
+              runnerIndex: 2,
+              type: "back",
+            })
+          }
           data-role="card3"
           className="betSpot--c8f75 betSpotCard--41838"
           style={{
@@ -761,12 +815,12 @@ const BetSlip = ({
             opacity: status === Status.SUSPENDED ? 0.8 : 1,
           }}
         >
-          <div
+          {/* <div
             className="betSpotLetter--caf10"
             style={{ color: "rgb(var(--3c-card3-primary))" }}
           >
             Z
-          </div>
+          </div> */}
           <div
             className="betSpotImage--7b34c"
             style={{
@@ -784,8 +838,11 @@ const BetSlip = ({
           <div className="betSpotName--fcc18" style={{ "-fontsize": 2 }}>
             PHOENIX
           </div>
-          <div className="payout--e71a0">1.8 : 1</div>
-          <div className="statisticsPosition--dcce6 statistics--6668c">
+          <div className="payout--e71a0">
+            {" "}
+            {data?.[0]?.runners?.[2]?.back?.[0]?.price}
+          </div>
+          {/* <div className="statisticsPosition--dcce6 statistics--6668c">
             <svg
               className="percentIndicator--e9c2c"
               viewBox="0 0 176 176"
@@ -929,11 +986,23 @@ const BetSlip = ({
                 4
               </div>
             </div>
-          </div>
+          </div> */}
+          <StakeAnimation
+            animation={animation}
+            double={double}
+            runner="phoenix"
+            stake={stake}
+            stakeState={stakeState}
+            className={`absolute top-[20px]  left-14`}
+          />
           <svg
             viewBox="0 0 133 154"
             fill="none"
-            className="cardBackground--c510a"
+            className={cn(
+              `cardBackground--c510a`,
+              isRunnerWinner(data, 0, 2) && "animate-win",
+              stakeState.down?.show && "hasBet--8e3d4"
+            )}
           >
             <path
               d="
@@ -1010,6 +1079,15 @@ const BetSlip = ({
       </div>
       <div className="tieBetSpot--cbaee">
         <div
+          onClick={() =>
+            handleStakeChange({
+              key: "tie",
+              data,
+              dataIndex: 0,
+              runnerIndex: 3,
+              type: "back",
+            })
+          }
           data-role="tie"
           className="betSpot--c8f75 betSpotTie--b7b88"
           style={{
@@ -1028,20 +1106,23 @@ const BetSlip = ({
             opacity: status === Status.SUSPENDED ? 0.8 : 1,
           }}
         >
-          <div
+          {/* <div
             className="betSpotLetter--caf10"
             style={{ color: "rgb(var(--3c-tie-primary))" }}
           >
             T
-          </div>
+          </div> */}
           <div className="chips--5b809">
             <div className="draggableChipContainer--83767" />
           </div>
           <div className="betSpotName--fcc18" style={{ "-fontsize": 2 }}>
             TIE
           </div>
-          <div className="payout--e71a0">7 : 1</div>
-          <div className="statisticsPosition--dcce6 statistics--6668c">
+          <div className="payout--e71a0">
+            {" "}
+            {data?.[0]?.runners?.[3]?.back?.[0]?.price}
+          </div>
+          {/* <div className="statisticsPosition--dcce6 statistics--6668c">
             <svg
               className="percentIndicator--e9c2c"
               viewBox="0 0 176 176"
@@ -1183,9 +1264,21 @@ const BetSlip = ({
                 0
               </div>
             </div>
-          </div>
+          </div> */}
+          <StakeAnimation
+            animation={animation}
+            double={double}
+            runner="tie"
+            stake={stake}
+            stakeState={stakeState}
+            className={`absolute top-[10px]  left-1/3`}
+          />
           <svg
-            className="tieBackground--077e5"
+            className={cn(
+              `tieBackground--077e5`,
+              isRunnerWinner(data, 0, 0) && "animate-win",
+              stakeState.down?.show && "hasBet--8e3d4"
+            )}
             viewBox="0 0 403 56"
             fill="none"
           >

@@ -24,36 +24,15 @@ const DragonTigerPhoenix = () => {
   const [totalWinAmount, setTotalWinAmount] = useState(null);
   const { stake, deviceWidth } = useSelector((state) => state.global);
   const [showFullScreen, setShowFullScreen] = useState(false);
-  const { eventTypeId } = useParams();
+  const { eventTypeId, eventId } = useParams();
   const { data } = useGetEventDetailsQuery(
-    { eventTypeId, eventId: 10001 },
+    { eventTypeId, eventId },
     { pollingInterval: 1000 }
   );
 
   const firstEvent = data?.result?.[0];
 
-  const keysArray = [
-    "dragonEven",
-    "dragonOdd",
-    "tigerEven",
-    "tigerOdd",
-    "dragon",
-    "tie",
-    "tiger",
-    "suitedTie",
-    "dragonRed",
-    "dragonBlack",
-    "tigerRed",
-    "tigerBlack",
-    "dragonA",
-    "dragon2",
-    "dragon3",
-    "dragon4",
-    "tigerA",
-    "tiger2",
-    "tiger3",
-    "tiger4",
-  ];
+  const keysArray = ["dragon", "tiger", "phoenix", "tie"];
 
   const initialState = keysArray.reduce((acc, key) => {
     acc[key] = { show: false, stake };

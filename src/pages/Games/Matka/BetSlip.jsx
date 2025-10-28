@@ -263,7 +263,6 @@ const BetSlip = ({
                         }`}
                       >
                         {game?.runners?.map((runner, idx) => {
-                          console.log(data);
                           return (
                             <button
                               style={{

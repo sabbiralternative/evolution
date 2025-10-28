@@ -205,8 +205,6 @@ const BetSlip = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  console.log(data);
-
   return (
     <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
       <div className="relativeChildren--99d54">
