@@ -29,17 +29,8 @@ const War = () => {
   const firstEvent = data?.result?.[0];
 
   const initialState = {
-    even: { show: false, stake },
-    up: { show: false, stake },
-    odd: { show: false, stake },
-    red: { show: false, stake },
-    down: { show: false, stake },
-    black: { show: false, stake },
-    seven: { show: false, stake },
-    diamond: { show: false, stake },
-    heart: { show: false, stake },
-    spade: { show: false, stake },
-    club: { show: false, stake },
+    tie: { show: false, stake },
+    suited: { show: false, stake },
   };
 
   const [stakeState, setStakeState] = useState(initialState);
@@ -333,6 +324,7 @@ const War = () => {
                     ? "translateY(25px)"
                     : "translateY(0px)",
                 transition: "transform 0.5s ease-in-out",
+                marginTop: "20px",
               }}
             >
               <div className="classicOverlay--fde0a">

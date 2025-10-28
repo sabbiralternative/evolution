@@ -3,12 +3,8 @@ import { Status } from "../../../const";
 import { useDispatch, useSelector } from "react-redux";
 import { useOrderMutation } from "../../../redux/features/events/events";
 import { setBalance } from "../../../redux/features/auth/authSlice";
-import Stake from "../../../component/UI/Chip/Stake";
 import { getBackPrice, isRunnerWinner } from "../../../utils/betSlip";
 import StakeAnimation from "../../../component/UI/Chip/StakeAnimation";
-import { cn } from "../../../utils/cn";
-import images from "../../../assets/images";
-import History from "./History";
 import { playSuspendedSound } from "../../../utils/sound";
 import { useSound } from "../../../context/ApiProvider";
 import { useParams } from "react-router-dom";
@@ -25,9 +21,7 @@ const BetSlip = ({
   animation,
   setAnimation,
   initialState,
-  height,
-  width,
-  transform,
+  isMobile,
 }) => {
   const { eventId } = useParams();
   const { sound } = useSound();
@@ -211,11 +205,19 @@ const BetSlip = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  console.log(data);
+
   return (
     <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
       <div className="relativeChildren--99d54">
-        <div className="bottomContainer--d97cd">
-          <div className="cardsDealt--63d9c">
+        <div
+          className="bottomContainer--d97cd"
+          style={{ position: isMobile ? "absolute" : "static" }}
+        >
+          <div
+            className="cardsDealt--63d9c"
+            style={{ bottom: isMobile ? "0" : "initial" }}
+          >
             <div
               className={`dealingCards--90934  ${
                 status === Status.SUSPENDED ? "visible--11bf9" : ""
@@ -226,10 +228,19 @@ const BetSlip = ({
               <div className="cardsContainer--92c23 dealer--b4892">
                 <span className="title--43e67">CASINO</span>
                 <div
+                  style={{ height: "50px", width: "50px" }}
                   className={`card--c9f29 ${
                     status === Status.SUSPENDED ? "visible--11bf9" : ""
                   }`}
                 >
+                  {data?.[0]?.runners?.[0]?.card && (
+                    <img
+                      style={{ height: "50px", width: "50px" }}
+                      src={`/cards/${data?.[0]?.runners?.[0]?.card}.png`}
+                      alt=""
+                    />
+                  )}
+
                   <span className="wrapper--9fd49" data-role="card-S2">
                     <span className="suit--2017b active--9b94f">
                       <svg
@@ -273,10 +284,19 @@ const BetSlip = ({
                 }`}
               >
                 <div
+                  style={{ height: "50px", width: "50px" }}
                   className={`card--c9f29 ${
                     status === Status.SUSPENDED ? "visible--11bf9" : ""
                   }`}
                 >
+                  {data?.[0]?.runners?.[1]?.card && (
+                    <img
+                      style={{ height: "50px", width: "50px" }}
+                      src={`/cards/${data?.[0]?.runners?.[1]?.card}.png`}
+                      alt=""
+                    />
+                  )}
+
                   <span className="wrapper--9fd49" data-role="card-D7">
                     <span className="suit--2017b active--9b94f">
                       <svg
@@ -328,6 +348,7 @@ const BetSlip = ({
             />
           </div>
           <div
+            style={{ position: isMobile ? "absolute" : "static" }}
             className={`bettingGrid--fe61d ${
               status === Status.SUSPENDED ? "collapsed--d6439" : ""
             }`}
@@ -340,7 +361,17 @@ const BetSlip = ({
               data-role="betting-grid"
               style={{ "-scale": 1 }}
             >
-              <div
+              <button
+                disabled={stakeState?.tie?.show}
+                onClick={() =>
+                  handleStakeChange({
+                    key: "suited",
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 0,
+                    type: "back",
+                  })
+                }
                 className="main--9330c"
                 data-role="main-spot"
                 style={{ "-collapsedscale": "0.8" }}
@@ -558,6 +589,14 @@ const BetSlip = ({
                         </linearGradient>
                       </defs>
                     </svg>
+                    <StakeAnimation
+                      animation={animation}
+                      double={double}
+                      runner="suited"
+                      stake={stake}
+                      stakeState={stakeState}
+                      className={`absolute top-[35px]  left-9`}
+                    />
                     <div
                       className={`glowBorder--29c03 ${
                         status === Status.OPEN ? "active--96399" : ""
@@ -615,6 +654,7 @@ const BetSlip = ({
                       </svg>
                     </div>
                   </div>
+
                   <div className="chip--71d0f">
                     <div
                       className="chipWrapper--a6465 hidden--c9c96"
@@ -672,8 +712,18 @@ const BetSlip = ({
                     </div>
                   </div>
                 </div>
-              </div>
-              <div
+              </button>
+              <button
+                disabled={stakeState?.suited?.show}
+                onClick={() =>
+                  handleStakeChange({
+                    key: "tie",
+                    data,
+                    dataIndex: 0,
+                    runnerIndex: 2,
+                    type: "back",
+                  })
+                }
                 className="side--48505"
                 data-role="side-spot"
                 style={{ "-collapsedscale": "0.75" }}
@@ -969,6 +1019,14 @@ const BetSlip = ({
                       </svg>
                     </div>
                   </div>
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner="tie"
+                    stake={stake}
+                    stakeState={stakeState}
+                    className={`absolute top-[20px]  left-7`}
+                  />
                   <div
                     className={`sideSpotIcon--a0819 generalSideIcon--a12f9 ${
                       status === Status.SUSPENDED ? "active--98358" : ""
@@ -1144,7 +1202,7 @@ const BetSlip = ({
                     </div>
                   </div>
                 </div>
-              </div>
+              </button>
             </div>
           </div>
         </div>
