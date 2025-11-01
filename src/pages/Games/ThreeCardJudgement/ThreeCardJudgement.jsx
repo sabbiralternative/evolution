@@ -16,6 +16,7 @@ import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
 import CardBox from "./CardBox";
+import Card from "./Card";
 
 const ThreeCardJudgement = () => {
   const { sound } = useSound();
@@ -353,6 +354,10 @@ const ThreeCardJudgement = () => {
                     }}
                   >
                     {/* <History /> */}
+                    {firstEvent?.indexCard?.length > 0 && (
+                      <Card cards={firstEvent?.indexCard} />
+                    )}
+
                     <CardBox
                       mobile={true}
                       cards={cards}
