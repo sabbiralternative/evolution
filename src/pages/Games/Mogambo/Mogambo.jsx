@@ -15,6 +15,7 @@ import Counter from "../../../component/UI/Counter";
 import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
+import Winner from "./Winner";
 
 const Mogambo = () => {
   const { sound } = useSound();
@@ -23,7 +24,7 @@ const Mogambo = () => {
   const [animation, setAnimation] = useState([]);
   const [showWinLossResult, setShowWinLossResult] = useState(false);
   const [totalWinAmount, setTotalWinAmount] = useState(null);
-  const [, setCurrentRoundWinAmount] = useState(null);
+  const [currentRoundWinAmount, setCurrentRoundWinAmount] = useState(null);
   const { stake } = useSelector((state) => state.global);
   const [showFullScreen, setShowFullScreen] = useState(false);
   const { eventTypeId, eventId } = useParams();
@@ -282,6 +283,10 @@ const Mogambo = () => {
                 }}
               />
             </div>
+            <Winner
+              firstEvent={firstEvent}
+              currentRoundWinAmount={currentRoundWinAmount}
+            />
             <div className="overlays--4cd0a">
               <div className="gameResultContainerMobile--389cb">
                 <div

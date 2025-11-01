@@ -3,7 +3,7 @@ import { Status } from "../../../const";
 import { useDispatch, useSelector } from "react-redux";
 import { useOrderMutation } from "../../../redux/features/events/events";
 import { setBalance } from "../../../redux/features/auth/authSlice";
-import { playSuspendedSound } from "../../../utils/sound";
+import { playPlaceChip, playSuspendedSound } from "../../../utils/sound";
 import { useSound } from "../../../context/ApiProvider";
 import { useParams } from "react-router-dom";
 import { handleStoreRecentPlay } from "../../../utils/handleStorateRecentPlay";
@@ -23,6 +23,7 @@ const BetSlip = ({
   setAnimation,
   initialState,
 }) => {
+  const firstEvent = data?.[0];
   const { eventId } = useParams();
   const { sound } = useSound();
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
@@ -44,6 +45,7 @@ const BetSlip = ({
       if (isRepeatTheBet) {
         setStakeState(initialState);
       }
+      if (sound) playPlaceChip();
       // new Audio("/bet.mp3").play();
       const { key, data, dataIndex, runnerIndex, type } = payload;
       setAnimation([key]);
@@ -323,6 +325,29 @@ const BetSlip = ({
                       stakeState={stakeState}
                       className={`absolute top-[20px]  left-3`}
                     />
+                    {firstEvent?.indexCard?.length > 0 && (
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "60px",
+                          display: "flex",
+                        }}
+                      >
+                        {firstEvent?.indexCard?.slice(0, 2)?.map((card) => (
+                          <img
+                            key={card}
+                            src={`/cards/${card}.png`}
+                            alt=""
+                            style={{
+                              height: "60px",
+                              width: "60px",
+
+                              zIndex: 9999,
+                            }}
+                          />
+                        ))}
+                      </div>
+                    )}
                     <div
                       className="title--4a5d2 noSerif--946d0 isPortrait--54d78 isPortraitVeryNarrowOrHigher--280b6 isVeryNarrowLikeOrHigher--c1e32"
                       data-role="title"
@@ -482,6 +507,29 @@ const BetSlip = ({
                       stakeState={stakeState}
                       className={`absolute top-[20px]  left-3`}
                     />
+                    {firstEvent?.indexCard?.length > 0 && (
+                      <div
+                        style={{
+                          position: "absolute",
+                          right: "20px",
+                          top: "60px",
+                        }}
+                      >
+                        {firstEvent?.indexCard?.slice(2, 3)?.map((card) => (
+                          <img
+                            key={card}
+                            src={`/cards/${card}.png`}
+                            alt=""
+                            style={{
+                              height: "60px",
+                              width: "60px",
+
+                              zIndex: 9999,
+                            }}
+                          />
+                        ))}
+                      </div>
+                    )}
                     <div
                       className="title--4a5d2 noSerif--946d0 isPortrait--54d78 isPortraitVeryNarrowOrHigher--280b6 isVeryNarrowLikeOrHigher--c1e32"
                       data-role="title"

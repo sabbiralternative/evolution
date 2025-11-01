@@ -12,6 +12,7 @@ import CommonUIElement from "../../../../component/shared/CommonUIElement/Common
 import BetSlip from "../../../Games/Mogambo/BetSlip";
 import Timer from "../../../../component/shared/Timer";
 import History from "./History";
+import Winner from "../../../Games/Mogambo/Winner";
 
 const Mogambo = () => {
   const { sound } = useSound();
@@ -154,6 +155,10 @@ const Mogambo = () => {
                     </div>
                   </div>
                 </div>
+                <Winner
+                  currentRoundWinAmount={currentRoundWinAmount}
+                  firstEvent={firstEvent}
+                />
               </div>
             </div>
             <div data-role="layout-classic">
