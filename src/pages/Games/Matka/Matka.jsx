@@ -15,6 +15,8 @@ import Counter from "../../../component/UI/Counter";
 import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
+import Winner from "./Winner";
+import Card from "./Card";
 
 const Matka = () => {
   const { sound } = useSound();
@@ -23,7 +25,7 @@ const Matka = () => {
   const [animation, setAnimation] = useState([]);
   const [showWinLossResult, setShowWinLossResult] = useState(false);
   const [totalWinAmount, setTotalWinAmount] = useState(null);
-  const [, setCurrentRoundWinAmount] = useState(null);
+  const [currentRoundWinAmount, setCurrentRoundWinAmount] = useState(null);
   const { stake } = useSelector((state) => state.global);
   const [showFullScreen, setShowFullScreen] = useState(false);
   const { eventTypeId, eventId } = useParams();
@@ -52,8 +54,8 @@ const Matka = () => {
     "0",
     "Line 1",
     "Line 2",
-    "Line 1",
-    "Line 2",
+    "Even",
+    "Odd",
   ];
 
   const initialState =
@@ -310,6 +312,10 @@ const Matka = () => {
                 }}
               />
             </div>
+            <Winner
+              firstEvent={firstEvent}
+              currentRoundWinAmount={currentRoundWinAmount}
+            />
             <div className="overlays--4cd0a">
               <div className="gameResultContainerMobile--389cb">
                 <div
@@ -369,7 +375,7 @@ const Matka = () => {
                     className="gameControlsWrapper--cb0d1"
                     data-role="gameControlsWrapper"
                     style={{
-                      bottom: "70.6875px",
+                      bottom: "120.6875px",
                       transform:
                         firstEvent?.status === Status.SUSPENDED
                           ? "translateY(25px)"
@@ -379,7 +385,7 @@ const Matka = () => {
                     }}
                   >
                     {/* <History /> */}
-
+                    <Card cards={firstEvent?.indexCard} />
                     <BetSlip
                       initialState={initialState}
                       double={double}

@@ -12,6 +12,8 @@ import CommonUIElement from "../../../../component/shared/CommonUIElement/Common
 import BetSlip from "../../../Games/Matka/BetSlip";
 import Timer from "../../../../component/shared/Timer";
 import History from "./History";
+import Winner from "../../../Games/Matka/Winner";
+import Card from "../../../Games/Matka/Card";
 
 const Matka = () => {
   const { sound } = useSound();
@@ -42,8 +44,8 @@ const Matka = () => {
     "0",
     "Line 1",
     "Line 2",
-    "Line 1",
-    "Line 2",
+    "Odd",
+    "Even",
   ];
 
   const initialState =
@@ -173,6 +175,10 @@ const Matka = () => {
                     </div>
                   </div>
                 </div>
+                <Winner
+                  currentRoundWinAmount={currentRoundWinAmount}
+                  firstEvent={firstEvent}
+                />
               </div>
             </div>
             <div data-role="layout-classic">
@@ -357,6 +363,7 @@ const Matka = () => {
                     pointerEvents: "auto",
                   }}
                 >
+                  <Card cards={firstEvent?.indexCard} />
                   <BetSlip
                     initialState={initialState}
                     double={double}

@@ -31,12 +31,10 @@ const BetSlip = ({
   const [addOrder] = useOrderMutation();
   const { stake } = useSelector((state) => state.global);
   const { balance, username } = useSelector((state) => state.auth);
-  const [isLoading, setIsLoading] = useState(false);
 
   // Generic function to update stake state
   const handleStakeChange = (payload) => {
     if (status === Status.OPEN) {
-      setIsLoading(true);
       handleStoreRecentPlay(username, eventId, "center-card");
       const isRepeatTheBet = Object.values(stakeState).find(
         (item) => item?.selection_id && item?.show === false
@@ -93,7 +91,6 @@ const BetSlip = ({
             },
           };
         });
-        setIsLoading(false);
       }, 500);
 
       return () => clearTimeout(timeout);
@@ -222,8 +219,10 @@ const BetSlip = ({
     0: "rgba(60, 179, 113, 1)",
     "Line 1": "rgba(0, 191, 255, 1)",
     "Line 2": "rgba(218, 112, 214, 1)",
+    Even: "rgba(094, 115, 5, 074441)",
+    Odd: "rgba(218, 11, 214, 1)",
   };
-
+  console.log(data);
   return (
     <div
       onClick={handleShowSuspendedStatus}
@@ -271,7 +270,6 @@ const BetSlip = ({
                                 width: "100%",
                               }}
                               key={runner?.id}
-                              disabled={stakeState?.centerNo?.show || isLoading}
                               onClick={() =>
                                 handleStakeChange({
                                   key: runner?.name,
@@ -288,7 +286,8 @@ const BetSlip = ({
                               <svg
                                 className={cn(
                                   `svg--7e996 mainShape--f586c svgBetspot--43e31 `,
-                                  isRunnerWinner(data, 0, 0) && "animate-win",
+                                  isRunnerWinner(data, gameIdx, idx) &&
+                                    "animate-win",
                                   stakeState?.[runner?.name]?.show &&
                                     "hasBet--8e3d4"
                                 )}
@@ -300,7 +299,7 @@ const BetSlip = ({
                               >
                                 <defs>
                                   <linearGradient
-                                    id={`foreground-BetsOpen-right-${idx}`}
+                                    id={`foreground-BetsOpen-right-${runner?.id}`}
                                     x1={0}
                                     y1={0}
                                     x2={0}
@@ -318,7 +317,7 @@ const BetSlip = ({
                                     />
                                   </linearGradient>
                                   <linearGradient
-                                    id={`border-BetsOpen-right-${idx}`}
+                                    id={`border-BetsOpen-right-${runner?.id}`}
                                     x1={0}
                                     y1={0}
                                     x2={0}
@@ -345,8 +344,8 @@ const BetSlip = ({
                                   />
                                   <path
                                     d="M180 0V200H6C2.686 200 0 197.314 0 194V6C0 2.686 2.686 0 6 0H180Z"
-                                    fill={`url(#foreground-BetsOpen-right-${idx})`}
-                                    stroke={`url(#border-BetsOpen-right-${idx})`}
+                                    fill={`url(#foreground-BetsOpen-right-${runner?.id})`}
+                                    stroke={`url(#border-BetsOpen-right-${runner?.id})`}
                                     strokeWidth={2}
                                   />
                                 </g>
@@ -357,7 +356,7 @@ const BetSlip = ({
                                 runner={runner?.name}
                                 stake={stake}
                                 stakeState={stakeState}
-                                className={`absolute top-[20px]  left-3`}
+                                className={`absolute top-[10px]  right-3.5`}
                               />
                               <div
                                 className="title--4a5d2 noSerif--946d0 isPortrait--54d78 isPortraitVeryNarrowOrHigher--280b6 isVeryNarrowLikeOrHigher--c1e32"

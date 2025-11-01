@@ -13,12 +13,13 @@ import Footer from "../../../component/shared/Footer";
 import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
+import Winner from "./Winner";
 
 const DragonTigerPhoenix = () => {
   const { sound } = useSound();
   const [showMenu, setShowMenu] = useState(false);
   const [double, setDouble] = useState(false);
-  const [, setCurrentRoundWinAmount] = useState(null);
+  const [currentRoundWinAmount, setCurrentRoundWinAmount] = useState(null);
   const [animation, setAnimation] = useState([]);
   const [showWinLossResult, setShowWinLossResult] = useState(false);
   const [totalWinAmount, setTotalWinAmount] = useState(null);
@@ -256,6 +257,10 @@ const DragonTigerPhoenix = () => {
                   "linear-gradient(rgba(19, 5, 5, 0) 0%,rgb(19, 5, 5) 25%,rgba(21, 21, 21, 0) 100%)",
                 // transform: "translateY(145px)"
               }}
+            />
+            <Winner
+              firstEvent={firstEvent}
+              currentRoundWinAmount={currentRoundWinAmount}
             />
           </div>
           <div

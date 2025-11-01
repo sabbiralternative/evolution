@@ -27,12 +27,15 @@ const BetSlip = ({
 }) => {
   const { eventId } = useParams();
   const { sound } = useSound();
+  const firstIndex = data?.[0];
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
   const [showSuspendedWarning, setShowSuspendedWarning] = useState(false);
   const dispatch = useDispatch();
-  const firstData = data?.[0];
-  const card1 = firstData?.runners?.[0]?.card?.[0];
-  const card2 = firstData?.runners?.[1]?.card?.[0];
+
+  const dragonCard = firstIndex?.indexCard?.[0];
+  const tigerCard = firstIndex?.indexCard?.[1];
+  const phoenixCard = firstIndex?.indexCard?.[2];
+
   const { balance, username } = useSelector((state) => state.auth);
 
   const [addOrder] = useOrderMutation();
@@ -428,6 +431,20 @@ const BetSlip = ({
             stakeState={stakeState}
             className={`absolute top-[20px]  left-14`}
           />
+          {dragonCard && (
+            <img
+              src={`/cards/${dragonCard}.png`}
+              alt=""
+              style={{
+                height: "60px",
+                width: "60px",
+                position: "absolute",
+                zIndex: 9999,
+                top: "20px",
+              }}
+            />
+          )}
+
           <svg
             className={cn(
               `cardBackground--c510a`,
@@ -729,6 +746,19 @@ const BetSlip = ({
             stakeState={stakeState}
             className={`absolute top-[20px]  left-14`}
           />
+          {tigerCard && (
+            <img
+              src={`/cards/${tigerCard}.png`}
+              alt=""
+              style={{
+                height: "60px",
+                width: "60px",
+                top: "20px",
+                position: "absolute",
+                zIndex: 9999,
+              }}
+            />
+          )}
           <svg
             className={cn(
               `cardBackground--c510a`,
@@ -995,6 +1025,20 @@ const BetSlip = ({
             stakeState={stakeState}
             className={`absolute top-[20px]  left-14`}
           />
+          {phoenixCard && (
+            <img
+              src={`/cards/${phoenixCard}.png`}
+              alt=""
+              style={{
+                height: "60px",
+                width: "60px",
+                position: "absolute",
+                top: "20px",
+                zIndex: 9999,
+              }}
+            />
+          )}
+
           <svg
             viewBox="0 0 133 154"
             fill="none"

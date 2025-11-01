@@ -11,6 +11,7 @@ import { handleUndoStake } from "../../../../utils/handleUndoStake";
 import CommonUIElement from "../../../../component/shared/CommonUIElement/CommonUIElement";
 import BetSlip from "../../../Games/DragonTigerPhoenix/BetSlip";
 import Timer from "../../../../component/shared/Timer";
+import Winner from "../../../Games/DragonTigerPhoenix/Winner";
 
 const DragonTigerPhoenix = () => {
   const { sound } = useSound();
@@ -155,6 +156,10 @@ const DragonTigerPhoenix = () => {
                     </div>
                   </div>
                 </div>
+                <Winner
+                  currentRoundWinAmount={currentRoundWinAmount}
+                  firstEvent={firstEvent}
+                />
               </div>
             </div>
             <div data-role="layout-classic">
