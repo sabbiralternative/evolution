@@ -7,7 +7,6 @@ import { playWinSound } from "../../../utils/sound";
 
 const Footer = ({
   firstEvent,
-  data,
   totalWinAmount,
   setTotalWinAmount,
   setShowWinLossResult,
@@ -15,17 +14,16 @@ const Footer = ({
   title,
   setCurrentRoundWinAmount,
   cards,
+  setWinnerName,
 }) => {
   const { sound } = useSound();
   const dispatch = useDispatch();
   const totalBetPlace = localStorage.getItem("totalBetPlace");
   const { eventId } = useParams();
   const { balance } = useSelector((state) => state.auth);
-
   let totalBetAmount = 0;
   if (totalBetPlace) {
     const parseTotalBet = JSON.parse(totalBetPlace);
-
     if (parseTotalBet?.length > 0) {
       const filterOrderByEventId = parseTotalBet?.filter(
         (order) => order?.eventId == eventId
@@ -35,13 +33,10 @@ const Footer = ({
       }
     }
   }
-
   useEffect(() => {
     let totalWin = 0;
-
     if (totalBetPlace) {
       const parseTotalBet = JSON.parse(totalBetPlace);
-
       if (parseTotalBet && parseTotalBet.length > 0) {
         const { rank } = firstEvent;
         const placedBet = parseTotalBet[0];
@@ -51,15 +46,19 @@ const Footer = ({
           if (placedBet?.name === "Yes") {
             const isWin = cards?.some((card) => rank?.includes(card?.value));
             if (isWin) {
+              setWinnerName("Yes");
               winnerSum += placedBet?.price * placedBet?.stake;
             } else {
+              setWinnerName("No");
               looserSum = looserSum + -placedBet?.stake;
             }
           } else {
             const isWin = !cards?.some((card) => rank?.includes(card?.value));
             if (isWin) {
+              setWinnerName("No");
               winnerSum += placedBet?.price * placedBet?.stake;
             } else {
+              setWinnerName("Yes");
               looserSum = looserSum + -placedBet?.stake;
             }
           }
@@ -71,15 +70,14 @@ const Footer = ({
       }
     }
   }, [
-    data,
     totalBetPlace,
     cards,
     firstEvent,
     setCurrentRoundWinAmount,
     setShowWinLossResult,
     setTotalWinAmount,
+    setWinnerName,
   ]);
-
   useEffect(() => {
     if (totalBetPlace && (totalWinAmount != null || showWinLossResult)) {
       const parseTotalBet = JSON.parse(totalBetPlace);
@@ -92,18 +90,15 @@ const Footer = ({
           playWinSound();
         }
       }
-
       const filterCurrentEventBet = parseTotalBet?.filter(
         (bet) => bet?.eventId != eventId
       );
-
       localStorage.setItem(
         "totalBetPlace",
         JSON.stringify(filterCurrentEventBet)
       );
     }
   }, [eventId, totalWinAmount, showWinLossResult, sound]);
-
   return (
     <div
       className="tableInfoContainer--b6c41 commonUiElement sm--89dd5 tall--a21d4 iphone10--fa60a hasRoundedCorners--1e1b3 hasNotch--267d0 withGradient--c01fc hasExtraRoundedCorners--6ed2f isFullscreen--d501d"

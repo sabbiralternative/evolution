@@ -211,7 +211,7 @@ const BetSlip = ({
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  console.log(data);
+
   return (
     <div
       className="betPanel--b3b31 portrait--d6948"

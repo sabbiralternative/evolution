@@ -1,27 +1,19 @@
 import { Status } from "../../../const";
 
-const Winner = ({ data, firstEvent, currentRoundWinAmount }) => {
-  let card = undefined;
-  const indexCard = data?.result?.[0]?.indexCard;
-  if (indexCard?.length > 0) {
-    card = Number(indexCard[0].slice(1));
-  }
-
+const Winner = ({ winnerName, firstEvent, currentRoundWinAmount }) => {
   return (
     <div className="overlays--4cd0a">
       <div className="mobileGameOverlay--a7837">
         <div className="gameResultContainer--374ad isMobile--d2fa5 isPortrait--01bd0 hasWin--ce559 isLargeDevice--710cc shiftBottom--027e5">
           <div className="gameResultElements--81495">
-            {card && (
+            {winnerName && (
               <div
                 className="winner--6aa50"
                 style={{
                   background: `linear-gradient(to right, rgba(0,150,255, 0),${
-                    card > 7
+                    winnerName === "Yes"
                       ? "rgb(255, 0, 0)"
-                      : card < 7
-                      ? "rgba(0,150,255, 0.9)"
-                      : "rgb(0, 150, 0)"
+                      : "rgba(0,150,255, 0.9)"
                   },rgba(0,150,255, 0)`,
                 }}
               >
@@ -29,7 +21,7 @@ const Winner = ({ data, firstEvent, currentRoundWinAmount }) => {
                   className="genericPhrase--d0b15"
                   data-role="game-result-winner"
                 >
-                  {card > 7 ? "7 UP" : card < 7 ? "7 DOWN" : 7}
+                  {winnerName}
                 </span>
               </div>
             )}
@@ -41,7 +33,7 @@ const Winner = ({ data, firstEvent, currentRoundWinAmount }) => {
                     className="amount--47c0e"
                     data-role="winning-message-amount"
                   >
-                    ⁦⁦₹⁩{currentRoundWinAmount}⁩
+                    ₹{currentRoundWinAmount}
                   </div>
                 </div>
               )}

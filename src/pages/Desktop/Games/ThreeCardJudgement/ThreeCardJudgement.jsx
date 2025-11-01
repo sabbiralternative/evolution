@@ -8,11 +8,14 @@ import AntMedia from "../../../../component/shared/Antmedia";
 import ChipContainer from "../../../../component/shared/CommonUIElement/ChipContainer";
 import { handleDoubleStake } from "../../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../../utils/handleUndoStake";
-import CommonUIElement from "../../../../component/shared/CommonUIElement/CommonUIElement";
+
 import BetSlip from "../../../Games/ThreeCardJudgement/BetSlip";
 import Timer from "../../../../component/shared/Timer";
 import CardBox from "../../../Games/ThreeCardJudgement/CardBox";
 import History from "./History";
+import Winner from "../../../Games/ThreeCardJudgement/Winner";
+import Card from "../../../Games/ThreeCardJudgement/Card";
+import CommonUIElement from "./CommonUIElement/CommonUIElement";
 
 const ThreeCardJudgement = () => {
   const { sound } = useSound();
@@ -24,6 +27,7 @@ const ThreeCardJudgement = () => {
   const { stake } = useSelector((state) => state.global);
   const { eventTypeId, eventId } = useParams();
   const [cards, setCards] = useState([]);
+  const [winnerName, setWinnerName] = useState(null);
   const { data } = useGetEventDetailsQuery(
     { eventTypeId, eventId },
     { pollingInterval: 1000 }
@@ -47,6 +51,7 @@ const ThreeCardJudgement = () => {
   useEffect(() => {
     if (firstEvent?.status === Status.OPEN) {
       setCurrentRoundWinAmount(null);
+      setWinnerName(null);
     }
     if (firstEvent?.status === Status.SUSPENDED) {
       setStakeState((prev) => {
@@ -156,6 +161,12 @@ const ThreeCardJudgement = () => {
                     </div>
                   </div>
                 </div>
+                <Winner
+                  winnerName={winnerName}
+                  data={data}
+                  firstEvent={firstEvent}
+                  currentRoundWinAmount={currentRoundWinAmount}
+                />
               </div>
             </div>
             <div data-role="layout-classic">
@@ -340,6 +351,10 @@ const ThreeCardJudgement = () => {
                     pointerEvents: "auto",
                   }}
                 >
+                  {firstEvent?.indexCard?.length > 0 && (
+                    <Card cards={firstEvent?.indexCard} />
+                  )}
+
                   <CardBox
                     cards={cards}
                     setCards={setCards}
@@ -369,6 +384,9 @@ const ThreeCardJudgement = () => {
               setTotalWinAmount={setTotalWinAmount}
               showWinLossResult={showWinLossResult}
               totalWinAmount={totalWinAmount}
+              setWinnerName={setWinnerName}
+              cards={cards}
+              firstEvent={firstEvent}
             />
             <div className="tooltipsContainer--515fb" />
             <div

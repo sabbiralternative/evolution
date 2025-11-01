@@ -17,6 +17,7 @@ import { playClick } from "../../../utils/sound";
 import CardBox from "./CardBox";
 import Card from "./Card";
 import Footer from "./Footer";
+import Winner from "./Winner";
 
 const ThreeCardJudgement = () => {
   const { sound } = useSound();
@@ -25,11 +26,13 @@ const ThreeCardJudgement = () => {
   const [animation, setAnimation] = useState([]);
   const [showWinLossResult, setShowWinLossResult] = useState(false);
   const [totalWinAmount, setTotalWinAmount] = useState(null);
-  const [, setCurrentRoundWinAmount] = useState(null);
+  const [currentRoundWinAmount, setCurrentRoundWinAmount] = useState(null);
   const { stake } = useSelector((state) => state.global);
   const [showFullScreen, setShowFullScreen] = useState(false);
   const { eventTypeId, eventId } = useParams();
   const [cards, setCards] = useState([]);
+  const [winnerName, setWinnerName] = useState(null);
+
   const { data } = useGetEventDetailsQuery(
     { eventTypeId, eventId: eventId },
     { pollingInterval: 1000 }
@@ -52,6 +55,7 @@ const ThreeCardJudgement = () => {
 
   useEffect(() => {
     if (firstEvent?.status === Status.OPEN) {
+      setWinnerName(null);
       setCurrentRoundWinAmount(null);
     }
     if (firstEvent?.status === Status.SUSPENDED) {
@@ -285,6 +289,12 @@ const ThreeCardJudgement = () => {
                 }}
               />
             </div>
+            <Winner
+              winnerName={winnerName}
+              data={data}
+              firstEvent={firstEvent}
+              currentRoundWinAmount={currentRoundWinAmount}
+            />
             <div className="overlays--4cd0a">
               <div className="gameResultContainerMobile--389cb">
                 <div
@@ -444,11 +454,11 @@ const ThreeCardJudgement = () => {
             setShowWinLossResult={setShowWinLossResult}
             setTotalWinAmount={setTotalWinAmount}
             totalWinAmount={totalWinAmount}
-            data={data?.result}
             firstEvent={firstEvent}
             title={firstEvent?.eventName}
             setCurrentRoundWinAmount={setCurrentRoundWinAmount}
             cards={cards}
+            setWinnerName={setWinnerName}
           />
           <div className="tooltipsContainer--515fb increasedZIndex--60d95" />
           <div className="container--a4689">
