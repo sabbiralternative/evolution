@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import ActionButtons from "./ActionButtons";
 import BetSlip from "./BetSlip";
-import Footer from "../../../component/shared/Footer";
 import Menu from "../../../component/shared/Menu/Menu";
 import { useParams } from "react-router-dom";
 import { useGetEventDetailsQuery } from "../../../redux/features/events/events";
@@ -17,6 +16,7 @@ import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
 import CardBox from "./CardBox";
 import Card from "./Card";
+import Footer from "./Footer";
 
 const ThreeCardJudgement = () => {
   const { sound } = useSound();
@@ -448,6 +448,7 @@ const ThreeCardJudgement = () => {
             firstEvent={firstEvent}
             title={firstEvent?.eventName}
             setCurrentRoundWinAmount={setCurrentRoundWinAmount}
+            cards={cards}
           />
           <div className="tooltipsContainer--515fb increasedZIndex--60d95" />
           <div className="container--a4689">

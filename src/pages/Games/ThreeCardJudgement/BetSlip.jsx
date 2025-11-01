@@ -3,7 +3,7 @@ import { Status } from "../../../const";
 import { useDispatch, useSelector } from "react-redux";
 import { useOrderMutation } from "../../../redux/features/events/events";
 import { setBalance } from "../../../redux/features/auth/authSlice";
-import { playSuspendedSound } from "../../../utils/sound";
+import { playPlaceChip, playSuspendedSound } from "../../../utils/sound";
 import { useSound } from "../../../context/ApiProvider";
 import { useParams } from "react-router-dom";
 import { handleStoreRecentPlay } from "../../../utils/handleStorateRecentPlay";
@@ -46,6 +46,7 @@ const BetSlip = ({
       if (isRepeatTheBet) {
         setStakeState(initialState);
       }
+      if (sound) playPlaceChip();
       // new Audio("/bet.mp3").play();
       const { key, data, dataIndex, runnerIndex, type } = payload;
       setAnimation([key]);
