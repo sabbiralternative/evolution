@@ -30,6 +30,7 @@ import ThreeCardJudgement from "../pages/Desktop/Games/ThreeCardJudgement/ThreeC
 import Mogambo from "../pages/Desktop/Games/Mogambo/Mogambo";
 import CenterCard from "../pages/Desktop/Games/CenterCard/CenterCard";
 import Matka from "../pages/Desktop/Games/Matka/Matka";
+import TP2020 from "../pages/Desktop/Games/TP2020/TP2020";
 
 export const desktopRoutes = [
   {
@@ -121,7 +122,7 @@ export const desktopRoutes = [
     element: <FootballDice />,
   },
   {
-    path: "/game/2cardstp/:eventTypeId/:eventId",
+    path: "/game/2cardsteenpatti/:eventTypeId/:eventId",
     element: <TwoCardsTP />,
   },
   {
@@ -159,5 +160,9 @@ export const desktopRoutes = [
   {
     path: "/game/matka/:eventTypeId/:eventId",
     element: <Matka />,
+  },
+  {
+    path: "/game/teenpatti2020/:eventTypeId/:eventId",
+    element: <TP2020 />,
   },
 ];

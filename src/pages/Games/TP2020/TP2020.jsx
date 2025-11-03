@@ -17,7 +17,7 @@ import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
 import Winner from "./Winner";
 
-const TwoCardsTP = () => {
+const TP2020 = () => {
   const { sound } = useSound();
   const [showMenu, setShowMenu] = useState(false);
   const [double, setDouble] = useState(false);
@@ -547,4 +547,4 @@ const TwoCardsTP = () => {
   );
 };
 
-export default TwoCardsTP;
+export default TP2020;

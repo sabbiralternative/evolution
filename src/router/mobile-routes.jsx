@@ -30,6 +30,7 @@ import ThreeCardJudgement from "../pages/Games/ThreeCardJudgement/ThreeCardJudge
 import Mogambo from "../pages/Games/Mogambo/Mogambo";
 import CenterCard from "../pages/Games/CenterCard/CenterCard";
 import Matka from "../pages/Games/Matka/Matka";
+import TP2020 from "../pages/Games/TP2020/TP2020";
 
 export const mobileRoutes = [
   {
@@ -126,7 +127,7 @@ export const mobileRoutes = [
     element: <FootballStudio />,
   },
   {
-    path: "/game/2cardstp/:eventTypeId/:eventId",
+    path: "/game/2cardsteenpatti/:eventTypeId/:eventId",
     element: <TwoCardsTP />,
   },
   {
@@ -160,5 +161,9 @@ export const mobileRoutes = [
   {
     path: "/game/matka/:eventTypeId/:eventId",
     element: <Matka />,
+  },
+  {
+    path: "/game/teenpatti2020/:eventTypeId/:eventId",
+    element: <TP2020 />,
   },
 ];

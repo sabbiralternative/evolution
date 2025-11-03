@@ -40,7 +40,7 @@ const BetSlip = ({
       payload,
       sound,
       eventId,
-      gameName: "2cardsteenpatti",
+      gameName: "teenpatti2020",
       initialState,
       setAnimation,
       setIsLoading,

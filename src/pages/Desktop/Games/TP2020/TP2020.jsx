@@ -9,11 +9,11 @@ import ChipContainer from "../../../../component/shared/CommonUIElement/ChipCont
 import { handleDoubleStake } from "../../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../../utils/handleUndoStake";
 import CommonUIElement from "../../../../component/shared/CommonUIElement/CommonUIElement";
-import BetSlip from "../../../Games/TwoCardsTP/BetSlip";
+import BetSlip from "../../../Games/TP2020/BetSlip";
 import Timer from "../../../../component/shared/Timer";
-import Winner from "../../../Games/TwoCardsTP/Winner";
+import Winner from "../../../Games/TP2020/Winner";
 
-const TwoCardsTP = () => {
+const TP2020 = () => {
   const { sound } = useSound();
   const [double, setDouble] = useState(false);
   const [animation, setAnimation] = useState([]);
@@ -379,4 +379,4 @@ const TwoCardsTP = () => {
   );
 };
 
-export default TwoCardsTP;
+export default TP2020;
