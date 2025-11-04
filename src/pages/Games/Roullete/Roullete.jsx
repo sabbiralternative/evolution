@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import ActionButtons from "./ActionButtons";
-import BetSlip from "./BetSlip";
 import Footer from "../../../component/shared/Footer";
 // import RoadPrediction from "./RoadPrediction";
 import Menu from "../../../component/shared/Menu/Menu";
@@ -16,6 +15,9 @@ import { handleUndoStake } from "../../../utils/handleUndoStake";
 import RecentNumberContainer from "./RecentNumberContainer";
 import { keysArray } from "./const";
 import AntMedia from "../../../component/shared/Antmedia";
+import { playClick } from "../../../utils/sound";
+import { useSound } from "../../../context/ApiProvider";
+import BetSlip from "./BetSlip/BetSlip";
 
 const Roullete = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -27,6 +29,7 @@ const Roullete = () => {
   const { stake } = useSelector((state) => state.global);
   const [showFullScreen, setShowFullScreen] = useState(false);
   const { eventTypeId, eventId } = useParams();
+  const { sound } = useSound();
   const { data } = useGetEventDetailsQuery(
     { eventTypeId, eventId },
     { pollingInterval: 1000 }
@@ -38,7 +41,7 @@ const Roullete = () => {
     acc[key] = { show: false, stake };
     return acc;
   }, {});
-  const [stakeState, setStakeState] = useState(initialState);
+  const [stakeState, setStakeState] = useState({});
 
   const isRepeatTheBet = Object.values(stakeState).find(
     (item) => item?.selection_id && item?.show === false && item?.serial

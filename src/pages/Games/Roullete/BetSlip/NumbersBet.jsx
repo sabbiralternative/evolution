@@ -1,0 +1,91 @@
+import { Fragment } from "react";
+import { rouletteData } from "../const";
+import StakeAnimation from "../../../../component/UI/Chip/StakeAnimation";
+
+const NumbersBet = ({
+  handleStakeChange,
+  data,
+  animation,
+  double,
+  stake,
+  stakeState,
+}) => {
+  const chipPosition = {
+    "corner-bet-catcher": "right-top",
+    "double-street-catcher-top-right": "right-top",
+    "split-up-bet-catcher-top": "center-top",
+    "spleet-bet-catcher": "left-top",
+    "split-up-bet-catcher-right": "right-center",
+    "split-up-bet-catcher-bottom": "center-bottom",
+    "six-lines-catcher": "right-bottom",
+  };
+  return (
+    <Fragment>
+      {rouletteData.numbers.map((num) => {
+        return (
+          <div
+            key={num.bet}
+            data-action="STRAIGHT_UP"
+            data-bet={num.bet}
+            className={num.className}
+          >
+            {num.betCatchers.map((catcher, idx) => (
+              <Fragment key={catcher.highlight}>
+                <div
+                  onClick={() =>
+                    handleStakeChange({
+                      key: catcher.highlight,
+                      data,
+                      dataIndex: 0,
+                      runnerIndex: 0,
+                      type: "back",
+                    })
+                  }
+                  key={idx}
+                  className={catcher.className}
+                  data-action={catcher.action}
+                  data-highlight={catcher.highlight}
+                  style={catcher.style || {}}
+                />
+                <div className={`chip ${chipPosition[catcher.className]}`}>
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner={catcher.highlight}
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
+                </div>
+              </Fragment>
+            ))}
+            <div
+              onClick={() =>
+                handleStakeChange({
+                  key: num.value,
+                  data,
+                  dataIndex: 0,
+                  runnerIndex: 0,
+                  type: "back",
+                })
+              }
+              className="value"
+            >
+              {num.value}
+              <div className="chip center">
+                <StakeAnimation
+                  animation={animation}
+                  double={double}
+                  runner={num.value}
+                  stake={stake}
+                  stakeState={stakeState}
+                />
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </Fragment>
+  );
+};
+
+export default NumbersBet;

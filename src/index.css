@@ -108,3 +108,369 @@ body {
 .vjs-control-bar {
   display: none !important;
 }
+
+/*! Roulette css  */
+.roulette-table-container * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.roulette-table-container {
+  --red: #cc000e;
+  --black: #000;
+  --hover: rgba(126, 220, 70);
+  font-size: 18px;
+  font-weight: 400;
+  font-family: Helvetica, sans-serif;
+  line-height: 1.14;
+}
+.container-first {
+  position: relative;
+  display: flex;
+  flex-flow: column-reverse wrap;
+  align-content: flex-start;
+  height: 228px;
+}
+.split-up-bet-catcher-top,
+.split-up-bet-catcher-right,
+.split-up-bet-catcher-bottom,
+.spleet-bet-catcher,
+.corner-bet-catcher,
+.six-lines-catcher,
+.basket-catcher-top,
+.basket-catcher-bottom,
+.double-street-catcher-top-right {
+  position: absolute;
+  z-index: 11;
+}
+.spleet-bet-catcher,
+.corner-bet-catcher,
+.six-lines-catcher,
+.double-street-catcher-top-right {
+  width: 30px;
+  height: 30px;
+  z-index: 12;
+}
+.split-up-bet-catcher-top {
+  top: -3px;
+  width: 100%;
+  height: calc(3px + 2px);
+}
+.split-up-bet-catcher-right {
+  top: 0;
+  bottom: 0;
+  right: -3px;
+  width: calc(3px + 2px);
+  height: 100%;
+}
+.split-up-bet-catcher-bottom {
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: calc(3px + 2px);
+}
+.spleet-bet-catcher {
+  border-radius: 50%;
+  top: -15px;
+  left: -15px;
+}
+.corner-bet-catcher {
+  border-radius: 50%;
+  top: -15px;
+  right: -15px;
+}
+.corner-bet-catcher.bottom {
+  top: auto;
+  bottom: -15px;
+}
+.six-lines-catcher,
+.double-street-catcher-top-right {
+  border-radius: 50%;
+}
+.six-lines-catcher {
+  bottom: -15px;
+  right: -15px;
+}
+.double-street-catcher-top-right {
+  top: -15px;
+  right: -15px;
+}
+.basket-catcher-top,
+.basket-catcher-bottom {
+  width: 100%;
+  height: 5px;
+}
+.basket-catcher-top {
+  top: -5px;
+}
+.basket-catcher-bottom {
+  bottom: -5px;
+}
+.red-item,
+.black-item,
+.zero-item {
+  position: relative;
+  border: none;
+  border-left: 3px solid white;
+  border-top: 3px solid white;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  text-align: center;
+  width: 7.14%;
+  color: white;
+}
+.red-item {
+  background-color: var(--red);
+}
+.black-item {
+  background: var(--black);
+}
+.zero-item:first-child {
+  border-bottom: 1px solid white;
+  margin-bottom: -1px;
+}
+.zero-item {
+  padding-top: 50px;
+  padding-bottom: 36.8px;
+}
+.zero-item,
+.red-item,
+.black-item,
+.column-item,
+.doz-item,
+.outside-section {
+  transition: background-color 0.2s ease;
+}
+.zero-item:hover,
+.red-item:hover,
+.black-item:hover {
+  background-color: var(--hover);
+  cursor: pointer;
+}
+.column-item {
+  position: relative;
+  border: 3px solid #fff;
+  border-top: none;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  text-align: center;
+  width: 7.14%;
+  color: #fff;
+}
+.column-item[data-action="1ST_COLUMN"] {
+  border-bottom: 1px solid #fff;
+  margin-bottom: -1px;
+}
+.column-item:last-child {
+  border-top: 3px solid #fff;
+}
+.container-second {
+  display: flex;
+  justify-content: center;
+  width: calc(100% - 7.14% - 7.14%);
+  margin: 0 auto;
+  height: 70px;
+  flex-flow: row wrap;
+  align-content: flex-start;
+}
+.doz-item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  border: solid white;
+  text-align: center;
+  height: 100%;
+  color: white;
+}
+.container-third {
+  display: flex;
+  width: calc(100% - 7.14% - 7.14%);
+  margin: 0 auto;
+  flex-flow: row wrap;
+  align-content: flex-start;
+}
+.outside-section {
+  position: relative;
+  flex: 1;
+  border: solid white;
+  text-align: center;
+  height: 70px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rhomb-red {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-color: var(--red);
+  border: solid white;
+  transform: rotate(45deg);
+}
+.rhomb-black {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-color: black;
+  border: solid white;
+  transform: rotate(45deg);
+}
+.value {
+  transform: rotate(-90deg);
+}
+@media (max-width: 640px) {
+  .roulette-table-container {
+    font-size: 18px;
+  }
+  .zero-item {
+    padding-bottom: 35.3px;
+  }
+  .container-second {
+    height: 50px;
+  }
+  .outside-section {
+    height: 60px;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.chip {
+  --offset: 17.5px;
+  --smallOffset: 12px;
+  --negativeOffset: -17.5px;
+  --negativeSmallOffset: -12px;
+}
+
+.chip {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background: transparent;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.chip.center {
+  inset: 0;
+  margin: auto;
+}
+
+.chip.right-top {
+  top: var(--negativeOffset);
+  right: var(--negativeOffset);
+}
+
+.chip.right-bottom {
+  bottom: var(--negativeOffset);
+  right: var(--negativeOffset);
+}
+
+.chip.center-top {
+  top: var(--negativeOffset);
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.chip.right-top-with-offset {
+  top: 20px;
+  right: var(--negativeOffset);
+}
+
+.chip.right-bottom-with-offset {
+  bottom: 20px;
+  right: var(--negativeOffset);
+}
+
+.chip.right-bottom-with-no-offset {
+  bottom: 0px;
+  right: var(--negativeOffset);
+}
+
+.chip.right-top-with-no-offset {
+  top: 0px;
+  right: var(--negativeOffset);
+}
+
+.chip.center-bottom {
+  bottom: var(--negativeOffset);
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.chip.left-top {
+  top: var(--negativeOffset);
+  left: var(--negativeOffset);
+}
+
+.chip.right-center {
+  right: var(--negativeOffset);
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+/* sm */
+@media (max-width: 640px) {
+  .chip {
+    width: 20px;
+    height: 20px;
+  }
+
+  .chip.right-top {
+    top: var(--negativeSmallOffset);
+    right: var(--negativeSmallOffset);
+  }
+
+  .chip.right-bottom {
+    bottom: var(--negativeSmallOffset);
+    right: var(--negativeSmallOffset);
+  }
+
+  .chip.right-top-with-offset {
+    right: var(--negativeSmallOffset);
+  }
+
+  .chip.right-bottom-with-offset {
+    right: var(--negativeSmallOffset);
+  }
+
+  .chip.right-bottom-with-no-offset {
+    right: var(--negativeSmallOffset);
+  }
+
+  .chip.right-top-with-no-offset {
+    right: var(--negativeSmallOffset);
+  }
+
+  .chip.center-bottom {
+    bottom: var(--negativeSmallOffset);
+  }
+
+  .chip.left-top {
+    top: var(--negativeSmallOffset);
+    left: var(--negativeSmallOffset);
+  }
+
+  .chip.right-center {
+    right: var(--negativeSmallOffset);
+  }
+}
+
+/*! Roulette css  */

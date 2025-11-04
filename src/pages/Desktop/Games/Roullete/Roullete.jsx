@@ -9,7 +9,7 @@ import ChipContainer from "../../../../component/shared/CommonUIElement/ChipCont
 import { handleDoubleStake } from "../../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../../utils/handleUndoStake";
 import CommonUIElement from "../../../../component/shared/CommonUIElement/CommonUIElement";
-import BetSlip from "../../../Games/Roullete/BetSlip";
+import BetSlip from "../../../Games/Roullete/BetSlip/BetSlip";
 import Timer from "../../../../component/shared/Timer";
 
 const Roullete = () => {
