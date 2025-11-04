@@ -333,14 +333,16 @@ const Roullete = () => {
                     ? "translateY(25px)"
                     : "translateY(0px)",
                 transition: "transform 0.5s ease-in-out",
+                pointerEvents: "auto",
               }}
             >
-              <div className="classicOverlay--fde0a">
+              <div
+                style={{ pointerEvents: "auto" }}
+                className="classicOverlay--fde0a"
+              >
                 <div
+                  style={{ pointerEvents: "auto", transform: "scaleX(1.4)" }}
                   className="bettingGrid--190e8"
-                  style={{
-                    transform: "rotate(-90deg",
-                  }}
                 >
                   <BetSlip
                     initialState={initialState}
