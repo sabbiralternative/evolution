@@ -341,7 +341,7 @@ const Roullete = () => {
                 className="classicOverlay--fde0a"
               >
                 <div
-                  style={{ pointerEvents: "auto", transform: "scaleX(1.4)" }}
+                  style={{ pointerEvents: "auto", rotate: "-90deg" }}
                   className="bettingGrid--190e8"
                 >
                   <BetSlip

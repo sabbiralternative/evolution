@@ -220,9 +220,11 @@ const BetSlip = ({
     }));
   };
 
+  console.log(bets);
+
   return (
     <>
-      {/* <div
+      <div
         onClick={handleShowSuspendedStatus}
         className={`absolute h-[70%]  origin-bottom  flex flex-col justify-end items-center px-2 w-full mx-auto gap-1 perspective transition-all ease-in-out duration-1000 bottom-12  right-4  scale-[100%] text-[12px]`}
       >
@@ -1685,14 +1687,14 @@ const BetSlip = ({
             </span>
           </div>
         </span>
-      </div> */}
+      </div>
 
-      <div
+      {/* <div
         // className="absolute h-[70%]  origin-bottom  flex flex-col justify-end items-center px-2 w-full mx-auto gap-1 perspective transition-all ease-in-out duration-1000 bottom-12  right-4  scale-[100%] text-[12px]"
         style={{ maxWidth: 800, margin: "auto" }}
       >
         <RouletteTable bets={bets} onBet={handleBet} />
-      </div>
+      </div> */}
     </>
   );
 };
