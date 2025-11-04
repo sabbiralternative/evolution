@@ -9,6 +9,8 @@ const NumbersBet = ({
   double,
   stake,
   stakeState,
+  setHighlight,
+  highlight,
 }) => {
   const chipPosition = {
     "corner-bet-catcher": "right-top",
@@ -19,6 +21,7 @@ const NumbersBet = ({
     "split-up-bet-catcher-bottom": "center-bottom",
     "six-lines-catcher": "right-bottom",
   };
+
   return (
     <Fragment>
       {rouletteData.numbers.map((num) => {
@@ -27,37 +30,45 @@ const NumbersBet = ({
             key={num.bet}
             data-action="STRAIGHT_UP"
             data-bet={num.bet}
-            className={num.className}
+            className={`${num.className} ${
+              highlight.includes(num.bet.toString()) ? "item-hover" : ""
+            }`}
           >
-            {num.betCatchers.map((catcher, idx) => (
-              <Fragment key={catcher.highlight}>
-                <div
-                  onClick={() =>
-                    handleStakeChange({
-                      key: catcher.highlight,
-                      data,
-                      dataIndex: 0,
-                      runnerIndex: 0,
-                      type: "back",
-                    })
-                  }
-                  key={idx}
-                  className={catcher.className}
-                  data-action={catcher.action}
-                  data-highlight={catcher.highlight}
-                  style={catcher.style || {}}
-                />
-                <div className={`chip ${chipPosition[catcher.className]}`}>
-                  <StakeAnimation
-                    animation={animation}
-                    double={double}
-                    runner={catcher.highlight}
-                    stake={stake}
-                    stakeState={stakeState}
+            {num.betCatchers.map((catcher, idx) => {
+              return (
+                <Fragment key={catcher.highlight}>
+                  <div
+                    onMouseEnter={() =>
+                      setHighlight(catcher.highlight?.split("-"))
+                    }
+                    onMouseLeave={() => setHighlight([])}
+                    onClick={() =>
+                      handleStakeChange({
+                        key: catcher.highlight,
+                        data,
+                        dataIndex: 0,
+                        runnerIndex: 0,
+                        type: "back",
+                      })
+                    }
+                    key={idx}
+                    className={`${catcher.className} `}
+                    data-action={catcher.action}
+                    data-highlight={catcher.highlight}
+                    style={catcher.style || {}}
                   />
-                </div>
-              </Fragment>
-            ))}
+                  <div className={`chip ${chipPosition[catcher.className]}`}>
+                    <StakeAnimation
+                      animation={animation}
+                      double={double}
+                      runner={catcher.highlight}
+                      stake={stake}
+                      stakeState={stakeState}
+                    />
+                  </div>
+                </Fragment>
+              );
+            })}
             <div
               onClick={() =>
                 handleStakeChange({

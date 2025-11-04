@@ -330,18 +330,28 @@ const Roullete = () => {
               style={{
                 transform:
                   firstEvent?.status === Status.SUSPENDED
-                    ? "translateY(25px)"
+                    ? "translateY(0px)"
                     : "translateY(0px)",
                 transition: "transform 0.5s ease-in-out",
                 pointerEvents: "auto",
               }}
             >
               <div
-                style={{ pointerEvents: "auto" }}
+                style={{
+                  pointerEvents: "auto",
+                  flexDirection: "column",
+                  justifyItems: "center",
+                  width: "100%",
+                }}
                 className="classicOverlay--fde0a"
               >
                 <div
-                  style={{ pointerEvents: "auto", rotate: "-90deg" }}
+                  style={{
+                    pointerEvents: "auto",
+                    width: "50%",
+                    margin: "0 auto",
+                    transform: "scale(0.8)",
+                  }}
                   className="bettingGrid--190e8"
                 >
                   <BetSlip

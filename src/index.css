@@ -473,4 +473,15 @@ body {
   }
 }
 
+.item-hover,
+.zero-item:hover,
+.red-item:hover,
+.black-item:hover,
+.column-item:hover,
+.doz-item:hover,
+.outside-section:hover {
+  background-color: rgba(126, 220, 70);
+  cursor: pointer;
+}
+
 /*! Roulette css  */

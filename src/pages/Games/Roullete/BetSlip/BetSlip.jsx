@@ -1,15 +1,17 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Status } from "../../../../const";
 import { useDispatch, useSelector } from "react-redux";
 import { useOrderMutation } from "../../../../redux/features/events/events";
 import { setBalance } from "../../../../redux/features/auth/authSlice";
-import StakeAnimation from "../../../../component/UI/Chip/StakeAnimation";
-import { rouletteData } from "../const";
 import { playPlaceChip, playSuspendedSound } from "../../../../utils/sound";
 import { useSound } from "../../../../context/ApiProvider";
 import { useParams } from "react-router-dom";
 import { handleStoreRecentPlay } from "../../../../utils/handleStorateRecentPlay";
 import NumbersBet from "./NumbersBet";
+import ZeroBet from "./ZeroBet";
+import ColumnBet from "./ColumnBet";
+import Dozen from "./Dozen";
+import BottomBets from "./BottomBets";
 
 const BetSlip = ({
   double,
@@ -22,6 +24,7 @@ const BetSlip = ({
   animation,
   setAnimation,
   initialState,
+  isMobile,
 }) => {
   const { eventId } = useParams();
   const { sound } = useSound();
@@ -205,104 +208,28 @@ const BetSlip = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const [highlight, setHighlight] = useState([]);
+
   return (
     <div
       onClick={handleShowSuspendedStatus}
-      style={{ maxWidth: "calc(100vw - 10px)", marginTop: "100px" }}
+      style={{
+        maxWidth: "calc(100vw - 10px)",
+        marginTop: isMobile ? "100px" : "0px",
+      }}
     >
       <div className="roulette-table-container">
         <section className="container-first">
-          <div className="zero-item" data-action={0} data-bet={0}>
-            <div
-              className="spleet-bet-catcher"
-              data-action="STREET"
-              data-highlight="0-00-2"
-              style={{ left: "auto", right: "-15px", zIndex: 13 }}
-            />
-
-            <div
-              className="corner-bet-catcher bottom"
-              data-action="BASKET_US"
-              data-highlight="0-00-1-2-3"
-              style={{ zIndex: 14 }}
-            />
-
-            <div
-              className="split-up-bet-catcher-top"
-              data-action="ROW"
-              data-highlight="0-00"
-            />
-
-            <div
-              className="split-up-bet-catcher-right"
-              data-action="SPLIT"
-              data-highlight="0-2"
-            />
-
-            <div
-              className="split-up-bet-catcher-right"
-              data-action="SPLIT"
-              data-highlight="0-1"
-              style={{ height: "85px", top: "auto", bottom: "0px" }}
-            />
-            <div
-              className="basket-catcher-bottom"
-              data-action="BASKET_US"
-              data-highlight="0-00-1-2-3"
-              style={{ left: "-3px" }}
-            />
-            <div
-              onClick={() =>
-                handleStakeChange({
-                  key: 0,
-                  data,
-                  dataIndex: 0,
-                  runnerIndex: 0,
-                  type: "back",
-                })
-              }
-              className="value"
-            >
-              0
-              <div className="absolute bottom-1/2 lg:rotate-90 scale-[60%] origin-center z-50 left-1/2 -translate-x-1/2 translate-y-1/2">
-                {" "}
-                <StakeAnimation
-                  animation={animation}
-                  double={double}
-                  runner={"0"}
-                  stake={stake}
-                  stakeState={stakeState}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="zero-item" data-action={0} data-bet={0}>
-            <div
-              className="corner-bet-catcher"
-              data-action="BASKET_US"
-              data-highlight="00-0-1-2-3"
-              style={{ zIndex: 14 }}
-            />
-            <div
-              className="split-up-bet-catcher-right"
-              data-action="SPLIT"
-              data-highlight="00-3"
-              style={{ zIndex: 12, height: "85px" }}
-            />
-            <div
-              className="split-up-bet-catcher-right"
-              data-action="SPLIT"
-              data-highlight="00-2"
-              style={{ height: "85px", top: "auto", bottom: "0px" }}
-            />
-            <div
-              className="basket-catcher-top"
-              data-action="BASKET_US"
-              data-highlight="00-0-1-2-3"
-              style={{ left: "-3px" }}
-            />
-            <div className="value">00</div>
-          </div>
+          <ZeroBet
+            animation={animation}
+            data={data}
+            double={double}
+            handleStakeChange={handleStakeChange}
+            stake={stake}
+            stakeState={stakeState}
+            setHighlight={setHighlight}
+            highlight={highlight}
+          />
           <NumbersBet
             animation={animation}
             data={data}
@@ -310,112 +237,38 @@ const BetSlip = ({
             handleStakeChange={handleStakeChange}
             stake={stake}
             stakeState={stakeState}
+            setHighlight={setHighlight}
+            highlight={highlight}
           />
-          <div
-            className="column-item"
-            data-action="1ST_COLUMN"
-            data-bet="1ST_COLUMN"
-            data-highlight="1ST_COLUMN"
-          >
-            <div className="value">1st</div>
-          </div>
-          <div
-            className="column-item"
-            data-action="2ND_COLUMN"
-            data-bet="2ND_COLUMN"
-            data-highlight="2ND_COLUMN"
-          >
-            <div className="value">2nd</div>
-          </div>
-          <div
-            className="column-item"
-            data-action="3RD_COLUMN"
-            data-bet="3RD_COLUMN"
-            data-highlight="3RD_COLUMN"
-          >
-            <div className="value">3rd</div>
-          </div>
+          <ColumnBet
+            animation={animation}
+            data={data}
+            double={double}
+            handleStakeChange={handleStakeChange}
+            stake={stake}
+            stakeState={stakeState}
+            setHighlight={setHighlight}
+          />
         </section>
-        <section className="container-second">
-          <div
-            className="doz-item"
-            data-action="1ST_DOZEN"
-            data-bet="1ST_DOZEN"
-            data-highlight="1ST_DOZEN"
-          >
-            <div>1-12</div>
-          </div>
-          <div
-            className="doz-item"
-            data-action="2ND_DOZEN"
-            data-bet="2ND_DOZEN"
-            data-highlight="2ND_DOZEN"
-          >
-            <div>13-24</div>
-          </div>
-          <div
-            className="doz-item"
-            data-action="3RD_DOZEN"
-            data-bet="3RD_DOZEN"
-            data-highlight="3RD_DOZEN"
-          >
-            <div>25-36</div>
-          </div>
-        </section>
-        <div className="container-third">
-          <div
-            className="outside-section"
-            data-action="1_TO_18"
-            data-bet="1_TO_18"
-            data-highlight="1_TO_18"
-          >
-            <div>1-18</div>
-          </div>
-          <div
-            className="outside-section"
-            data-action="EVEN"
-            data-bet="EVEN"
-            data-highlight="EVEN"
-          >
-            <div>EVEN</div>
-          </div>
-          <div
-            className="outside-section"
-            data-action="RED"
-            data-bet="RED"
-            data-highlight="RED"
-          >
-            <div>
-              <div className="rhomb-red" />
-            </div>
-          </div>
-          <div
-            className="outside-section"
-            data-action="BLACK"
-            data-bet="BLACK"
-            data-highlight="BLACK"
-          >
-            <div>
-              <div className="rhomb-black" />
-            </div>
-          </div>
-          <div
-            className="outside-section"
-            data-action="ODD"
-            data-bet="ODD"
-            data-highlight="ODD"
-          >
-            <div>ODD</div>
-          </div>
-          <div
-            className="outside-section"
-            data-action="19_TO_36"
-            data-bet="19_TO_36"
-            data-highlight="19_TO_36"
-          >
-            <div>19-36</div>
-          </div>
-        </div>
+        <Dozen
+          animation={animation}
+          data={data}
+          double={double}
+          handleStakeChange={handleStakeChange}
+          stake={stake}
+          stakeState={stakeState}
+          setHighlight={setHighlight}
+        />
+
+        <BottomBets
+          animation={animation}
+          data={data}
+          double={double}
+          handleStakeChange={handleStakeChange}
+          stake={stake}
+          stakeState={stakeState}
+          setHighlight={setHighlight}
+        />
       </div>
     </div>
   );

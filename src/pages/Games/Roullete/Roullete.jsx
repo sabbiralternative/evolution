@@ -360,9 +360,7 @@ const Roullete = () => {
                         setStakeState={setStakeState}
                         data={data?.result}
                         status={firstEvent?.status}
-                        height={true}
-                        width={true}
-                        transform={true}
+                        isMobile={true}
                       />
                       <div
                         className="footerContainer--2115a"

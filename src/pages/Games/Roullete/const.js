@@ -51,9 +51,11 @@ export const keyNames = {
 };
 export const keysArray = Object.keys(keyNames);
 
+// TODO: Remove key array
+
 export const zeroRouletteData = [
   {
-    bet: 0,
+    bet: "0",
     value: "0",
     className: "zero-item",
     betCatchers: [
@@ -61,60 +63,66 @@ export const zeroRouletteData = [
         className: "spleet-bet-catcher",
         action: "STREET",
         highlight: "0-00-2",
+        style: { left: "auto", right: "-15px", zIndex: 13 },
       },
       {
-        className: "spleet-bet-catcher",
-        action: "STREET",
-        highlight: "0-1-2",
-        style: { zIndex: 12 },
+        className: "corner-bet-catcher bottom",
+        action: "BASKET_US",
+        highlight: "0-00-1-2-3",
+        style: { zIndex: 14 },
       },
       {
         className: "split-up-bet-catcher-top",
-        action: "SPLIT",
-        highlight: "1-2",
+        action: "ROW",
+        highlight: "0-00",
       },
       {
         className: "split-up-bet-catcher-right",
         action: "SPLIT",
-        highlight: "1-4",
+        highlight: "0-2",
       },
       {
-        className: "split-up-bet-catcher-bottom",
-        action: "STREET",
-        highlight: "1-2-3",
+        className: "split-up-bet-catcher-right",
+        action: "SPLIT",
+        highlight: "0-1",
+        style: { height: "85px", top: "auto", bottom: "0px" },
       },
       {
-        className: "six-lines-catcher",
-        action: "DOUBLE_STREET",
-        highlight: "1-2-3-4-5-6",
+        className: "basket-catcher-bottom",
+        action: "BASKET_US",
+        highlight: "0-00-1-2-3",
+        style: { left: "-3px" },
       },
     ],
   },
   {
-    bet: 2,
-    value: "2",
-    className: "black-item",
+    bet: "00",
+    value: "00",
+    className: "zero-item",
     betCatchers: [
       {
         className: "corner-bet-catcher",
-        action: "CORNER",
-        highlight: "2-3-5-6",
+        action: "BASKET_US",
+        highlight: "00-0-1-2-3",
+        style: { zIndex: 14 },
       },
       {
-        className: "spleet-bet-catcher",
-        action: "STREET",
-        highlight: "00-2-3",
-        style: { zIndex: 12 },
-      },
-      {
-        className: "split-up-bet-catcher-top",
+        className: "split-up-bet-catcher-right 00",
         action: "SPLIT",
-        highlight: "2-3",
+        highlight: "00-3",
+        style: { zIndex: 12, height: "85px" },
       },
       {
         className: "split-up-bet-catcher-right",
         action: "SPLIT",
-        highlight: "2-5",
+        highlight: "0-02",
+        style: { height: "85px", top: "auto", bottom: "0px" },
+      },
+      {
+        className: "basket-catcher-top",
+        action: "BASKET_US",
+        highlight: "00-0-1-2-3",
+        style: { left: "-3px" },
       },
     ],
   },
