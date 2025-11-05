@@ -1,4 +1,4 @@
-import StakeAnimation from "../../../../component/UI/Chip/StakeAnimation";
+import StakeAnimation from "./StakeAnimation";
 import { rouletteData } from "../const";
 
 const BottomBets = ({
@@ -9,6 +9,7 @@ const BottomBets = ({
   stake,
   stakeState,
   setHighlight,
+  isMobile,
 }) => {
   const blackBox = rouletteData.numbers
     .filter((item) => item.className === "black-item")
@@ -18,7 +19,13 @@ const BottomBets = ({
     .map((d) => d.bet.toString());
 
   return (
-    <div className="container-third">
+    <div
+      className="container-third"
+      style={{
+        width: isMobile ? "calc(100% - 7.14%)" : "calc(100% - 7.14% - 7.14%)",
+        margin: isMobile ? "0 0 0 auto" : "0 auto",
+      }}
+    >
       <div
         onMouseEnter={() =>
           setHighlight(Array.from({ length: 18 }, (_, i) => (i + 1).toString()))
@@ -46,6 +53,8 @@ const BottomBets = ({
             runner={"1-18"}
             stake={stake}
             stakeState={stakeState}
+            size={isMobile ? "20px" : "40px"}
+            isMobile={isMobile}
           />
         </div>
       </div>
@@ -80,6 +89,8 @@ const BottomBets = ({
             runner={"even"}
             stake={stake}
             stakeState={stakeState}
+            size={isMobile ? "20px" : "40px"}
+            isMobile={isMobile}
           />
         </div>
       </div>
@@ -110,6 +121,8 @@ const BottomBets = ({
             runner={"red"}
             stake={stake}
             stakeState={stakeState}
+            size={isMobile ? "20px" : "40px"}
+            isMobile={isMobile}
           />
         </div>
       </div>
@@ -140,6 +153,8 @@ const BottomBets = ({
             runner={"black"}
             stake={stake}
             stakeState={stakeState}
+            size={isMobile ? "20px" : "40px"}
+            isMobile={isMobile}
           />
         </div>
       </div>
@@ -174,6 +189,8 @@ const BottomBets = ({
             runner={"odd"}
             stake={stake}
             stakeState={stakeState}
+            size={isMobile ? "20px" : "40px"}
+            isMobile={isMobile}
           />
         </div>
       </div>
@@ -206,6 +223,8 @@ const BottomBets = ({
             runner={"19-36"}
             stake={stake}
             stakeState={stakeState}
+            size={isMobile ? "20px" : "40px"}
+            isMobile={isMobile}
           />
         </div>
       </div>

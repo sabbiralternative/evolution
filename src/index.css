@@ -116,7 +116,7 @@ body {
   padding: 0;
 }
 .roulette-table-container {
-  --red: #cc000e;
+  --red: #831611;
   --black: #000;
   --hover: rgba(126, 220, 70);
   font-size: 18px;
@@ -473,14 +473,21 @@ body {
   }
 }
 
-.item-hover,
+.black_num_hover,
 .zero-item:hover,
-.red-item:hover,
-.black-item:hover,
-.column-item:hover,
 .doz-item:hover,
-.outside-section:hover {
-  background-color: rgba(126, 220, 70);
+.column-item:hover,
+.outside-section:hover,
+.black-item:hover,
+.black-item-hover {
+  background-color: rgba(119, 119, 119, 1) !important;
+  cursor: pointer;
+}
+
+.red_num_hover,
+.red-item:hover,
+.red-item-hover {
+  background-color: rgba(216, 134, 129, 1) !important;
   cursor: pointer;
 }
 

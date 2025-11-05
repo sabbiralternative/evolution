@@ -1,4 +1,4 @@
-import Stake from "./Stake";
+import Stake from "../../../../component/UI/Chip/Stake";
 
 const StakeAnimation = ({
   animation,
@@ -8,6 +8,7 @@ const StakeAnimation = ({
   stake,
   className,
   size,
+  isMobile,
 }) => {
   return (
     <div className={`z-50 ${className}`}>
@@ -21,8 +22,12 @@ const StakeAnimation = ({
         <div
           className={`${
             animation.includes(runner)
-              ? "absolute top-0 visible transition-all duration-500 "
-              : "absolute -top-16 invisible opacity-0"
+              ? `absolute ${
+                  isMobile ? "left-0" : "top-0"
+                } visible transition-all duration-500 `
+              : `absolute ${
+                  isMobile ? "-left-16" : "-top-16"
+                } invisible opacity-0`
           }  z-50 w-full h-full`}
         >
           <Stake stake={double ? stakeState?.[runner]?.stake : stake} />

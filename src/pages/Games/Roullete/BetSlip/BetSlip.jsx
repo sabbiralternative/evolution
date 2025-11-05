@@ -37,6 +37,7 @@ const BetSlip = ({
 
   // Generic function to update stake state
   const handleStakeChange = (payload) => {
+    console.log(payload);
     handleStoreRecentPlay(username, eventId, "roulette");
     const isRepeatTheBet = Object.values(stakeState).find(
       (item) => item?.selection_id && item?.show === false
@@ -212,10 +213,12 @@ const BetSlip = ({
 
   return (
     <div
+      className={`${isMobile ? "scale-x-[1.2] scale-y-[0.9]" : ""}`}
       onClick={handleShowSuspendedStatus}
       style={{
         maxWidth: "calc(100vw - 10px)",
-        marginTop: isMobile ? "100px" : "0px",
+        marginTop: isMobile ? "125px" : "0px",
+        rotate: isMobile ? "90deg" : "none",
       }}
     >
       <div className="roulette-table-container">
@@ -229,6 +232,7 @@ const BetSlip = ({
             stakeState={stakeState}
             setHighlight={setHighlight}
             highlight={highlight}
+            isMobile={isMobile}
           />
           <NumbersBet
             animation={animation}
@@ -239,6 +243,7 @@ const BetSlip = ({
             stakeState={stakeState}
             setHighlight={setHighlight}
             highlight={highlight}
+            isMobile={isMobile}
           />
           <ColumnBet
             animation={animation}
@@ -248,6 +253,7 @@ const BetSlip = ({
             stake={stake}
             stakeState={stakeState}
             setHighlight={setHighlight}
+            isMobile={isMobile}
           />
         </section>
         <Dozen
@@ -258,6 +264,7 @@ const BetSlip = ({
           stake={stake}
           stakeState={stakeState}
           setHighlight={setHighlight}
+          isMobile={isMobile}
         />
 
         <BottomBets
@@ -268,6 +275,7 @@ const BetSlip = ({
           stake={stake}
           stakeState={stakeState}
           setHighlight={setHighlight}
+          isMobile={isMobile}
         />
       </div>
     </div>

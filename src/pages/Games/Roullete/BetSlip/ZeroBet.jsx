@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { zeroRouletteData } from "../const";
-import StakeAnimation from "../../../../component/UI/Chip/StakeAnimation";
+import StakeAnimation from "./StakeAnimation";
 
 const ZeroBet = ({
   handleStakeChange,
@@ -11,6 +11,7 @@ const ZeroBet = ({
   stakeState,
   setHighlight,
   highlight,
+  isMobile,
 }) => {
   // const chipPosition = {
   //   "spleet-bet-catcher": "right-top",
@@ -51,14 +52,18 @@ const ZeroBet = ({
   };
   return (
     <Fragment>
-      {zeroRouletteData.map((num) => {
+      {zeroRouletteData.slice(0, isMobile ? 1 : 2).map((num) => {
         return (
           <div
+            style={{
+              height: isMobile ? "70%" : "auto",
+              marginBottom: isMobile ? "8%" : "none",
+            }}
             key={num.bet}
             data-action="STRAIGHT_UP"
             data-bet={num.bet}
             className={`${num.className} ${
-              highlight.includes(num.bet.toString()) ? "item-hover" : ""
+              highlight.includes(num.bet.toString()) ? "black_num_hover" : ""
             }`}
           >
             {num.betCatchers.map((catcher, idx) => (
@@ -96,6 +101,7 @@ const ZeroBet = ({
                     runner={catcher.highlight}
                     stake={stake}
                     stakeState={stakeState}
+                    size={isMobile ? "20px" : "40px"}
                   />
                 </div>
               </Fragment>
@@ -120,6 +126,7 @@ const ZeroBet = ({
                   runner={num.value}
                   stake={stake}
                   stakeState={stakeState}
+                  size={isMobile ? "20px" : "40px"}
                 />
               </div>
             </div>

@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import StakeAnimation from "../../../../component/UI/Chip/StakeAnimation";
+import StakeAnimation from "./StakeAnimation";
 
 const ColumnBet = ({
   handleStakeChange,
@@ -9,6 +9,7 @@ const ColumnBet = ({
   stake,
   stakeState,
   setHighlight,
+  isMobile,
 }) => {
   return (
     <Fragment>
@@ -52,6 +53,8 @@ const ColumnBet = ({
             runner={"1st"}
             stake={stake}
             stakeState={stakeState}
+            size={isMobile ? "20px" : "40px"}
+            isMobile={isMobile}
           />
         </div>
       </div>
@@ -95,6 +98,8 @@ const ColumnBet = ({
             runner={"2nd"}
             stake={stake}
             stakeState={stakeState}
+            size={isMobile ? "20px" : "40px"}
+            isMobile={isMobile}
           />
         </div>
       </div>
@@ -138,6 +143,8 @@ const ColumnBet = ({
             runner={"3rd"}
             stake={stake}
             stakeState={stakeState}
+            size={isMobile ? "20px" : "40px"}
+            isMobile={isMobile}
           />
         </div>
       </div>

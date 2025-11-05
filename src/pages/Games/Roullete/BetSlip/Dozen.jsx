@@ -1,4 +1,4 @@
-import StakeAnimation from "../../../../component/UI/Chip/StakeAnimation";
+import StakeAnimation from "./StakeAnimation";
 
 const Dozen = ({
   animation,
@@ -8,9 +8,16 @@ const Dozen = ({
   stake,
   stakeState,
   setHighlight,
+  isMobile,
 }) => {
   return (
-    <section className="container-second">
+    <section
+      className="container-second"
+      style={{
+        width: isMobile ? "calc(100% - 7.14%)" : "calc(100% - 7.14% - 7.14%)",
+        margin: isMobile ? "0 0 0 auto" : "0 auto",
+      }}
+    >
       <div
         onMouseEnter={() =>
           setHighlight(Array.from({ length: 12 }, (_, i) => (i + 1).toString()))
@@ -38,6 +45,8 @@ const Dozen = ({
             runner={"1-12"}
             stake={stake}
             stakeState={stakeState}
+            size={isMobile ? "20px" : "40px"}
+            isMobile={isMobile}
           />
         </div>
       </div>
@@ -70,6 +79,8 @@ const Dozen = ({
             runner={"13-24"}
             stake={stake}
             stakeState={stakeState}
+            size={isMobile ? "20px" : "40px"}
+            isMobile={isMobile}
           />
         </div>
       </div>
@@ -102,6 +113,8 @@ const Dozen = ({
             runner={"25-36"}
             stake={stake}
             stakeState={stakeState}
+            size={isMobile ? "20px" : "40px"}
+            isMobile={isMobile}
           />
         </div>
       </div>
