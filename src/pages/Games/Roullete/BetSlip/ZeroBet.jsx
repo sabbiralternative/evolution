@@ -64,7 +64,7 @@ const ZeroBet = ({
             data-bet={num.bet}
             className={`${num.className} ${
               highlight.includes(num.bet.toString()) ? "black_num_hover" : ""
-            }`}
+            } `}
           >
             {num.betCatchers.map((catcher, idx) => (
               <Fragment key={catcher.highlight}>

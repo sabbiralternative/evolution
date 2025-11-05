@@ -212,8 +212,8 @@ body {
 .zero-item {
   position: relative;
   border: none;
-  border-left: 3px solid white;
-  border-top: 3px solid white;
+  border-left: 1px solid white;
+  border-top: 1px solid white;
   padding-top: 25px;
   padding-bottom: 25px;
   text-align: center;
@@ -227,11 +227,12 @@ body {
   background: var(--black);
 }
 .zero-item:first-child {
+  background-color: rgba(22, 105, 88, 0.8) !important;
   border-bottom: 1px solid white;
   margin-bottom: -1px;
 }
 .zero-item {
-  padding-top: 50px;
+  padding-top: 48.5px;
   padding-bottom: 36.8px;
 }
 .zero-item,
@@ -250,9 +251,9 @@ body {
 }
 .column-item {
   position: relative;
-  border: 3px solid #fff;
+  border: 1px solid #fff;
   border-top: none;
-  padding-top: 25px;
+  padding-top: 24.5px;
   padding-bottom: 25px;
   text-align: center;
   width: 7.14%;
@@ -263,7 +264,7 @@ body {
   margin-bottom: -1px;
 }
 .column-item:last-child {
-  border-top: 3px solid #fff;
+  border-top: 1px solid #fff;
 }
 .container-second {
   display: flex;
@@ -280,10 +281,16 @@ body {
   justify-content: center;
   align-items: center;
   flex: 1;
-  border: solid white;
+  border-right: 1px solid white;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
   text-align: center;
   height: 100%;
   color: white;
+}
+
+.doz-item:first-child {
+  border-left: 1px solid white;
 }
 .container-third {
   display: flex;
@@ -295,13 +302,18 @@ body {
 .outside-section {
   position: relative;
   flex: 1;
-  border: solid white;
+  border-bottom: 1px solid white;
+  border-right: 1px solid white;
   text-align: center;
   height: 70px;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.outside-section:first-child {
+  border-left: 1px solid white;
 }
 .rhomb-red {
   display: inline-block;
