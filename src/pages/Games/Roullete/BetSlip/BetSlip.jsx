@@ -12,6 +12,7 @@ import ZeroBet from "./ZeroBet";
 import ColumnBet from "./ColumnBet";
 import Dozen from "./Dozen";
 import BottomBets from "./BottomBets";
+import { cn } from "../../../../utils/cn";
 
 const BetSlip = ({
   double,
@@ -23,82 +24,79 @@ const BetSlip = ({
   setShowWinLossResult,
   animation,
   setAnimation,
-  initialState,
   isMobile,
 }) => {
+  const [highlight, setHighlight] = useState([]);
   const { eventId } = useParams();
   const { sound } = useSound();
-  const [, setInnerWidth] = useState(window.innerWidth);
   const [showSuspendedWarning, setShowSuspendedWarning] = useState(false);
   const dispatch = useDispatch();
   const [addOrder] = useOrderMutation();
   const { stake } = useSelector((state) => state.global);
   const { balance, username } = useSelector((state) => state.auth);
 
-  // Generic function to update stake state
   const handleStakeChange = (payload) => {
-    console.log(payload);
-    handleStoreRecentPlay(username, eventId, "roulette");
-    const isRepeatTheBet = Object.values(stakeState).find(
-      (item) => item?.selection_id && item?.show === false
-    );
-    if (isRepeatTheBet) {
-      setStakeState(initialState);
+    if (status === Status.OPEN) {
+      handleStoreRecentPlay(username, eventId, "roulette");
+      const isRepeatTheBet = Object.values(stakeState).find(
+        (item) => item?.selection_id && item?.show === false
+      );
+      if (isRepeatTheBet) {
+        setStakeState({});
+      }
+
+      if (sound) playPlaceChip();
+
+      const { key, type } = payload;
+      setAnimation([key]);
+      const formatData = {
+        marketId: data?.[0]?.marketId,
+        roundId: data?.[0]?.roundId,
+        name: data?.[0]?.name,
+        eventId: data?.[0]?.eventId,
+        eventName: data?.[0]?.eventName,
+        key,
+        type,
+        isback: type === "back" ? 0 : 1,
+        event_id: data?.[0]?.eventId,
+        event_type_id: data?.[0]?.event_type_id,
+      };
+      const timeout = setTimeout(() => {
+        setAnimation([]);
+        setStakeState((prev) => {
+          const maxSerial = Math.max(
+            0,
+            ...Object.values(prev)
+              .map((item) => item.serial)
+              .filter((serial) => serial !== undefined)
+          );
+
+          return {
+            ...prev,
+            [key]: {
+              roundId: formatData?.roundId,
+              name: formatData?.name,
+              eventId: formatData?.eventId,
+              eventName: formatData?.eventName,
+              show: true,
+              animation: false,
+              stake: prev?.[key]?.show
+                ? prev?.[key]?.stake + prev?.[key]?.actionBy
+                : 100,
+              marketId: formatData?.marketId,
+              key: formatData?.key,
+              type: formatData.type,
+              isback: formatData?.isback,
+              serial: prev?.[key]?.serial ? prev?.[key]?.serial : maxSerial + 1,
+              actionBy: stake,
+              undo: [...(prev?.[key]?.undo || []), stake],
+            },
+          };
+        });
+      }, 500);
+
+      return () => clearTimeout(timeout);
     }
-
-    if (sound) playPlaceChip();
-
-    const { key, data, dataIndex, runnerIndex, type } = payload;
-    setAnimation([key]);
-    const formatData = {
-      marketId: data?.[dataIndex]?.marketId,
-      roundId: data?.[dataIndex]?.roundId,
-      name: data?.[dataIndex]?.name,
-      eventId: data?.[dataIndex]?.eventId,
-      eventName: data?.[dataIndex]?.eventName,
-      selection_id: data?.[dataIndex]?.runners?.[runnerIndex]?.id,
-      runner_name: data?.[dataIndex]?.runners?.[runnerIndex]?.name,
-      isback: type === "back" ? 0 : 1,
-      event_id: data?.[dataIndex]?.eventId,
-      event_type_id: data?.[dataIndex]?.event_type_id,
-      price: data?.[dataIndex]?.runners?.[runnerIndex]?.[type]?.[0]?.price,
-    };
-    const timeout = setTimeout(() => {
-      setAnimation([]);
-      setStakeState((prev) => {
-        const maxSerial = Math.max(
-          0,
-          ...Object.values(prev)
-            .map((item) => item.serial)
-            .filter((serial) => serial !== undefined)
-        );
-
-        return {
-          ...prev,
-          [key]: {
-            roundId: formatData?.roundId,
-            name: formatData?.name,
-            eventId: formatData?.eventId,
-            eventName: formatData?.eventName,
-            show: true,
-            animation: false,
-            stake: prev?.[key]?.show
-              ? prev?.[key]?.stake + prev?.[key]?.actionBy
-              : 100,
-            marketId: formatData?.marketId,
-            selection_id: formatData?.selection_id,
-            price: formatData?.price,
-            runner_name: formatData?.runner_name,
-            isback: formatData?.isback,
-            serial: prev?.[key]?.serial ? prev?.[key]?.serial : maxSerial + 1,
-            actionBy: stake,
-            undo: [...(prev?.[key]?.undo || []), stake],
-          },
-        };
-      });
-    }, 500);
-
-    return () => clearTimeout(timeout);
   };
 
   // Reset state when status is OPEN
@@ -141,17 +139,11 @@ const BetSlip = ({
 
   useEffect(() => {
     const filterPlacedBet = Object.values(stakeState).filter((bet) => bet.show);
+
     let payload = filterPlacedBet.map((bet) => ({
-      roundId: bet?.roundId,
-      name: bet?.name,
-      eventId: bet?.eventId,
-      eventName: bet?.eventName,
-      marketId: bet?.marketId,
-      selection_id: bet?.selection_id,
-      runner_name: bet?.runner_name,
-      stake: bet?.stake,
-      isback: bet?.isback,
-      price: bet?.price,
+      type: bet?.type,
+      amount: bet?.stake,
+      numbers: bet?.key,
     }));
 
     if (status === Status.SUSPENDED && payload?.length > 0) {
@@ -169,12 +161,10 @@ const BetSlip = ({
           for (let bet of filterPlacedBet) {
             totalAmountPlaced = totalAmountPlaced + bet?.stake;
             totalBets.push({
-              selection_id: bet.selection_id,
-              price: bet?.price,
+              type: bet?.type,
+              amount: bet?.stake,
+              numbers: bet?.key,
               eventId: bet?.eventId,
-              marketId: bet?.marketId,
-              name: bet?.name,
-              stake: bet?.stake,
             });
           }
 
@@ -198,34 +188,29 @@ const BetSlip = ({
     }
   };
 
-  useEffect(() => {
-    const handleResize = () => {
-      setInnerWidth(window.innerWidth);
-    };
-
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const [highlight, setHighlight] = useState([]);
-
   return (
     <div
-      className={`${isMobile ? "scale-x-[1.2] scale-y-[0.9]" : ""}`}
+      className={cn(
+        isMobile && "rotate-[90deg] mt-[170px]",
+        isMobile && status === Status.SUSPENDED && "w-screen scale-[0.9]",
+        isMobile && status === Status.OPEN && "w-[145vw] translate-x-[-17%]",
+        "transition-all duration-300"
+      )}
       onClick={handleShowSuspendedStatus}
-      style={{
-        maxWidth: "calc(100vw - 10px)",
-        marginTop: isMobile ? "125px" : "0px",
-        rotate: isMobile ? "90deg" : "none",
-      }}
     >
       <div className="roulette-table-container">
-        <section className="container-first">
+        {/* <span
+          className="absolute aspect-square w-[148px] -top-[74px]   -z-10 left-[31px] border-[4px] border-gold bg-[#5ea94f] "
+          style={{ transform: "rotateX(82deg) rotateZ(46deg)" }}
+        /> */}
+        <section
+          className="container-first relative"
+          style={{
+            height: isMobile ? "228px" : "228px",
+          }}
+        >
           <ZeroBet
             animation={animation}
-            data={data}
             double={double}
             handleStakeChange={handleStakeChange}
             stake={stake}
@@ -236,7 +221,6 @@ const BetSlip = ({
           />
           <NumbersBet
             animation={animation}
-            data={data}
             double={double}
             handleStakeChange={handleStakeChange}
             stake={stake}
@@ -247,7 +231,6 @@ const BetSlip = ({
           />
           <ColumnBet
             animation={animation}
-            data={data}
             double={double}
             handleStakeChange={handleStakeChange}
             stake={stake}
@@ -258,7 +241,6 @@ const BetSlip = ({
         </section>
         <Dozen
           animation={animation}
-          data={data}
           double={double}
           handleStakeChange={handleStakeChange}
           stake={stake}
@@ -269,7 +251,6 @@ const BetSlip = ({
 
         <BottomBets
           animation={animation}
-          data={data}
           double={double}
           handleStakeChange={handleStakeChange}
           stake={stake}

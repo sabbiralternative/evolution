@@ -222,7 +222,7 @@ const BetSlip = ({
     Even: "rgba(094, 115, 5, 074441)",
     Odd: "rgba(218, 11, 214, 1)",
   };
-  console.log(data);
+
   return (
     <div
       onClick={handleShowSuspendedStatus}

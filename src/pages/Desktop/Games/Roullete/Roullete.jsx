@@ -2,15 +2,16 @@ import { useEffect, useState } from "react";
 import { useSound } from "../../../../context/ApiProvider";
 import { useParams } from "react-router-dom";
 import { useGetEventDetailsQuery } from "../../../../redux/features/events/events";
-import { useSelector } from "react-redux";
 import { Status } from "../../../../const";
 import AntMedia from "../../../../component/shared/Antmedia";
 import ChipContainer from "../../../../component/shared/CommonUIElement/ChipContainer";
 import { handleDoubleStake } from "../../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../../utils/handleUndoStake";
-import CommonUIElement from "../../../../component/shared/CommonUIElement/CommonUIElement";
+
 import BetSlip from "../../../Games/Roullete/BetSlip/BetSlip";
 import Timer from "../../../../component/shared/Timer";
+import CommonUIElement from "./CommonUIElement/CommonUIElement";
+import History from "./History";
 
 const Roullete = () => {
   const { sound } = useSound();
@@ -19,7 +20,6 @@ const Roullete = () => {
   const [showWinLossResult, setShowWinLossResult] = useState(false);
   const [totalWinAmount, setTotalWinAmount] = useState(null);
   const [currentRoundWinAmount, setCurrentRoundWinAmount] = useState(null);
-  const { stake } = useSelector((state) => state.global);
   const { eventTypeId, eventId } = useParams();
   const { data } = useGetEventDetailsQuery(
     { eventTypeId, eventId },
@@ -28,21 +28,7 @@ const Roullete = () => {
 
   const firstEvent = data?.result?.[0];
 
-  const initialState = {
-    even: { show: false, stake },
-    up: { show: false, stake },
-    odd: { show: false, stake },
-    red: { show: false, stake },
-    down: { show: false, stake },
-    black: { show: false, stake },
-    seven: { show: false, stake },
-    diamond: { show: false, stake },
-    heart: { show: false, stake },
-    spade: { show: false, stake },
-    club: { show: false, stake },
-  };
-
-  const [stakeState, setStakeState] = useState(initialState);
+  const [stakeState, setStakeState] = useState({});
 
   const isRepeatTheBet = Object.values(stakeState).find(
     (item) => item?.selection_id && item?.show === false && item?.serial
@@ -61,7 +47,7 @@ const Roullete = () => {
         Object.keys(updatedState).forEach((key) => {
           if (!updatedState[key].serial) {
             updatedState[key] = {
-              ...initialState[key],
+              ...stakeState[key],
             };
           }
         });
@@ -287,7 +273,9 @@ const Roullete = () => {
                 <div className="fullScreenGameOverlay--e2de7">
                   <div className="box--28913" />
                 </div>
-                <div className="top-container--67c84" />
+                <div className="top-container--67c84">
+                  <History recentWinner={firstEvent?.recent_winner} />
+                </div>
                 <div className="bottom-container--11469">
                   <Timer firstEvent={firstEvent} />
                   {firstEvent?.status === Status.OPEN && (
@@ -351,11 +339,11 @@ const Roullete = () => {
                     width: "50%",
                     margin: "0 auto",
                     transform: "scale(0.8)",
+                    paddingTop: "0px",
                   }}
                   className="bettingGrid--190e8"
                 >
                   <BetSlip
-                    initialState={initialState}
                     double={double}
                     animation={animation}
                     setAnimation={setAnimation}

@@ -2,7 +2,6 @@ import StakeAnimation from "./StakeAnimation";
 
 const Dozen = ({
   animation,
-  data,
   double,
   handleStakeChange,
   stake,
@@ -11,13 +10,7 @@ const Dozen = ({
   isMobile,
 }) => {
   return (
-    <section
-      className="container-second"
-      style={{
-        width: isMobile ? "calc(100% - 7.14%)" : "calc(100% - 7.14% - 7.14%)",
-        margin: isMobile ? "0 0 0 auto" : "0 auto",
-      }}
-    >
+    <section className="container-second">
       <div
         onMouseEnter={() =>
           setHighlight(Array.from({ length: 12 }, (_, i) => (i + 1).toString()))
@@ -26,10 +19,7 @@ const Dozen = ({
         onClick={() =>
           handleStakeChange({
             key: "1-12",
-            data,
-            dataIndex: 0,
-            runnerIndex: 0,
-            type: "back",
+            type: "1ST_DOZEN",
           })
         }
         className="doz-item"
@@ -60,10 +50,7 @@ const Dozen = ({
         onClick={() =>
           handleStakeChange({
             key: "13-24",
-            data,
-            dataIndex: 0,
-            runnerIndex: 0,
-            type: "back",
+            type: "2ND_DOZEN",
           })
         }
         className="doz-item"
@@ -94,10 +81,7 @@ const Dozen = ({
         onClick={() =>
           handleStakeChange({
             key: "25-36",
-            data,
-            dataIndex: 0,
-            runnerIndex: 0,
-            type: "back",
+            type: "3RD_DOZEN",
           })
         }
         className="doz-item"

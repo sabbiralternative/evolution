@@ -4,7 +4,6 @@ import StakeAnimation from "./StakeAnimation";
 
 const NumbersBet = ({
   handleStakeChange,
-  data,
   animation,
   double,
   stake,
@@ -28,6 +27,10 @@ const NumbersBet = ({
       {rouletteData.numbers.map((num) => {
         return (
           <div
+            style={{
+              paddingTop: isMobile ? "20px" : "25px",
+              paddingBottom: isMobile ? "20px" : "25px",
+            }}
             key={num.bet}
             data-action="STRAIGHT_UP"
             data-bet={num.bet}
@@ -48,10 +51,7 @@ const NumbersBet = ({
                     onClick={() =>
                       handleStakeChange({
                         key: catcher.highlight,
-                        data,
-                        dataIndex: 0,
-                        runnerIndex: 0,
-                        type: "back",
+                        type: catcher.action,
                       })
                     }
                     key={idx}
@@ -78,10 +78,7 @@ const NumbersBet = ({
               onClick={() =>
                 handleStakeChange({
                   key: num.value,
-                  data,
-                  dataIndex: 0,
-                  runnerIndex: 0,
-                  type: "back",
+                  type: "CENTER",
                 })
               }
               className="value"

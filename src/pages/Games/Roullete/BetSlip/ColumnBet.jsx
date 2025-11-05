@@ -3,7 +3,6 @@ import StakeAnimation from "./StakeAnimation";
 
 const ColumnBet = ({
   handleStakeChange,
-  data,
   animation,
   double,
   stake,
@@ -14,6 +13,9 @@ const ColumnBet = ({
   return (
     <Fragment>
       <div
+        style={{
+          paddingBottom: isMobile ? "15px" : "25px",
+        }}
         onMouseEnter={() =>
           setHighlight([
             "1",
@@ -34,10 +36,7 @@ const ColumnBet = ({
         onClick={() =>
           handleStakeChange({
             key: "1st",
-            data,
-            dataIndex: 0,
-            runnerIndex: 0,
-            type: "back",
+            type: "1ST_COLUMN",
           })
         }
         className="column-item"
@@ -59,6 +58,9 @@ const ColumnBet = ({
         </div>
       </div>
       <div
+        style={{
+          paddingBottom: isMobile ? "15px" : "25px",
+        }}
         onMouseEnter={() =>
           setHighlight([
             "2",
@@ -79,10 +81,7 @@ const ColumnBet = ({
         onClick={() =>
           handleStakeChange({
             key: "2nd",
-            data,
-            dataIndex: 0,
-            runnerIndex: 0,
-            type: "back",
+            type: "2ND_COLUMN",
           })
         }
         className="column-item"
@@ -104,6 +103,9 @@ const ColumnBet = ({
         </div>
       </div>
       <div
+        style={{
+          paddingBottom: isMobile ? "15px" : "25px",
+        }}
         onMouseEnter={() =>
           setHighlight([
             "3",
@@ -124,10 +126,7 @@ const ColumnBet = ({
         onClick={() =>
           handleStakeChange({
             key: "3rd",
-            data,
-            dataIndex: 0,
-            runnerIndex: 0,
-            type: "back",
+            type: "3RD_COLUMN",
           })
         }
         className="column-item"

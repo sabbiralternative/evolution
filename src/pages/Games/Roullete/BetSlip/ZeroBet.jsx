@@ -4,7 +4,6 @@ import StakeAnimation from "./StakeAnimation";
 
 const ZeroBet = ({
   handleStakeChange,
-  data,
   animation,
   double,
   stake,
@@ -13,16 +12,6 @@ const ZeroBet = ({
   highlight,
   isMobile,
 }) => {
-  // const chipPosition = {
-  //   "spleet-bet-catcher": "right-top",
-  //   "corner-bet-catcher bottom": "right-bottom",
-  //   "corner-bet-catcher": "right-top",
-  //   "split-up-bet-catcher-top": "center-top",
-  //   "split-up-bet-catcher-right": "right-top-with-no-offset",
-  //   "basket-catcher-bottom": "center",
-  //   "basket-catcher-top": "center",
-  // };
-
   const getChipPosition = (string, highlight, classname) => {
     if (string === "0" && highlight === "0-00-2") {
       return "right-top";
@@ -52,14 +41,18 @@ const ZeroBet = ({
   };
   return (
     <Fragment>
-      {zeroRouletteData.slice(0, isMobile ? 1 : 2).map((num) => {
+      {zeroRouletteData.map((num, i) => {
         return (
           <div
             style={{
-              height: isMobile ? "70%" : "auto",
-              marginBottom: isMobile ? "8%" : "none",
+              height: isMobile ? "80.2%" : "93.8%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              position: "relative",
+              // width: "4%",
             }}
-            key={num.bet}
+            key={`${num.bet}-${i}`}
             data-action="STRAIGHT_UP"
             data-bet={num.bet}
             className={`${num.className} ${
@@ -67,7 +60,7 @@ const ZeroBet = ({
             } `}
           >
             {num.betCatchers.map((catcher, idx) => (
-              <Fragment key={catcher.highlight}>
+              <Fragment key={`${catcher.highlight}-${idx}`}>
                 <div
                   onMouseEnter={() =>
                     setHighlight(catcher.highlight?.split("-"))
@@ -76,10 +69,7 @@ const ZeroBet = ({
                   onClick={() =>
                     handleStakeChange({
                       key: catcher.highlight,
-                      data,
-                      dataIndex: 0,
-                      runnerIndex: 0,
-                      type: "back",
+                      type: catcher.action,
                     })
                   }
                   key={idx}
@@ -110,10 +100,7 @@ const ZeroBet = ({
               onClick={() =>
                 handleStakeChange({
                   key: num.value,
-                  data,
-                  dataIndex: 0,
-                  runnerIndex: 0,
-                  type: "back",
+                  type: "CENTER",
                 })
               }
               className="value"

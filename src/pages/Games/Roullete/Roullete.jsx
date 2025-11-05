@@ -1,23 +1,20 @@
 import { useEffect, useState } from "react";
 import ActionButtons from "./ActionButtons";
-import Footer from "../../../component/shared/Footer";
-// import RoadPrediction from "./RoadPrediction";
 import Menu from "../../../component/shared/Menu/Menu";
 import { useParams } from "react-router-dom";
 import { useGetEventDetailsQuery } from "../../../redux/features/events/events";
 import { Status } from "../../../const";
-import { useSelector } from "react-redux";
 import { AnimatePresence } from "framer-motion";
 import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
-// import Counter from "../../../component/UI/Counter";
-// import Winner from "./Winner";
 import RecentNumberContainer from "./RecentNumberContainer";
-import { keysArray } from "./const";
 import AntMedia from "../../../component/shared/Antmedia";
 import { playClick } from "../../../utils/sound";
 import { useSound } from "../../../context/ApiProvider";
 import BetSlip from "./BetSlip/BetSlip";
+import Footer from "./Footer";
+import Counter from "../../../component/UI/Counter";
+import Winner from "./Winner";
 
 const Roullete = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -25,8 +22,7 @@ const Roullete = () => {
   const [animation, setAnimation] = useState([]);
   const [showWinLossResult, setShowWinLossResult] = useState(false);
   const [totalWinAmount, setTotalWinAmount] = useState(null);
-  const [, setCurrentRoundWinAmount] = useState(null);
-  const { stake } = useSelector((state) => state.global);
+  const [currentRoundWinAmount, setCurrentRoundWinAmount] = useState(null);
   const [showFullScreen, setShowFullScreen] = useState(false);
   const { eventTypeId, eventId } = useParams();
   const { sound } = useSound();
@@ -36,11 +32,6 @@ const Roullete = () => {
   );
 
   const firstEvent = data?.result?.[0];
-
-  const initialState = keysArray.reduce((acc, key) => {
-    acc[key] = { show: false, stake };
-    return acc;
-  }, {});
   const [stakeState, setStakeState] = useState({});
 
   const isRepeatTheBet = Object.values(stakeState).find(
@@ -60,7 +51,7 @@ const Roullete = () => {
         Object.keys(updatedState).forEach((key) => {
           if (!updatedState[key].serial) {
             updatedState[key] = {
-              ...initialState[key],
+              ...stakeState[key],
             };
           }
         });
@@ -94,6 +85,9 @@ const Roullete = () => {
         )}
       </AnimatePresence>
       <div id="root" className="rootContainer--308ad">
+        {firstEvent?.status === Status.OPEN && (
+          <Counter firstEvent={firstEvent} />
+        )}
         <div
           className="layoutContainer--2535f"
           data-role="current-view-immersive"
@@ -107,6 +101,13 @@ const Roullete = () => {
                   "linear-gradient(45deg,rgba(30, 0, 30, 0) 0%,rgba(30, 0, 30, 0.8) 50%,rgba(30, 0, 30, 0) 100%),linear-gradient(45deg,rgb(60, 65, 80) -5%,rgb(30, 0, 30) 50%,rgb(60, 65, 80) 105%)",
               }}
             />
+            {currentRoundWinAmount > 0 && (
+              <Winner
+                firstEvent={firstEvent}
+                currentRoundWinAmount={currentRoundWinAmount}
+              />
+            )}
+
             <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
               <div className="relativeChildren--99d54">
                 <div
@@ -328,7 +329,9 @@ const Roullete = () => {
               data-role="game-overlay-container"
             >
               <div className="mobileUI--a72b4">
-                <RecentNumberContainer />
+                <RecentNumberContainer
+                  recent_winner={firstEvent?.recent_winner}
+                />
                 <div
                   className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d"
                   style={{ pointerEvents: "auto" }}
@@ -336,21 +339,22 @@ const Roullete = () => {
                   <div className="relativeChildren--99d54">
                     <div
                       className="gameOverlayContainer--18636 portrait--3950b"
-                      style={{
-                        "-portraitwidthwithoutfooter": "370px",
-                        "-portraitrowbetswidth": "116px",
-                        "-top": "28px",
-                        "-bottom": "0px",
-                        "-left": "0px",
-                        "-portraitzerosubtractionheight": "57px",
-                        "-portraitimmersivelayoutwheelnumbercontainermargintop":
-                          "0px",
-                        "-gridwidth": "370px",
-                        "-gridheight": "814px",
-                      }}
+                      style={
+                        {
+                          // "-portraitwidthwithoutfooter": "370px",
+                          // "-portraitrowbetswidth": "116px",
+                          // "-top": "28px",
+                          // "-bottom": "0px",
+                          // "-left": "0px",
+                          // "-portraitzerosubtractionheight": "57px",
+                          // "-portraitimmersivelayoutwheelnumbercontainermargintop":
+                          //   "0px",
+                          // "-gridwidth": "370px",
+                          // "-gridheight": "814px",
+                        }
+                      }
                     >
                       <BetSlip
-                        initialState={initialState}
                         double={double}
                         animation={animation}
                         setAnimation={setAnimation}

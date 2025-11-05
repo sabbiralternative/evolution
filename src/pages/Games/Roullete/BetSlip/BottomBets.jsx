@@ -3,7 +3,6 @@ import { rouletteData } from "../const";
 
 const BottomBets = ({
   animation,
-  data,
   double,
   handleStakeChange,
   stake,
@@ -19,13 +18,7 @@ const BottomBets = ({
     .map((d) => d.bet.toString());
 
   return (
-    <div
-      className="container-third"
-      style={{
-        width: isMobile ? "calc(100% - 7.14%)" : "calc(100% - 7.14% - 7.14%)",
-        margin: isMobile ? "0 0 0 auto" : "0 auto",
-      }}
-    >
+    <div className="container-third">
       <div
         onMouseEnter={() =>
           setHighlight(Array.from({ length: 18 }, (_, i) => (i + 1).toString()))
@@ -34,10 +27,7 @@ const BottomBets = ({
         onClick={() =>
           handleStakeChange({
             key: "1-18",
-            data,
-            dataIndex: 0,
-            runnerIndex: 0,
-            type: "back",
+            type: "1_TO_18",
           })
         }
         className="outside-section"
@@ -70,10 +60,7 @@ const BottomBets = ({
         onClick={() =>
           handleStakeChange({
             key: "even",
-            data,
-            dataIndex: 0,
-            runnerIndex: 0,
-            type: "back",
+            type: "EVEN",
           })
         }
         className="outside-section"
@@ -100,10 +87,7 @@ const BottomBets = ({
         onClick={() =>
           handleStakeChange({
             key: "red",
-            data,
-            dataIndex: 0,
-            runnerIndex: 0,
-            type: "back",
+            type: "RED",
           })
         }
         className="outside-section"
@@ -132,10 +116,7 @@ const BottomBets = ({
         onClick={() =>
           handleStakeChange({
             key: "black",
-            data,
-            dataIndex: 0,
-            runnerIndex: 0,
-            type: "back",
+            type: "BLACK",
           })
         }
         className="outside-section"
@@ -170,10 +151,7 @@ const BottomBets = ({
         onClick={() =>
           handleStakeChange({
             key: "odd",
-            data,
-            dataIndex: 0,
-            runnerIndex: 0,
-            type: "back",
+            type: "ODD",
           })
         }
         className="outside-section"
@@ -204,10 +182,7 @@ const BottomBets = ({
         onClick={() =>
           handleStakeChange({
             key: "19-36",
-            data,
-            dataIndex: 0,
-            runnerIndex: 0,
-            type: "back",
+            type: "19_TO_36",
           })
         }
         className="outside-section"
