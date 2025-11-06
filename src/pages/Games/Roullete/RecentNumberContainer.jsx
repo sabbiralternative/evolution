@@ -38,7 +38,7 @@ const RecentNumberContainer = ({ recent_winner }) => {
                         }`
                   }`}
                 >
-                  27
+                  {item?.winner}
                 </span>
               </div>
             </div>
