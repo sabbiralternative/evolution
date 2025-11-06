@@ -107,7 +107,7 @@ const ZeroBet = ({
               onClick={() =>
                 handleStakeChange({
                   key: num.value,
-                  type: "CENTER",
+                  type: "STRAIGHT_UP",
                 })
               }
               className="value"
