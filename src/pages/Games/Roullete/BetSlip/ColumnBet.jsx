@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import StakeAnimation from "./StakeAnimation";
+import { Status } from "../../../../const";
 
 const ColumnBet = ({
   handleStakeChange,
@@ -9,12 +10,20 @@ const ColumnBet = ({
   stakeState,
   setHighlight,
   isMobile,
+  status,
 }) => {
   return (
     <Fragment>
       <div
         style={{
-          paddingBottom: isMobile ? "15px" : "25px",
+          paddingBottom:
+            status === Status.SUSPENDED ? "14.8px" : isMobile ? "15px" : "25px",
+          paddingTop:
+            status === Status.SUSPENDED
+              ? "14.8px"
+              : isMobile
+              ? "24.5px"
+              : "24.5px",
         }}
         onMouseEnter={() =>
           setHighlight([
@@ -52,14 +61,21 @@ const ColumnBet = ({
             runner={"1st"}
             stake={stake}
             stakeState={stakeState}
-            size={isMobile ? "20px" : "40px"}
+            size={isMobile ? "30px" : "40px"}
             isMobile={isMobile}
           />
         </div>
       </div>
       <div
         style={{
-          paddingBottom: isMobile ? "15px" : "25px",
+          paddingBottom:
+            status === Status.SUSPENDED ? "14.8px" : isMobile ? "15px" : "25px",
+          paddingTop:
+            status === Status.SUSPENDED
+              ? "14.8px"
+              : isMobile
+              ? "24.5px"
+              : "24.5px",
         }}
         onMouseEnter={() =>
           setHighlight([
@@ -97,14 +113,21 @@ const ColumnBet = ({
             runner={"2nd"}
             stake={stake}
             stakeState={stakeState}
-            size={isMobile ? "20px" : "40px"}
+            size={isMobile ? "30px" : "40px"}
             isMobile={isMobile}
           />
         </div>
       </div>
       <div
         style={{
-          paddingBottom: isMobile ? "15px" : "25px",
+          paddingBottom:
+            status === Status.SUSPENDED ? "14.8px" : isMobile ? "15px" : "25px",
+          paddingTop:
+            status === Status.SUSPENDED
+              ? "14.8px"
+              : isMobile
+              ? "24.5px"
+              : "24.5px",
         }}
         onMouseEnter={() =>
           setHighlight([
@@ -142,7 +165,7 @@ const ColumnBet = ({
             runner={"3rd"}
             stake={stake}
             stakeState={stakeState}
-            size={isMobile ? "20px" : "40px"}
+            size={isMobile ? "30px" : "40px"}
             isMobile={isMobile}
           />
         </div>

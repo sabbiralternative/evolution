@@ -318,7 +318,7 @@ const Roullete = () => {
               style={{
                 transform:
                   firstEvent?.status === Status.SUSPENDED
-                    ? "translateY(0px)"
+                    ? "translateY(25px) scale(0.8)"
                     : "translateY(0px)",
                 transition: "transform 0.5s ease-in-out",
                 pointerEvents: "auto",

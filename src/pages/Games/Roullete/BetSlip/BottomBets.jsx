@@ -43,7 +43,7 @@ const BottomBets = ({
             runner={"1-18"}
             stake={stake}
             stakeState={stakeState}
-            size={isMobile ? "20px" : "40px"}
+            size={isMobile ? "30px" : "40px"}
             isMobile={isMobile}
           />
         </div>
@@ -76,7 +76,7 @@ const BottomBets = ({
             runner={"even"}
             stake={stake}
             stakeState={stakeState}
-            size={isMobile ? "20px" : "40px"}
+            size={isMobile ? "30px" : "40px"}
             isMobile={isMobile}
           />
         </div>
@@ -105,7 +105,7 @@ const BottomBets = ({
             runner={"red"}
             stake={stake}
             stakeState={stakeState}
-            size={isMobile ? "20px" : "40px"}
+            size={isMobile ? "30px" : "40px"}
             isMobile={isMobile}
           />
         </div>
@@ -134,7 +134,7 @@ const BottomBets = ({
             runner={"black"}
             stake={stake}
             stakeState={stakeState}
-            size={isMobile ? "20px" : "40px"}
+            size={isMobile ? "30px" : "40px"}
             isMobile={isMobile}
           />
         </div>
@@ -167,7 +167,7 @@ const BottomBets = ({
             runner={"odd"}
             stake={stake}
             stakeState={stakeState}
-            size={isMobile ? "20px" : "40px"}
+            size={isMobile ? "30px" : "40px"}
             isMobile={isMobile}
           />
         </div>
@@ -198,7 +198,7 @@ const BottomBets = ({
             runner={"19-36"}
             stake={stake}
             stakeState={stakeState}
-            size={isMobile ? "20px" : "40px"}
+            size={isMobile ? "30px" : "40px"}
             isMobile={isMobile}
           />
         </div>

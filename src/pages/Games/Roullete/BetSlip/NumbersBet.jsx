@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { rouletteData } from "../const";
 import StakeAnimation from "./StakeAnimation";
+import { Status } from "../../../../const";
 
 const NumbersBet = ({
   handleStakeChange,
@@ -11,6 +12,7 @@ const NumbersBet = ({
   setHighlight,
   highlight,
   isMobile,
+  status,
 }) => {
   const chipPosition = {
     "corner-bet-catcher": "right-top",
@@ -28,8 +30,18 @@ const NumbersBet = ({
         return (
           <div
             style={{
-              paddingTop: isMobile ? "20px" : "25px",
-              paddingBottom: isMobile ? "20px" : "25px",
+              paddingTop:
+                status === Status.SUSPENDED
+                  ? "15px"
+                  : isMobile
+                  ? "20px"
+                  : "25px",
+              paddingBottom:
+                status === Status.SUSPENDED
+                  ? "15px"
+                  : isMobile
+                  ? "20px"
+                  : "25px",
             }}
             key={num.bet}
             data-action="STRAIGHT_UP"
@@ -67,7 +79,7 @@ const NumbersBet = ({
                       runner={catcher.highlight}
                       stake={stake}
                       stakeState={stakeState}
-                      size={isMobile ? "20px" : "40px"}
+                      size={isMobile ? "30px" : "40px"}
                       isMobile={isMobile}
                     />
                   </div>
@@ -97,7 +109,7 @@ const NumbersBet = ({
                 runner={num.value}
                 stake={stake}
                 stakeState={stakeState}
-                size={isMobile ? "20px" : "40px"}
+                size={isMobile ? "30px" : "40px"}
                 isMobile={isMobile}
               />
             </div>

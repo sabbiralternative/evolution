@@ -635,7 +635,7 @@ const Roullete = () => {
                 </div>
               </div>
             </div>
-            {
+            {firstEvent?.status === Status.OPEN && (
               <ActionButtons
                 isRepeatTheBet={isRepeatTheBet}
                 handleDoubleStake={() =>
@@ -652,7 +652,7 @@ const Roullete = () => {
                 }
                 isPlaceStake={isPlaceStake}
               />
-            }
+            )}
 
             <Footer
               showWinLossResult={showWinLossResult}

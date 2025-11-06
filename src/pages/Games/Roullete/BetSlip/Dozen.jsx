@@ -35,7 +35,7 @@ const Dozen = ({
             runner={"1-12"}
             stake={stake}
             stakeState={stakeState}
-            size={isMobile ? "20px" : "40px"}
+            size={isMobile ? "30px" : "40px"}
             isMobile={isMobile}
           />
         </div>
@@ -66,7 +66,7 @@ const Dozen = ({
             runner={"13-24"}
             stake={stake}
             stakeState={stakeState}
-            size={isMobile ? "20px" : "40px"}
+            size={isMobile ? "30px" : "40px"}
             isMobile={isMobile}
           />
         </div>
@@ -97,7 +97,7 @@ const Dozen = ({
             runner={"25-36"}
             stake={stake}
             stakeState={stakeState}
-            size={isMobile ? "20px" : "40px"}
+            size={isMobile ? "30px" : "40px"}
             isMobile={isMobile}
           />
         </div>

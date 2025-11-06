@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { zeroRouletteData } from "../const";
 import StakeAnimation from "./StakeAnimation";
+import { Status } from "../../../../const";
 
 const ZeroBet = ({
   handleStakeChange,
@@ -11,6 +12,7 @@ const ZeroBet = ({
   setHighlight,
   highlight,
   isMobile,
+  status,
 }) => {
   const getChipPosition = (string, highlight, classname) => {
     if (string === "0" && highlight === "0-00-2") {
@@ -45,12 +47,16 @@ const ZeroBet = ({
         return (
           <div
             style={{
-              height: isMobile ? "80.2%" : "93.8%",
+              height:
+                status === Status.SUSPENDED
+                  ? "85.5%"
+                  : isMobile
+                  ? "80.2%"
+                  : "93.8%",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               position: "relative",
-              // width: "4%",
             }}
             key={`${num.bet}-${i}`}
             data-action="STRAIGHT_UP"
@@ -91,7 +97,7 @@ const ZeroBet = ({
                     runner={catcher.highlight}
                     stake={stake}
                     stakeState={stakeState}
-                    size={isMobile ? "20px" : "40px"}
+                    size={isMobile ? "30px" : "40px"}
                   />
                 </div>
               </Fragment>
@@ -113,7 +119,7 @@ const ZeroBet = ({
                   runner={num.value}
                   stake={stake}
                   stakeState={stakeState}
-                  size={isMobile ? "20px" : "40px"}
+                  size={isMobile ? "30px" : "40px"}
                 />
               </div>
             </div>

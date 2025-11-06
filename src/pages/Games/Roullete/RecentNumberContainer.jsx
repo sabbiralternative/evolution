@@ -16,6 +16,7 @@ const RecentNumberContainer = ({ recent_winner }) => {
             <div
               key={`${item?.winner}-${i}`}
               // className="number-container--8752e mobile-theme--231d0 recent-number--7cf3a single-line--6ba22"
+
               data-role="recent-number"
             >
               <div
@@ -23,13 +24,19 @@ const RecentNumberContainer = ({ recent_winner }) => {
                 // className="single-number--4bb7d red--e421d mobile-theme--54ef7 statisticsBranding_first align-middle--4c85a first--1cb2f statisticsBranding_red phone--5b459 mobile--4d9e5"
               >
                 <span
-                  className="value--dd5c7"
-                  style={{
-                    color:
-                      item?.color === "black"
-                        ? "rgba(119, 119, 119, 1)"
-                        : "#831611",
-                  }}
+                  className={`value--dd5c7 ${
+                    i === 0
+                      ? `${
+                          item?.color === "black"
+                            ? "text-white/80  bg-[#8c8c8c] border-solid  border-white border px-2.5"
+                            : "text-white/80  bg-[#831611]  border-white border border-solid px-2.5"
+                        }`
+                      : `${
+                          item?.color === "black"
+                            ? "text-[#8c8c8c]"
+                            : "text-[#831611]"
+                        }`
+                  }`}
                 >
                   27
                 </span>

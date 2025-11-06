@@ -93,7 +93,7 @@ const BetSlip = ({
             },
           };
         });
-      }, 500);
+      }, 300);
 
       return () => clearTimeout(timeout);
     }
@@ -191,10 +191,14 @@ const BetSlip = ({
   return (
     <div
       className={cn(
-        isMobile && "rotate-[90deg] mt-[170px]",
-        isMobile && status === Status.SUSPENDED && "w-screen scale-[0.9]",
-        isMobile && status === Status.OPEN && "w-[145vw] translate-x-[-17%]",
-        "transition-all duration-300"
+        isMobile && "rotate-[90deg] absolute ",
+        isMobile &&
+          status === Status.SUSPENDED &&
+          "w-[120vw] mt-[250px] translate-x-[-10%] ",
+        isMobile &&
+          status === Status.OPEN &&
+          "w-[150vw] translate-x-[-19%] mt-[170px] ",
+        "transition-all duration-700 "
       )}
       onClick={handleShowSuspendedStatus}
     >
@@ -206,7 +210,7 @@ const BetSlip = ({
         <section
           className="container-first relative"
           style={{
-            height: isMobile ? "228px" : "228px",
+            height: status === Status.SUSPENDED ? "180px" : "228px",
           }}
         >
           <ZeroBet
@@ -218,6 +222,7 @@ const BetSlip = ({
             setHighlight={setHighlight}
             highlight={highlight}
             isMobile={isMobile}
+            status={status}
           />
           <NumbersBet
             animation={animation}
@@ -228,6 +233,7 @@ const BetSlip = ({
             setHighlight={setHighlight}
             highlight={highlight}
             isMobile={isMobile}
+            status={status}
           />
           <ColumnBet
             animation={animation}
@@ -237,6 +243,7 @@ const BetSlip = ({
             stakeState={stakeState}
             setHighlight={setHighlight}
             isMobile={isMobile}
+            status={status}
           />
         </section>
         <Dozen
