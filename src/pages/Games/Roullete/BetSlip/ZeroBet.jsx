@@ -98,6 +98,7 @@ const ZeroBet = ({
                     stake={stake}
                     stakeState={stakeState}
                     size={isMobile ? "30px" : "40px"}
+                    isMobile={isMobile}
                   />
                 </div>
               </Fragment>

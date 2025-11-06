@@ -32,7 +32,7 @@ const BetSlip = ({
   const [showSuspendedWarning, setShowSuspendedWarning] = useState(false);
   const dispatch = useDispatch();
   const [addOrder] = useOrderMutation();
-  const { stake } = useSelector((state) => state.global);
+  const { stake, deviceWidth } = useSelector((state) => state.global);
   const { balance, username } = useSelector((state) => state.auth);
 
   const handleStakeChange = (payload) => {
@@ -191,18 +191,38 @@ const BetSlip = ({
   return (
     <div
       className={cn(
-        isMobile && "rotate-[90deg] absolute ",
+        isMobile && "rotate-[90deg] absolute",
         isMobile &&
           status === Status.SUSPENDED &&
           "w-[120vw] mt-[250px] translate-x-[-10%] ",
-        isMobile &&
+        isMobile && status === Status.OPEN && "w-[150vw] translate-x-[-19%]  ",
+        "transition-all duration-700",
+        deviceWidth < 360 &&
+          isMobile &&
+          status === Status.SUSPENDED &&
+          "bottom-[50px]",
+        deviceWidth < 360 &&
+          isMobile &&
           status === Status.OPEN &&
-          "w-[150vw] translate-x-[-19%] mt-[170px] ",
-        "transition-all duration-700 "
+          "bottom-[100px]",
+
+        deviceWidth > 360 &&
+          isMobile &&
+          status === Status.SUSPENDED &&
+          "bottom-[80px]",
+        deviceWidth > 360 &&
+          isMobile &&
+          status === Status.OPEN &&
+          "bottom-[150px]"
       )}
       onClick={handleShowSuspendedStatus}
     >
-      <div className="roulette-table-container">
+      <div
+        className="roulette-table-container"
+        style={{
+          pointerEvents: status === Status.SUSPENDED ? "none" : "auto",
+        }}
+      >
         {/* <span
           className="absolute aspect-square w-[148px] -top-[74px]   -z-10 left-[31px] border-[4px] border-gold bg-[#5ea94f] "
           style={{ transform: "rotateX(82deg) rotateZ(46deg)" }}
