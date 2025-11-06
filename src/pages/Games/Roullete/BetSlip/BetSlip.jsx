@@ -140,11 +140,18 @@ const BetSlip = ({
   useEffect(() => {
     const filterPlacedBet = Object.values(stakeState).filter((bet) => bet.show);
 
-    let payload = filterPlacedBet.map((bet) => ({
-      type: bet?.type,
-      amount: bet?.stake,
-      numbers: bet?.key,
-    }));
+    let payload = [
+      {
+        roundId: filterPlacedBet?.[0]?.roundId,
+        eventId: filterPlacedBet?.[0]?.eventId,
+        eventName: filterPlacedBet?.[0]?.eventName,
+        bet: filterPlacedBet.map((bet) => ({
+          type: bet?.type,
+          amount: bet?.stake,
+          numbers: bet?.key,
+        })),
+      },
+    ];
 
     if (status === Status.SUSPENDED && payload?.length > 0) {
       const handleOrder = async () => {
