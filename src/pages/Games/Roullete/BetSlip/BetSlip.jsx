@@ -82,7 +82,7 @@ const BetSlip = ({
               animation: false,
               stake: prev?.[key]?.show
                 ? prev?.[key]?.stake + prev?.[key]?.actionBy
-                : 100,
+                : stake,
               marketId: formatData?.marketId,
               key: formatData?.key,
               type: formatData.type,

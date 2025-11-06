@@ -72,7 +72,14 @@ const NumbersBet = ({
                     data-highlight={catcher.highlight}
                     style={catcher.style || {}}
                   />
-                  <div className={`chip ${chipPosition[catcher.className]}`}>
+                  <div
+                    className={`chip ${chipPosition[catcher.className]} ${
+                      isMobile &&
+                      catcher?.className === "split-up-bet-catcher-top"
+                        ? "!-top-[11px]"
+                        : ""
+                    }`}
+                  >
                     <StakeAnimation
                       animation={animation}
                       double={double}
