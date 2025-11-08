@@ -1231,7 +1231,7 @@
 .left-stub--20182,
 .right-stub--dc731 {
   padding: calc(
-      var(--rem-migration-size) * 1.8 / 2 - var(--rem-migration-size) * 0.4/2
+      var(--rem-migration-size) * 1.8 / 2 - var(--rem-migration-size) * 0.4 / 2
     )
     0;
   position: relative;
@@ -1255,7 +1255,7 @@ track {
   box-sizing: border-box;
   height: calc(var(--rem-migration-size) * 1.8);
   padding: calc(
-      var(--rem-migration-size) * 1.8 / 2 - var(--rem-migration-size) * 0.4/2
+      var(--rem-migration-size) * 1.8 / 2 - var(--rem-migration-size) * 0.4 / 2
     )
     0;
   position: relative;
@@ -1271,8 +1271,8 @@ track {
   line-height: calc(var(--rem-migration-size) * 2);
   margin-left: calc(var(--rem-migration-size) * -3.2 / 2);
   margin-top: calc(
-    var(--rem-migration-size) * 1.8 / 2 * -1 - var(--rem-migration-size) * 0.4/2 *
-      -1
+    var(--rem-migration-size) * 1.8 / 2 * -1 - var(--rem-migration-size) * 0.4 /
+      2 * -1
   );
   position: absolute;
   text-align: center;
@@ -3414,8 +3414,8 @@ body.native-wrapper.android .advancedStatistics--2bb2d {
   width: 50%;
 }
 .numbers--138f7 {
-  margin-left: 50%;
-  transform: translateX(-50%);
+  /* margin-left: 50%;
+  transform: translateX(-50%); */
   width: 65%;
 }
 .numbers--138f7.shrinkSize--34616 {

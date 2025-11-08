@@ -3,11 +3,9 @@ const Winner = ({ firstEvent, isDesktop }) => {
 
   return (
     <div
-      className={`numbers--9fc1d visible--ece3f absolute top-10  ${
-        isDesktop ? "left-40" : ""
-      }`}
+      className={`numbers--9fc1d visible--ece3f absolute top-10 flex items-center justify-center w-full `}
     >
-      <div className="numbers--138f7">
+      <div className={`numbers--138f7   ${isDesktop ? "w-[40%]" : ""}`}>
         <div
           className="winningNumber--8df88"
           data-winning-number={2}
@@ -41,9 +39,9 @@ const Winner = ({ firstEvent, isDesktop }) => {
                 <stop
                   offset="0.52"
                   stopColor={
-                    winner?.color === "black"
+                    winner?.left_color === "black"
                       ? "#000000"
-                      : winner?.color === "red"
+                      : winner?.left_color === "red"
                       ? "#B51C12"
                       : "rgba(22, 105, 88, 0.8)"
                   }
@@ -60,8 +58,19 @@ const Winner = ({ firstEvent, isDesktop }) => {
                   }
                   stopOpacity="0.5"
                 />
-                {/* <stop offset={1} stopColor="#000000" stopOpacity={0} /> */}
+                <stop
+                  offset={1}
+                  stopColor={
+                    winner?.right_color === "black"
+                      ? "#000000"
+                      : winner?.right_color === "red"
+                      ? "#B51C12"
+                      : "rgba(22, 105, 88, 0.8)"
+                  }
+                  stopOpacity={0}
+                />
               </linearGradient>
+
               <linearGradient
                 id="Bpdl2ljhi4o"
                 x1="83.32"
