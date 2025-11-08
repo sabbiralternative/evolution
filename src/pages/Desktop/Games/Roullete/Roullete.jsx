@@ -12,6 +12,7 @@ import BetSlip from "../../../Games/Roullete/BetSlip/BetSlip";
 import Timer from "../../../../component/shared/Timer";
 import CommonUIElement from "./CommonUIElement/CommonUIElement";
 import History from "./History";
+import Winner from "../../../Games/Roullete/Winner";
 
 const Roullete = () => {
   const { sound } = useSound();
@@ -148,6 +149,9 @@ const Roullete = () => {
                     </div>
                   </div>
                 </div>
+                {firstEvent?.winner?.number && (
+                  <Winner firstEvent={firstEvent} isDesktop={true} />
+                )}
               </div>
             </div>
             <div data-role="layout-classic">

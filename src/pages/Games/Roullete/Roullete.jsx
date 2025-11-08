@@ -101,12 +101,6 @@ const Roullete = () => {
                   "linear-gradient(45deg,rgba(30, 0, 30, 0) 0%,rgba(30, 0, 30, 0.8) 50%,rgba(30, 0, 30, 0) 100%),linear-gradient(45deg,rgb(60, 65, 80) -5%,rgb(30, 0, 30) 50%,rgb(60, 65, 80) 105%)",
               }}
             />
-            {currentRoundWinAmount > 0 && (
-              <Winner
-                firstEvent={firstEvent}
-                currentRoundWinAmount={currentRoundWinAmount}
-              />
-            )}
 
             <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
               <div className="relativeChildren--99d54">
@@ -332,6 +326,7 @@ const Roullete = () => {
                 <RecentNumberContainer
                   recent_winner={firstEvent?.recent_winner}
                 />
+
                 <div
                   className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d"
                   style={{ pointerEvents: "auto" }}
@@ -354,6 +349,9 @@ const Roullete = () => {
                         }
                       }
                     >
+                      {firstEvent?.winner?.number && (
+                        <Winner firstEvent={firstEvent} />
+                      )}
                       <BetSlip
                         double={double}
                         animation={animation}

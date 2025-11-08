@@ -76,9 +76,9 @@ const AmountSection = ({
   useEffect(() => {
     if (totalBetPlace) {
       const parseTotalBet = JSON.parse(totalBetPlace);
-
-      if (parseTotalBet && parseTotalBet.length > 0 && data?.[0]?.number) {
-        const result = calculateRouletteWin(parseTotalBet, data?.[0]?.number);
+      const winner = data?.[0]?.winner;
+      if (parseTotalBet && parseTotalBet.length > 0 && winner?.number) {
+        const result = calculateRouletteWin(parseTotalBet, winner?.number);
 
         setTotalWinAmount(result.totalWin);
         setShowWinLossResult(true);
