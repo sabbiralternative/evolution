@@ -13,6 +13,7 @@ import Timer from "../../../../component/shared/Timer";
 import CommonUIElement from "./CommonUIElement/CommonUIElement";
 import History from "./History";
 import Winner from "../../../Games/Roullete/Winner";
+import WinMessage from "../../../Games/Roullete/WinMessage";
 
 const Roullete = () => {
   const { sound } = useSound();
@@ -152,6 +153,10 @@ const Roullete = () => {
                 {firstEvent?.winner?.number && (
                   <Winner firstEvent={firstEvent} isDesktop={true} />
                 )}
+                <WinMessage
+                  firstEvent={firstEvent}
+                  currentRoundWinAmount={currentRoundWinAmount}
+                />
               </div>
             </div>
             <div data-role="layout-classic">

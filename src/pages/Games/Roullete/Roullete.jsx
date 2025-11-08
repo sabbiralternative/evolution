@@ -15,6 +15,7 @@ import BetSlip from "./BetSlip/BetSlip";
 import Footer from "./Footer";
 import Counter from "../../../component/UI/Counter";
 import Winner from "./Winner";
+import WinMessage from "./WinMessage";
 
 const Roullete = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -352,6 +353,10 @@ const Roullete = () => {
                       {firstEvent?.winner?.number && (
                         <Winner firstEvent={firstEvent} />
                       )}
+                      <WinMessage
+                        firstEvent={firstEvent}
+                        currentRoundWinAmount={currentRoundWinAmount}
+                      />
                       <BetSlip
                         double={double}
                         animation={animation}
