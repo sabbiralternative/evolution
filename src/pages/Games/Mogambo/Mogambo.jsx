@@ -16,6 +16,7 @@ import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
 import Winner from "./Winner";
+import History from "./History";
 
 const Mogambo = () => {
   const { sound } = useSound();
@@ -355,7 +356,7 @@ const Mogambo = () => {
                       pointerEvents: "auto",
                     }}
                   >
-                    {/* <History /> */}
+                    <History recent_winner={firstEvent?.recent_winner} />
 
                     <BetSlip
                       initialState={initialState}
