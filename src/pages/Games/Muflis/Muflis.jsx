@@ -35,17 +35,8 @@ const Muflis = () => {
   const firstEvent = data?.result?.[0];
 
   const initialState = {
-    even: { show: false, stake },
-    up: { show: false, stake },
-    odd: { show: false, stake },
-    red: { show: false, stake },
-    down: { show: false, stake },
-    black: { show: false, stake },
-    seven: { show: false, stake },
-    diamond: { show: false, stake },
-    heart: { show: false, stake },
-    spade: { show: false, stake },
-    club: { show: false, stake },
+    playera: { show: false, stake },
+    playerb: { show: false, stake },
   };
 
   const [stakeState, setStakeState] = useState(initialState);
@@ -350,7 +341,7 @@ const Muflis = () => {
                       transition: "transform 0.5s ease-in-out",
                     }}
                   >
-                    <History />
+                    <History recent_winner={firstEvent?.recent_winner} />
                     <BetSlip
                       initialState={initialState}
                       double={double}

@@ -346,7 +346,10 @@ const TP2020 = () => {
                       transition: "transform 0.5s ease-in-out",
                     }}
                   >
-                    <History />
+                    {firstEvent?.recent_winner?.length > 0 && (
+                      <History recent_winner={firstEvent?.recent_winner} />
+                    )}
+
                     <BetSlip
                       initialState={initialState}
                       double={double}
