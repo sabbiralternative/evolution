@@ -156,6 +156,8 @@ const BetSlip = ({
     1: "rgba(14,94,255,1)",
   };
 
+  console.log(data);
+
   return (
     <div
       onClick={() =>
