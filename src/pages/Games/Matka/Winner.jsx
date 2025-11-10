@@ -7,7 +7,7 @@ const Winner = ({ firstEvent, currentRoundWinAmount }) => {
 
   return (
     <div className="overlays--4cd0a">
-      <div className="mobileGameOverlay--a7837">
+      <div className="mobileGameOverlay--a7837" style={{ height: "auto" }}>
         <div className="gameResultContainer--374ad isMobile--d2fa5 isPortrait--01bd0 hasWin--ce559 isLargeDevice--710cc shiftBottom--027e5">
           <div className="gameResultElements--81495">
             {winner && (

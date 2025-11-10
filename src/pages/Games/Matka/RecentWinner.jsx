@@ -1,5 +1,4 @@
 const RecentWinner = ({ recent_winner }) => {
-  console.log(recent_winner);
   return (
     <div className="recentNumbersContainer--dae11">
       <style
@@ -10,22 +9,31 @@ const RecentWinner = ({ recent_winner }) => {
       />
       <div
         className="numbers--ca008 recent-number--d9e03 mobile-theme--e9e56 with-background--5b87d"
-        style={{ display: "flex", alignItems: "center", gap: "8px" }}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
+          backgroundColor: "rgb(34 28 28 / 60%)",
+        }}
       >
         {recent_winner?.map((item, i) => {
           const color = {
-            1: "#FF6347",
-            2: "#1E90FF",
-            3: "#FFA500",
-            4: "#FF6347",
-            5: "#1E90FF",
-            6: "#FFA500",
-            7: "#FF6347",
-            8: "#1E90FF",
-            9: "#FFA500",
-            0: "#FFA500",
+            1: "rgba(255, 99, 71, 1)",
+            2: "rgba(30, 144, 255, 1)",
+            3: "rgba(50, 205, 50, 1)",
+            4: "rgba(255, 165, 0, 1)",
+            5: "rgba(138, 43, 226, 1)",
+            6: "rgba(255, 20, 147, 1)",
+            7: "rgba(0, 206, 209, 1)",
+            8: "rgba(255, 215, 0, 1)",
+            9: "rgba(220, 20, 60, 1)",
+            0: "rgba(60, 179, 113, 1)",
+            "Line 1": "rgba(0, 191, 255, 1)",
+            "Line 2": "rgba(218, 112, 214, 1)",
+            Even: "rgba(094, 115, 5, 074441)",
+            Odd: "rgba(218, 11, 214, 1)",
           };
-          console.log(color[item?.winner]);
+
           return (
             <div
               key={`${item?.winner}-${i}`}
