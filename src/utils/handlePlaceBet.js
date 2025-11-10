@@ -75,6 +75,7 @@ export const handlePlaceBet = ({
           },
         };
       });
+      setIsLoading(false);
     }, 500);
 
     return () => clearTimeout(timeout);

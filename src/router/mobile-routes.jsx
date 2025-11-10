@@ -31,6 +31,7 @@ import Mogambo from "../pages/Games/Mogambo/Mogambo";
 import CenterCard from "../pages/Games/CenterCard/CenterCard";
 import Matka from "../pages/Games/Matka/Matka";
 import TP2020 from "../pages/Games/TP2020/TP2020";
+import TwentyNineCardBaccarat from "../pages/Games/TwentyNineCardBaccarat/TwentyNineCardBaccarat";
 
 export const mobileRoutes = [
   {
@@ -109,6 +110,10 @@ export const mobileRoutes = [
   {
     path: "/game/teenmuf/:eventTypeId/:eventId",
     element: <Muflis />,
+  },
+  {
+    path: "/game/29card/:eventTypeId/:eventId",
+    element: <TwentyNineCardBaccarat />,
   },
   {
     path: "/game/teen20/:eventTypeId/:eventId",

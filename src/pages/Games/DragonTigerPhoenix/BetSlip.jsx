@@ -217,13 +217,17 @@ const BetSlip = ({
 
   return (
     <div
+      onClick={handleShowSuspendedStatus}
       className="betPanel--b3b31 portrait--d6948"
       data-role="bet-panel"
       style={{
         "--gridScale": "calc(var(--size, 10px) * 1.034987593052109)",
       }}
     >
-      <div className="cardBetSpots--13ff1">
+      <div
+        className="cardBetSpots--13ff1"
+        style={{ pointerEvents: status === Status.SUSPENDED ? "none" : "auto" }}
+      >
         <div
           onClick={() =>
             handleStakeChange({
@@ -1045,7 +1049,7 @@ const BetSlip = ({
             className={cn(
               `cardBackground--c510a`,
               isRunnerWinner(data, 0, 2) && "animate-win",
-              stakeState.down?.show && "hasBet--8e3d4"
+              stakeState.phoenix?.show && "hasBet--8e3d4"
             )}
           >
             <path
@@ -1320,8 +1324,8 @@ const BetSlip = ({
           <svg
             className={cn(
               `tieBackground--077e5`,
-              isRunnerWinner(data, 0, 0) && "animate-win",
-              stakeState.down?.show && "hasBet--8e3d4"
+              isRunnerWinner(data, 0, 3) && "animate-win",
+              stakeState.tie?.show && "hasBet--8e3d4"
             )}
             viewBox="0 0 403 56"
             fill="none"

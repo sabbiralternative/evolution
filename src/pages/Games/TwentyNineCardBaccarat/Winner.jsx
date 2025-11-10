@@ -1,29 +1,27 @@
 import { Status } from "../../../const";
 
-const Winner = ({ firstEvent, currentRoundWinAmount }) => {
-  const winner = firstEvent?.runners?.find(
-    (runner) => runner?.status === "WINNER"
-  );
+const Winner = ({ data, firstEvent, currentRoundWinAmount }) => {
+  let card = undefined;
+  const indexCard = data?.result?.[0]?.indexCard;
+  if (indexCard?.length > 0) {
+    card = Number(indexCard[0].slice(1));
+  }
 
   return (
-    <div className="overlays--4cd0a ">
-      <div className="mobileGameOverlay--a7837" style={{ height: "auto" }}>
+    <div className="overlays--4cd0a">
+      <div className="mobileGameOverlay--a7837">
         <div className="gameResultContainer--374ad isMobile--d2fa5 isPortrait--01bd0 hasWin--ce559 isLargeDevice--710cc shiftBottom--027e5">
           <div className="gameResultElements--81495">
-            {winner && (
+            {card && (
               <div
                 className="winner--6aa50"
                 style={{
                   background: `linear-gradient(to right, rgba(0,150,255, 0),${
-                    winner?.name === "Dragon"
-                      ? "#540c0c"
-                      : winner?.name === "Tiger"
-                      ? "#60470a"
-                      : winner?.name === "Tie"
-                      ? "#0b2012"
-                      : winner?.name === "Suited"
-                      ? "#0b2012"
-                      : "rgba(0,150,255, 0)"
+                    card > 7
+                      ? "rgb(255, 0, 0)"
+                      : card < 7
+                      ? "rgba(0,150,255, 0.9)"
+                      : "rgb(0, 150, 0)"
                   },rgba(0,150,255, 0)`,
                 }}
               >
@@ -31,7 +29,7 @@ const Winner = ({ firstEvent, currentRoundWinAmount }) => {
                   className="genericPhrase--d0b15"
                   data-role="game-result-winner"
                 >
-                  {winner?.name}
+                  {card > 7 ? "7 UP" : card < 7 ? "7 DOWN" : 7}
                 </span>
               </div>
             )}
@@ -43,7 +41,7 @@ const Winner = ({ firstEvent, currentRoundWinAmount }) => {
                     className="amount--47c0e"
                     data-role="winning-message-amount"
                   >
-                    ₹{currentRoundWinAmount}
+                    ⁦⁦₹⁩{currentRoundWinAmount}⁩
                   </div>
                 </div>
               )}

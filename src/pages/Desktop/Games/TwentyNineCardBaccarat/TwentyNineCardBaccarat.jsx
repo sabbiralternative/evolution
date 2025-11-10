@@ -9,18 +9,17 @@ import ChipContainer from "../../../../component/shared/CommonUIElement/ChipCont
 import { handleDoubleStake } from "../../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../../utils/handleUndoStake";
 import CommonUIElement from "../../../../component/shared/CommonUIElement/CommonUIElement";
-import BetSlip from "../../../Games/LuckySevenB/BetSlip";
+import BetSlip from "../../../Games/TwentyNineCardBaccarat/BetSlip";
 import Timer from "../../../../component/shared/Timer";
-import Winner from "../../../Games/LuckySevenB/Winner";
 import History from "./History";
 
-const LuckySevenB = () => {
+const TwentyNineCardBaccarat = () => {
   const { sound } = useSound();
   const [double, setDouble] = useState(false);
   const [animation, setAnimation] = useState([]);
   const [showWinLossResult, setShowWinLossResult] = useState(false);
   const [totalWinAmount, setTotalWinAmount] = useState(null);
-  const [currentRoundWinAmount, setCurrentRoundWinAmount] = useState(null);
+  const [, setCurrentRoundWinAmount] = useState(null);
   const { stake } = useSelector((state) => state.global);
   const { eventTypeId, eventId } = useParams();
   const { data } = useGetEventDetailsQuery(
@@ -164,11 +163,6 @@ const LuckySevenB = () => {
                     </div>
                   </div>
                 </div>
-                <Winner
-                  data={data}
-                  firstEvent={firstEvent}
-                  currentRoundWinAmount={currentRoundWinAmount}
-                />
               </div>
             </div>
             <div data-role="layout-classic">
@@ -287,7 +281,6 @@ const LuckySevenB = () => {
                     />
                   </div>
                 </div>
-
                 <div
                   className="gradient--e96cd commonUiElement"
                   data-role="top-corner-gradient"
@@ -298,10 +291,8 @@ const LuckySevenB = () => {
                 <div className="top-container--67c84">
                   <History recentWinner={firstEvent?.recent_winner} />
                 </div>
-
                 <div className="bottom-container--11469">
                   <Timer firstEvent={firstEvent} />
-
                   {firstEvent?.status === Status.OPEN && (
                     <ChipContainer
                       isRepeatTheBet={isRepeatTheBet}
@@ -339,33 +330,21 @@ const LuckySevenB = () => {
             />
             <div
               className="gameOverlay--ad8aa"
-              style={
-                {
-                  // perspective: "1000px",
-                }
-              }
+              style={{
+                transform:
+                  firstEvent?.status === Status.SUSPENDED
+                    ? "translateY(25px)"
+                    : "translateY(0px)",
+                transition: "transform 0.5s ease-in-out",
+              }}
             >
               <div className="classicOverlay--fde0a">
                 <div
                   className="bettingGrid--190e8"
                   style={{
-                    // transform:
-                    //   firstEvent?.status === Status.SUSPENDED
-                    //     ? "rotateX(36deg) scaleX(1.7) scaleY(1.2)"
-                    //     : "scaleX(1.8) scaleY(1.3)",
-                    // transform:
-                    //   firstEvent?.status === Status.SUSPENDED
-                    //     ? "scale(1)"
-                    //     : "scaleX(1.4) scaleY(1.4)",
-                    // transformOrigin: "center",
-                    // marginTop: "80px",
-                    // transition: "transform 0.5s ease-in-out",
-                    // transformStyle: "preserve-3d",
-                    transform:
-                      firstEvent?.status === Status.SUSPENDED
-                        ? "translateY(25px)"
-                        : "translateY(0px)",
-                    transition: "transform 0.5s ease-in-out",
+                    transform: "scale(1.1)",
+                    transformOrigin: "center",
+                    marginTop: "40px",
                   }}
                 >
                   <BetSlip
@@ -407,4 +386,4 @@ const LuckySevenB = () => {
   );
 };
 
-export default LuckySevenB;
+export default TwentyNineCardBaccarat;

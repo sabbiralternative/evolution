@@ -378,7 +378,16 @@ const ImperialQuest = () => {
               data-role="game-overlay-container"
             >
               <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
-                <div className="relativeChildren--99d54">
+                <div
+                  className="relativeChildren--99d54"
+                  style={{
+                    transform:
+                      firstEvent?.status === Status.SUSPENDED
+                        ? "translateY(25px)"
+                        : "translateY(0px)",
+                    transition: "transform 0.5s ease-in-out",
+                  }}
+                >
                   <div className="portraitContent--aa203">
                     <BetSlip
                       initialState={initialState}

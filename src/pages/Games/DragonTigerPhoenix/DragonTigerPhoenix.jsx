@@ -14,6 +14,7 @@ import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
 import Winner from "./Winner";
+import History from "./History";
 
 const DragonTigerPhoenix = () => {
   const { sound } = useSound();
@@ -285,28 +286,42 @@ const DragonTigerPhoenix = () => {
               }}
             >
               <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
-                <div className="relativeChildren--99d54">
-                  <div
-                    className="betPanelWithRoads--efe50 isPortrait--c529f"
-                    style={{
-                      transform: `scale(${deviceWidth / 440})`,
-                    }}
-                  >
-                    <BetSlip
-                      initialState={initialState}
-                      double={double}
-                      animation={animation}
-                      setAnimation={setAnimation}
-                      setShowWinLossResult={setShowWinLossResult}
-                      setTotalWinAmount={setTotalWinAmount}
-                      stakeState={stakeState}
-                      setStakeState={setStakeState}
-                      data={data?.result}
-                      status={firstEvent?.status}
-                      height={true}
-                      width={true}
-                      transform={true}
-                    />
+                <div
+                  style={{
+                    transform:
+                      firstEvent?.status === Status.SUSPENDED
+                        ? "translateY(25px)"
+                        : "translateY(0px)",
+                    transition: "transform 0.5s ease-in-out",
+                  }}
+                  className="relativeChildren--99d54"
+                >
+                  <div className="betPanelWithRoads--efe50 isPortrait--c529f">
+                    {firstEvent?.recent_winner?.length > 0 && (
+                      <History recent_winner={firstEvent?.recent_winner} />
+                    )}
+
+                    <div
+                      style={{
+                        transform: `scale(${deviceWidth / 440})`,
+                      }}
+                    >
+                      <BetSlip
+                        initialState={initialState}
+                        double={double}
+                        animation={animation}
+                        setAnimation={setAnimation}
+                        setShowWinLossResult={setShowWinLossResult}
+                        setTotalWinAmount={setTotalWinAmount}
+                        stakeState={stakeState}
+                        setStakeState={setStakeState}
+                        data={data?.result}
+                        status={firstEvent?.status}
+                        height={true}
+                        width={true}
+                        transform={true}
+                      />
+                    </div>
                     {/* <RoadPrediction/> */}
                     <div className="menuButtonSpace--f0aa1" />
                   </div>

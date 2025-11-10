@@ -392,6 +392,7 @@ const DragonTiger = () => {
                         firstEvent?.status === Status.SUSPENDED
                           ? "translateY(25px)"
                           : "translateY(0px)",
+                      transition: "transform 0.5s ease-in-out",
                     }}
                   >
                     <div

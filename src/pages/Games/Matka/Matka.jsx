@@ -17,6 +17,7 @@ import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
 import Winner from "./Winner";
 import Card from "./Card";
+import RecentWinner from "./RecentWinner";
 
 const Matka = () => {
   const { sound } = useSound();
@@ -363,6 +364,7 @@ const Matka = () => {
             data-role="game-overlay-container"
           >
             <div className="backdrop--8ba63 isPortrait--83f63" />
+            <RecentWinner recent_winner={firstEvent?.recent_winner} />
             <div className="safeContainer--71c25 withBottomPadding--ffb27 hasExtraRoundedCorners--a605d">
               <div className="relativeChildren--99d54">
                 <div

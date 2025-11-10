@@ -325,7 +325,16 @@ const SuperColor = () => {
                 >
                   <div className="chipContainer--e8802" />
                 </div>
-                <div className="container--aa34e">
+                <div
+                  style={{
+                    transform:
+                      firstEvent?.status === Status.SUSPENDED
+                        ? "translateY(25px)"
+                        : "translateY(0px)",
+                    transition: "transform 0.5s ease-in-out",
+                  }}
+                  className="container--aa34e"
+                >
                   <div className="mobileTimer--a28ae">
                     <div className="statusMessage--d2eaf">
                       <div

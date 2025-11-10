@@ -12,6 +12,7 @@ import CommonUIElement from "../../../../component/shared/CommonUIElement/Common
 import BetSlip from "../../../Games/DragonTigerPhoenix/BetSlip";
 import Timer from "../../../../component/shared/Timer";
 import Winner from "../../../Games/DragonTigerPhoenix/Winner";
+import History from "./History";
 
 const DragonTigerPhoenix = () => {
   const { sound } = useSound();
@@ -285,7 +286,9 @@ const DragonTigerPhoenix = () => {
                 <div className="fullScreenGameOverlay--e2de7">
                   <div className="box--28913" />
                 </div>
-                <div className="top-container--67c84" />
+                <div className="top-container--67c84">
+                  <History recentWinner={firstEvent?.recent_winner} />
+                </div>
                 <div className="bottom-container--11469">
                   <Timer firstEvent={firstEvent} />
                   {firstEvent?.status === Status.OPEN && (
