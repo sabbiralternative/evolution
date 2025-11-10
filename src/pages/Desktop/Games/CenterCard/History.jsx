@@ -37,11 +37,11 @@ const History = ({ recentWinner }) => {
                       />
                       <path
                         fill={`${
-                          winner?.winner == "H"
+                          winner?.winner == "Y"
                             ? "#d83b32"
-                            : winner.winner === "7"
+                            : winner.winner === "T"
                             ? "#38b142"
-                            : winner.winner == "L"
+                            : winner.winner == "N"
                             ? "#156ed1"
                             : "transparent"
                         }`}
@@ -100,11 +100,11 @@ const History = ({ recentWinner }) => {
                       >
                         <stop
                           stopColor={`${
-                            winner?.winner == "H"
+                            winner?.winner == "Y"
                               ? "#d83b32"
-                              : winner.winner == "7"
+                              : winner.winner === "T"
                               ? "#38b142"
-                              : winner.winner == "L"
+                              : winner.winner == "N"
                               ? "#156ed1"
                               : "transparent"
                           }`}
@@ -112,11 +112,11 @@ const History = ({ recentWinner }) => {
                         <stop
                           offset={1}
                           stopColor={`${
-                            winner?.winner == "H"
+                            winner?.winner == "Y"
                               ? "#d83b32"
-                              : winner.winner == "7"
+                              : winner.winner === "T"
                               ? "#38b142"
-                              : winner.winner == "L"
+                              : winner.winner == "N"
                               ? "#156ed1"
                               : "transparent"
                           }`}

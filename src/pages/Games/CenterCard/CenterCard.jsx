@@ -15,6 +15,8 @@ import Counter from "../../../component/UI/Counter";
 import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
+import History from "./History";
+import Card from "./Card";
 
 const CenterCard = () => {
   const { sound } = useSound();
@@ -350,7 +352,8 @@ const CenterCard = () => {
                       pointerEvents: "auto",
                     }}
                   >
-                    {/* <History /> */}
+                    <Card cards={firstEvent?.indexCard} />
+                    <History recent_winner={firstEvent?.recent_winner} />
 
                     <BetSlip
                       initialState={initialState}

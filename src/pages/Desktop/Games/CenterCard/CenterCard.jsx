@@ -12,6 +12,7 @@ import CommonUIElement from "../../../../component/shared/CommonUIElement/Common
 import BetSlip from "../../../Games/CenterCard/BetSlip";
 import Timer from "../../../../component/shared/Timer";
 import History from "./History";
+import Card from "../../../Games/CenterCard/Card";
 
 const CenterCard = () => {
   const { sound } = useSound();
@@ -338,6 +339,7 @@ const CenterCard = () => {
                     pointerEvents: "auto",
                   }}
                 >
+                  <Card cards={firstEvent?.indexCard} />
                   <BetSlip
                     initialState={initialState}
                     double={double}
