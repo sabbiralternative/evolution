@@ -3,6 +3,7 @@ import { useGetLiveCasinoThumbnailQuery } from "../../redux/features/casino/casi
 // import StaticThumbnail from "../shared/StaticThumbnail";
 import { useSound } from "../../context/ApiProvider";
 import { playClick } from "../../utils/sound";
+import { FaLock } from "react-icons/fa";
 
 const CasinoThumbnail = ({ title, id, column }) => {
   const { sound } = useSound();
@@ -55,6 +56,9 @@ const CasinoThumbnail = ({ title, id, column }) => {
             {data?.map((casino) => {
               return (
                 <li
+                  style={{
+                    pointerEvents: casino?.active ? "auto" : "none",
+                  }}
                   key={casino?.eventId}
                   onClick={() => handleNavigate(casino)}
                   className="GridListItem--42b25"
@@ -74,6 +78,32 @@ const CasinoThumbnail = ({ title, id, column }) => {
                             backgroundImage: `url(${casino?.image})`,
                           }}
                         />
+                        {!casino?.active && (
+                          <div
+                            className="TableOverlay--2e8c7 occupied--38045 tile--83efd"
+                            aria-label="Occupied"
+                            data-role="occupied-table"
+                          >
+                            <div className="LobbyIcon--67f66 LobbyIcon_md_large--a67e3 LobbyIcon_xl_huge--3a29c LobbyIcon_xs_increased--bc5f6">
+                              <FaLock size={20} />
+                              {/* <svg
+                              data-role="lock"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 16 16"
+                            >
+                              <use xlinkHref="#lock" />
+                            </svg> */}
+                            </div>
+                            <span
+                              className="Typography--d2c9a Typography_xs_subtitle1--6fd5e Typography_md_h6--9d8db Typography_xl_h5--ded48 bold--d200f colorPrimary--f2f02 ellipsisModeOneLine--825c0 hyphens--b1b61"
+                              data-role="typography"
+                              style={{ color: "rgb(196, 196, 196)" }}
+                            >
+                              Table Closed
+                            </span>
+                          </div>
+                        )}
+
                         <div className="TableTileFooter--9a6e3 animate--bf579" />
                         <div className="History--87740 tile--466c7">
                           <div
@@ -207,6 +237,7 @@ const CasinoThumbnail = ({ title, id, column }) => {
                             </div>
                           </div>
                         </div>
+
                         <div className="FavoriteButton--9ff10">
                           <div className="TooltipWrapper--ce397">
                             <div
