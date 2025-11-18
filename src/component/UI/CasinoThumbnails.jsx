@@ -22,7 +22,32 @@ const CasinoThumbnail = ({ title, id, column }) => {
     }
   };
 
-  const historyData = ["A", "H", "A", "H", "A", "B", "A"];
+  const historyData = [
+    "A",
+    "H",
+    "A",
+    "H",
+    "A",
+    "B",
+    "A",
+    "A",
+    "H",
+    "A",
+    "H",
+    "A",
+    "B",
+    "A",
+    "A",
+    "B",
+    "A",
+    "A",
+    "H",
+    "A",
+    "H",
+    "A",
+    "B",
+    "A",
+  ];
   return (
     <main className="InnerContent--56377">
       <section className="AbstractCategory--f5e0f" id="category-top_games">

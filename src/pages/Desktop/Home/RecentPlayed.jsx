@@ -4,6 +4,7 @@ import { useSound } from "../../../context/ApiProvider";
 import { useNavigate } from "react-router-dom";
 import { Fragment, useMemo } from "react";
 import { playClick } from "../../../utils/sound";
+import { FaLock } from "react-icons/fa";
 
 const RecentlyPlayed = () => {
   const navigate = useNavigate();
@@ -45,6 +46,33 @@ const RecentlyPlayed = () => {
     if (sound) playClick();
     navigate(getCasinoLink(casino));
   };
+
+  const historyData = [
+    "A",
+    "H",
+    "A",
+    "H",
+    "A",
+    "B",
+    "A",
+    "A",
+    "H",
+    "A",
+    "H",
+    "A",
+    "B",
+    "A",
+    "A",
+    "B",
+    "A",
+    "A",
+    "H",
+    "A",
+    "H",
+    "A",
+    "B",
+    "A",
+  ];
 
   return (
     <Fragment>
@@ -122,6 +150,9 @@ const RecentlyPlayed = () => {
               {games?.map((game) => {
                 return (
                   <li
+                    style={{
+                      pointerEvents: game?.active ? "auto" : "none",
+                    }}
                     onClick={() => handleNavigate(game)}
                     key={game?.name}
                     className="GridListItem--42b25"
@@ -142,6 +173,170 @@ const RecentlyPlayed = () => {
                               backgroundImage: `url(${game?.image})`,
                             }}
                           />
+                          {!game?.active && (
+                            <div
+                              className="TableOverlay--2e8c7 occupied--38045 tile--83efd"
+                              aria-label="Occupied"
+                              data-role="occupied-table"
+                            >
+                              <div className="LobbyIcon--67f66 LobbyIcon_md_large--a67e3 LobbyIcon_xl_huge--3a29c LobbyIcon_xs_increased--bc5f6">
+                                <FaLock size={20} />
+                                {/* <svg
+                                                                                  data-role="lock"
+                                                                                  xmlns="http://www.w3.org/2000/svg"
+                                                                                  viewBox="0 0 16 16"
+                                                                                >
+                                                                                  <use xlinkHref="#lock" />
+                                                                                </svg> */}
+                              </div>
+                              <span
+                                className="Typography--d2c9a Typography_xs_subtitle1--6fd5e Typography_md_h6--9d8db Typography_xl_h5--ded48 bold--d200f colorPrimary--f2f02 ellipsisModeOneLine--825c0 hyphens--b1b61"
+                                data-role="typography"
+                                style={{ color: "rgb(196, 196, 196)" }}
+                              >
+                                Table Closed
+                              </span>
+                            </div>
+                          )}
+                          <div className="History--87740 tile--466c7">
+                            <div
+                              className="ordinary--c80d8"
+                              style={{
+                                position: "relative",
+                                overflow: "hidden",
+                              }}
+                            >
+                              <div
+                                className="HistoryGrid--4c95d stretched--bce7a"
+                                data-role="history-grid"
+                                style={{
+                                  "--history-grid-columns": "auto-fill",
+                                  "--history-grid-rows": 1,
+                                  "--history-grid-auto-rows": 0,
+                                  "--history-grid-item-height": "20px",
+                                  "--history-grid-item-width": "26px",
+                                  "--history-grid-column-gap": "3px",
+                                  "--history-grid-row-gap": "3px",
+                                  "--history-grid-max-height":
+                                    "calc(20px * 1 + 3px * 0)",
+                                  position: "absolute",
+                                  bottom: "0px",
+                                  display: "flex",
+                                  overflow: "auto",
+                                }}
+                              >
+                                {historyData?.map((item, idx) => {
+                                  const color =
+                                    item == "A"
+                                      ? "#d83b32"
+                                      : item === "H"
+                                      ? "#38b142"
+                                      : item == "B"
+                                      ? "#156ed1"
+                                      : "transparent";
+                                  return (
+                                    <div
+                                      key={idx}
+                                      className="HistoryGridItem--3593c"
+                                    >
+                                      <svg
+                                        width={53}
+                                        height={31}
+                                        viewBox="0 0 53 31"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                        <g filter="url(#history)">
+                                          <path
+                                            fill="black"
+                                            fillOpacity="0.4"
+                                            d="M 37.5 1 H 5.5 C 3.6 1 2.4 2.9 3.3 4.5 L 7.7 11.5 C 8.1 12.2 8.1 13.1 7.7 13.8 L 3.3 20.9 C 2.4 22.4 3.6 24.4 5.5 24.4 H 37.5 C 39.8 24.4 41.8 23.2 42.9 21.4 L 47.6 13.8 C 48 13.1 48 12.2 47.6 11.5 L 42.9 3.9 C 41.8 2.1 39.8 1 37.5 1 Z"
+                                          />
+                                          <path
+                                            fill={color}
+                                            fillOpacity="0.8"
+                                            stroke={`url(#history-icon-LasWin-Tiger-${idx})`}
+                                            fillRule="evenodd"
+                                            strokeWidth={2}
+                                            d="M 37.5 1 H 5.5 C 3.6 1 2.4 2.9 3.3 4.5 L 7.7 11.5 C 8.1 12.2 8.1 13.1 7.7 13.8 L 3.3 20.9 C 2.4 22.4 3.6 24.4 5.5 24.4 H 37.5 C 39.8 24.4 41.8 23.2 42.9 21.4 L 47.6 13.8 C 48 13.1 48 12.2 47.6 11.5 L 42.9 3.9 C 41.8 2.1 39.8 1 37.5 1 Z"
+                                          />
+                                          <text
+                                            x={19}
+                                            y={19}
+                                            fill="#fff"
+                                            fontSize={16}
+                                          >
+                                            {item}
+                                          </text>
+                                        </g>
+                                        <filter
+                                          id="history"
+                                          x="0.307218"
+                                          y="0.10144"
+                                          width="52.1238"
+                                          height="30.5495"
+                                          filterUnits="userSpaceOnUse"
+                                        >
+                                          <feFlood
+                                            floodOpacity={0}
+                                            result="BackgroundImageFix"
+                                          />
+                                          <feColorMatrix
+                                            in="SourceAlpha"
+                                            type="matrix"
+                                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                                            result="hardAlpha"
+                                          />
+                                          <feOffset
+                                            dx="0.898515"
+                                            dy="2.69554"
+                                          />
+                                          <feGaussianBlur stdDeviation="1.34777" />
+                                          <feComposite
+                                            in2="hardAlpha"
+                                            operator="out"
+                                          />
+                                          <feColorMatrix
+                                            type="matrix"
+                                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.45 0"
+                                          />
+                                          <feBlend
+                                            mode="normal"
+                                            in2="BackgroundImageFix"
+                                            result="effect1_dropShadow_84_5998"
+                                          />
+                                          <feBlend
+                                            mode="normal"
+                                            in="SourceGraphic"
+                                            in2="effect1_dropShadow_84_5998"
+                                            result="shape"
+                                          />
+                                        </filter>
+                                        <defs>
+                                          <linearGradient
+                                            id={`history-icon-LasWin-Tiger-${idx}`}
+                                            x1={27}
+                                            y1={1}
+                                            x2={27}
+                                            y2={27}
+                                            gradientUnits="userSpaceOnUse"
+                                          >
+                                            <stop stopColor={color} />
+                                            <stop
+                                              offset={1}
+                                              stopColor={color}
+                                              stopOpacity={0}
+                                            />
+                                          </linearGradient>
+                                        </defs>
+                                      </svg>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          </div>
+
                           <div className="FavoriteButton--9ff10">
                             <div className="TooltipWrapper--ce397">
                               <div
