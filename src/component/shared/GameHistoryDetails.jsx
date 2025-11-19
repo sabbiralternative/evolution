@@ -316,13 +316,19 @@ const GameHistoryDetails = ({ setTab, closeModal, roundId }) => {
                                         </div>
                                         <div className="numbers--b042d">
                                           <div className="number--c9dd1">
-                                            <div className="result--7da1e black--c427b">
+                                            <div
+                                              style={{
+                                                height: "60px",
+                                                width: "60px",
+                                              }}
+                                              className="result--7da1e black--c427b"
+                                            >
                                               {data?.result?.game_details
                                                 ?.card && (
                                                 <img
                                                   style={{
-                                                    width: "25px",
-                                                    height: "30px",
+                                                    width: "50px",
+                                                    height: "50px",
                                                   }}
                                                   src={`/cards/${data?.result?.game_details?.card}.png`}
                                                   alt=""

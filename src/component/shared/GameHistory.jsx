@@ -17,6 +17,8 @@ const GameHistory = ({ setTab, closeModal, setRoundId }) => {
 
   const { data, isLoading } = useGetHistory({ page });
 
+  console.log(data);
+
   // Handle new data when page changes
   useEffect(() => {
     if (data?.result?.length > 0) {
