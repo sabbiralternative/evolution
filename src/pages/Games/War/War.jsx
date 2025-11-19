@@ -11,9 +11,9 @@ import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
 import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
-import Menu from "../../../component/shared/Menu/Menu";
 import { playClick } from "../../../utils/sound";
 import Counter from "../../../component/UI/Counter";
+import Menu from "./Menu/Menu";
 
 const War = () => {
   const { sound } = useSound();

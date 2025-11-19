@@ -1,9 +1,9 @@
 import { motion } from "motion/react";
-import { useGetBets } from "../../hooks/bets";
 import { useSelector } from "react-redux";
-import { useSound } from "../../context/ApiProvider";
-import { playClick } from "../../utils/sound";
 import { useParams } from "react-router-dom";
+import { useSound } from "../../../../context/ApiProvider";
+import { useGetBets } from "../../../../hooks/bets";
+import { playClick } from "../../../../utils/sound";
 
 const GameHistoryDetails = ({ setTab, closeModal, roundId }) => {
   const { eventId } = useParams();
@@ -301,146 +301,6 @@ const GameHistoryDetails = ({ setTab, closeModal, roundId }) => {
                                 </div>
                               </div>
                             </div>
-                            {/* <div className="header--c62fa">
-                              <div
-                                className="wrapper--f4eb9"
-                                data-role="scrollable-wrapper"
-                              >
-                                <div
-                                  data-role="scrollable"
-                                  className="scrollable--96151 pan--202dc"
-                                >
-                                  <div className="result--2140c twoBlocks--82fe9">
-                                    <div className="block--6ee22">
-                                      <div className="container--07793">
-                                        <div className="header--8c264">
-                                          RESULT
-                                        </div>
-                                        <div className="numbers--b042d">
-                                          <div className="number--c9dd1">
-                                            <div
-                                              style={{
-                                                height: "60px",
-                                                width: "60px",
-                                              }}
-                                              className="result--7da1e black--c427b"
-                                            >
-                                              {data?.result?.game_details
-                                                ?.card && (
-                                                <img
-                                                  style={{
-                                                    width: "50px",
-                                                    height: "50px",
-                                                  }}
-                                                  src={`/cards/${data?.result?.game_details?.card}.png`}
-                                                  alt=""
-                                                />
-                                              )}
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="bets--c7ba8">
-                              <div className="content--cdf51">
-                                <div
-                                  data-role="bets-table-container"
-                                  className="sm--7f98e"
-                                >
-                                  <table className="bets--f36bf">
-                                    <thead className="header--61e11">
-                                      <tr
-                                        data-role="bets-header-row"
-                                        className="sm--b3ac5"
-                                      >
-                                        <td
-                                          className="headerCell--f0e42"
-                                          data-role="type"
-                                        />
-                                        <td
-                                          className="headerCellBet--70fc6"
-                                          data-role="heading"
-                                        >
-                                          BET
-                                        </td>
-                                        <td
-                                          className="headerCellBet--70fc6 headerCellBetWin--ba321"
-                                          data-role="win"
-                                        >
-                                          WIN
-                                        </td>
-                                      </tr>
-                                    </thead>
-                                    <tbody data-role="betContainer">
-                                      {data?.result?.bet_details?.map(
-                                        (item, i) => {
-                                          return (
-                                            <tr
-                                              key={i}
-                                              className="sm--036b9"
-                                              data-role="betRow"
-                                            >
-                                              <td
-                                                className="cellBetName--b42bc"
-                                                data-role="betName"
-                                              >
-                                                <span>{item?.place_name}</span>
-                                              </td>
-                                              <td
-                                                className="cellBet--30d9c"
-                                                data-role="bet"
-                                              >
-                                                {Number(item?.bet) < 0 && "-"} ₹
-                                                {Number(Math.abs(item?.bet))}
-                                              </td>
-                                              <td
-                                                className="cellBet--30d9c zeroWinValue--1927b"
-                                                data-role="won"
-                                              >
-                                                {Number(item?.win) < 0 && "-"} ₹
-                                                {Math.abs(Number(item?.win))}
-                                              </td>
-                                            </tr>
-                                          );
-                                        }
-                                      )}
-                                    </tbody>
-                                    <tfoot>
-                                      <tr
-                                        className="sm--2fe71"
-                                        data-role="bets-footer-row"
-                                      >
-                                        <td
-                                          className="footerCell--3afc1"
-                                          data-role="total"
-                                          colSpan={1}
-                                        >
-                                          TOTAL
-                                        </td>
-                                        <td
-                                          className="footerCellBet--965c2"
-                                          data-role="amount"
-                                        >
-                                          {totalBet < 0 && "-"} ₹
-                                          {Math.abs(totalBet)}
-                                        </td>
-                                        <td
-                                          className="footerCellBet--965c2 zeroWinValue--f30c9"
-                                          data-role="win"
-                                        >
-                                          {totalWin < 0 && "-"} ₹
-                                          {Math.abs(totalWin)}
-                                        </td>
-                                      </tr>
-                                    </tfoot>
-                                  </table>
-                                </div>
-                              </div>
-                            </div> */}
                             <div className="header--c62fa">
                               <div
                                 className="wrapper--f4eb9"
@@ -629,26 +489,65 @@ const GameHistoryDetails = ({ setTab, closeModal, roundId }) => {
                                           <tbody>
                                             <tr>
                                               <td className="ssr_resultHeaderCell">
-                                                <span>Result</span>
+                                                <span>Player</span>
+                                              </td>
+                                              <td className="ssr_resultHeaderCell">
+                                                <span>Dealer</span>
+                                              </td>
+                                              <td className="ssr_resultHeaderCell">
+                                                <span>Winner</span>
                                               </td>
                                             </tr>
                                             <tr style={{ height: "50px" }}>
                                               <td className="ssr_cell">
                                                 <div
                                                   className="ssr_dt_result"
+                                                  data-role="history-tiger-hand"
+                                                >
+                                                  <div className="ssr_dt_cards">
+                                                    {data?.result?.game_details
+                                                      ?.player && (
+                                                      <img
+                                                        style={{
+                                                          width: "50px",
+                                                          height: "50px",
+                                                        }}
+                                                        src={`/cards/${data?.result?.game_details?.player}.png`}
+                                                        alt=""
+                                                      />
+                                                    )}
+                                                  </div>
+                                                </div>
+                                              </td>
+                                              <td className="ssr_cell">
+                                                <div
+                                                  className="ssr_dt_result"
+                                                  data-role="history-tiger-hand"
+                                                >
+                                                  <div className="ssr_dt_cards">
+                                                    {data?.result?.game_details
+                                                      ?.dealer && (
+                                                      <img
+                                                        style={{
+                                                          width: "50px",
+                                                          height: "50px",
+                                                        }}
+                                                        src={`/cards/${data?.result?.game_details?.dealer}.png`}
+                                                        alt=""
+                                                      />
+                                                    )}
+                                                  </div>
+                                                </div>
+                                              </td>
+                                              <td className="ssr_cell">
+                                                <div
+                                                  className="ssr_dt_result"
                                                   data-role="history-outcome-cell"
                                                 >
-                                                  {data?.result?.game_details
-                                                    ?.card && (
-                                                    <img
-                                                      style={{
-                                                        width: "50px",
-                                                        height: "50px",
-                                                      }}
-                                                      src={`/cards/${data?.result?.game_details?.card}.png`}
-                                                      alt=""
-                                                    />
-                                                  )}
+                                                  {
+                                                    data?.result?.game_details
+                                                      ?.winner
+                                                  }
                                                 </div>
                                               </td>
                                             </tr>
@@ -770,6 +669,7 @@ const GameHistoryDetails = ({ setTab, closeModal, roundId }) => {
                                 </div>
                               </div>
                             </div>
+
                             <div className="bottomSpace--49f12" />
                           </div>
                         </div>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ActionButtons from "./ActionButtons";
 import BetSlip from "./BetSlip";
-import Menu from "../../../component/shared/Menu/Menu";
+
 import { useParams } from "react-router-dom";
 import { useGetEventDetailsQuery } from "../../../redux/features/events/events";
 import { Status } from "../../../const";
@@ -17,6 +17,7 @@ import { playClick } from "../../../utils/sound";
 import RecentWinner from "./RecentWinner";
 import { cn } from "../../../utils/cn";
 import Winner from "./Winner";
+import Menu from "./Menu/Menu";
 
 const DragonTiger = () => {
   const { sound } = useSound();

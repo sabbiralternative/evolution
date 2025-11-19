@@ -21,12 +21,14 @@ const ScrollableTab = () => {
           <span />
         </div> */}
         <li
+          onClick={() => handleNavigate("/")}
           className="ScrollableListItem--0b815 CategoryContainer--62d87"
           id="category-navigator-all_games"
         >
           <div className="Category--17479">
             <div className="CategoryIcon--d2629">
               <svg
+                style={{ opacity: pathname === "/" ? "1" : "0.6" }}
                 className="AnimatedCategoryIcon--87bac AllGamesIcon--41603"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 110 110"
@@ -53,6 +55,7 @@ const ScrollableTab = () => {
               </svg>
             </div>
             <span
+              style={{ opacity: pathname === "/" ? "1" : "0.6" }}
               className="Typography--d2c9a CategoryName--b3bef Typography_xs_subtitle1--6fd5e Typography_xl_h6--d162d bold--d200f colorPrimary--f2f02 ellipsisModeTwoLines--ab28e hyphens--b1b61"
               data-role="typography"
             >

@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import Chat from "./Chat";
 import { AnimatePresence, motion } from "motion/react";
 import GameHistory from "../../../../component/shared/GameHistory";
-import GameHistoryDetails from "../../../../component/shared/GameHistoryDetails";
 import HowToPlay from "./HowToPlay";
 import PayoutLimit from "./PayoutLimit";
 import { useSelector } from "react-redux";
 import { playClick } from "../../../../utils/sound";
 import { useSound } from "../../../../context/ApiProvider";
+import GameHistoryDetails from "./GameHistoryDetails";
 
 const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
   const { sound } = useSound();
