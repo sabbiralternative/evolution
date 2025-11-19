@@ -340,121 +340,19 @@ const BetSlip = ({
                   </div>
                   <span className="isPortrait--1de25 isVeryNarrowLikeOrHigher--d74cb withStats--a0c3b phone--48206">
                     TIE
-                    <StakeAnimation
-                      animation={animation}
-                      double={double}
-                      runner="tie"
-                      stake={stake}
-                      stakeState={stakeState}
-                    />
                   </span>
                 </div>
-                <div className="chipContainer--4d3de isPortrait--1de25 isVeryNarrowLikeOrHigher--d74cb withStats--a0c3b phone--48206">
-                  <div className="isPortrait--beef1 relative--a3924 chipSize--8b13c">
-                    <div
-                      data-is-chip-visible="false"
-                      className="hidden--a819a chip--30e0c"
-                    >
-                      <div
-                        className="chip--29b81 shadow--24a83 cover--6df8f"
-                        data-role="chip"
-                        data-value={0}
-                      >
-                        <svg
-                          viewBox="0 0 78 78"
-                          className="graphics--22cbe"
-                          data-role="default-svg"
-                          style={{ color: "rgb(146, 146, 146)" }}
-                        >
-                          <g>
-                            <circle
-                              className="paint--13ff6"
-                              cx="39.019"
-                              cy="38.999"
-                              r="38.5"
-                            />
-                            <path
-                              className="body--369ee"
-                              d="M38.94 12.5A26.5 26.5 0 1 0 65.44 39a26.529 26.529 0 0 0-26.5-26.5zm0 52A25.5 25.5 0 1 1 64.439 39 25.53 25.53 0 0 1 38.94 64.5z"
-                            />
-                            <circle
-                              className="textBackground--84c26"
-                              cx={39}
-                              cy="38.997"
-                              r="25.5"
-                            />
-                            <path
-                              className="body--369ee"
-                              d="M38.941 0a39 39 0 1 0 39 39 39.046 39.046 0 0 0-39-39zm-2.088 76.439l.483-8.471a28.99 28.99 0 0 1-4.668-.639l-1.783 8.291a37.277 37.277 0 0 1-12.144-5.051l4.6-7.124a29.143 29.143 0 0 1-8.85-8.851l-7.124 4.6a37.28 37.28 0 0 1-5.045-12.13l8.3-1.784a28.99 28.99 0 0 1-.639-4.668l-8.483.482C1.463 40.4 1.44 39.7 1.44 39s.023-1.391.061-2.08l8.478.483a28.99 28.99 0 0 1 .639-4.668l-8.3-1.785a37.275 37.275 0 0 1 5.047-12.142l7.126 4.6a29.143 29.143 0 0 1 8.85-8.851l-4.6-7.125a37.28 37.28 0 0 1 12.142-5.05l1.786 8.3a28.99 28.99 0 0 1 4.668-.639l-.483-8.484c.692-.038 1.388-.061 2.089-.061s1.4.023 2.087.061l-.483 8.484a28.99 28.99 0 0 1 4.668.639L47 2.381a37.276 37.276 0 0 1 12.14 5.05l-4.6 7.126a29.14 29.14 0 0 1 8.849 8.85l7.127-4.6a37.276 37.276 0 0 1 5.044 12.142l-8.3 1.785a28.99 28.99 0 0 1 .64 4.666l8.478-.483c.038.689.061 1.382.061 2.08s-.023 1.4-.062 2.1l-8.477-.486a28.99 28.99 0 0 1-.639 4.668l8.3 1.784a37.282 37.282 0 0 1-5.046 12.132l-7.125-4.6a29.14 29.14 0 0 1-8.849 8.85l4.6 7.125A37.275 37.275 0 0 1 47 75.619l-1.783-8.291a28.99 28.99 0 0 1-4.668.639l.483 8.471c-.691.038-1.386.061-2.087.061s-1.401-.022-2.092-.06z"
-                            />
-                          </g>
-                          <text
-                            className="value--ebf30"
-                            x="50%"
-                            y="50%"
-                            fontSize={30}
-                            dy={10}
-                            data-role="chip-value"
-                          >
-                            0
-                          </text>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
+                <div style={{ position: "absolute", top: "0px", left: "44px" }}>
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner="tie"
+                    stake={stake}
+                    stakeState={stakeState}
+                  />
                 </div>
               </div>
-              {/* <div className="statisticsIndicator--59f76 isPortrait--1de25 isVeryNarrowLikeOrHigher--d74cb withStats--a0c3b phone--48206">
-                <svg
-                  className="svg--bbbd4"
-                  data-total-percent={7}
-                  width={120}
-                  height={120}
-                  viewBox="0 0 120 120"
-                >
-                  <circle
-                    className="circle--9987b"
-                    cx={60}
-                    cy={60}
-                    r={51}
-                    fill="#000"
-                  />
-                  <circle
-                    className="circle--9987b"
-                    cx={60}
-                    cy={60}
-                    r={54}
-                    strokeWidth={6}
-                    fill="none"
-                    stroke="rgba(21,146,82,1)"
-                    strokeOpacity="0.5"
-                  />
-                  <circle
-                    className="circle--9987b"
-                    cx={60}
-                    cy={60}
-                    r={54}
-                    strokeWidth={6}
-                    fill="none"
-                    stroke="rgba(21,146,82,1)"
-                    strokeDashoffset="315.5415661265588"
-                    strokeDasharray="339.29200658769764"
-                    transform="rotate(-90 60 60)"
-                    style={{ transition: "0.5s" }}
-                  />
-                  <text
-                    x="50%"
-                    y="50%"
-                    dy="12.25"
-                    textAnchor="middle"
-                    fontSize={35}
-                    fontWeight={500}
-                    fill="rgba(21,146,82,1)"
-                  >
-                    7%
-                  </text>
-                </svg>
-              </div> */}
+
               <div
                 onClick={() =>
                   handleStakeChange({
@@ -547,69 +445,19 @@ const BetSlip = ({
                     <span> {data?.[0]?.runners?.[3]?.back?.[0]?.price}</span>
                   </div>
                   <span className="isPortrait--1de25 isVeryNarrowLikeOrHigher--d74cb withStats--a0c3b phone--48206">
-                    <StakeAnimation
-                      animation={animation}
-                      double={double}
-                      runner="suitedTie"
-                      stake={stake}
-                      stakeState={stakeState}
-                    />{" "}
                     SUITED TIE
                   </span>
                 </div>
-                <div className="chipContainer--4d3de isPortrait--1de25 isVeryNarrowLikeOrHigher--d74cb withStats--a0c3b phone--48206">
-                  <div className="isPortrait--beef1 relative--a3924 chipSize--8b13c">
-                    <div
-                      data-is-chip-visible="false"
-                      className="hidden--a819a chip--30e0c"
-                    >
-                      <div
-                        className="chip--29b81 shadow--24a83 cover--6df8f"
-                        data-role="chip"
-                        data-value={0}
-                      >
-                        <svg
-                          viewBox="0 0 78 78"
-                          className="graphics--22cbe"
-                          data-role="default-svg"
-                          style={{ color: "rgb(146, 146, 146)" }}
-                        >
-                          <g>
-                            <circle
-                              className="paint--13ff6"
-                              cx="39.019"
-                              cy="38.999"
-                              r="38.5"
-                            />
-                            <path
-                              className="body--369ee"
-                              d="M38.94 12.5A26.5 26.5 0 1 0 65.44 39a26.529 26.529 0 0 0-26.5-26.5zm0 52A25.5 25.5 0 1 1 64.439 39 25.53 25.53 0 0 1 38.94 64.5z"
-                            />
-                            <circle
-                              className="textBackground--84c26"
-                              cx={39}
-                              cy="38.997"
-                              r="25.5"
-                            />
-                            <path
-                              className="body--369ee"
-                              d="M38.941 0a39 39 0 1 0 39 39 39.046 39.046 0 0 0-39-39zm-2.088 76.439l.483-8.471a28.99 28.99 0 0 1-4.668-.639l-1.783 8.291a37.277 37.277 0 0 1-12.144-5.051l4.6-7.124a29.143 29.143 0 0 1-8.85-8.851l-7.124 4.6a37.28 37.28 0 0 1-5.045-12.13l8.3-1.784a28.99 28.99 0 0 1-.639-4.668l-8.483.482C1.463 40.4 1.44 39.7 1.44 39s.023-1.391.061-2.08l8.478.483a28.99 28.99 0 0 1 .639-4.668l-8.3-1.785a37.275 37.275 0 0 1 5.047-12.142l7.126 4.6a29.143 29.143 0 0 1 8.85-8.851l-4.6-7.125a37.28 37.28 0 0 1 12.142-5.05l1.786 8.3a28.99 28.99 0 0 1 4.668-.639l-.483-8.484c.692-.038 1.388-.061 2.089-.061s1.4.023 2.087.061l-.483 8.484a28.99 28.99 0 0 1 4.668.639L47 2.381a37.276 37.276 0 0 1 12.14 5.05l-4.6 7.126a29.14 29.14 0 0 1 8.849 8.85l7.127-4.6a37.276 37.276 0 0 1 5.044 12.142l-8.3 1.785a28.99 28.99 0 0 1 .64 4.666l8.478-.483c.038.689.061 1.382.061 2.08s-.023 1.4-.062 2.1l-8.477-.486a28.99 28.99 0 0 1-.639 4.668l8.3 1.784a37.282 37.282 0 0 1-5.046 12.132l-7.125-4.6a29.14 29.14 0 0 1-8.849 8.85l4.6 7.125A37.275 37.275 0 0 1 47 75.619l-1.783-8.291a28.99 28.99 0 0 1-4.668.639l.483 8.471c-.691.038-1.386.061-2.087.061s-1.401-.022-2.092-.06z"
-                            />
-                          </g>
-                          <text
-                            className="value--ebf30"
-                            x="50%"
-                            y="50%"
-                            fontSize={30}
-                            dy={10}
-                            data-role="chip-value"
-                          >
-                            0
-                          </text>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
+                <div
+                  style={{ position: "absolute", top: "20px", left: "44px" }}
+                >
+                  <StakeAnimation
+                    animation={animation}
+                    double={double}
+                    runner="suitedTie"
+                    stake={stake}
+                    stakeState={stakeState}
+                  />{" "}
                 </div>
               </div>
             </div>
@@ -713,55 +561,6 @@ const BetSlip = ({
                     className="statisticsIndicator--59f76 isPortrait--1de25 isVeryNarrowLikeOrHigher--d74cb withStats--a0c3b phone--48206"
                     style={{ margin: "20px" }}
                   >
-                    {/* <svg
-                      className="svg--bbbd4"
-                      data-total-percent={44}
-                      width={120}
-                      height={120}
-                      viewBox="0 0 120 120"
-                    >
-                      <circle
-                        className="circle--9987b"
-                        cx={60}
-                        cy={60}
-                        r={51}
-                        fill="#000"
-                      />
-                      <circle
-                        className="circle--9987b"
-                        cx={60}
-                        cy={60}
-                        r={54}
-                        strokeWidth={6}
-                        fill="none"
-                        stroke="rgba(241,36,36,1)"
-                        strokeOpacity="0.5"
-                      />
-                      <circle
-                        className="circle--9987b"
-                        cx={60}
-                        cy={60}
-                        r={54}
-                        strokeWidth={6}
-                        fill="none"
-                        stroke="rgba(241,36,36,1)"
-                        strokeDashoffset="190.0035236891107"
-                        strokeDasharray="339.29200658769764"
-                        transform="rotate(-90 60 60)"
-                        style={{ transition: "0.5s" }}
-                      />
-                      <text
-                        x="50%"
-                        y="50%"
-                        dy="12.25"
-                        textAnchor="middle"
-                        fontSize={35}
-                        fontWeight={500}
-                        fill="rgba(241,36,36,1)"
-                      >
-                        44%
-                      </text>
-                    </svg> */}
                     <StakeAnimation
                       animation={animation}
                       double={double}
@@ -783,37 +582,7 @@ const BetSlip = ({
                       />
                     )}
                   </div>
-                  <div className="liveStatisticsContainer--06bfc isPortrait--1de25 isVeryNarrowLikeOrHigher--d74cb withStats--a0c3b phone--48206">
-                    {/* <div
-                      className="liveStatistics--c9c15 LeftSpot--3faea isPortrait--9fee0"
-                      data-role="betting-stats"
-                      data-total-wager="71,399.43"
-                      data-total-bettors={127}
-                      data-currency-symbol="₹"
-                      style={{ color: "rgb(241, 36, 36)" }}
-                    >
-                      <div>
-                        <span className="symbol--5dd5a">₹</span>
-                        <span>71,399.43</span>
-                      </div>
-                      <div className="count--3ca60">
-                        <span className="symbol--5dd5a">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="100%"
-                            height="100%"
-                            viewBox="0 0 8 12"
-                          >
-                            <g fill="rgba(241,36,36,1)" fillRule="evenodd">
-                              <circle cx={4} cy={3} r={3} />
-                              <path d="M4 6c2.21 0 4 1.151 4 2.571V12H0V8.571l.006-.14C.12 7.075 1.864 6 4 6z" />
-                            </g>
-                          </svg>
-                        </span>
-                        <span>127</span>
-                      </div>
-                    </div> */}
-                  </div>
+                  <div className="liveStatisticsContainer--06bfc isPortrait--1de25 isVeryNarrowLikeOrHigher--d74cb withStats--a0c3b phone--48206"></div>
                 </div>
               </div>
 
@@ -830,60 +599,6 @@ const BetSlip = ({
                 <span> {data?.[0]?.runners?.[0]?.back?.[0]?.price}</span>
               </div>
               <div className="card--16d57 isPortrait--1de25 isVeryNarrowLikeOrHigher--d74cb withStats--a0c3b phone--48206" />
-              <div className="chipContainer--4d3de isPortrait--1de25 isVeryNarrowLikeOrHigher--d74cb withStats--a0c3b phone--48206">
-                <div className="isPortrait--beef1 relative--a3924 chipSize--8b13c">
-                  <div
-                    data-is-chip-visible="false"
-                    className="hidden--a819a chip--30e0c"
-                  >
-                    <div
-                      className="chip--29b81 shadow--24a83 cover--6df8f"
-                      data-role="chip"
-                      data-value={0}
-                    >
-                      <svg
-                        viewBox="0 0 78 78"
-                        className="graphics--22cbe"
-                        data-role="default-svg"
-                        style={{ color: "rgb(146, 146, 146)" }}
-                      >
-                        <g>
-                          <circle
-                            className="paint--13ff6"
-                            cx="39.019"
-                            cy="38.999"
-                            r="38.5"
-                          />
-                          <path
-                            className="body--369ee"
-                            d="M38.94 12.5A26.5 26.5 0 1 0 65.44 39a26.529 26.529 0 0 0-26.5-26.5zm0 52A25.5 25.5 0 1 1 64.439 39 25.53 25.53 0 0 1 38.94 64.5z"
-                          />
-                          <circle
-                            className="textBackground--84c26"
-                            cx={39}
-                            cy="38.997"
-                            r="25.5"
-                          />
-                          <path
-                            className="body--369ee"
-                            d="M38.941 0a39 39 0 1 0 39 39 39.046 39.046 0 0 0-39-39zm-2.088 76.439l.483-8.471a28.99 28.99 0 0 1-4.668-.639l-1.783 8.291a37.277 37.277 0 0 1-12.144-5.051l4.6-7.124a29.143 29.143 0 0 1-8.85-8.851l-7.124 4.6a37.28 37.28 0 0 1-5.045-12.13l8.3-1.784a28.99 28.99 0 0 1-.639-4.668l-8.483.482C1.463 40.4 1.44 39.7 1.44 39s.023-1.391.061-2.08l8.478.483a28.99 28.99 0 0 1 .639-4.668l-8.3-1.785a37.275 37.275 0 0 1 5.047-12.142l7.126 4.6a29.143 29.143 0 0 1 8.85-8.851l-4.6-7.125a37.28 37.28 0 0 1 12.142-5.05l1.786 8.3a28.99 28.99 0 0 1 4.668-.639l-.483-8.484c.692-.038 1.388-.061 2.089-.061s1.4.023 2.087.061l-.483 8.484a28.99 28.99 0 0 1 4.668.639L47 2.381a37.276 37.276 0 0 1 12.14 5.05l-4.6 7.126a29.14 29.14 0 0 1 8.849 8.85l7.127-4.6a37.276 37.276 0 0 1 5.044 12.142l-8.3 1.785a28.99 28.99 0 0 1 .64 4.666l8.478-.483c.038.689.061 1.382.061 2.08s-.023 1.4-.062 2.1l-8.477-.486a28.99 28.99 0 0 1-.639 4.668l8.3 1.784a37.282 37.282 0 0 1-5.046 12.132l-7.125-4.6a29.14 29.14 0 0 1-8.849 8.85l4.6 7.125A37.275 37.275 0 0 1 47 75.619l-1.783-8.291a28.99 28.99 0 0 1-4.668.639l.483 8.471c-.691.038-1.386.061-2.087.061s-1.401-.022-2.092-.06z"
-                          />
-                        </g>
-                        <text
-                          className="value--ebf30"
-                          x="50%"
-                          y="50%"
-                          fontSize={30}
-                          dy={10}
-                          data-role="chip-value"
-                        >
-                          0
-                        </text>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
             {/* Dragon end */}
             {/* Tiger start */}
@@ -983,90 +698,11 @@ const BetSlip = ({
 
               <div className="statsWrapper--445ef">
                 <div className="statsWrapperChild--697ed">
-                  <div className="liveStatisticsContainer--06bfc isPortrait--1de25 isVeryNarrowLikeOrHigher--d74cb withStats--a0c3b phone--48206">
-                    {/* <div
-                      className="liveStatistics--c9c15 RightSpot--c961a isPortrait--9fee0"
-                      data-role="betting-stats"
-                      data-total-wager="78,324.71"
-                      data-total-bettors={112}
-                      data-currency-symbol="₹"
-                      style={{ color: "rgb(255, 194, 27)" }}
-                    >
-                      <div>
-                        <span className="symbol--5dd5a">₹</span>
-                        <span>78,324.71</span>
-                      </div>
-                      <div className="count--3ca60">
-                        <span className="symbol--5dd5a">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="100%"
-                            height="100%"
-                            viewBox="0 0 8 12"
-                          >
-                            <g fill="rgba(255,194,27,1)" fillRule="evenodd">
-                              <circle cx={4} cy={3} r={3} />
-                              <path d="M4 6c2.21 0 4 1.151 4 2.571V12H0V8.571l.006-.14C.12 7.075 1.864 6 4 6z" />
-                            </g>
-                          </svg>
-                        </span>
-                        <span>112</span>
-                      </div>
-                    </div> */}
-                  </div>
+                  <div className="liveStatisticsContainer--06bfc isPortrait--1de25 isVeryNarrowLikeOrHigher--d74cb withStats--a0c3b phone--48206"></div>
                   <div
                     className="statisticsIndicator--59f76 isPortrait--1de25 isVeryNarrowLikeOrHigher--d74cb withStats--a0c3b phone--48206"
                     style={{ margin: "20px" }}
                   >
-                    {/* <svg
-                      className="svg--bbbd4"
-                      data-total-percent={49}
-                      width={120}
-                      height={120}
-                      viewBox="0 0 120 120"
-                    >
-                      <circle
-                        className="circle--9987b"
-                        cx={60}
-                        cy={60}
-                        r={51}
-                        fill="#000"
-                      />
-                      <circle
-                        className="circle--9987b"
-                        cx={60}
-                        cy={60}
-                        r={54}
-                        strokeWidth={6}
-                        fill="none"
-                        stroke="rgba(255,194,27,1)"
-                        strokeOpacity="0.5"
-                      />
-                      <circle
-                        className="circle--9987b"
-                        cx={60}
-                        cy={60}
-                        r={54}
-                        strokeWidth={6}
-                        fill="none"
-                        stroke="rgba(255,194,27,1)"
-                        strokeDashoffset="173.0389233597258"
-                        strokeDasharray="339.29200658769764"
-                        transform="rotate(-90 60 60)"
-                        style={{ transition: "0.5s" }}
-                      />
-                      <text
-                        x="50%"
-                        y="50%"
-                        dy="12.25"
-                        textAnchor="middle"
-                        fontSize={35}
-                        fontWeight={500}
-                        fill="rgba(255,194,27,1)"
-                      >
-                        49%
-                      </text>
-                    </svg> */}
                     <StakeAnimation
                       animation={animation}
                       double={double}
@@ -1101,61 +737,6 @@ const BetSlip = ({
                 data-role="payout"
               >
                 <span> {data?.[0]?.runners?.[1]?.back[0]?.price}</span>
-              </div>
-              <div className="card--16d57 isPortrait--1de25 isVeryNarrowLikeOrHigher--d74cb withStats--a0c3b phone--48206" />
-              <div className="chipContainer--4d3de isPortrait--1de25 isVeryNarrowLikeOrHigher--d74cb withStats--a0c3b phone--48206">
-                <div className="isPortrait--beef1 relative--a3924 chipSize--8b13c">
-                  <div
-                    data-is-chip-visible="false"
-                    className="hidden--a819a chip--30e0c"
-                  >
-                    <div
-                      className="chip--29b81 shadow--24a83 cover--6df8f"
-                      data-role="chip"
-                      data-value={0}
-                    >
-                      <svg
-                        viewBox="0 0 78 78"
-                        className="graphics--22cbe"
-                        data-role="default-svg"
-                        style={{ color: "rgb(146, 146, 146)" }}
-                      >
-                        <g>
-                          <circle
-                            className="paint--13ff6"
-                            cx="39.019"
-                            cy="38.999"
-                            r="38.5"
-                          />
-                          <path
-                            className="body--369ee"
-                            d="M38.94 12.5A26.5 26.5 0 1 0 65.44 39a26.529 26.529 0 0 0-26.5-26.5zm0 52A25.5 25.5 0 1 1 64.439 39 25.53 25.53 0 0 1 38.94 64.5z"
-                          />
-                          <circle
-                            className="textBackground--84c26"
-                            cx={39}
-                            cy="38.997"
-                            r="25.5"
-                          />
-                          <path
-                            className="body--369ee"
-                            d="M38.941 0a39 39 0 1 0 39 39 39.046 39.046 0 0 0-39-39zm-2.088 76.439l.483-8.471a28.99 28.99 0 0 1-4.668-.639l-1.783 8.291a37.277 37.277 0 0 1-12.144-5.051l4.6-7.124a29.143 29.143 0 0 1-8.85-8.851l-7.124 4.6a37.28 37.28 0 0 1-5.045-12.13l8.3-1.784a28.99 28.99 0 0 1-.639-4.668l-8.483.482C1.463 40.4 1.44 39.7 1.44 39s.023-1.391.061-2.08l8.478.483a28.99 28.99 0 0 1 .639-4.668l-8.3-1.785a37.275 37.275 0 0 1 5.047-12.142l7.126 4.6a29.143 29.143 0 0 1 8.85-8.851l-4.6-7.125a37.28 37.28 0 0 1 12.142-5.05l1.786 8.3a28.99 28.99 0 0 1 4.668-.639l-.483-8.484c.692-.038 1.388-.061 2.089-.061s1.4.023 2.087.061l-.483 8.484a28.99 28.99 0 0 1 4.668.639L47 2.381a37.276 37.276 0 0 1 12.14 5.05l-4.6 7.126a29.14 29.14 0 0 1 8.849 8.85l7.127-4.6a37.276 37.276 0 0 1 5.044 12.142l-8.3 1.785a28.99 28.99 0 0 1 .64 4.666l8.478-.483c.038.689.061 1.382.061 2.08s-.023 1.4-.062 2.1l-8.477-.486a28.99 28.99 0 0 1-.639 4.668l8.3 1.784a37.282 37.282 0 0 1-5.046 12.132l-7.125-4.6a29.14 29.14 0 0 1-8.849 8.85l4.6 7.125A37.275 37.275 0 0 1 47 75.619l-1.783-8.291a28.99 28.99 0 0 1-4.668.639l.483 8.471c-.691.038-1.386.061-2.087.061s-1.401-.022-2.092-.06z"
-                          />
-                        </g>
-                        <text
-                          className="value--ebf30"
-                          x="50%"
-                          y="50%"
-                          fontSize={30}
-                          dy={10}
-                          data-role="chip-value"
-                        >
-                          0
-                        </text>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
             {/* Tiger end */}
