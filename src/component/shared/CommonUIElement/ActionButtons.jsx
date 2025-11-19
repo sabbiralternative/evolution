@@ -1,16 +1,20 @@
 import { Fragment, useRef, useState } from "react";
-import { useSound } from "../../../context/ApiProvider";
 import GameHistory from "../../modals/Desktop/GameHistory/GameHistory";
-import { playClick } from "../../../utils/sound";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
+import { usePlaySound } from "../../../hooks/playSound";
+import GameHistoryDetails from "../../modals/Desktop/GameHistory/GameHistoryDetails";
 
 const ActionButtons = () => {
+  const { playClickSound } = usePlaySound();
   const historyModalRef = useRef();
+  const [roundId, setRoundId] = useState(null);
+  const [tab, setTab] = useState(null);
+
   useCloseModalClickOutside(historyModalRef, () => {
-    setShowGameHistoryModal(false);
+    setTab(null);
+    playClickSound();
   });
-  const [showGameHistoryModal, setShowGameHistoryModal] = useState(false);
-  const { sound } = useSound();
+
   const handleToggleFullScreen = () => {
     if (
       document.fullscreenElement ||
@@ -41,9 +45,11 @@ const ActionButtons = () => {
     }
   };
 
-  const clickSound = () => {
-    if (sound) {
-      playClick();
+  const handleChangeTab = (t) => {
+    if (t === tab) {
+      setTab(null);
+    } else {
+      setTab(t);
     }
   };
 
@@ -105,8 +111,8 @@ const ActionButtons = () => {
                   {" "}
                   <button
                     onClick={() => {
-                      setShowGameHistoryModal((prev) => !prev);
-                      clickSound();
+                      handleChangeTab("game-history");
+                      playClickSound();
                     }}
                     className="button--673ce xs--07983 roundingBoth--6d5e6 buttonRoot--3bd4d"
                     data-type="secondary"
@@ -166,10 +172,11 @@ const ActionButtons = () => {
                       <div className="badge--81159" />
                     </span>
                   </button>
-                  {showGameHistoryModal && (
-                    <GameHistory
-                      setShowGameHistoryModal={setShowGameHistoryModal}
-                    />
+                  {tab === "game-history" && (
+                    <GameHistory setRoundId={setRoundId} setTab={setTab} />
+                  )}
+                  {tab === "game-history-details" && (
+                    <GameHistoryDetails roundId={roundId} setTab={setTab} />
                   )}
                 </div>
                 <button

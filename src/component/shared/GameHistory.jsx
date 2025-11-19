@@ -71,13 +71,13 @@ const GameHistory = ({ setTab, closeModal, setRoundId }) => {
   );
 
   // Reset data when component mounts or when needed
-  const resetPagination = useCallback(() => {
-    setPage(1);
-    setAllHistoryData([]);
-    setDateCategory([]);
-    setHasMore(true);
-    setLoading(false);
-  }, []);
+  // const resetPagination = useCallback(() => {
+  //   setPage(1);
+  //   setAllHistoryData([]);
+  //   setDateCategory([]);
+  //   setHasMore(true);
+  //   setLoading(false);
+  // }, []);
 
   return (
     <motion.div

@@ -1,7 +1,9 @@
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { useGetHistory } from "../../../../hooks/history";
+import { usePlaySound } from "../../../../hooks/playSound";
 
-const GameHistory = ({ setShowGameHistoryModal }) => {
+const GameHistory = ({ setRoundId, setTab }) => {
+  const { playClickSound } = usePlaySound();
   const [dateCategory, setDateCategory] = useState([]);
   const [page, setPage] = useState(1);
   const [allHistoryData, setAllHistoryData] = useState([]); // Store all accumulated data
@@ -65,13 +67,13 @@ const GameHistory = ({ setShowGameHistoryModal }) => {
   );
 
   // Reset data when component mounts or when needed
-  const resetPagination = useCallback(() => {
-    setPage(1);
-    setAllHistoryData([]);
-    setDateCategory([]);
-    setHasMore(true);
-    setLoading(false);
-  }, []);
+  // const resetPagination = useCallback(() => {
+  //   setPage(1);
+  //   setAllHistoryData([]);
+  //   setDateCategory([]);
+  //   setHasMore(true);
+  //   setLoading(false);
+  // }, []);
 
   return (
     <div
@@ -124,7 +126,7 @@ const GameHistory = ({ setShowGameHistoryModal }) => {
           </span>
           <span data-role="window-title">GAME HISTORY</span>
           <a
-            onClick={() => setShowGameHistoryModal(false)}
+            onClick={() => setTab(null)}
             className="close--ed249"
             data-role="window-gamehistory_close"
           >
@@ -152,7 +154,9 @@ const GameHistory = ({ setShowGameHistoryModal }) => {
           >
             <div className="loadingIndicator--39463">
               <div
-                className="container--c48cc hidden--85eb1"
+                className={`container--c48cc ${
+                  isLoading && !data ? "" : "hidden--85eb1"
+                } `}
                 data-role="loading-indicator-container"
                 dir
               >
@@ -177,7 +181,10 @@ const GameHistory = ({ setShowGameHistoryModal }) => {
                       <path d="M43.2 35.4l-6 3.5c-4.4-0.1-8.1 0.3-11.2 0.9l0.7-3.9c2.8-0.4 5.9-0.7 9.5-0.7C38.3 35.2 40.6 35.2 43.2 35.4z" />
                     </svg>
                   </div>
-                  <span className="text--51457">Loading...</span>
+                  <span className="text--51457">
+                    {" "}
+                    {page === 1 ? "Loading..." : "Loading more..."}
+                  </span>
                 </div>
               </div>
             </div>
@@ -209,6 +216,8 @@ const GameHistory = ({ setShowGameHistoryModal }) => {
               <div className="scrollable--ba985">
                 <div className="wrapper--f4eb9" data-role="scrollable-wrapper">
                   <div
+                    ref={scrollableRef}
+                    onScroll={handleScroll}
                     data-role="scrollable"
                     className="scrollable--96151 vertical--99fcf hiddenScrollbar--27373"
                   >
@@ -225,7 +234,9 @@ const GameHistory = ({ setShowGameHistoryModal }) => {
                                   data-role="history-day-date-cell"
                                   className="date--32e9b"
                                 >
-                                  −<span dir="auto">{date}</span>
+                                  <span dir="auto">
+                                    {date?.split("-")?.join("/")}
+                                  </span>
                                 </td>
                                 <td
                                   data-role="history-day-balance-type"
@@ -272,6 +283,11 @@ const GameHistory = ({ setShowGameHistoryModal }) => {
                                 .map((singleItem, i) => {
                                   return (
                                     <tr
+                                      onClick={() => {
+                                        setTab("game-history-details");
+                                        setRoundId(singleItem?.round_id);
+                                        playClickSound();
+                                      }}
                                       key={`${date}-${i}`}
                                       className="row--a868c"
                                       data-game-id="1872202a3f52907f6422c5c0"
