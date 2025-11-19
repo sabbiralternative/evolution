@@ -404,7 +404,7 @@ const BetSlip = ({
                   </div>
                 </div>
               </div>
-              <div className="statisticsIndicator--59f76 isPortrait--1de25 isVeryNarrowLikeOrHigher--d74cb withStats--a0c3b phone--48206">
+              {/* <div className="statisticsIndicator--59f76 isPortrait--1de25 isVeryNarrowLikeOrHigher--d74cb withStats--a0c3b phone--48206">
                 <svg
                   className="svg--bbbd4"
                   data-total-percent={7}
@@ -454,7 +454,7 @@ const BetSlip = ({
                     7%
                   </text>
                 </svg>
-              </div>
+              </div> */}
               <div
                 onClick={() =>
                   handleStakeChange({
