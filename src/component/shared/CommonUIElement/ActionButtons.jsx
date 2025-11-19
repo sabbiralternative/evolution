@@ -1,9 +1,14 @@
-import { Fragment, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import { useSound } from "../../../context/ApiProvider";
 import GameHistory from "../../modals/Desktop/GameHistory/GameHistory";
 import { playClick } from "../../../utils/sound";
+import useCloseModalClickOutside from "../../../hooks/closeModal";
 
 const ActionButtons = () => {
+  const historyModalRef = useRef();
+  useCloseModalClickOutside(historyModalRef, () => {
+    setShowGameHistoryModal(false);
+  });
   const [showGameHistoryModal, setShowGameHistoryModal] = useState(false);
   const { sound } = useSound();
   const handleToggleFullScreen = () => {
@@ -44,9 +49,6 @@ const ActionButtons = () => {
 
   return (
     <Fragment>
-      {showGameHistoryModal && (
-        <GameHistory setShowGameHistoryModal={setShowGameHistoryModal} />
-      )}
       <div className="top-right--75849" data-role="top-right-corner">
         <div className="box--4ecd6">
           <div>
@@ -99,69 +101,77 @@ const ActionButtons = () => {
                     <div className="badge--81159" />
                   </span>
                 </button>
-                <button
-                  onClick={() => {
-                    setShowGameHistoryModal((prev) => !prev);
-                    clickSound();
-                  }}
-                  className="button--673ce xs--07983 roundingBoth--6d5e6 buttonRoot--3bd4d"
-                  data-type="secondary"
-                  data-role="history-button"
-                  data-state="Default"
-                >
-                  <div
-                    className="tooltip-bottom-center--3bbc0 hidden-bottom-center--cc18f"
-                    data-role="tooltip"
-                    data-is-shown="false"
-                    data-position="bottom-center"
-                    style={{
-                      fontSize: "calc(var(--root-size, 10px) * 2)",
+                <div ref={historyModalRef}>
+                  {" "}
+                  <button
+                    onClick={() => {
+                      setShowGameHistoryModal((prev) => !prev);
+                      clickSound();
                     }}
-                  >
-                    <div className="tooltipThemeAnchor--55799 tooltip-bottom-center-anchor--e9143" />
-                    <span data-role="tooltip-label">Game History</span>
-                  </div>
-                  <span
-                    className="roundingBoth--2a8e7 buttonContent--2a2d4 xs--76a78"
-                    data-role="button-content"
+                    className="button--673ce xs--07983 roundingBoth--6d5e6 buttonRoot--3bd4d"
+                    data-type="secondary"
+                    data-role="history-button"
+                    data-state="Default"
                   >
                     <div
-                      className="buttonBase--73d7d"
-                      data-role="base-border"
+                      className="tooltip-bottom-center--3bbc0 hidden-bottom-center--cc18f"
+                      data-role="tooltip"
+                      data-is-shown="false"
+                      data-position="bottom-center"
                       style={{
-                        padding: `calc(
+                        fontSize: "calc(var(--root-size, 10px) * 2)",
+                      }}
+                    >
+                      <div className="tooltipThemeAnchor--55799 tooltip-bottom-center-anchor--e9143" />
+                      <span data-role="tooltip-label">Game History</span>
+                    </div>
+                    <span
+                      className="roundingBoth--2a8e7 buttonContent--2a2d4 xs--76a78"
+                      data-role="button-content"
+                    >
+                      <div
+                        className="buttonBase--73d7d"
+                        data-role="base-border"
+                        style={{
+                          padding: `calc(
                                   var(--rem-migration-size, 10px) * 0.1
                                 )`,
-                      }}
-                    />
-                    <div className="iconLabelWrapper--8e144 left--60884">
-                      <span className="icon--54b42">
-                        <span
-                          className="iconWrapper--9127d"
-                          data-role="icon-wrapper"
-                        >
-                          <svg
-                            viewBox="0 0 100 100"
-                            className="iconWrapper--b4e49"
-                            style={{ height: "100%" }}
+                        }}
+                      />
+                      <div className="iconLabelWrapper--8e144 left--60884">
+                        <span className="icon--54b42">
+                          <span
+                            className="iconWrapper--9127d"
+                            data-role="icon-wrapper"
                           >
                             <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 24 24"
-                              className="icon--8dcd0"
-                              height="100%"
-                              y="0%"
+                              viewBox="0 0 100 100"
+                              className="iconWrapper--b4e49"
+                              style={{ height: "100%" }}
                             >
-                              <path d="M10.77 3.6c2.16-.33 4.37.19 6.16 1.45l-.04-.02a8.5 8.5 0 1 1-11.66 12.1l1.59-1.21a6.5 6.5 0 1 0-.1-7.74l1.42 1.38-5.64 1.49L3.88 5.4l1.44 1.4a8.51 8.51 0 0 1 5.45-3.2Z" />
-                              <path d="M11.33 12.32V7.49h1.5v4.2l3.05 3.05-1.06 1.06-3.5-3.48Z" />
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                className="icon--8dcd0"
+                                height="100%"
+                                y="0%"
+                              >
+                                <path d="M10.77 3.6c2.16-.33 4.37.19 6.16 1.45l-.04-.02a8.5 8.5 0 1 1-11.66 12.1l1.59-1.21a6.5 6.5 0 1 0-.1-7.74l1.42 1.38-5.64 1.49L3.88 5.4l1.44 1.4a8.51 8.51 0 0 1 5.45-3.2Z" />
+                                <path d="M11.33 12.32V7.49h1.5v4.2l3.05 3.05-1.06 1.06-3.5-3.48Z" />
+                              </svg>
                             </svg>
-                          </svg>
+                          </span>
                         </span>
-                      </span>
-                    </div>
-                    <div className="badge--81159" />
-                  </span>
-                </button>
+                      </div>
+                      <div className="badge--81159" />
+                    </span>
+                  </button>
+                  {showGameHistoryModal && (
+                    <GameHistory
+                      setShowGameHistoryModal={setShowGameHistoryModal}
+                    />
+                  )}
+                </div>
                 <button
                   className="button--673ce xs--07983 roundingBoth--6d5e6 buttonRoot--3bd4d"
                   data-type="secondary"

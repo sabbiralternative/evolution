@@ -1,17 +1,7 @@
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
-import useCloseModalClickOutside from "../../../../hooks/closeModal";
 import { useGetHistory } from "../../../../hooks/history";
-import { useSelector } from "react-redux";
-import { useSound } from "../../../../context/ApiProvider";
 
 const GameHistory = ({ setShowGameHistoryModal }) => {
-  // const ref = useRef();
-  // useCloseModalClickOutside(ref, () => {
-  //   setShowGameHistoryModal(false);
-  // });
-
-  const { sound } = useSound();
-  const { deviseHeight } = useSelector((state) => state.global);
   const [dateCategory, setDateCategory] = useState([]);
   const [page, setPage] = useState(1);
   const [allHistoryData, setAllHistoryData] = useState([]); // Store all accumulated data
@@ -85,14 +75,13 @@ const GameHistory = ({ setShowGameHistoryModal }) => {
 
   return (
     <div
-      // ref={ref}
       data-role="position-container"
       style={{
         visibility: "visible",
-        left: "58.95%",
+        right: "10px",
         top: "6.66%",
         zIndex: 100,
-        position: "absolute",
+        position: "fixed",
         pointerEvents: "initial",
       }}
     >
@@ -134,7 +123,11 @@ const GameHistory = ({ setShowGameHistoryModal }) => {
             </svg>
           </span>
           <span data-role="window-title">GAME HISTORY</span>
-          <a className="close--ed249" data-role="window-gamehistory_close">
+          <a
+            onClick={() => setShowGameHistoryModal(false)}
+            className="close--ed249"
+            data-role="window-gamehistory_close"
+          >
             <svg
               viewBox="0 0 100 100"
               className="iconWrapper--b4e49"
