@@ -98,7 +98,7 @@ const GameHistory = ({ setTab, closeModal, setRoundId }) => {
       <div
         className="contentContainer--736bb contentSizeRestrictContainer--9da92"
         data-role="content-restrict-container"
-        style={{ maxHeight: "750px" }}
+        style={{ maxHeight: "100%" }}
       >
         <div className="handleBarContainer--1d331 handleBarContainer--b1c45">
           <div className="handleBar--d2af5" data-role="swipe-bar">
