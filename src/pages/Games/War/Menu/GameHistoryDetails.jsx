@@ -506,13 +506,13 @@ const GameHistoryDetails = ({ setTab, closeModal, roundId }) => {
                                                 >
                                                   <div className="ssr_dt_cards">
                                                     {data?.result?.game_details
-                                                      ?.player && (
+                                                      ?.player_a && (
                                                       <img
                                                         style={{
                                                           width: "50px",
                                                           height: "50px",
                                                         }}
-                                                        src={`/cards/${data?.result?.game_details?.player}.png`}
+                                                        src={`/cards/${data?.result?.game_details?.player_a}.png`}
                                                         alt=""
                                                       />
                                                     )}
@@ -526,13 +526,13 @@ const GameHistoryDetails = ({ setTab, closeModal, roundId }) => {
                                                 >
                                                   <div className="ssr_dt_cards">
                                                     {data?.result?.game_details
-                                                      ?.dealer && (
+                                                      ?.player_b && (
                                                       <img
                                                         style={{
                                                           width: "50px",
                                                           height: "50px",
                                                         }}
-                                                        src={`/cards/${data?.result?.game_details?.dealer}.png`}
+                                                        src={`/cards/${data?.result?.game_details?.player_b}.png`}
                                                         alt=""
                                                       />
                                                     )}
