@@ -1,7 +1,7 @@
+import BackToLobbyBTN from "../../../../../component/shared/desktop/CommonUIElement/BackToLobbyBTN";
+import EventName from "../../../../../component/shared/desktop/CommonUIElement/EventName";
 import ActionButtons from "./ActionButtons";
 import AmountSection from "./AmountSection";
-import BackToLobbyBTN from "./BackToLobbyBTN";
-import EventName from "./EventName";
 
 const CommonUIElement = ({
   data,

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import ActionButtons from "./ActionButtons";
 import BetSlip from "./BetSlip";
-import Footer from "../../../component/shared/Footer";
+import Footer from "../../../component/shared/GameFooter/GameFooter";
 
-import Menu from "../../../component/shared/Menu/Menu";
+import Menu from "../../../component/modals/mobile/Menu/Menu";
 import { useParams } from "react-router-dom";
 import { useGetEventDetailsQuery } from "../../../redux/features/events/events";
 import { Status } from "../../../const";
@@ -12,7 +12,7 @@ import { AnimatePresence } from "framer-motion";
 import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
-import AntMedia from "../../../component/shared/Antmedia";
+import AntMedia from "../../../component/shared/Antmedia/Antmedia";
 // import Winner from "./Winner";
 
 const ImperialQuest = () => {

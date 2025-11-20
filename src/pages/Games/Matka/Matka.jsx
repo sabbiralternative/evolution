@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ActionButtons from "./ActionButtons";
 import BetSlip from "./BetSlip";
-import Footer from "../../../component/shared/Footer";
+import Footer from "../../../component/shared/GameFooter/GameFooter";
 import { useParams } from "react-router-dom";
 import { useGetEventDetailsQuery } from "../../../redux/features/events/events";
 import { Status } from "../../../const";
@@ -10,14 +10,13 @@ import { AnimatePresence } from "framer-motion";
 import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
-// import History from "./History";
-import AntMedia from "../../../component/shared/Antmedia";
+import AntMedia from "../../../component/shared/Antmedia/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
 import Winner from "./Winner";
 import Card from "./Card";
 import RecentWinner from "./RecentWinner";
-import Menu from "./Menu/Menu";
+import Menu from "../../../component/modals/mobile/Menu/Menu";
 
 const Matka = () => {
   const { sound } = useSound();

@@ -1,7 +1,6 @@
 import Casino from "../pages/Desktop/Casino/Casino";
 import FastGames from "../pages/Desktop/Casino/FastGames";
 import Originals from "../pages/Desktop/Casino/Originals";
-import AmarAkbarAnthonyA from "../pages/Desktop/Games/AmarAkbarAnthonyA/AmarAkbarAnthonyA";
 import Baccarat from "../pages/Desktop/Games/Baccarat/Baccarat";
 import BollywoodA from "../pages/Desktop/Games/BollywoodA/BollywoodA";
 import DragonTiger from "../pages/Desktop/Games/DragonTiger/DragonTiger";
@@ -32,6 +31,7 @@ import CenterCard from "../pages/Desktop/Games/CenterCard/CenterCard";
 import Matka from "../pages/Desktop/Games/Matka/Matka";
 import TP2020 from "../pages/Desktop/Games/TP2020/TP2020";
 import TwentyNineCardBaccarat from "../pages/Desktop/Games/TwentyNineCardBaccarat/TwentyNineCardBaccarat";
+import AmarAkbarAnthonyA from "../pages/Desktop/Games/AmarAkbarAnthonyA/AmarAkbarAnthonyA";
 
 export const desktopRoutes = [
   {

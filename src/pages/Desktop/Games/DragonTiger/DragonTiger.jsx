@@ -4,14 +4,14 @@ import { useParams } from "react-router-dom";
 import { useGetEventDetailsQuery } from "../../../../redux/features/events/events";
 import { useSelector } from "react-redux";
 import { Status } from "../../../../const";
-import AntMedia from "../../../../component/shared/Antmedia";
-import ChipContainer from "../../../../component/shared/CommonUIElement/ChipContainer";
+import AntMedia from "../../../../component/shared/Antmedia/Antmedia";
+import ChipContainer from "../../../../component/shared/desktop/CommonUIElement/ChipContainer";
 import { handleDoubleStake } from "../../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../../utils/handleUndoStake";
-import CommonUIElement from "../../../../component/shared/CommonUIElement/CommonUIElement";
 import BetSlip from "../../../Games/DragonTiger/BetSlip";
-import Timer from "../../../../component/shared/Timer";
+import Timer from "../../../../component/shared/desktop/Timer/Timer";
 import History from "./History";
+import CommonUIElement from "../../../../component/shared/desktop/CommonUIElement/CommonUIElement";
 
 const DragonTiger = () => {
   const { sound } = useSound();

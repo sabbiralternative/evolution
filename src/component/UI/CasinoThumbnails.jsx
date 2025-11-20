@@ -346,15 +346,6 @@ const CasinoThumbnail = ({ title, id, column }) => {
                 </li>
               );
             })}
-            {/* <StaticThumbnail slug="football-dice" name="Football Dice" />
-            <StaticThumbnail slug="football-studio" name="Football Studio" />
-            <StaticThumbnail slug="super-color" name="super-color" />
-            <StaticThumbnail slug="war" name="War" />
-            <StaticThumbnail slug="imperial-quest" name="Imperial Quest" />
-            <StaticThumbnail
-              slug="dragon-tiger-phoenix"
-              name="Dragon Tiger Phoenix"
-            /> */}
           </ul>
         </div>
       </section>

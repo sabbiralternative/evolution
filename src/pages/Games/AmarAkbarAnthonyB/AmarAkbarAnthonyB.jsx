@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import ActionButtons from "./ActionButtons";
 import BetSlip from "./BetSlip";
-import Footer from "../../../component/shared/Footer";
-
-import Menu from "../../../component/shared/Menu/Menu";
 import { useParams } from "react-router-dom";
 import { useGetEventDetailsQuery } from "../../../redux/features/events/events";
 import { Status } from "../../../const";
@@ -13,11 +10,13 @@ import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
 import Winner from "./Winner";
-import AntMedia from "../../../component/shared/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
 import RecentWinner from "./RecentWinner";
 import { cn } from "../../../utils/cn";
+import Menu from "../../../component/modals/mobile/Menu/Menu";
+import GameFooter from "../../../component/shared/GameFooter/GameFooter";
+import AntMedia from "../../../component/shared/Antmedia/Antmedia";
 
 const AmarAkbarAnthonyB = () => {
   const { sound } = useSound();
@@ -691,7 +690,7 @@ const AmarAkbarAnthonyB = () => {
               isPlaceStake={isPlaceStake}
             />
           )}
-          <Footer
+          <GameFooter
             showWinLossResult={showWinLossResult}
             setShowWinLossResult={setShowWinLossResult}
             setTotalWinAmount={setTotalWinAmount}

@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Chat from "./Chat";
 import { AnimatePresence, motion } from "motion/react";
-import GameHistory from "../../../../component/shared/GameHistory";
-import GameHistoryDetails from "../../../../component/shared/GameHistoryDetails";
+import GameHistory from "../../../../component/shared/mobile/Menu/GameHistory";
+import GameHistoryDetails from "../../../../component/shared/mobile/Menu/GameHistoryDetails";
 import HowToPlay from "./HowToPlay";
 import PayoutLimit from "./PayoutLimit";
 import Statistics from "./Statistics";
@@ -15,6 +15,7 @@ const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
   const { sound } = useSound();
   const { deviseHeight } = useSelector((state) => state.global);
   const [roundId, setRoundId] = useState(null);
+  const [eventId, setEventId] = useState(null);
   const [tab, setTab] = useState("menu");
   const navigate = useNavigate();
   const closeModal = () => {
@@ -55,6 +56,7 @@ const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
       <AnimatePresence>
         {tab === "game-history" && (
           <GameHistory
+            setEventId={setEventId}
             setRoundId={setRoundId}
             closeModal={closeModal}
             setTab={setTab}
@@ -64,6 +66,7 @@ const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
       <AnimatePresence>
         {tab === "game-history-details" && (
           <GameHistoryDetails
+            eventId={eventId}
             roundId={roundId}
             closeModal={closeModal}
             setTab={setTab}

@@ -2,7 +2,7 @@ import { useState } from "react";
 import ActionButtons from "./ActionButtons";
 import BetSlip from "./BetSlip";
 
-import Menu from "../../../component/shared/Menu/Menu";
+import Menu from "../../../component/modals/mobile/Menu/Menu";
 import { useParams } from "react-router-dom";
 import { useGetEventDetailsQuery } from "../../../redux/features/events/events";
 import { Status } from "../../../const";
@@ -11,8 +11,8 @@ import { AnimatePresence } from "framer-motion";
 import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
-import Footer from "../../../component/shared/Footer";
-import AntMedia from "../../../component/shared/Antmedia";
+import Footer from "../../../component/shared/GameFooter/GameFooter";
+import AntMedia from "../../../component/shared/Antmedia/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
 

@@ -2,7 +2,7 @@ import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { useGetHistory } from "../../../../hooks/history";
 import { usePlaySound } from "../../../../hooks/playSound";
 
-const GameHistory = ({ setRoundId, setTab }) => {
+const GameHistory = ({ setRoundId, setTab, setEventId }) => {
   const { playClickSound } = usePlaySound();
   const [dateCategory, setDateCategory] = useState([]);
   const [page, setPage] = useState(1);
@@ -74,6 +74,13 @@ const GameHistory = ({ setRoundId, setTab }) => {
   //   setHasMore(true);
   //   setLoading(false);
   // }, []);
+
+  const handleShowHistoryDetails = (item) => {
+    setTab("game-history-details");
+    setRoundId(item?.round_id);
+    setEventId(item?.event_id);
+    playClickSound();
+  };
 
   return (
     <div
@@ -283,11 +290,9 @@ const GameHistory = ({ setRoundId, setTab }) => {
                                 .map((singleItem, i) => {
                                   return (
                                     <tr
-                                      onClick={() => {
-                                        setTab("game-history-details");
-                                        setRoundId(singleItem?.round_id);
-                                        playClickSound();
-                                      }}
+                                      onClick={() =>
+                                        handleShowHistoryDetails(singleItem)
+                                      }
                                       key={`${date}-${i}`}
                                       className="row--a868c"
                                       data-game-id="1872202a3f52907f6422c5c0"

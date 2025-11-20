@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import ActionButtons from "./ActionButtons";
 import BetSlip from "./BetSlip";
-import Footer from "../../../component/shared/Footer";
-import Menu from "../../../component/shared/Menu/Menu";
+import Footer from "../../../component/shared/GameFooter/GameFooter";
 import { useParams } from "react-router-dom";
 import { useGetEventDetailsQuery } from "../../../redux/features/events/events";
 import { Status } from "../../../const";
@@ -12,11 +11,12 @@ import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
 // import History from "./History";
-import AntMedia from "../../../component/shared/Antmedia";
+import AntMedia from "../../../component/shared/Antmedia/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
 import History from "./History";
 import Card from "./Card";
+import Menu from "../../../component/modals/mobile/Menu/Menu";
 
 const CenterCard = () => {
   const { sound } = useSound();

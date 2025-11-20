@@ -1,6 +1,6 @@
-import ActionButtons from "../../../../../component/shared/CommonUIElement/ActionButtons";
-import BackToLobbyBTN from "../../../../../component/shared/CommonUIElement/BackToLobbyBTN";
-import EventName from "../../../../../component/shared/CommonUIElement/EventName";
+import ActionButtons from "../../../../../component/shared/desktop/CommonUIElement/ActionButtons";
+import BackToLobbyBTN from "../../../../../component/shared/desktop/CommonUIElement/BackToLobbyBTN";
+import EventName from "../../../../../component/shared/desktop/CommonUIElement/EventName";
 import AmountSection from "./AmountSection";
 
 const CommonUIElement = ({

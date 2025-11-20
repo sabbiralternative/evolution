@@ -10,14 +10,14 @@ import { AnimatePresence } from "framer-motion";
 import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
 import Counter from "../../../component/UI/Counter";
-import Footer from "../../../component/shared/Footer";
-import AntMedia from "../../../component/shared/Antmedia";
+import Footer from "../../../component/shared/GameFooter/GameFooter";
+import AntMedia from "../../../component/shared/Antmedia/Antmedia";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
 import RecentWinner from "./RecentWinner";
 import { cn } from "../../../utils/cn";
 import Winner from "./Winner";
-import Menu from "./Menu/Menu";
+import Menu from "../../../component/modals/mobile/Menu/Menu";
 
 const DragonTiger = () => {
   const { sound } = useSound();

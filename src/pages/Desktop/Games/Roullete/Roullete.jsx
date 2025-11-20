@@ -3,13 +3,13 @@ import { useSound } from "../../../../context/ApiProvider";
 import { useParams } from "react-router-dom";
 import { useGetEventDetailsQuery } from "../../../../redux/features/events/events";
 import { Status } from "../../../../const";
-import AntMedia from "../../../../component/shared/Antmedia";
-import ChipContainer from "../../../../component/shared/CommonUIElement/ChipContainer";
+import AntMedia from "../../../../component/shared/Antmedia/Antmedia";
+import ChipContainer from "../../../../component/shared/desktop/CommonUIElement/ChipContainer";
 import { handleDoubleStake } from "../../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../../utils/handleUndoStake";
 
 import BetSlip from "../../../Games/Roullete/BetSlip/BetSlip";
-import Timer from "../../../../component/shared/Timer";
+import Timer from "../../../../component/shared/desktop/Timer/Timer";
 import CommonUIElement from "./CommonUIElement/CommonUIElement";
 import History from "./History";
 import Winner from "../../../Games/Roullete/Winner";

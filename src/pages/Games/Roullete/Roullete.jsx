@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ActionButtons from "./ActionButtons";
-import Menu from "../../../component/shared/Menu/Menu";
+import Menu from "../../../component/modals/mobile/Menu/Menu";
 import { useParams } from "react-router-dom";
 import { useGetEventDetailsQuery } from "../../../redux/features/events/events";
 import { Status } from "../../../const";
@@ -8,7 +8,7 @@ import { AnimatePresence } from "framer-motion";
 import { handleDoubleStake } from "../../../utils/handleDoubleStake";
 import { handleUndoStake } from "../../../utils/handleUndoStake";
 import RecentNumberContainer from "./RecentNumberContainer";
-import AntMedia from "../../../component/shared/Antmedia";
+import AntMedia from "../../../component/shared/Antmedia/Antmedia";
 import { playClick } from "../../../utils/sound";
 import { useSound } from "../../../context/ApiProvider";
 import BetSlip from "./BetSlip/BetSlip";
