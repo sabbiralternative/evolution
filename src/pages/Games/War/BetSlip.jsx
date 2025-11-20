@@ -231,10 +231,10 @@ const BetSlip = ({
                     status === Status.SUSPENDED ? "visible--11bf9" : ""
                   }`}
                 >
-                  {data?.[0]?.runners?.[0]?.card && (
+                  {data?.[0]?.runners?.[1]?.card && (
                     <img
                       style={{ height: "50px", width: "50px" }}
-                      src={`/cards/${data?.[0]?.runners?.[0]?.card}.png`}
+                      src={`/cards/${data?.[0]?.runners?.[1]?.card}.png`}
                       alt=""
                     />
                   )}
@@ -287,10 +287,10 @@ const BetSlip = ({
                     status === Status.SUSPENDED ? "visible--11bf9" : ""
                   }`}
                 >
-                  {data?.[0]?.runners?.[1]?.card && (
+                  {data?.[0]?.runners?.[0]?.card && (
                     <img
                       style={{ height: "50px", width: "50px" }}
-                      src={`/cards/${data?.[0]?.runners?.[1]?.card}.png`}
+                      src={`/cards/${data?.[0]?.runners?.[0]?.card}.png`}
                       alt=""
                     />
                   )}
