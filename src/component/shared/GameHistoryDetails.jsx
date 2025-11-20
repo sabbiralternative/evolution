@@ -628,8 +628,9 @@ const GameHistoryDetails = ({ setTab, closeModal, roundId }) => {
                                         <table className="ssr_table">
                                           <tbody>
                                             <tr>
+                                              <td className="ssr_resultHeaderCell"></td>
                                               <td className="ssr_resultHeaderCell">
-                                                <span>Result</span>
+                                                <span>Winner</span>
                                               </td>
                                             </tr>
                                             <tr style={{ height: "50px" }}>
@@ -653,6 +654,17 @@ const GameHistoryDetails = ({ setTab, closeModal, roundId }) => {
                                                       );
                                                     }
                                                   )}
+                                                </div>
+                                              </td>
+                                              <td className="ssr_cell">
+                                                <div
+                                                  className="ssr_dt_result"
+                                                  data-role="history-outcome-cell"
+                                                >
+                                                  {
+                                                    data?.result?.game_details
+                                                      ?.winner
+                                                  }
                                                 </div>
                                               </td>
                                             </tr>

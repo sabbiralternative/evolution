@@ -366,131 +366,41 @@ const GameHistoryDetails = ({ setTab, roundId }) => {
                                     <tbody>
                                       <tr>
                                         <td className="ssr_resultHeaderCell">
-                                          <span>
-                                            {" "}
-                                            {data?.result?.game_details?.table}
-                                          </span>
-                                        </td>
-                                        {/* <td className="ssr_resultHeaderCell">
-                                          <span>Tiger</span>
+                                          <span></span>
                                         </td>
                                         <td className="ssr_resultHeaderCell">
                                           <span>Winner</span>
-                                        </td> */}
+                                        </td>
                                       </tr>
                                       <tr>
-                                        {/* <td className="ssr_cell">
-                                          <div
-                                            className="ssr_dt_result"
-                                            data-role="history-dragon-hand"
-                                          >
-                                            <div className="ssr_dt_cards">
-                                              <div className="ssr_dt_card">
-                                                <span
-                                                  className="ssr_dt_wrapper"
-                                                  data-role="card-D4"
-                                                >
-                                                  <span className="ssr_dt_suit">
-                                                    <svg
-                                                      viewBox="0 0 180 250"
-                                                      className="ssr_dt_innerCard ssr_dt_red"
-                                                      xmlns="http://www.w3.org/2000/svg"
-                                                    >
-                                                      <g>
-                                                        <use
-                                                          xlinkHref="#card-background"
-                                                          fill="url(#card-bg-light-default)"
-                                                        />
-                                                        <use
-                                                          xlinkHref="#card-border"
-                                                          fill="url(#card-border-default)"
-                                                        />
-                                                      </g>
-                                                      <g>
-                                                        <use
-                                                          xlinkHref="#rank-4"
-                                                          height={95}
-                                                          x="56.308"
-                                                          y={20}
-                                                        />
-                                                        <use
-                                                          xlinkHref="#suit-D"
-                                                          height={108}
-                                                          x={48}
-                                                          y={132}
-                                                        />
-                                                      </g>
-                                                    </svg>
-                                                  </span>
-                                                </span>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td className="ssr_cell">
-                                          <div
-                                            className="ssr_dt_result"
-                                            data-role="history-tiger-hand"
-                                          >
-                                            <div className="ssr_dt_cards">
-                                              <div className="ssr_dt_card">
-                                                <span
-                                                  className="ssr_dt_wrapper"
-                                                  data-role="card-S2"
-                                                >
-                                                  <span className="ssr_dt_suit">
-                                                    <svg
-                                                      viewBox="0 0 180 250"
-                                                      className="ssr_dt_innerCard ssr_dt_black"
-                                                      xmlns="http://www.w3.org/2000/svg"
-                                                    >
-                                                      <g>
-                                                        <use
-                                                          xlinkHref="#card-background"
-                                                          fill="url(#card-bg-light-default)"
-                                                        />
-                                                        <use
-                                                          xlinkHref="#card-border"
-                                                          fill="url(#card-border-default)"
-                                                        />
-                                                      </g>
-                                                      <g>
-                                                        <use
-                                                          xlinkHref="#rank-2"
-                                                          height={95}
-                                                          x="57.413"
-                                                          y={20}
-                                                        />
-                                                        <use
-                                                          xlinkHref="#suit-S"
-                                                          height={108}
-                                                          x={48}
-                                                          y={132}
-                                                        />
-                                                      </g>
-                                                    </svg>
-                                                  </span>
-                                                </span>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </td> */}
                                         <td className="ssr_cell">
                                           <div
                                             className="ssr_dt_result"
                                             data-role="history-outcome-cell"
                                           >
-                                            {data?.result?.game_details
-                                              ?.card && (
-                                              <img
-                                                style={{
-                                                  width: "50px",
-                                                  height: "50px",
-                                                }}
-                                                src={`/cards/${data?.result?.game_details?.card}.png`}
-                                                alt=""
-                                              />
+                                            {data?.result?.game_details?.card?.map(
+                                              (card, idx) => {
+                                                return (
+                                                  <img
+                                                    key={idx}
+                                                    style={{
+                                                      width: "50px",
+                                                      height: "50px",
+                                                    }}
+                                                    src={`/cards/${card}.png`}
+                                                    alt=""
+                                                  />
+                                                );
+                                              }
                                             )}
+                                          </div>
+                                        </td>
+                                        <td className="ssr_cell">
+                                          <div
+                                            className="ssr_dt_result"
+                                            data-role="history-outcome-cell"
+                                          >
+                                            {data?.result?.game_details?.winner}
                                           </div>
                                         </td>
                                       </tr>
