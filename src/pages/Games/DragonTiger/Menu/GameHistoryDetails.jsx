@@ -22,7 +22,6 @@ const GameHistoryDetails = ({ setTab, closeModal, roundId }) => {
     0
   );
 
-  console.log(data);
   return (
     <motion.div
       initial={{ x: "100%", y: "10%" }}

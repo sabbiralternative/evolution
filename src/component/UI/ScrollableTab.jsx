@@ -1,15 +1,23 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSound } from "../../context/ApiProvider";
 import { playClick } from "../../utils/sound";
+import { useEffect, useState } from "react";
 
 const ScrollableTab = () => {
+  const [path, setPath] = useState("/");
   const { sound } = useSound();
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const handleNavigate = (link) => {
     if (sound) playClick();
     navigate(link);
+    setPath(link);
   };
+
+  useEffect(() => {
+    setPath(pathname);
+  }, [pathname]);
+
   return (
     <div className="ScrollableListContainer--37a3c">
       <ul
@@ -28,7 +36,7 @@ const ScrollableTab = () => {
           <div className="Category--17479">
             <div className="CategoryIcon--d2629">
               <svg
-                style={{ opacity: pathname === "/" ? "1" : "0.6" }}
+                style={{ opacity: path === "/" ? "1" : "0.6" }}
                 className="AnimatedCategoryIcon--87bac AllGamesIcon--41603"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 110 110"
@@ -55,7 +63,7 @@ const ScrollableTab = () => {
               </svg>
             </div>
             <span
-              style={{ opacity: pathname === "/" ? "1" : "0.6" }}
+              style={{ opacity: path === "/" ? "1" : "0.6" }}
               className="Typography--d2c9a CategoryName--b3bef Typography_xs_subtitle1--6fd5e Typography_xl_h6--d162d bold--d200f colorPrimary--f2f02 ellipsisModeTwoLines--ab28e hyphens--b1b61"
               data-role="typography"
             >
@@ -68,12 +76,12 @@ const ScrollableTab = () => {
           className="ScrollableListItem--0b815 CategoryContainer--62d87"
           id="category-navigator-casinos_choice"
         >
-          {/* ${pathname === "/casino" ? "active--14e88" : ""} */}
+          {/* ${path === "/casino" ? "active--14e88" : ""} */}
           <div className={`Category--17479  `}>
             <div className="CategoryIcon--d2629">
-              {/* ${pathname === "/casino" ? "active--10bb1" : ""} */}
+              {/* ${path === "/casino" ? "active--10bb1" : ""} */}
               <svg
-                style={{ opacity: pathname === "/casino" ? "1" : "0.6" }}
+                style={{ opacity: path === "/casino" ? "1" : "0.6" }}
                 className={`AnimatedCategoryIcon--87bac  `}
                 fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg"
@@ -92,7 +100,7 @@ const ScrollableTab = () => {
             <span
               className="Typography--d2c9a CategoryName--b3bef Typography_xs_subtitle1--6fd5e Typography_xl_h6--d162d bold--d200f colorPrimary--f2f02 ellipsisModeTwoLines--ab28e hyphens--b1b61"
               data-role="typography"
-              style={{ opacity: pathname === "/casino" ? "1" : "0.6" }}
+              style={{ opacity: path === "/casino" ? "1" : "0.6" }}
             >
               Casino
             </span>
@@ -103,12 +111,12 @@ const ScrollableTab = () => {
           className="ScrollableListItem--0b815 CategoryContainer--62d87"
           id="category-navigator-top_games"
         >
-          {/* ${pathname === "/originals" ? "active--14e88" : ""} */}
+          {/* ${path === "/originals" ? "active--14e88" : ""} */}
           <div className={`Category--17479 `}>
             <div className="CategoryIcon--d2629">
-              {/* ${pathname === "/originals" ? "active--10bb1" : ""} */}
+              {/* ${path === "/originals" ? "active--10bb1" : ""} */}
               <div
-                style={{ opacity: pathname === "/originals" ? "1" : "0.6" }}
+                style={{ opacity: path === "/originals" ? "1" : "0.6" }}
                 className={`AnimatedCategoryIcon--87bac TopGamesIcon--7dc9c `}
               >
                 <svg
@@ -172,7 +180,7 @@ const ScrollableTab = () => {
               </div>
             </div>
             <span
-              style={{ opacity: pathname === "/originals" ? "1" : "0.6" }}
+              style={{ opacity: path === "/originals" ? "1" : "0.6" }}
               className="Typography--d2c9a CategoryName--b3bef Typography_xs_subtitle1--6fd5e Typography_xl_h6--d162d bold--d200f colorPrimary--f2f02 ellipsisModeTwoLines--ab28e hyphens--b1b61"
               data-role="typography"
             >
@@ -185,12 +193,12 @@ const ScrollableTab = () => {
           className="ScrollableListItem--0b815 CategoryContainer--62d87"
           id="category-navigator-hindi"
         >
-          {/* ${pathname === "/fast-games" ? "active--14e88" : ""} */}
+          {/* ${path === "/fast-games" ? "active--14e88" : ""} */}
           <div className={`Category--17479 Category--17479 `}>
             <div className={`CategoryIcon--d2629 `}>
-              {/* ${pathname === "/fast-games" ? "active--10bb1" : ""} */}
+              {/* ${path === "/fast-games" ? "active--10bb1" : ""} */}
               <svg
-                style={{ opacity: pathname === "/fast-games" ? "1" : "0.6" }}
+                style={{ opacity: path === "/fast-games" ? "1" : "0.6" }}
                 className={`AnimatedCategoryIcon--87bac `}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 110 110"
@@ -200,7 +208,7 @@ const ScrollableTab = () => {
               </svg>
             </div>
             <span
-              style={{ opacity: pathname === "/fast-games" ? "1" : "0.6" }}
+              style={{ opacity: path === "/fast-games" ? "1" : "0.6" }}
               className="Typography--d2c9a CategoryName--b3bef Typography_xs_subtitle1--6fd5e Typography_xl_h6--d162d bold--d200f colorPrimary--f2f02 ellipsisModeTwoLines--ab28e hyphens--b1b61"
               data-role="typography"
             >
@@ -216,7 +224,7 @@ const ScrollableTab = () => {
           <div className="Category--17479">
             <div className="CategoryIcon--d2629">
               <svg
-                style={{ opacity: pathname === "/bollywood" ? "1" : "0.6" }}
+                style={{ opacity: path === "/bollywood" ? "1" : "0.6" }}
                 className="AnimatedCategoryIcon--87bac"
                 fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg"
@@ -243,7 +251,7 @@ const ScrollableTab = () => {
               </svg>
             </div>
             <span
-              style={{ opacity: pathname === "/bollywood" ? "1" : "0.6" }}
+              style={{ opacity: path === "/bollywood" ? "1" : "0.6" }}
               className="Typography--d2c9a CategoryName--b3bef Typography_xs_subtitle1--6fd5e Typography_xl_h6--d162d bold--d200f colorPrimary--f2f02 ellipsisModeTwoLines--ab28e hyphens--b1b61"
               data-role="typography"
             >
@@ -260,7 +268,7 @@ const ScrollableTab = () => {
             <div className="CategoryIcon--d2629">
               <div className="AnimatedCategoryIcon--87bac BlackjackCategoryIcon--afd3e">
                 <svg
-                  style={{ opacity: pathname === "/teenpatti" ? "1" : "0.6" }}
+                  style={{ opacity: path === "/teenpatti" ? "1" : "0.6" }}
                   className="AnimatedCategoryElement--c589b IconWrappedElement--ee8b6 BlackjackRightGroup--b5865"
                   viewBox="0 0 110 110"
                   fill="none"
@@ -274,7 +282,7 @@ const ScrollableTab = () => {
                   />
                 </svg>
                 <svg
-                  style={{ opacity: pathname === "/teenpatti" ? "1" : "0.6" }}
+                  style={{ opacity: path === "/teenpatti" ? "1" : "0.6" }}
                   className="AnimatedCategoryElement--c589b IconWrappedElement--ee8b6 BlackjackLeftGroup--b11cd"
                   viewBox="0 0 110 110"
                   fill="none"
@@ -333,7 +341,7 @@ const ScrollableTab = () => {
               </div>
             </div>
             <span
-              style={{ opacity: pathname === "/teenpatti" ? "1" : "0.6" }}
+              style={{ opacity: path === "/teenpatti" ? "1" : "0.6" }}
               className="Typography--d2c9a CategoryName--b3bef Typography_xs_subtitle1--6fd5e Typography_xl_h6--d162d bold--d200f colorPrimary--f2f02 ellipsisModeTwoLines--ab28e hyphens--b1b61"
               data-role="typography"
             >
@@ -351,7 +359,7 @@ const ScrollableTab = () => {
             <div className="CategoryIcon--d2629">
               <div className="AnimatedCategoryIcon--87bac RouletteIcon--ac30f">
                 <svg
-                  style={{ opacity: pathname === "/roulette" ? "1" : "0.6" }}
+                  style={{ opacity: path === "/roulette" ? "1" : "0.6" }}
                   className="AnimatedCategoryElement--c589b IconWrappedElement--ee8b6 RouletteInnerElement1--5e028"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 110 110"
@@ -366,7 +374,7 @@ const ScrollableTab = () => {
                   />
                 </svg>
                 <svg
-                  style={{ opacity: pathname === "/roulette" ? "1" : "0.6" }}
+                  style={{ opacity: path === "/roulette" ? "1" : "0.6" }}
                   className="AnimatedCategoryElement--c589b IconWrappedElement--ee8b6 RouletteInnerElement2--40cf7"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 110 110"
@@ -381,7 +389,7 @@ const ScrollableTab = () => {
               </div>
             </div>
             <span
-              style={{ opacity: pathname === "/roulette" ? "1" : "0.6" }}
+              style={{ opacity: path === "/roulette" ? "1" : "0.6" }}
               className="Typography--d2c9a CategoryName--b3bef Typography_xs_subtitle1--6fd5e Typography_xl_h6--d162d bold--d200f colorPrimary--f2f02 ellipsisModeTwoLines--ab28e hyphens--b1b61"
               data-role="typography"
             >

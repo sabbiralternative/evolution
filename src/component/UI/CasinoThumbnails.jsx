@@ -1,14 +1,15 @@
 import { useNavigate } from "react-router-dom";
-import { useGetLiveCasinoThumbnailQuery } from "../../redux/features/casino/casino.api";
 // import StaticThumbnail from "../shared/StaticThumbnail";
 import { useSound } from "../../context/ApiProvider";
 import { playClick } from "../../utils/sound";
 import { FaLock } from "react-icons/fa";
+import Loader from "../shared/Loader/Loader";
+import { useGetCasinoThumbnail } from "../../hooks/casino";
 
 const CasinoThumbnail = ({ title, id, column }) => {
   const { sound } = useSound();
   const navigate = useNavigate();
-  const { data } = useGetLiveCasinoThumbnailQuery({ id });
+  const { data, isLoading, isFetching } = useGetCasinoThumbnail({ id });
 
   const handleNavigate = (casino) => {
     const formatLink = `/game/${casino?.slug}/${casino?.eventTypeId}/${casino?.eventId}`;
@@ -48,6 +49,10 @@ const CasinoThumbnail = ({ title, id, column }) => {
     "B",
     "A",
   ];
+
+  if (isLoading || isFetching) {
+    return <Loader />;
+  }
   return (
     <main className="InnerContent--56377">
       <section className="AbstractCategory--f5e0f" id="category-top_games">

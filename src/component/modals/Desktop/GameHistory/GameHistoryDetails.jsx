@@ -14,7 +14,6 @@ const GameHistoryDetails = ({ setTab, roundId }) => {
     0
   );
 
-  console.log(data);
   return (
     <div
       data-role="position-container"

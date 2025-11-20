@@ -1,16 +1,16 @@
 import { useSelector } from "react-redux";
-import { useGetLiveCasinoThumbnailQuery } from "../../../redux/features/casino/casino.api";
 import { useSound } from "../../../context/ApiProvider";
 import { useNavigate } from "react-router-dom";
 import { Fragment, useMemo } from "react";
 import { playClick } from "../../../utils/sound";
 import { FaLock } from "react-icons/fa";
+import { useGetCasinoThumbnail } from "../../../hooks/casino";
 
 const RecentlyPlayed = () => {
   const navigate = useNavigate();
   const { sound } = useSound();
   const { username } = useSelector((state) => state.auth);
-  const { data } = useGetLiveCasinoThumbnailQuery({ id: "casino" });
+  const { data } = useGetCasinoThumbnail({ id: "casino" });
 
   const safeParse = (value) => {
     try {

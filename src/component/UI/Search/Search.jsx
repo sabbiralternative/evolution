@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import Footer from "../Footer";
-import { useGetLiveCasinoThumbnailQuery } from "../../../redux/features/casino/casino.api";
 import { useNavigate } from "react-router-dom";
 import images from "../../../assets/images";
 import { useSound } from "../../../context/ApiProvider";
 import { playClick } from "../../../utils/sound";
+import { useGetCasinoThumbnail } from "../../../hooks/casino";
 
 const Search = ({ setShowSearch }) => {
   const { sound } = useSound();
   const [searchTerm, setSearchTerm] = useState("");
   const [casinoData, setCasinoData] = useState([]);
-  const { data } = useGetLiveCasinoThumbnailQuery({ id: searchTerm });
+  const { data } = useGetCasinoThumbnail({ id: searchTerm });
   const navigate = useNavigate();
 
   const handleNavigate = (casino) => {
