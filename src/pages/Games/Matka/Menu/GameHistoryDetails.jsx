@@ -1,9 +1,9 @@
 import { motion } from "motion/react";
-import { useGetBets } from "../../hooks/bets";
 import { useSelector } from "react-redux";
-import { useSound } from "../../context/ApiProvider";
-import { playClick } from "../../utils/sound";
 import { useParams } from "react-router-dom";
+import { useSound } from "../../../../context/ApiProvider";
+import { useGetBets } from "../../../../hooks/bets";
+import { playClick } from "../../../../utils/sound";
 
 const GameHistoryDetails = ({ setTab, closeModal, roundId }) => {
   const { eventId } = useParams();
@@ -629,7 +629,11 @@ const GameHistoryDetails = ({ setTab, closeModal, roundId }) => {
                                           <tbody>
                                             <tr>
                                               <td className="ssr_resultHeaderCell">
-                                                <span>Result</span>
+                                                {/* <span>Result</span> */}
+                                              </td>
+
+                                              <td className="ssr_resultHeaderCell">
+                                                <span>Winner</span>
                                               </td>
                                             </tr>
                                             <tr style={{ height: "50px" }}>
@@ -653,6 +657,18 @@ const GameHistoryDetails = ({ setTab, closeModal, roundId }) => {
                                                       );
                                                     }
                                                   )}
+                                                </div>
+                                              </td>
+
+                                              <td className="ssr_cell">
+                                                <div
+                                                  className="ssr_dt_result"
+                                                  data-role="history-outcome-cell"
+                                                >
+                                                  {
+                                                    data?.result?.game_details
+                                                      ?.winner
+                                                  }
                                                 </div>
                                               </td>
                                             </tr>

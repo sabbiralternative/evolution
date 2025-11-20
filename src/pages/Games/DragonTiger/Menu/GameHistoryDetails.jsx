@@ -507,40 +507,50 @@ const GameHistoryDetails = ({ setTab, closeModal, roundId }) => {
                                                   data-role="history-tiger-hand"
                                                 >
                                                   <div className="ssr_dt_cards">
-                                                    {data?.result?.game_details
-                                                      ?.player_a && (
-                                                      <img
-                                                        style={{
-                                                          width: "50px",
-                                                          height: "50px",
-                                                        }}
-                                                        src={`/cards/${data?.result?.game_details?.player_a}.png`}
-                                                        alt=""
-                                                      />
+                                                    {data?.result?.game_details?.player_a?.map(
+                                                      (card, idx) => {
+                                                        return (
+                                                          <img
+                                                            key={idx}
+                                                            style={{
+                                                              width: "50px",
+                                                              height: "50px",
+                                                            }}
+                                                            src={`/cards/${card}.png`}
+                                                            alt=""
+                                                          />
+                                                        );
+                                                      }
                                                     )}
                                                   </div>
                                                 </div>
                                               </td>
+
                                               <td className="ssr_cell">
                                                 <div
                                                   className="ssr_dt_result"
                                                   data-role="history-tiger-hand"
                                                 >
                                                   <div className="ssr_dt_cards">
-                                                    {data?.result?.game_details
-                                                      ?.player_b && (
-                                                      <img
-                                                        style={{
-                                                          width: "50px",
-                                                          height: "50px",
-                                                        }}
-                                                        src={`/cards/${data?.result?.game_details?.player_b}.png`}
-                                                        alt=""
-                                                      />
+                                                    {data?.result?.game_details?.player_b?.map(
+                                                      (card, idx) => {
+                                                        return (
+                                                          <img
+                                                            key={idx}
+                                                            style={{
+                                                              width: "50px",
+                                                              height: "50px",
+                                                            }}
+                                                            src={`/cards/${card}.png`}
+                                                            alt=""
+                                                          />
+                                                        );
+                                                      }
                                                     )}
                                                   </div>
                                                 </div>
                                               </td>
+
                                               <td className="ssr_cell">
                                                 <div
                                                   className="ssr_dt_result"
