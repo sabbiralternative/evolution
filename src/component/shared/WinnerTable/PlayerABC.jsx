@@ -1,4 +1,4 @@
-const PlayerABC = ({ data, player_a, player_b, size }) => {
+const PlayerABC = ({ data, player_a, player_b, player_c, size }) => {
   return (
     <table className="ssr_table">
       <tbody>
@@ -10,7 +10,7 @@ const PlayerABC = ({ data, player_a, player_b, size }) => {
             <span>{player_b}</span>
           </td>
           <td className="ssr_resultHeaderCell">
-            <span>{player_b}</span>
+            <span>{player_c}</span>
           </td>
           <td className="ssr_resultHeaderCell">
             <span>Winner</span>
