@@ -224,7 +224,7 @@ const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
                                     </div>
                                   </div>
                                 </div>
-                                <div
+                                {/* <div
                                   onClick={() => {
                                     setTab("chat");
                                     if (sound) playClick();
@@ -324,7 +324,7 @@ const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
                                       </span>
                                     </div>
                                   </div>
-                                </div>
+                                </div> */}
                                 <div
                                   onClick={() => {
                                     setTab("game-history");
@@ -369,7 +369,7 @@ const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
                                     </div>
                                   </div>
                                 </div>
-                                <div
+                                {/* <div
                                   className="wrapper--6c1a2"
                                   data-role="menu-item-wrapper"
                                 >
@@ -407,7 +407,7 @@ const Menu = ({ setShowMenu, showFullScreen, setShowFullScreen }) => {
                                       </span>
                                     </div>
                                   </div>
-                                </div>
+                                </div> */}
                                 <div
                                   onClick={() => {
                                     setTab("how-to-play");

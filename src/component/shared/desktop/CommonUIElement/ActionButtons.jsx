@@ -62,7 +62,7 @@ const ActionButtons = () => {
             <div className="item-wrapper--7891b right--ac8e8">
               <div className="commonButtons--8992c" />
               <div className="commonButtons--8992c gap--c4bba">
-                <button
+                {/* <button
                   className="button--673ce xs--07983 roundingBoth--6d5e6 buttonRoot--3bd4d"
                   data-type="secondary"
                   data-role="settings-button"
@@ -107,7 +107,7 @@ const ActionButtons = () => {
                     </div>
                     <div className="badge--81159" />
                   </span>
-                </button>
+                </button> */}
                 <div ref={historyModalRef}>
                   {" "}
                   <button
@@ -188,7 +188,7 @@ const ActionButtons = () => {
                     />
                   )}
                 </div>
-                <button
+                {/* <button
                   className="button--673ce xs--07983 roundingBoth--6d5e6 buttonRoot--3bd4d"
                   data-type="secondary"
                   data-role="help-button"
@@ -233,7 +233,7 @@ const ActionButtons = () => {
                     </div>
                     <div className="badge--81159" />
                   </span>
-                </button>
+                </button> */}
 
                 {document.fullscreenElement ? (
                   <button
@@ -343,7 +343,7 @@ const ActionButtons = () => {
                 )}
               </div>
             </div>
-            <div
+            {/* <div
               data-role="gameInfo"
               className="item-wrapper--7891b right--ac8e8"
             >
@@ -352,7 +352,7 @@ const ActionButtons = () => {
                   09:44:33
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
