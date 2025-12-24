@@ -17,6 +17,9 @@ body {
 
 .helpChapter--73696 {
   padding: 5px 0px;
+  height: 450px;
+
+  overflow: hidden;
 }
 
 /*! Circular Progress Bar Animation Start  */

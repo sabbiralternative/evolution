@@ -36,7 +36,9 @@
       "order": "https://dream11.dev/api/funbar/order.php",
       "pnl": "https://dream11.dev/api/funbar/pnl.php",
       "bets": "https://dream11.dev/api/funbar/bets",
-      "history": "https://dream11.dev/api/funbar/history"
+      "history": "https://dream11.dev/api/funbar/history",
+      "payout": "https://dream11.dev/api/funbar/payout.php",
+      "rules": "https://dream11.dev/api/funbar/rules.php"
     }
   },
   "success": true

@@ -6,6 +6,8 @@ export const API = {
   pnl: "",
   bets: "",
   history: "",
+  payout: "",
+  rules: "",
 };
 
 export const Settings = {

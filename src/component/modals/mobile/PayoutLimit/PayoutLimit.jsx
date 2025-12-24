@@ -3,9 +3,14 @@ import { motion } from "motion/react";
 import { useSelector } from "react-redux";
 import { playClick } from "../../../../utils/sound";
 import { useSound } from "../../../../context/ApiProvider";
+import { usePayout } from "../../../../hooks/payout";
+import { useParams } from "react-router-dom";
 const PayoutLimit = ({ setTab, closeModal }) => {
+  const { eventId } = useParams();
+  const { data } = usePayout({ eventId });
   const { sound } = useSound();
   const { deviseHeight } = useSelector((state) => state.global);
+
   return (
     <motion.div
       initial={{ x: "100%" }}
@@ -154,239 +159,21 @@ const PayoutLimit = ({ setTab, closeModal }) => {
                           <div>
                             Table:{" "}
                             <span className="tableName--b461c">
-                              Golden Wealth Baccarat
+                              {data?.result?.table}
                             </span>
                           </div>
                           <div>
                             <span>Bet Limits:</span>&nbsp;
                             <span className="limits--0b506">
-                              ⁦⁦⁦₹⁩100⁩ – 100,000⁩
+                              {data?.result?.limit}
                             </span>
                           </div>
                         </div>
-                        <table className="table--14466">
-                          <thead className="header--9dd12 sm--bbe87">
-                            <tr>
-                              <th className="left--693f2" colSpan={1}>
-                                <span>BET</span>
-                              </th>
-                              <th className="middle--d4568">
-                                <span>BET LIMITS</span>
-                              </th>
-                              <th className="right--402ec">
-                                <span>PAYOUT</span>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr
-                              data-role="bet-limits_player"
-                              className="sm--8f329 hasContent--7f13d hasBottomBorder--87313 fixedColumnWidths--a60d9"
-                            >
-                              <td className="bet--7d654" colSpan={1}>
-                                <div className="cellContent--e7e92">
-                                  <span data-role="title" className>
-                                    PLAYER
-                                  </span>
-                                </div>
-                              </td>
-                              <td className="middleDataCell--a2446">
-                                <div className="cellContent--e7e92">
-                                  <div
-                                    data-role="min-max"
-                                    className="betLimits--3cf27"
-                                    data-min={100}
-                                    data-max={100000}
-                                  >
-                                    ⁦⁦⁦₹⁩100⁩ – 100,000⁩
-                                  </div>
-                                </div>
-                              </td>
-                              <td className="payout--46826">
-                                <div
-                                  className="cellContent--e7e92"
-                                  data-role="payout"
-                                >
-                                  1–512:1
-                                </div>
-                              </td>
-                            </tr>
-                            <tr
-                              data-role="bet-limits_banker"
-                              className="sm--8f329 hasContent--7f13d hasBottomBorder--87313 fixedColumnWidths--a60d9"
-                            >
-                              <td className="bet--7d654" colSpan={1}>
-                                <div className="cellContent--e7e92">
-                                  <span data-role="title" className>
-                                    BANKER*
-                                  </span>
-                                </div>
-                              </td>
-                              <td className="middleDataCell--a2446">
-                                <div className="cellContent--e7e92">
-                                  <div
-                                    data-role="min-max"
-                                    className="betLimits--3cf27"
-                                    data-min={100}
-                                    data-max={100000}
-                                  >
-                                    ⁦⁦⁦₹⁩100⁩ – 100,000⁩
-                                  </div>
-                                </div>
-                              </td>
-                              <td className="payout--46826">
-                                <div
-                                  className="cellContent--e7e92"
-                                  data-role="payout"
-                                >
-                                  1–512:1
-                                </div>
-                              </td>
-                            </tr>
-                            <tr
-                              data-role="bet-limits_tie"
-                              className="sm--8f329 hasContent--7f13d hasBottomBorder--87313 fixedColumnWidths--a60d9"
-                            >
-                              <td className="bet--7d654" colSpan={1}>
-                                <div className="cellContent--e7e92">
-                                  <span data-role="title" className>
-                                    TIE
-                                  </span>
-                                </div>
-                              </td>
-                              <td className="middleDataCell--a2446">
-                                <div className="cellContent--e7e92">
-                                  <div
-                                    data-role="min-max"
-                                    className="betLimits--3cf27"
-                                    data-min={100}
-                                    data-max={10000}
-                                  >
-                                    ⁦⁦⁦₹⁩100⁩ – 10,000⁩
-                                  </div>
-                                </div>
-                              </td>
-                              <td className="payout--46826">
-                                <div
-                                  className="cellContent--e7e92"
-                                  data-role="payout"
-                                >
-                                  5:1 (Up to ⁦⁦₹⁩50,000,000⁩)
-                                </div>
-                              </td>
-                            </tr>
-                            <tr
-                              data-role="bet-limits_undefined"
-                              className="sm--8f329 hasBottomBorder--87313 fixedColumnWidths--a60d9"
-                            >
-                              <td className="bet--7d654" colSpan={1}>
-                                <div className="cellContent--e7e92">
-                                  <span data-role="title" className>
-                                    ​
-                                  </span>
-                                </div>
-                              </td>
-                              <td className="middleDataCell--a2446">
-                                <div className="cellContent--e7e92">
-                                  <div
-                                    data-role="min-max"
-                                    className="betLimits--3cf27"
-                                  />
-                                </div>
-                              </td>
-                              <td className="payout--46826">
-                                <div
-                                  className="cellContent--e7e92"
-                                  data-role="payout"
-                                />
-                              </td>
-                            </tr>
-                            <tr
-                              data-role="bet-limits_player_pair"
-                              className="sm--8f329 hasContent--7f13d hasBottomBorder--87313 fixedColumnWidths--a60d9"
-                            >
-                              <td className="bet--7d654" colSpan={1}>
-                                <div className="cellContent--e7e92">
-                                  <span data-role="title" className>
-                                    P PAIR
-                                  </span>
-                                </div>
-                              </td>
-                              <td className="middleDataCell--a2446">
-                                <div className="cellContent--e7e92">
-                                  <div
-                                    data-role="min-max"
-                                    className="betLimits--3cf27"
-                                    data-min={100}
-                                    data-max={25000}
-                                  >
-                                    ⁦⁦⁦₹⁩100⁩ – 25,000⁩
-                                  </div>
-                                </div>
-                              </td>
-                              <td className="payout--46826">
-                                <div
-                                  className="cellContent--e7e92"
-                                  data-role="payout"
-                                >
-                                  9–576:1
-                                </div>
-                              </td>
-                            </tr>
-                            <tr
-                              data-role="bet-limits_banker_pair"
-                              className="sm--8f329 hasContent--7f13d hasBottomBorder--87313 fixedColumnWidths--a60d9"
-                            >
-                              <td className="bet--7d654" colSpan={1}>
-                                <div className="cellContent--e7e92">
-                                  <span data-role="title" className>
-                                    B PAIR
-                                  </span>
-                                </div>
-                              </td>
-                              <td className="middleDataCell--a2446">
-                                <div className="cellContent--e7e92">
-                                  <div
-                                    data-role="min-max"
-                                    className="betLimits--3cf27"
-                                    data-min={100}
-                                    data-max={25000}
-                                  >
-                                    ⁦⁦⁦₹⁩100⁩ – 25,000⁩
-                                  </div>
-                                </div>
-                              </td>
-                              <td className="payout--46826">
-                                <div
-                                  className="cellContent--e7e92"
-                                  data-role="payout"
-                                >
-                                  9–576:1
-                                </div>
-                              </td>
-                            </tr>
-                            <tr data-role="bet-limits-footer">
-                              <td
-                                colSpan={3}
-                                className="footerContentWrapper--24329 sm--18019"
-                              >
-                                <div
-                                  data-role="max-payout-amount"
-                                  className="maxPayoutAmount--18149"
-                                >
-                                  <div>
-                                    * 95% of your Banker bet is returned if
-                                    Banker wins
-                                  </div>
-                                  <div>
-                                    MAX PAYOUT ⁦⁦₹⁩50,000,000⁩ PLUS INITIAL BET
-                                    ON THE WINNING HAND
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: data?.result?.payout || "",
+                          }}
+                        ></div>
                       </div>
                     </div>
                   </div>

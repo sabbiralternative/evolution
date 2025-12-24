@@ -14540,8 +14540,8 @@ div.notificationBubble--f5aa1.sm--dea81 {
 }
 .contentContainer--e1e0b {
   display: block;
-  height: 0;
-  overflow: hidden;
+  height: 100% !important;
+  overflow: auto;
   overflow-wrap: break-word;
   padding: 0 calc(var(--size) * 1.6);
   transition: height 0.5s;
